@@ -4,6 +4,9 @@ markdown: kramdown
 rdiscount:
   extensions: [smart]
 permalink: /:title.html
+paginate: 5
+gems:
+    - jekyll-paginate
 paginate_path: "page:num"
 port: 3000
 safe: true
@@ -11,7 +14,7 @@ safe: true
 
 # edit here to achieve your personal greatness
 url: http://rafaelvzago.github.io/
-baseurl: 
+baseurl:
 title: Rafael Zago
 author: Rafael Zago
 description: $random snippets
