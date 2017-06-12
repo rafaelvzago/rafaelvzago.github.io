@@ -5,13 +5,16 @@ rdiscount:
   extensions: [smart]
 permalink: /:title.html
 paginate_path: "page:num"
+paginate: 5
+gems:
+    - jekyll-paginate
 port: 3000
 safe: true
 
 
 # edit here to achieve your personal greatness
 url: http://rafaelvzago.github.io/
-baseurl: 
+baseurl:
 title: Rafael Zago
 author: Rafael Zago
 description: $random snippets
