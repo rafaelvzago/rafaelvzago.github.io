@@ -1,38 +1,40 @@
 ---
 layout: home
-paginate: true
+paginate: false
 ---
 
 <section id="about">
-	<div class="container">
-	  <div class="avatar">
-		<img class="img-square" src="{{ site.baseurl }}static/img/{{ site.logo }}" alt="Responsive image">
-	  </div>
-	  {% include social.html %}
-	</div>
+<div class="container">
+    <div class="avatar">
+        <img class="img-square" src="{{ site.baseurl }}/static/img/{{ site.logo }}" alt="Responsive image">
+    </div>
+    {% include social.html %}
+</div>
 
 </section>
 <div class="container">
-<h3>Artigos</h3>
-  <div class="panel panel-default">
-    <div class="panel-body">
-		{% for post in site.posts %}
-			<div class="row">
-                <div class="col-sm-3 col-md-3 col-lg-3">
-                   <a href="{{ site.baseurl }}{{ post.url }}" class = "thumbnail">
-                      <img src = "{{ site.baseurl }}static/img/posts/{{ post.thumbnail }}" alt = "{{ post.title }}">
-                   </a>
+    <h3>Artigos Recentes</h3>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                {% for post in paginator.posts limit:4 %}
+                <div class="col-sm-3">
+                    <div class="row">
+                        <a href="{{ site.baseurl }}{{ post.url }}" class="thumbnail">
+                            <img src="{{ site.baseurl }}/static/img/posts/{{ post.thumbnail }}" alt="{{ post.title }}">
+                        </a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            {{ post.date | date: "%B %e" }}
+                        </div>
+                        <div class="col-sm-6">
+                            {{ post.cat }}
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-9 col-md-9 col-lg-9">
-                    <h3 style="text-align: left">
-                       <strong><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></strong>
-                   </h3>
-                    <h6 style="text-align: left">
-                       {{ post.date | date: "%B %e, %Y" }}
-                   </h6>
-                </div>
-			</div>
-	    {% endfor %}
-	</div>
-  </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </div>
