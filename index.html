@@ -1,40 +1,35 @@
----
-layout: home
-paginate: false
----
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<section id="about">
-<div class="container">
-    <div class="avatar">
-        <img class="img-square" src="{{ site.baseurl }}/static/img/{{ site.logo }}" alt="Responsive image">
-    </div>
-    {% include social.html %}
-</div>
+	<title>Rafael Zago | A beard guy</title>
 
-</section>
-<div class="container">
-    <h3>Artigos Recentes</h3>
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="row">
-                {% for post in paginator.posts limit:4 %}
-                <div class="col-sm-3">
-                    <div class="row">
-                        <a href="{{ site.baseurl }}{{ post.url }}" class="thumbnail">
-                            <img src="{{ site.baseurl }}/static/img/posts/{{ post.thumbnail }}" alt="{{ post.title }}">
-                        </a>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            {{ post.date | date: "%B %e" }}
-                        </div>
-                        <div class="col-sm-6">
-                            {{ post.cat }}
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
+	<link rel="icon" href="favicon.ico" type="image/png" />
+
+	<link href="https://fonts.googleapis.com/css?family=Reem+Kufi|Roboto:300" rel="stylesheet">
+	<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/themes/yellow-black.css">
+</head>
+<body>
+	<main>
+		<div class="intro">Hello, I'm Rafael Zago!</div>
+		<div class="tagline">Site Reliability Engineer | Devops | Linux Beard Guy</div>
+		<!-- Find your icons from here - https://fontawesome.com/icons?d=gallery&s=brands -->
+		<div class="icons-social">
+			<a target="_blank" href="https://github.com/rafaelvzago"><i class="fab fa-github"></i></a>
+			<a target="_blank" href="https://twitter.com/rafaelvzago"><i class="fab fa-twitter"></i></a>
+			<!--<a target="_blank" href="https://stackoverflow.com/story/rafaelvzago"><i class="fab fa-stack-overflow"></i></a>-->
+			<a target="_blank" href="https://www.linkedin.com/en/rafaelvzago"><i class="fab fa-linkedin"></i></a>
+			<a target="_blank" href="https://medium.com/@rafaelvzago"><i class="fab fa-medium"></i></a>
+			<!--<a target="_blank" href="https://www.freecodecamp.org"><i class="fab fa-free-code-camp"></i></a>
+			<a target="_blank" href="https://www.behance.net"><i class="fab fa-behance"></i></a>
+			<a target="_blank" href="https://codepen.io"><i class="fab fa-codepen"></i></a>-->
     </div>
-</div>
+	</main>
+</body>
+</html>
