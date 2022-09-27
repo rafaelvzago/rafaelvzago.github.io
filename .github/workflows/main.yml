@@ -33,7 +33,7 @@ jobs:
           SSH_KEY_PATH: ${{ github.workspace }}/../private.key      
 
       - name: Sync data
-        run: scp -r -p -i $SSH_KEY_PATH  public/* ${{ secrets.ftp_user }}@${{ secrets.ftp_host }}:~/public_html
+        run: scp -r -p -i ${{ SSH_KEY_PATH }}  public/* ${{ secrets.ftp_user }}@${{ secrets.ftp_host }}:~/public_html
 
 
 
