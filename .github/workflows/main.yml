@@ -21,10 +21,12 @@ jobs:
         run: hugo --minify
 
       - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          server: ${{ secrets.ftp_host }}
-          username: ${{ secrets.ftp_user }}
-          password: ${{ secrets.ftp_password }}
-          server-dir: public_html/
-          dry-run: true
+            username: ${{ secrets.ftp_user }}
+            server: ${{ secrets.ftp_host }}
+            password: ${{ secrets.ftp_password }} 
+            local_path: './public/*'
+            remote_path: '~/'
+            sftpArgs: '-o ConnectTimeout=5'
+
