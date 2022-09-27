@@ -21,7 +21,9 @@ jobs:
         run: hugo --minify
 
       - name: 📂 Sync files
-        run: scp -r -p -i ${{ secrets.SSH_PRIVATE_KEY }} public/* ${{ secrets.ftp_user }}@${{ secrets.ftp_host }}:~/public_html
+        run: |
+          echo "$secrets.SSH_PRIVATE_KEY" > ../private.key
+          scp -r -p -i ../private.key public/* ${{ secrets.ftp_user }}@${{ secrets.ftp_host }}:~/public_html
 
 
 
