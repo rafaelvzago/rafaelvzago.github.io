@@ -22,8 +22,11 @@ jobs:
 
       - name: 📂 Sync files
         run: |
+          mkdir -p ~/.ssh/
           echo "$secrets.SSH_PRIVATE_KEY" > ../private.key
+          sudo chmod 600 ../private.key
           scp -r -p -i ../private.key public/* ${{ secrets.ftp_user }}@${{ secrets.ftp_host }}:~/public_html
+        shell: bash
 
 
 
