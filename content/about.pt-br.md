@@ -10,14 +10,14 @@ author = "Rafael Zago"
 
 Qué pasa?
 
-Olá! Não me leve muito a sério, ok? Eu criei esse espaço para compartilhar um pouco do conhecimento que eu tenho e que 90% dele eu ganhei com a ajudar da internet, então já passou da hora de devolver um pouco para o mundo.
+Olá! Não me leve muito a sério, ok? Eu criei esse espaço para compartilhar um pouco do conhecimento que eu tenho e que 90% dele, eu ganhei com a ajudar da internet. Então já passou da hora de devolver um pouco para o mundo.
 
 Hoje sou engenheiro de software na Red Hat, mas já passei por algumas empresas (pequenas e grandes) fazendo de tudo um pouco: 
 
 
 * DevOps de coração e SysAdmin de vocação.
 * Criando metodos de aprendizagem e estruturando treinamentos e metódos de aprendizagem.
-* Também trabalhei com suporte por muitos antes de aplicações de vários tamanhos e complecidade.
+* Também trabalhei com suporte por muitos antes de aplicações de vários tamanhos e complexidade.
 * Sou instrutor da Caelum/Alura.
 * Sou padrinho do carinha mais dahora da terra!
 
