@@ -10,14 +10,14 @@ tags = [
     "Red Hat"
 ]
 categories = [
-    "themes",
-    "syntax",
+    "could",
+    "k8s",
 ]
-series = ["Themes Guide"]
-aliases = ["migrate-from-jekyl"]
+series = ["Skupper"]
+aliases = ["conhecendo-o-skupper"]
 +++
 
 ## Referências
 
-* https://skupper.io
+* [1]https://skupper.io
 
