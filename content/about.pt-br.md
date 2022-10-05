@@ -7,6 +7,7 @@ author = "Rafael Zago"
 +++
 
 ### Apresentação
+---
 
 Qué pasa?
 
@@ -21,22 +22,27 @@ Hoje sou engenheiro de software na Red Hat, mas já passei por algumas empresas 
 * Sou instrutor da Caelum/Alura.
 * Sou padrinho do carinha mais dahora da terra! Sem clubismo...
 
-Como eu disse, sou devops de coração e também membro da organização do [DevOpsDays SP](https://devopsdays.org/events/2020-sao-paulo/contato) 
 
-Abaixo estão as poucas contribuições que já fiz:
+### Comunidades
 
-### Podcasts
+* Como eu disse, sou devops de coração e também membro da organização do [DevOpsDays SP](https://devopsdays.org/events/2020-sao-paulo/contato) 
+  * [Organização do DevOpsDays 2020](https://devopsdays.org/events/2020-sao-paulo/welcome/)
+
+
+### Abaixo estão as poucas contribuições que já fiz:
+---
+#### Podcasts
 
 * [Hipsters Ponto Tech #239](https://www.hipsters.tech/trello-jira-e-ferramentas-de-produtividade-hipsters-ponto-tech-239/)
 * [DNE 224 - Trabalhar para Gringa](https://devnaestrada.com.br/2019/09/20/trabalhar-na-gringa.html)
 
 
-### Talks/Palestras
+#### Talks/Palestras
 * [Take out the rust, transformando time com responsabilidade](https://youtu.be/lZOEdv_W7Ac?t=311) - DevOpsDays SP, 2019.
 * [Desenvolvendo Aplicações na Nuvem: Uma Abordagem Prática](http://www.facebook.com/linuxdayuniplimeira) - LinuxDay Limeira, 2014
 * [Palestra Linux 101](https://github.com/rafaelvzago/linux-101-unisal) - Unisal Campinas, 2018
 * [IHC and Security Talk](https://drive.google.com/file/d/1Wsh-InOzGSJCKkoc3RYq71EjrvyBdFlN/view?usp=sharing) - Unisal Campinas 2018
 
-### Vídeos
+#### Vídeos
 * [O que é Openshift?](https://www.youtube.com/watch?v=B0vNhpeJZdw) - Alura
 
