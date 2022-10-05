@@ -25,7 +25,7 @@ Hoje sou engenheiro de software na Red Hat, mas já passei por algumas empresas 
 
 ### Comunidades
 
-* Como eu disse, sou devops de coração e também membro da organização do [DevOpsDays SP](https://devopsdays.org/events/2020-sao-paulo/contato) 
+* Sou devops de coração e também membro da organização do [DevOpsDays SP](https://devopsdays.org/events/2020-sao-paulo/contato) 
   * [Organização do DevOpsDays 2020](https://devopsdays.org/events/2020-sao-paulo/welcome/)
 
 
