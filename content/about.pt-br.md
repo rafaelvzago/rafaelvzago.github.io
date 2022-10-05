@@ -18,7 +18,7 @@ Hoje sou engenheiro de software na Red Hat, mas já passei por algumas empresas 
 
 * DevOps de coração e SysAdmin de vocação.
 * Criando métodos de aprendizagem e estruturando treinamentos.
-* Trabalhei com suporte por muitos anos de aplicações de vários tamanhos e complexidade.
+* Trabalhei, por muitos anos, com suporte de aplicações de vários tamanhos e complexidade.
 * Sou instrutor da Caelum/Alura.
 * Sou padrinho do carinha mais dahora da terra! Sem clubismo...
 

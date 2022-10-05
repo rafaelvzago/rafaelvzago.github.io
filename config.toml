@@ -66,8 +66,10 @@ customJS = []
 # serverURL = "analytics.example.com" # For cloud-hosting, use provided URL, e.g. example.matomo.cloud
 
 # If you want to use Google Tag Manager(https://analytics.google.com/) for analytics, add this section
-[params.googleTagManager]
 googleAnalytics = "G-JX8S256V46"
+
+[params.googleTagManager]
+id = "GTM-PLLJ8M8"
 
 # If you want to use Application Insights(https://azure.com/) for analytics, add this section
 # [params.applicationInsights]
