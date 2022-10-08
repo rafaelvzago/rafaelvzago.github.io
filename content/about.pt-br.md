@@ -38,7 +38,9 @@ Hoje sou engenheiro de software na [Red Hat](https://www.redhat.com), mas já pa
 
 
 #### Talks/Palestras
-* [Take out the rust, transformando time com responsabilidade](https://youtu.be/lZOEdv_W7Ac?t=311) - DevOpsDays SP, 2019.
+
+* [Skupper, a cloud híbrida com 3 comandos](https://docs.google.com/presentation/d/14_mCGZnTVwQ7e7Puhfg1WscNTJqi2zk5tuMmnSLITKk/edit?usp=sharing) - DevOpsDays Fortaleza, 2022.
+* [Take out the rust, transformando time com responsabilidade](https://youtu.be/lZOEdv_W7Ac?t=311) - DevOpsDays São Paulo, 2019.
 * [Desenvolvendo Aplicações na Nuvem: Uma Abordagem Prática](http://www.facebook.com/linuxdayuniplimeira) - LinuxDay Limeira, 2014
 * [Palestra Linux 101](https://github.com/rafaelvzago/linux-101-unisal) - Unisal Campinas, 2018
 * [IHC and Security Talk](https://drive.google.com/file/d/1Wsh-InOzGSJCKkoc3RYq71EjrvyBdFlN/view?usp=sharing) - Unisal Campinas 2018
