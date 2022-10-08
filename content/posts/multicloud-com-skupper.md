@@ -41,7 +41,7 @@ O Skupper [1] é uma ferramenta que permite conectar dois ou mais ambientes de c
 
 _tl;dr_
 
-O skupper utiliza o qpid_dispatch [4] como software para trocar as mensagens entre os _namespaces_ ou _clusters_. Para isso utiliza uma solução que chamamos de _service-controller_ que provê interfaces TCP e HTTP para as aplicações, transforma as mensagens em _activemq messages_ [5] e na “outra ponta” reverte tal conversão para que os dados sejam interpretados e processados.
+O skupper é um _fork_ do qpid_dispatch [4] como software para trocar as mensagens entre os _namespaces_ ou _clusters_. Para isso utiliza uma solução que chamamos de _service-controller_ que provê interfaces TCP e HTTP para as aplicações, transforma as mensagens em _activemq messages_ [5] e na “outra ponta” reverte tal conversão para que os dados sejam interpretados e processados.
 
 Este exemplo é um aplicativo HTTP multisserviço muito simples implantado em clusters Kubernetes usando o Skupper.
 
@@ -116,7 +116,7 @@ skupper init
 skupper init
 ```
 
-#### 6. Conecando os namespaces:
+#### 6. Conectando os namespaces:
 A criação de um link requer o uso de dois comandos skupper em conjunto: `skupper token create` e `skupper link create`.
 
 O comando skupper token create gera um token secreto que significa permissão para criar um link. O token também carrega os detalhes do link. Em seguida, em um namespace remoto, o comando skupper link create usa o token para criar um link para o namespace que o gerou.
