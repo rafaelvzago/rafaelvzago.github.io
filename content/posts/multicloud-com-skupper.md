@@ -1,7 +1,7 @@
 +++
 author = "Rafael Zago"
 title = "Multicloud com o Skupper"
-date = "2022-10-08"
+date = "2022-10-01"
 description = "Como conectar projetos usando o SKUPPER e k8S"
 tags = [
     "k8s",
@@ -17,6 +17,8 @@ series = ["Skupper"]
 aliases = ["conhecendo-o-skupper"]
 +++
 
+_Atualizado em 2022-10-08_
+
 ## Referências
 
 1. [https://skupper.io](https://skupper.io)
@@ -29,18 +31,18 @@ aliases = ["conhecendo-o-skupper"]
 
 ## Ferramentas
 
-* Um computador com o minikube [2] instalado.
-* Um terminal para executar os comandos.
+* Um computador com o minikube [2] instalado;
+* Um terminal para executar os comandos;
 * `kubectl` > 1.15 [6] ou mais nova.
 
 
-## Descriçao da solução
+## Descrição da solução
 
-O Skupper [1] é uma ferramenta que permite conectar dois ou mais ambientes de cloud, de uma maneira não intrusiva e segura. Tais ambientes podem ser diferentes de provedores de serviço em núvem como: AWS, GCP, AZURE entre outras, e inclusive clusters kubernetes nativos.
+O Skupper [1] é uma ferramenta que permite conectar dois ou mais ambientes de cloud de uma maneira não intrusiva e segura. Tais ambientes podem ser diferentes de provedores de serviço em nuvem como: AWS, GCP, AZURE entre outras, e, inclusive, clusters kubernetes nativos.
 
 _tl;dr_
 
-O skupper utiliza o _qpid_dispatch_ [4] como software para trocar as mensagens entre os _namespaces_ ou _clusters_ e para isso, utiliza uma solição que chamamos de _service-controller_ que provê interfaces TCP e HTTP para as aplicações, transforma as mensagens em _activemq messages_ [5] e na "outra ponta" reverte tal conversão para que os dados sejam interpretados e processados.
+O skupper utiliza o qpid_dispatch [4] como software para trocar as mensagens entre os _namespaces_ ou _clusters_. Para isso utiliza uma solução que chamamos de _service-controller_ que provê interfaces TCP e HTTP para as aplicações, transforma as mensagens em _activemq messages_ [5] e na “outra ponta” reverte tal conversão para que os dados sejam interpretados e processados.
 
 Este exemplo é um aplicativo HTTP multisserviço muito simples implantado em clusters Kubernetes usando o Skupper.
 
@@ -56,11 +58,11 @@ Com o Skupper, você pode colocar o back-end em um cluster e o front-end em outr
 
 
 _Detalhes:_
-1. Não é necessário ter privilégios de administrador do cluster, já que a solução é no nível do _namespace_.
-2. Não é intrusivo com a sua aplicação, pois não cria _side-cars_ ou outros containers dentro dos _Pods_.
-3. É _open-source_.
-4. Você pode conectar, em seu _cluster_, serviços externos como: Bancos de dados, aplicações legadas e ainda de alta criticidade.
-5. Criptografado de ponta a ponta usando certificados digitais.
+1. Não é necessário ter privilégios de administrador do cluster, já que a solução é no nível do _namespace_;
+2. Não é intrusivo com a sua aplicação, pois não cria _side-cars_ ou outros containers dentro dos _Pods_;
+3. É _open-source_;
+4. Você pode conectar, em seu _cluster_, serviços externos como: Bancos de dados, aplicações legadas e ainda de alta criticidade;
+5. Criptografado de ponta a ponta usando certificados digitais;
 6. Baixa curva de aprenddizagem.
 
 
@@ -116,13 +118,13 @@ skupper init
 ```
 
 #### 6. Conecando os namespaces:
-A criação de um link requer o uso de dois comandos skupper em conjunto, skupper token create e skupper link create.
+A criação de um link requer o uso de dois comandos skupper em conjunto: `skupper token create` e `skupper link create`.
 
 O comando skupper token create gera um token secreto que significa permissão para criar um link. O token também carrega os detalhes do link. Em seguida, em um namespace remoto, o comando skupper link create usa o token para criar um link para o namespace que o gerou.
 
 Nota: O token de link é realmente um segredo. Qualquer pessoa que tenha o token pode vincular ao seu namespace. Certifique-se de que apenas aqueles em quem você confia tenham acesso a ele.
 
-Primeiro, use `skupper token create` em um namespace para gerar o token. Em seguida, use `skupper link create` no outro para criar um link.
+Primeiro use `skupper token create` em um _namespace_ para gerar o token. Em seguida, use `skupper link create` no outro para criar um link. 
 6.1.`config_oeste`:
 ```bash
 skupper token create ~/secret.token
@@ -184,7 +186,7 @@ kubectl delete deployment/backend
 ```
 
 ### Resumo
-Este exemplo localiza os serviços de front-end e back-end em namespaces diferentes, em clusters diferentes. Normalmente, isso significa que eles não têm como se comunicar, a menos que sejam expostos à Internet pública.
+Este exemplo localiza os serviços de front-end e back-end em namespaces diferentes, em clusters diferentes. Normalmente isso significa que eles não tem como se comunicar, a menos que sejam expostos à Internet pública.
 
 A introdução do Skupper em cada namespace nos permite criar uma rede de aplicativos virtuais que pode conectar serviços em diferentes clusters. Qualquer serviço exposto na rede de aplicativos é representado como um serviço local em todos os namespaces vinculados.
 
