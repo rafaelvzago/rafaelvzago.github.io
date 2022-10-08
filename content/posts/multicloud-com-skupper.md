@@ -41,7 +41,7 @@ O Skupper [1] é uma ferramenta que permite conectar dois ou mais ambientes de c
 
 _tl;dr_
 
-O skupper é um _fork_ do qpid_dispatch [4] como software para trocar as mensagens entre os _namespaces_ ou _clusters_. Para isso utiliza uma solução que chamamos de _router_ que provê interfaces TCP e HTTP para as aplicações, transforma as mensagens em _activemq messages_ [5] e na “outra ponta” reverte tal conversão para que os dados sejam interpretados e processados.
+O skupper é um _fork_ do qpid_dispatch [4] como software para trocar as mensagens entre os _namespaces_ ou _clusters_. Para isso utiliza uma solução que chamamos de _skupper-router_ que provê interfaces TCP e HTTP para as aplicações, transforma as mensagens em _activemq messages_ [5] e na “outra ponta” reverte tal conversão para que os dados sejam interpretados e processados.
 
 Este exemplo é um aplicativo HTTP multisserviço muito simples implantado em clusters Kubernetes usando o Skupper.
 
