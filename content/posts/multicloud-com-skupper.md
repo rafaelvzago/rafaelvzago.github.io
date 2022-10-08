@@ -38,7 +38,7 @@ _Atualizado em 2022-10-08_
 
 ## Descrição da solução
 
-O Skupper [1] é uma ferramenta que permite conectar dois ou mais ambientes de cloud de uma maneira não intrusiva e segura. Tais ambientes podem ser diferentes de provedores de serviço em nuvem como: AWS, GCP, AZURE entre outras, e, inclusive, clusters kubernetes nativos.
+O Skupper [1] é uma ferramenta que permite conectar dois ou mais ambientes de cloud de uma maneira não intrusiva e segura. Tais ambientes podem ser de diferentes provedores de serviço em nuvem como: AWS, GCP, AZURE entre outras, e, inclusive, clusters kubernetes nativos.
 
 _tl;dr_
 
