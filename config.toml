@@ -1,196 +1,192 @@
-baseURL = "https://www.rafaelvzago.com"
-title = "rafaelvzago"
-theme = "hugo-coder"
-languageCode = "pt-br"
-defaultContentLanguage = "pt-br"
-paginate = 20
-pygmentsStyle = "bw"
-pygmentsCodeFences = true
-pygmentsCodeFencesGuessSyntax = true
-enableEmoji = true
-# Enable Disqus comments
-# disqusShortname = "yourdiscussshortname"
+title = "Rafael Zago"
+baseURL = "https://www.rafaelvzago.com/"
+
+# Option 1 (recommended): adding the theme as a Hugo module
+theme = "github.com/Lednerb/bilberry-hugo-theme/v3"
+
+# Option 2: cloning/copying the theme files
+# theme = "bilberry-hugo-theme"
+
+# Generate the robots.txt file for SEO
+enableRobotsTXT = true
+
+# Change to one of your content languages defined at the end.
+DefaultContentLanguage = "en"
+
+# Enable / Disable Google Analytics statistics for your site
+googleAnalytics = "G-JX8S256V46 "
+
+# Enable / Disable comments on the articles via Disqus.
+#disqusShortname = ""
 
 [params]
-author = "Rafael Zago"
-# license = '<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA-4.0</a>'
-description = "Rafael Zago's personal blog"
-keywords = "blog,developer,personal"
-info = ["Software Quality Engineer"]
-avatarURL = "images/avatar.jpg"
-#gravatar = "john.doe@example.com"
-dateFormat = " 2  January 2006"
-since = 2005
-# Git Commit in Footer, uncomment the line below to enable it
-commit = "https://github.com/luizdepra/hugo-coder/tree/"
-# Right To Left, shift content direction for languagues such as Arabic
-rtl = false
-# Specify light/dark colorscheme
-# Supported values:
-# "auto" (use preference set by browser)
-# "dark" (dark background, light foreground)
-# "light" (light background, dark foreground) (default)
-colorScheme = "auto"
-# Hide the toggle button, along with the associated vertical divider
-hideColorSchemeToggle = false
-# Series see also post count
-maxSeeAlsoItems = 5
-# Custom CSS
-customCSS = []
-# Custom SCSS, file path is relative to Hugo's asset folder (default: {your project root}/assets)
-customSCSS = []
-# Custom JS
-customJS = []
+  # Custom CSS / JS modules that will be imported by the template.
+  # Files are relative to the static/ directory or a URL.
+  # Files are imported in the order they appear here, after
+  # theme.css and theme.js, respectively.
+  css_modules = []
+  js_modules = []
 
-# If you want to use fathom(https://usefathom.com) for analytics, add this section
-# [params.fathomAnalytics]
-# siteID = "ABCDE"
-# serverURL = "analytics.example.com" # Default value is cdn.usefathom.com, overwrite this if you are self-hosting
+  # Description and meta data for the search engines
+  author = "rafaelvzago"
+  description = "Meu Blog"
+  keywords = "blog,personal,responsive,search,font awesome,pages,posts,multilingual,highlight.js,syntax highlighting,premium,shortcuts"
 
-# If you want to use plausible(https://plausible.io) for analytics, add this section
-# [params.plausibleAnalytics]
-# domain = "example.com"
-# serverURL = "analytics.example.com" # Default value is plausible.io, overwrite this if you are self-hosting or using a custom domain
+  # How many articles should be displayed at once?
+  paginate = 10
 
-# If you want to use goatcounter(https://goatcounter.com) for analytics, add this section
-# [params.goatCounter]
-# code = "code"
+  # Enable / Disable MathJax
+  #enable_mathjax    = false
 
-# If you want to use Cloudflare Web Analytics(https://cloudflare.com) for analytics, add this section
-# [params.cloudflare]
-# token = "token"
+  # Enable / Disable algolia search
+  #algolia_search    = true
+  #algolia_appId     = "45CEN6X6AT"
+  #algolia_apiKey    = "16030625f1a4d0dd3b8aefd794fd4cf1"
+  #algolia_indexName = "bilberry-hugo-theme"
+  # Set this option to false if you want to search within all articles in all languages at once
+  algolia_currentLanguageOnly = true
 
-# If you want to use Matomo(https://matomo.org) for analytics, add this section
-# [params.matomo]
-# siteID = "ABCDE" # Default value is "1", overwrite this if you are cloud-hosting
-# serverURL = "analytics.example.com" # For cloud-hosting, use provided URL, e.g. example.matomo.cloud
+  # Enable / Disable comments on the articles via commento
+  # commentoJsURL = "https://commento.lednerb.de/js/commento.js"
 
-# If you want to use Google Tag Manager(https://analytics.google.com/) for analytics, add this section
-#[params.googleTagManager]
-#id = "GTM-PLLJ8M8"
+  # Enable / Disable Giscus comments
+  giscus             = false
+  giscusJsUrl        = "https://giscus.app/client.js"
+  giscusRepository   = "[ENTER REPO HERE]"
+  giscusRepositoryId = "[ENTER REPO ID HERE]"
+  giscusMapping      = "pathname"
+  giscusCategory     = "[ENTER CATEGORY NAME HERE]"
+  giscusCategoryId   = "[ENTER CATEGORY ID HERE]"
+  giscusTheme        = "light"
+  giscusReactions    = "1"
+  giscusEmitMetadata = "0"
+  giscusLanguage     = "en"
+  giscusCrossOrigin  = "anonymous"
+
+  # Enable / Disable Utterances comments
+  #utterances            = false
+  #utterancesJsUrl       = "https://utteranc.es/client.js"
+  #utterancesRepository  = "[ENTER REPO HERE]"
+  #utterancesIssueTerm   = "pathname"
+  #utterancesLabel       = "Comment"
+  #utterancesTheme       = "github-light"
+  #utterancesCrossOrigin = "anonymous"
+
+  # Media configuration
+    # let hugo automatically resize and crop your images to the correct sizes
+    # NB: When enabled the image files get renamed by adding additional information,
+    #     even if the image has the correct sizes.
+    resizeImages = true
+
+  # Header configuration
+    # your subtitle if you want to use any
+    subtitle = "Software Automation Engineer"
+
+    # if you want to use libravatar or gravatar for the header image
+    avatarEmail = "rafaelvzago@gmail.com"
+
+    # set an path to the image file you want to use | overwrites avatar by email
+    customImage = ""
+
+    # define the icon you want to use for the overlay for the customImage or avatar.
+    overlayIcon = "fa-home"
+
+    # always display the top navigation (with pages and search) on non-mobile screens
+    permanentTopNav = false
+
+    # always display the top navigation when scrolling
+    # works only with permanentTopNav = true
+    stickyNav = false
+
+    # show a language chooser in the header
+    showHeaderLanguageChooser = true
+
+  # Content configuration
+    # Enable an optional pinned page to display at the top of the index
+    # pinnedPost = "/article/installing-bilberry-theme/"
+    # Set to true to pin only to the first page, false to all pages
+    # pinOnlyToFirstPage = true
+
+    # enable automatic localization of the article's PublishedDate with momentjs
+    enableMomentJs = true
+
+    # customize the date format | only works if momentjs is disabled | only works with English month names
+    # you can customize it with the options you find here:
+    # https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference
+    dateFormat = "2006-01-02"
+
+    # display the estimated reading time for an article
+    showReadingTime = false
+
+    # Minimum word count to display the Table of Contents
+    tocMinWordCount = 400
+
+  # Footer configuration
+    showFooter = true
+
+    # How many articles should be displayed at latest posts in the footer?
+    # Set to -1 to hide the 'Latest Posts' column
+    amountLatestPostsInFooter = 7
+
+    # How many categories should be displayed in the footer section?
+    # Set to -1 to hide the 'Categories' column
+    amountCategoriesInFooter = 7
+
+    # show a language chooser in the footer
+    showFooterLanguageChooser = true
+
+    # social media profile urls for the footer links
+    showSocialMedia = true
+
+    # show an archive link in the footer
+    showArchive = false
+
+    # archive grouping: "2006" by year, "2006-01" by month
+    archiveDateGrouping = "2006-01"
+
+    # define your links with FontAwesome 5 (only free icons are supported)
+    # all icons https://fontawesome.com/icons?d=gallery&m=free
+    # brand icons https://fontawesome.com/icons?d=gallery&s=brands&m=free
+    socialMediaLinks = [
+      { link = "https://twitter.com/rafaelvzago", icon = "fab fa-twitter" },
+      { link = "https://github.com/rafaelvzago", icon = "fab fa-github" },
+      { link = "https://www.linkedin.com/in/rafaelvzago/", icon = "fab fa-linkedin" },
+    ]
+
+    # credits line configuration
+    copyrightBy = "by Rafael Zago"
+    copyrightUseCurrentYear = true  # set to true to always display the current year in the copyright
+    copyrightYearOverride = "2022"
+    copyrightUrl = "https://github.com/rafaelvzago"
+    creditsText = "Bilberry Hugo Theme"
+    creditsUrl = "https://github.com/Lednerb/bilberry-hugo-theme"
 
 
-# If you want to use Application Insights(https://azure.com/) for analytics, add this section
-# [params.applicationInsights]
-# connectionString = "connectionString"
+# customize your available languages for your multi-lingual site
+# or delete one of the [Languages.xx] blocks to use the theme with only one supported language
+[Languages]
+  [Languages.en]
+    weight = 1
 
-# If you want to implement a Content-Security-Policy, add this section
-[params.csp]
-childsrc = ["'self'"]
-fontsrc = ["'self'", "https://fonts.gstatic.com", "https://cdn.jsdelivr.net/"]
-formaction = ["'self'"]
-framesrc = ["'self'"]
-imgsrc = ["'self'"]
-objectsrc = ["'none'"]
-stylesrc = [
-  "'self'",
-  "'unsafe-inline'",
-  "https://fonts.googleapis.com/",
-  "https://cdn.jsdelivr.net/"
-]
-scriptsrc = [
-  "'self'",
-  "'unsafe-inline'",
-  "https://www.google-analytics.com",
-  "https://cdn.jsdelivr.net/"
-]
-prefetchsrc = ["'self'"]
-# connect-src directive – defines valid targets for to XMLHttpRequest (AJAX), WebSockets or EventSource
-connectsrc = ["'self'", "https://www.google-analytics.com"]
-
+# don't change anything below
 [taxonomies]
-category = "categories"
-series = "series"
-tag = "tags"
-author = "authors"
+  author   = "author"
+  tag      = "tags"
+  category = "categories"
+  series   = "series"
 
-[[params.social]]
-name = "Github"
-icon = "fa fa-2x fa-github"
-weight = 1
-url = "https://github.com/rafaelvzago/"
+[outputs]
+  home = [ "HTML", "JSON", "RSS" ]
+  page = [ "HTML" ]
 
-[[params.social]]
-name = "Gitlab"
-icon = "fa fa-2x fa-gitlab"
-weight = 2
-url = "https://gitlab.com/rafaelvzago/"
+[markup]
+  defaultMarkdownHandler = 'goldmark'
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      # Change to 'true' if you need to render raw HTML within your markdown content
+      unsafe = false
 
-[[params.social]]
-name = "Twitter"
-icon = "fa fa-2x fa-twitter"
-weight = 3
-url = "https://twitter.com/rafaelvzago/"
-
-[[params.social]]
-name = "LinkedIn"
-icon = "fa fa-2x fa-linkedin"
-weight = 4
-url = "https://www.linkedin.com/in/rafaelvzago/"
-
-[[params.social]]
-name = "Medium"
-icon = "fa fa-2x fa-medium"
-weight = 5
-url = "https://medium.com/@rafaelvzago"
-
-[[params.social]]
-name = "RSS"
-icon = "fa fa-2x fa-rss"
-weight = 6
-url = "https://myhugosite.com/index.xml"
-rel = "alternate"
-type = "application/rss+xml"
-
-#[languages.en]
-#languageName = ":uk:"
-
-#[[languages.en.menu.main]]
-#name = "About"
-#weight = 1
-#url = "about/"
-
-#[[languages.en.menu.main]]
-#name = "Blog"
-#weight = 2
-#url = "posts/"
-
-#[[languages.en.menu.main]]
-#name = "Projects"
-#weight = 3
-#url = "projects/"
-
-#[[languages.en.menu.main]]
-#name = "Contact me"
-#weight = 5
-#url = "contact/"
-
-[languages.pt-br]
-languageName = ":brazil:"
-title = "Rafael Zago"
-
-[languages.pt-br.params]
-author = "Rafael Zago"
-info = "Software Quality Engineer"
-description = "BLog pessoal de Rafael Zago"
-keywords = "blog,desenvolvedor,pessoal"
-
-[[languages.pt-br.menu.main]]
-name = "Sobre"
-weight = 1
-url = "about/"
-
-[[languages.pt-br.menu.main]]
-name = "Blog"
-weight = 2
-url = "posts/"
-
-#[[languages.pt-br.menu.main]]
-#name = "Projetos"
-#weight = 3
-#url = "projects/"
-
-#[[languages.pt-br.menu.main]]
-#name = "Contato"
-#weight = 5
-#url = "contact/"
+  [markup.tableOfContents]
+    endLevel = 5
+    ordered = false
+    startLevel = 2

@@ -1,2 +1,5 @@
 .gitmodules
 .hugo_build.lock
+_vendor
+themes
+resources
