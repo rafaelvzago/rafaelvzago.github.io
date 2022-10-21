@@ -68,7 +68,7 @@ customJS = []
 # If you want to use Google Tag Manager(https://analytics.google.com/) for analytics, add this section
 [params.googleTagManager]
 id = "GTM-PLLJ8M8"
-
+googleAnalytics = 'G-JX8S256V46'
 
 # If you want to use Application Insights(https://azure.com/) for analytics, add this section
 # [params.applicationInsights]
