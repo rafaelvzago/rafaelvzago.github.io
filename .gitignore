@@ -1,4 +1,2 @@
 .gitmodules
 .hugo_build.lock
-_vendor
-resources
