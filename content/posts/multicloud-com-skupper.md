@@ -26,7 +26,7 @@ _Atualizado em 2022-10-08_
 3. [Repositório com os Códigos](https://github.com/skupperproject/skupper-example-hello-world)
 4. [Qpid-dispatch](https://qpid.apache.org/components/dispatch-router/index.html)
 5. [ActiveMQ](https://activemq.apache.org/)
-6. [Kubeclt](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+6. [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 ## Ferramentas
 
