@@ -39,6 +39,7 @@ Hoje sou engenheiro de software na [Red Hat](https://www.redhat.com), mas já pa
 
 #### Talks/Palestras
 
+* [Uma estratégia upstream e downstream para entrega contínua](https://www.canva.com/design/DAFj8RRbWiU/fKDWxHCa5d4eb4wnf-mu3A/view?utm_content=DAFj8RRbWiU&utm_campaign=designshare&utm_medium=link&utm_source=homepage_design_menu) - Mini DebConf Brasília!, 2023.
 * [Skupper, a cloud híbrida com 3 comandos](https://docs.google.com/presentation/d/14_mCGZnTVwQ7e7Puhfg1WscNTJqi2zk5tuMmnSLITKk/edit?usp=sharing) - DevOpsDays Fortaleza, 2022.
 * [Take out the rust, transformando time com responsabilidade](https://youtu.be/lZOEdv_W7Ac?t=311) - DevOpsDays São Paulo, 2019.
 * [Desenvolvendo Aplicações na Nuvem: Uma Abordagem Prática](http://www.facebook.com/linuxdayuniplimeira) - LinuxDay Limeira, 2014
