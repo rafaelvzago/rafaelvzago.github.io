@@ -16,7 +16,7 @@ author = "Rafael Zago"
 # license = '<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA-4.0</a>'
 description = "Rafael Zago's personal blog"
 keywords = "blog,developer,personal"
-info = ["Senior Software Quality Engineer"]
+info = ["Senior Software Automation Engineer"]
 avatarURL = "images/avatar.jpg"
 #gravatar = "john.doe@example.com"
 dateFormat = " 2  January 2006"
@@ -172,7 +172,7 @@ title = "Rafael Zago"
 
 [languages.pt-br.params]
 author = "Rafael Zago"
-info = "Senior Software Quality Engineer"
+info = "Senior Software Automation Engineer"
 description = "Blog pessoal de Rafael Zago"
 keywords = "blog,desenvolvedor,pessoal"
 

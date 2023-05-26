@@ -13,7 +13,7 @@ Qué pasa?
 
 Olá! Não me leve muito a sério, ok? Eu criei esse espaço para compartilhar um pouco do conhecimento que eu tenho e que 90% dele, eu ganhei na internet. Então já passou da hora de devolver um pouco para o mundo.
 
-Hoje sou engenheiro de software na [Red Hat](https://www.redhat.com), mas já passei por algumas empresas (pequenas e grandes) fazendo de tudo um pouco: 
+Hoje sou senior software automation engineer na [Red Hat](https://www.redhat.com), mas já passei por algumas empresas (pequenas e grandes) fazendo de tudo um pouco: 
 
 
 * DevOps de coração e SysAdmin de vocação.
