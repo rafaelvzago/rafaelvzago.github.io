@@ -1,6 +1,6 @@
 +++
 title = "CI/CD Upstream vs Downstream"
-date = "2023-04-05"
+date = "2023-06-02"
 author = "Rafael Zago"
 description = "Integrando Skupper com Skupper: Uma abordagem upstream e downstream"
 tags = [
