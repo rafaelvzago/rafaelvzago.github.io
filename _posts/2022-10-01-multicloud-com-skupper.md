@@ -95,7 +95,7 @@ Você possui algumas maneiras de instalar o skupper, como por exemplo:
 
 - Compilar a partir do repositório
 - Fazer o [_download_ do executável direto do repositório [1] do projeto](https://github.com/skupperproject/skupper-example-hello-world/archive/refs/heads/main.zip)
-- Usar o _script_ de instalação disponibilizado pelo site [skupper.io](skupper.io) e vamos utilizar esse método, por ser mais fácil de fazer e você não precisará se preocupar com dependências.
+- Usar o _script_ de instalação disponibilizado pelo site [skupper.io](https://skupper.io) e vamos utilizar esse método, por ser mais fácil de fazer e você não precisará se preocupar com dependências.
 
 #### 4. Instaçação
 
