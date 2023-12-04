@@ -33,7 +33,7 @@ O skupper é um _fork_ do qpid*dispatch [4] como software para trocar as mensage
 
 Este exemplo é um aplicativo HTTP multisserviço muito simples implantado em clusters Kubernetes usando o Skupper.
 
-![Example image](/hello-world-entities.svg)
+![Hello World](/assets/hello-world-entities.svg)
 
 Contém dois serviços:
 
