@@ -188,7 +188,7 @@ Agora que os serviços estão rodando, vamos expor os serviços para que possamo
 9.1. Expondo o serviço de _frontend_ no _namespace_ `config_oeste`:
 
 ```bash
-skupper expose deployment/backend --port 8080
+kubectl expose deployment frontend --port 8080 --type LoadBalancer
 service/frontend exposed
 ```
 
