@@ -18,7 +18,7 @@ tags: [k8s, skupper, could, RedHat]
 9. [MTLS](https://pt.wikipedia.org/wiki/Transport_Layer_Security)
 10. [Open-source](https://pt.wikipedia.org/wiki/C%C3%B3digo_aberto)
 11. [Skupper-router](https://github.com/skupperproject/skupper-router)
-12 [Skupper](https://github.com/skupperproject/skupper)
+12. [Skupper](https://github.com/skupperproject/skupper)
 
 ## Ferramentas
 
