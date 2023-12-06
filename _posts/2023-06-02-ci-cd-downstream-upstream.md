@@ -10,7 +10,16 @@ tags: [pipeline, ci, cd]
 
 Quando se trata de desenvolvimento de software, integrar projetos upstream e downstream pode ser um desafio. Neste artigo, vamos explorar uma abordagem eficaz para integrar o Skupper e o Skupper, utilizando ferramentas populares para cada lado do desenvolvimento.
 
-## Configurando o ambiente
+## Introdução
+
+O Skupper é um projeto de software livre que fornece uma solução de rede de serviço para Kubernetes. O Skupper é desenvolvido pela Red Hat e está disponível sob a licença Apache 2.0. Essa é a versão upstream do Skupper, o que significa que é a versão que está sendo desenvolvida ativamente pela Red Hat.
+
+Para os usuários que desejam implantar o Skupper em um ambiente de produção, a Red Hat oferece o Skupper, uma versão comercial do Skupper que é fornecida pela Red Hat sob o nome de Red Hat AMQ Interconnect. Essa é a versão downstream do Skupper, o que significa que é a versão portada para o Red Hat Enterprise Linux e como Opera com o Red Hat OpenShift.
+
+>Apesar de serem projetos diferentes, o Skupper e o Skupper compartilham uma base de código comum e, portanto, é importante que as alterações feitas no Skupper sejam integradas ao RHSI (Red HaT Application Interconnect). Para isso, é necessário estabelecer um fluxo de trabalho eficiente que permita a integração contínua entre o Skupper e o RHSI.
+
+
+## Definindo o ambiente e as ferramentas
 
 Antes de começarmos, vamos configurar nosso ambiente de desenvolvimento. Para o lado downstream, faremos uso das seguintes ferramentas:
 
