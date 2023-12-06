@@ -4,6 +4,9 @@ title: "CI/CD Upstream vs Downstream"
 date: 2023-06-02 00:00:00 -0300
 categories: [pipeline]
 tags: [pipeline, ci, cd]
+image:
+  path: /assets/img/posts/ci-cd-downstream-upstream/header.webp
+  alt: Opensource
 ---
 
 # Integrando Skupper com Skupper: Uma abordagem upstream e downstream

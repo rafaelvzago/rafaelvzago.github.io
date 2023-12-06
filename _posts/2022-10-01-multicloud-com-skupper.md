@@ -4,6 +4,9 @@ title: "Criando uma rede de aplicativos multicloud com Skupper"
 date: 2022-10-01 00:00:00 -0300
 categories: [cloud, k8s, skupper]
 tags: [k8s, skupper, could, RedHat]
+image:
+  path: /assets/img/posts/multicloud-com-skupper/header.webp
+  alt: Skupper
 ---
 
 ## Referências e tecnologias utilizadas:
