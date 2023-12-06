@@ -6,8 +6,6 @@ categories: [sobre, off-topic]
 tags: [zago, rafael]
 ---
 
-## Sobre
-
 ### Apresentação
 
 Qué pasa?

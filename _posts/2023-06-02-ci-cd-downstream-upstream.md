@@ -6,8 +6,6 @@ categories: [pipeline]
 tags: [pipeline, ci, cd]
 ---
 
-_Atualizado em 2023-06-02_
-
 # Integrando Skupper com Skupper: Uma abordagem upstream e downstream
 
 Quando se trata de desenvolvimento de software, integrar projetos upstream e downstream pode ser um desafio. Neste artigo, vamos explorar uma abordagem eficaz para integrar o Skupper e o Skupper, utilizando ferramentas populares para cada lado do desenvolvimento.
