@@ -4,10 +4,6 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-## Sobre
-
-### Apresentação
-
 Qué pasa?
 
 Olá! Não me leve muito a sério, ok? Eu criei esse espaço para compartilhar um pouco do conhecimento que eu tenho e que 90% dele, eu ganhei na internet. Então já passou da hora de devolver um pouco para o mundo.
