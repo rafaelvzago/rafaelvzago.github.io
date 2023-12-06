@@ -5,7 +5,7 @@ date: 2022-10-01 00:00:00 -0300
 categories: [cloud, k8s, skupper]
 tags: [k8s, skupper, could, RedHat]
 image:
-  path: /assets/img/posts/multicloud-com-skupper/header.webp
+  path: /assets/img/headers/multicloud-com-skupper-hero.webp
   alt: Skupper
 ---
 

@@ -5,7 +5,7 @@ date: 2023-06-02 00:00:00 -0300
 categories: [pipeline]
 tags: [pipeline, ci, cd]
 image:
-  path: /assets/img/posts/ci-cd-downstream-upstream/header.webp
+  path: /assets/img/headers/ci-cd-downstream-upstream-hero.webp
   alt: Opensource
 ---
 
