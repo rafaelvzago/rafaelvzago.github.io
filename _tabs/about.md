@@ -31,6 +31,7 @@ Abaixo estão as poucas contribuições que já fiz:
 
 ### Talks/Palestras
 
+- [Opensource na RedHat](https://docs.google.com/presentation/d/1NskYloP0d1sXtf_Ekp4bzwd9hUtJPoRQUpKAhGcWWsw/edit?usp=sharing) - Meetup Red Hat, 2023 - Senai/DF.
 - [Uma estratégia upstream e downstream para entrega contínua](https://www.canva.com/design/DAFj8RRbWiU/fKDWxHCa5d4eb4wnf-mu3A/view?utm_content=DAFj8RRbWiU&utm_campaign=designshare&utm_medium=link&utm_source=homepage_design_menu) - Mini DebConf Brasília!, 2023.
 - [Skupper, a cloud híbrida com 3 comandos](https://docs.google.com/presentation/d/14_mCGZnTVwQ7e7Puhfg1WscNTJqi2zk5tuMmnSLITKk/edit?usp=sharing) - DevOpsDays Fortaleza, 2022.
 - [Take out the rust, transformando time com responsabilidade](https://youtu.be/lZOEdv_W7Ac?t=311) - DevOpsDays São Paulo, 2019.
