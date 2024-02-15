@@ -13,7 +13,12 @@ image:
 
 This project is a proof of concept for an IoT architecture using a Raspberry Pi and a temperature sensor that exposes the temperature data through a REST API. Along with the REST API, there is a cloud integration with any cloud provider using [Skupper](https://skupper.io/) that enables the data to be visualized in a Grafana dashboard.
 
-> Clone the repository and follow the instructions to run the project on your Raspberry Pi.[https://github.com/rafaelvzago/skupper-tempy](https://github.com/rafaelvzago/skupper-tempy)
+> Clone the repository and follow the instructions to run the project. [https://github.com/rafaelvzago/skupper-tempy](https://github.com/rafaelvzago/skupper-tempy)
+
+```bash
+git clone https://github.com/rafaelvzago/skupper-tempy.git
+```
+
 
 ## Table of Contents
 
