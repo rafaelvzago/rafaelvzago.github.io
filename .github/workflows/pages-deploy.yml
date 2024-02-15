@@ -19,7 +19,7 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
-jjobs:
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:
