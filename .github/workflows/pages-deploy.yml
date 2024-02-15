@@ -19,28 +19,25 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
-jobs:
+jjobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v3
-
-      - name: Install Build Tools
-        run: sudo apt-get update && sudo apt-get install -y build-essential
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0.3' # Specify a more precise version known to be compatible
-          bundler-cache: true
+          ruby-version: '3.2.2'
+
+      - name: Update RubyGems and Bundler
+        run: |
+          gem update --system
+          gem install bundler
+
+      - name: Install dependencies
+        run: bundle install
 
       - name: Build site
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
