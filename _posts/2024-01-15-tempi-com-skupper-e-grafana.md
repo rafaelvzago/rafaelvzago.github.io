@@ -135,7 +135,7 @@ Skuper gateway on the Raspberry Pi:
 
 The temperature data captured by the Raspberry Pi is stored in the cloud using the chosen cloud provider. This part explains how the data is stored and managed.
 
-> For this example, we will use the prometheus service created by skupper to store the temperature data, this is not advisable for production, but it is a good example of how to use skupper to store data in the cloud. To acheive this, we will deploy a prometheus-adapter called TempyPrometheusAdapter that will scrape the temperature data from the Raspberry Pi and will expose the data to the prometheus service. 
+> For this example, we will use the prometheus service created by skupper to store the temperature data, this is not advisable for production. To acheive this, we will deploy a prometheus-adapter called TempyPrometheusAdapter that will scrape the temperature data from the Raspberry Pi and will expose the data to the prometheus service. 
 
 
 #### Prometheus Adapter:
