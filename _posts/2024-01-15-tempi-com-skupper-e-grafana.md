@@ -13,6 +13,8 @@ image:
 
 This project is a proof of concept for an IoT architecture using a Raspberry Pi and a temperature sensor that exposes the temperature data through a REST API. Along with the REST API, there is a cloud integration with any cloud provider using [Skupper](https://skupper.io/) that enables the data to be visualized in a Grafana dashboard.
 
+> Clone the repository and follow the instructions to run the project on your Raspberry Pi.[https://github.com/rafaelvzago/skupper-tempy](https://github.com/rafaelvzago/skupper-tempy)
+
 ## Table of Contents
 
 - [Hardware](#hardware)
@@ -46,8 +48,9 @@ This part focuses on the setup and configuration of the Raspberry Pi, including 
 
 - Ubuntu 23.04 server for Raspberry Pi [Ubuntu Installation](https://ubuntu.com/download/raspberry-pi)
 - GoLang 1.18+ [GoLang Installation](https://golang.org/doc/install)
-- Skupper 1.5.3 [Skupper Installation](https://skupper.io/start/install.html)
+- Skupper Main [Skupper Installation](https://skupper.io/start/install.html)
 - Podman > 4.3 [Podman Installation](https://podman.io/getting-started/installation)
+
 
 ### Temperature Capture
 
