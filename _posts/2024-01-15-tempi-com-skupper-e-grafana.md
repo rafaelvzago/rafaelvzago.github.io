@@ -211,6 +211,7 @@ kubectl apply -f prometheus/prometheus-deployment.yaml
             action: keep
 ...
 ```
+
 > This is a part of the prometheus configuration file, it is configured to scrape the temperature data from any service labeled as app=metrics, so the prometheus service will scrape the temperature data from the prometheus-adapter. Note that this configuration will only look for services labeled as app=metrics in the skupper-pi namespace, so if you are using a different namespace, you will need to change the configuration file accordingly.
 
 ```bash
