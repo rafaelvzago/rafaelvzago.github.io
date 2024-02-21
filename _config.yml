@@ -21,14 +21,10 @@ url: "https://rafaelvzago.github.io"
 github:
   username: rafaevzago
 
-twitter:
-  username: rafaevzago
-
 social:
   name: Rafael Zago
   #email: example@domain.com # change to your email address
   links:
-    - https://twitter.com/rafaelvzago
     - https://github.com/rafaelvzago
     - https://www.linkedin.com/in/rafaelvzago
 
