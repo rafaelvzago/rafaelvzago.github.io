@@ -26,7 +26,8 @@ git clone https://github.com/rafaelvzago/skupper-tempy.git
 - [Raspberry Configuration](#raspberry-configuration)
 - [Temperature Capture](#temperature-capture)
 - [Skupper Role](#skupper-role)
-- [Storage on the Cloud](#storage-on-the-cloud)
+- [Connection to a cluster using skupper and storage data into prometheus](#connection-to-a-cluster-using-skupper-and-storage-data-into-prometheus)
+- [Prometheus](#prometheus)
 - [Grafana](#grafana)
 - [Repository](#repository)
 
