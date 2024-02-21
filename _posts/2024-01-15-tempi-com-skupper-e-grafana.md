@@ -188,15 +188,7 @@ tempy-prometheus-adapter-service   ClusterIP   10.43.154.250   <none>        909
 
 The temperature data is stored in a prometheus service. This part covers the setup and configuration of the prometheus service. We need to persist the data, so we will use a PVC, in my case I will use the longhorn storage class, but you can use any storage class that you have available in your cluster.
 
-1. Create prometheus PVC:
-```bash
-kubectl apply -f prometheus/prometheus-pvc.yaml
-```
-2. Create prometheus deployment:
-```bash
-kubectl apply -f prometheus/prometheus-deployment.yaml
-```
-3. Configuring the prometheus service discovery to scrape the temperature data from any service labeled as app=metrics:
+This is a part of the prometheus configuration file, it is configured to scrape the temperature data from any service labeled as app=metrics, so the prometheus service will scrape the temperature data from the prometheus-adapter. Note that this configuration will only look for services labeled as app=metrics in the skupper-pi namespace, so if you are using a different namespace, you will need to change the configuration file accordingly.
 
 ```yaml
 ...
@@ -212,10 +204,15 @@ kubectl apply -f prometheus/prometheus-deployment.yaml
             action: keep
 ...
 ```
-
-> This is a part of the prometheus configuration file, it is configured to scrape the temperature data from any service labeled as app=metrics, so the prometheus service will scrape the temperature data from the prometheus-adapter. Note that this configuration will only look for services labeled as app=metrics in the skupper-pi namespace, so if you are using a different namespace, you will need to change the configuration file accordingly.
-
-* Deploy the prometheus configmap:
+1. Create prometheus PVC:
+```bash
+kubectl apply -f prometheus/prometheus-pvc.yaml
+```
+2. Create prometheus deployment:
+```bash
+kubectl apply -f prometheus/prometheus-deployment.yaml
+```
+3. Configuring the prometheus service discovery to scrape the temperature data from any service labeled as app=metrics:
 ```bash
 kubectl apply -f prometheus/prometheus-cm.yaml
 ```
