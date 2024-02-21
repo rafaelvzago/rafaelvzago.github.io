@@ -197,7 +197,7 @@ kubectl apply -f prometheus/prometheus-pvc.yaml
 kubectl apply -f prometheus/prometheus-deployment.yaml
 ```
 3. Configuring the prometheus service discovery to scrape the temperature data from any service labeled as app=metrics:
-```yaml
+```yml
 ...
       - job_name: 'metrics-targets'
         scrape_interval: 5s
