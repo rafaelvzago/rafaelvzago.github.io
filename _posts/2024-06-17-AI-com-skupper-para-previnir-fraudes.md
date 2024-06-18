@@ -20,6 +20,17 @@ This lab uses the example from the [AI/ML Workshop](https://github.com/rh-aiserv
 
 In order to faciliate the execution, for those who have access to the [demo.redhat.com](https://demo.redhat.com) environment, you can start the lab by clicking [here](https://demo.redhat.com/catalog?search=insurance&item=babylon-catalog-prod%2Fsandboxes-gpte.ocp-wksp-ai-insurance-claim.prod). If you don't have access to the demo environment, you can follow the steps at the gitub repository mentioned above.
 
+
+## References
+
+- [Red Hat AI/ML Workshop](https://github.com/rh-aiservices-bu/insurance-claim-processing/tree/main)
+- [GO Application to expose internal data](https://github.com/rafaelvzago/go-flp)
+- [Modified examples for the workshop](https://github.com/rafaelvzago/insurance-claim-processing)
+- [The Developers Conference Workshop Repository](https://github.com/rafaelvzago/tdc-floripa-2024)
+- [Skupper](https://skupper.io/)
+
+
+
 ## Workshop Overview
 
 ![Solution](/assets/ai-skupper-solution.png)
