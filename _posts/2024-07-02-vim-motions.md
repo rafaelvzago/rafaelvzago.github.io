@@ -5,7 +5,7 @@ date:   2024-07-02 14:31:00 -0300
 categories: vim productivity
 tags: [vim, developer]
 image:
-  path: /assets/img/headers/vi-motions.jpg
+  path: /assets/img/headers/vim-motions.jpg
   alt: Vim Motions
 
 ---
