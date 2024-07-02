@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Workshop: Skupper Patient Portal"
+title: "Workshop: Patient Portal, conectando um banco de dados a um cluster K8S com Skupper"
 date: 2024-07-02
 categories: [skupper, multi-cloud]
 tags: [cloud, network, redhat]
