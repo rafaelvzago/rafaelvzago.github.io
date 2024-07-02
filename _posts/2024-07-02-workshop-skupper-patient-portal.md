@@ -33,9 +33,9 @@ Este workshop tem como objetivo apresentar o Red Hat Service Interconnect, uma s
 7. Acessar a máquina virtual do cluster Openshift usando a ferramenta virtctl [2].
 8. Conectado na máquina, vamos habilitar o módulo do iptables, isso é necessário para o nosso banco de dados em podman.
 9. Instalar o podman nessa máquina virtual.
-10. Fazer o deploy do banco de dados com o podman (Como no exemplo do Skupper[3]).
-11. Fazer o deploy do frontend e do backend da aplicação (Como no exemplo do Skupper[3]).
-12. Configurar o Service Interconnect (Skupper[3]) para fazer a comunicação do banco de dados rodando em um podman com a aplicação rodando no Openshift.
+10. Fazer o deploy do banco de dados com o podman (Como no exemplo do Skupper[4]).
+11. Fazer o deploy do frontend e do backend da aplicação (Como no exemplo do Skupper[4]).
+12. Configurar o Service Interconnect (Skupper[4]) para fazer a comunicação do banco de dados rodando em um podman com a aplicação rodando no Openshift.
 13. Acessar a aplicação e verificar se a comunicação está funcionando.
 14. Considerações.
 
