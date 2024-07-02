@@ -31,6 +31,7 @@ Abaixo estão as poucas contribuições que já fiz:
 
 ### Talks/Palestras
 
+- [Skupper Conectado: Portal de Pacientes em Nuvem Híbrida](https://www.meetup.com/red-hat-brasilia/events/301854117/?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link) - Meetup Red Hat 2024 - Senai/DF
 - [Criando uma rede de aplicativos multicloud com Skupper ](https://thedevconf.com/tdc/2024/florianopolis/trilha-cloud) - TDC Floripa, 2024.
 - [Opensource na RedHat](https://docs.google.com/presentation/d/1NskYloP0d1sXtf_Ekp4bzwd9hUtJPoRQUpKAhGcWWsw/edit?usp=sharing) - Meetup Red Hat, 2023 - Senai/DF.
 - [Uma estratégia upstream e downstream para entrega contínua](https://www.canva.com/design/DAFj8RRbWiU/fKDWxHCa5d4eb4wnf-mu3A/view?utm_content=DAFj8RRbWiU&utm_campaign=designshare&utm_medium=link&utm_source=homepage_design_menu) - Mini DebConf Brasília!, 2023.
