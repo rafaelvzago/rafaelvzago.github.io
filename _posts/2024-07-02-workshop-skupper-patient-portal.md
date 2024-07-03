@@ -46,8 +46,8 @@ Este workshop tem como objetivo apresentar o Red Hat Service Interconnect, uma s
 | Recurso                                       | Link                                                                 |
 |-----------------------------------------------|----------------------------------------------------------------------|
 | [1] Red Hat Developer                             | [https://developers.redhat.com/](https://developers.redhat.com/)                               |
-| [3] OC                                            | [https://docs.openshift.com/container-platform/4.15/cli_reference/openshift_cli/getting-started-cli.html](https://docs.openshift.com/container-platform/4.15/cli_reference/openshift_cli/getting-started-cli.html) |
-| [4] Skupper                                       | [https://skupper.io/](https://skupper.io/)                                          |
+| [2] OC                                            | [https://docs.openshift.com/container-platform/4.15/cli_reference/openshift_cli/getting-started-cli.html](https://docs.openshift.com/container-platform/4.15/cli_reference/openshift_cli/getting-started-cli.html) |
+| [3] Skupper                                       | [https://skupper.io/](https://skupper.io/)                                          |
 
 ## Pré-requisitos
 
