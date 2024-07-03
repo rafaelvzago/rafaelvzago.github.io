@@ -24,31 +24,30 @@ Este workshop tem como objetivo apresentar o Red Hat Service Interconnect, uma s
 
 ## Resumo do Workshop
 
-1. Logar no Red Hat Developer [1].
+1. Logar no Red Hat Developer.
 2. Criar um cluster Openshift.
-3. Criar uma chave SSH local no seu computador, que será usada para acessar a máquina virtual do cluster.
 4. Acessar o cluster Openshift.
 5. No projeto do Red Hat Openshift Sandbox, acessar o seu projeto.
-6. Criar uma máquina virtual no Openshift Virtualization, ela será criada com a sua chave pública.
-7. Acessar a máquina virtual do cluster Openshift usando a ferramenta virtctl [2].
-8. Conectado na máquina, vamos habilitar o módulo do iptables, isso é necessário para o nosso banco de dados em podman.
-9. Instalar o podman nessa máquina virtual.
-10. Fazer o deploy do banco de dados com o podman (Como no exemplo do Skupper[4]).
-11. Fazer o deploy do frontend e do backend da aplicação (Como no exemplo do Skupper[4]).
-12. Configurar o Service Interconnect (Skupper[4]) para fazer a comunicação do banco de dados rodando em um podman com a aplicação rodando no Openshift.
+6. Criar uma máquina virtual no Openshift Virtualization.
+7. Instalar pacotes na máquina virtual:
+    - podman
+    - kubernetes-client
+    - skupper
+    - oc
+    - wget
+8. Fazer o deploy do banco de dados com o podman.
+9. Fazer o deploy do frontend e do backend da aplicação.
+10. Configurar o Service Interconnect (Skupper) para fazer a comunicação do banco de dados rodando em um podman com a aplicação rodando no Openshift.
 13. Acessar a aplicação e verificar se a comunicação está funcionando.
 14. Considerações.
-
+    
 ## Links
 
 | Recurso                                       | Link                                                                 |
 |-----------------------------------------------|----------------------------------------------------------------------|
 | [1] Red Hat Developer                             | [https://developers.redhat.com/](https://developers.redhat.com/)                               |
-| [2] Virtctl                                       | [https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/](https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/) |
 | [3] OC                                            | [https://docs.openshift.com/container-platform/4.15/cli_reference/openshift_cli/getting-started-cli.html](https://docs.openshift.com/container-platform/4.15/cli_reference/openshift_cli/getting-started-cli.html) |
 | [4] Skupper                                       | [https://skupper.io/](https://skupper.io/)                                          |
-| [5] Exemplo do Skupper                            | [https://github.com/skupperproject/skupper-example-patient-portal](https://github.com/skupperproject/skupper-example-patient-portal) |
-| [6] Kubectl                                       | [https://kubernetes.io/docs/reference/kubectl/overview/](https://kubernetes.io/docs/reference/kubectl/overview/) |
 
 ## Pré-requisitos
 
@@ -56,12 +55,7 @@ Este workshop tem como objetivo apresentar o Red Hat Service Interconnect, uma s
 - Conhecimento básico em Kubernetes
 - Conhecimento básico em Red Hat OpenShift
 - Conhecimento básico em Podman
-- Um cliente SSH instalado no seu computador (ex. Putty, OpenSSH)
-- Uma chave SSH gerada no seu computador
-- Virtctl instalado no seu computador ou no computador que você vai usar para acessar a máquina virtual do cluster Openshift.
-- OC instalado no seu computador ou no computador que você vai usar para acessar o cluster Openshift.
-- Skupper instalado no seu computador ou no computador que você vai usar para acessar o cluster Openshift.
-- Kubectl instalado no seu computador ou no computador que você vai usar para acessar o cluster Openshift.
+- Google Chrome, a preferência por ele é pela funcionalidade de colar comandos no console da máquina virtual pelo VNC via browser.
 
 ## Passo a passo
 
@@ -81,13 +75,6 @@ Acesse o site do [Red Hat Developer](https://developers.redhat.com/) e faça o l
 
 ![Red Hat Openshift Sandbox](assets/workshop_skupper_img3.png)
 
-### 3. Criar uma chave SSH local no seu computador
-
-Abra o terminal do seu computador e execute o comando abaixo para criar uma chave SSH:
-
-```bash
-ssh-keygen -t rsa -b 4096 -C "voce@email.com"
-```
 
 ### 4. Acessar o cluster Openshift
 
@@ -103,144 +90,198 @@ Clique no seu projeto e mude para a view "Administrator".
 
 1. Acesse Virtualization no menu do cluster Openshift e clique em _Virtual Machines_.
 2. Clique em _Create Virtual Machine_.
-3. Escolha _From Template_ e selecione o template *CentOS Fedora VM*.
-4. Mude as especificações da máquina virtual para 4GB de memória e 2 CPUs.
-5. Cadastre sua Chave Pública SSH.
-6. Confira se ela será usada na criação da máquina virtual em _Quick create VirtualMachine_ a opção *Public SSH Key*.
-7. Clique em _Customize VirtualMachine_ e depois em _Scrits_.
-8. Adicione a sua chave SSH, escolha um nome e marque a opção _Automatically apply this key to any new VirtualMachine you create in this project_.
+3. Escolha _From Template_ e selecione o template *Fedora VM*.
+4. Clique em _Create VirtualMachine_.
 
-![Red Hat Openshift Sandbox](assets/workshop_skupper_img5.png)
+### 7. Instalar pacotes na máquina virtual
 
-9. Clique em _Create VirtualMachine_.
-
-### 7. Acessar a máquina virtual do cluster Openshift usando a ferramenta virtctl
-
-1. Para acessar a máquina virtual, primeiro precisamos logar no Cluster Openshift usando o binário oc.
-2. Baixe o binário oc no seu computador.
-3. Baixe o binário do virtctl no seu computador.
-4. Copie o comando de login do cluster Openshift.
-
-![Red Hat Openshift Sandbox](assets/workshop_skupper_img6.png)
-
-5. Execute o comando de login no seu terminal.
-
-### 8. Conectado na máquina, vamos habilitar o módulo do iptables, isso é necessário para o nosso banco de dados em podman
-
-1. Copie o comando para logar na máquina virtual.
-
-![Red Hat Openshift Sandbox](assets/workshop_skupper_img7.png)
-
-2. Agora que estamos logados na máquina virtual, execute o comando abaixo para habilitar o módulo do iptables.
-
+1. Acesse a máquina virtual e clique em _Console_. (Dê preferencia para o Google Chrome, pois ele tem a funcionalidade de colar comandos no console da máquina virtual pelo VNC via browser).
+2. Logue com as credenciais que estão no console.
+3. Execute os comandos abaixo para instalar os pacotes necessários:
 ```bash
-sudo modprobe iptable_nat
+sudo dnf install -y podman kubernetes-client wget
+# Instalar o oc
+wget -qO- https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-linux.tar.gz | tar xz -C ~/.local/bin
+export PATH="$HOME/.local/bin:$PATH"
+# Instalar o skupper
+curl https://skupper.io/install.sh | sh
 ```
 
-### 9. Instalar o podman nessa máquina virtual
+### 8. Fazer o deploy do banco de dados com o podman
 
-Execute o comando abaixo para instalar o podman:
-
-```bash
-sudo yum install -y podman
-```
-
-### 10. Fazer o deploy do banco de dados com o podman na máquina virtual
-
-Execute o comando abaixo para fazer o deploy do banco de dados:
+> Execute o comando abaixo para fazer o deploy do banco de dados:
 
 ```bash
+podman network create skupper
 podman run --name database-target --network skupper --detach --rm -p 5432:5432 quay.io/skupper/patient-portal-database
 ```
 
-### 11. Fazer o deploy do frontend e do backend da aplicação
+### 9. Fazer o deploy do frontend e do backend da aplicação
 
-Neste passo, você pode usar a sua máquina local ou a máquina virtual.
+> No seu console openshift, faça o deploy do seguinte yaml para o frontend:
 
-1. Clone o repositório do exemplo do Skupper:
-
-```bash
-git clone git@github.com:skupperproject/skupper-example-patient-portal.git
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend
+  name: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: quay.io/skupper/patient-portal-frontend
+          env:
+            - name: DATABASE_SERVICE_HOST
+              value: database
+            - name: DATABASE_SERVICE_PORT
+              value: "5432"
+            - name: PAYMENT_PROCESSOR_SERVICE_HOST
+              value: payment-processor
+            - name: PAYMENT_PROCESSOR_SERVICE_PORT
+              value: "8080"
+          ports:
+            - containerPort: 8080
 ```
 
-2. Entre na pasta do repositório:
+> No seu console openshift, faça o deploy do seguinte yaml para o backend:
 
-```bash
-cd skupper-example-patient-portal
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: payment-processor
+  name: payment-processor
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: payment-processor
+  template:
+    metadata:
+      labels:
+        app: payment-processor
+    spec:
+      containers:
+        - name: payment-processor
+          image: quay.io/skupper/patient-portal-payment-processor
+          ports:
+            - containerPort: 8080
 ```
 
-3. Execute os comandos abaixo para fazer o deploy do frontend e do backend:
+### 10. Configurar o Service Interconnect (Skupper) para fazer a comunicação do banco de dados rodando em um podman com a aplicação rodando no Openshift.
 
-```bash
-kubectl apply -f frontend/kubernetes.yaml
-kubectl apply -f backend/kubernetes.yaml
-```
+Para isso, vamos dividir em 3 etapas:
 
-### 12. Configurar o Service Interconnect (Skupper) para fazer a comunicação do banco de dados rodando em um podman com a aplicação rodando no Openshift
+1. Configuração do Cluster Kubernetes
+2. Configuração do Site Podman
+3. Expor o serviço do banco de dados para a VAN do Skupper
 
-1. Execute o comando abaixo para instalar o Skupper na máquina virtual e na máquina local (Linux). Se você estiver usando o Windows, baixe o binário no site do [Skupper](https://skupper.io/).
+> Configuração do Cluster Kubernetes:
 
-```bash
-curl -L https://skupper.io/cli | sh
-```
-
-2. Execute o comando abaixo para criar o Skupper no cluster Openshift:
-
+1. Iniciar o skupper no cluster oenshift com o console habilitado
 ```bash
 skupper init --enable-console --enable-flow-collector --console-user admin --console-password admin
 ```
-
-3. Execute o comando abaixo para iniciar o Podman Site, que é o site que vai fazer a comunicação entre o banco de dados e a aplicação rodando no Openshift:
-
+2. Acessar o console do skupper, para isso acesse as rotas do seu cluster Openshift, a URL estará lá.
+3. Criando um token para conectar o site podman com o cluster Openshift
 ```bash
-skupper init --ingress none
+skupper token create ./skupper-token.yaml
 ```
 
-4. Execute o comando abaixo para criar o link entre o banco de dados e a aplicação. Esse comando deve ser executado na máquina que está conectada ao cluster Openshift:
+> Configuração do Site Podman:
 
+1. Acesse a máquina virtual e execute o comando abaixo para conectar o site podman com o cluster Openshift
+2. Ininie o skupper no site podman, sem ingress.
 ```bash
-skupper token create secret.token
+skupper switch podman # para mudar o contexto para podman o padrão é kubernetes
 ```
-
-5. Copie o arquivo secret.token para a máquina virtual.
-
-6. Agora, faça a conexão entre o site que está rodando o banco de dados com a aplicação que está rodando no Openshift:
-
+3. Conecte o site podman com o cluster Openshift
 ```bash
-skupper link create secret.token
+skupper link create ./skupper-token.yaml
 ```
+Acesse o console do skupper no cluster Openshift e verifique se o site podman está conectado.
 
-7. Execute os comandos para expor o serviço do banco de dados no cluster Openshift. Todos os comandos devem ser executados na máquina virtual:
+> Expor o serviço do banco de dados para a VAN do Skupper:
 
+1. Expor o serviço do banco de dados para a VAN do Skupper
 ```bash
+systemctl --user enable --now podman.socket
 skupper service create database 5432
-skupper service bind database host database-target --target-port 5432 
+skupper service bind database host database-target --target-port 5432
 ```
-
-8. Execute o comando abaixo para criar o serviço do banco de dados no cluster Openshift, que agora está conectado com o banco de dados rodando no podman:
-
+2. No cluster Openshift, vamos criar um serviço *Skupper* para o banco de dados, esse serviço vai apontar para o serviço do banco de dados que está rodando no site podman, através da VAN do Skupper.
 ```bash
 skupper service create database 5432
 ```
+
+Agora, a aplicação frontend e backend estão se comunicando com o banco de dados que está rodando em um site podman, através da VAN do Skupper.
+
+![Skupper](assets/workshop_skupper_img6.png)
 
 ### 13. Acessar a aplicação e verificar se a comunicação está funcionando
 
-1. Execute o comando abaixo para expor a aplicação do Frontend:
+Para isso, vamos precisar executar algumas tarefas para expor o frontend no cluster Openshift.
 
-```bash
-kubectl expose deployment/frontend --port 8080 --type LoadBalancer
-oc expose svc frontend
-oc get routes
+> Criar um serviço para o fronend que aponte para o deployment dele use o seguinte YAML:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: SEU-NAME-SPACE
+spec:
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
 ```
 
-2. Acesse o console do Skupper e verifique se a comunicação entre o banco de dados e a aplicação está funcionando.
+> Criar uma rota que aponte para o serviço do frontend.
+
+```yaml
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: fronted
+  namespace: SEU-NAME-SPACE
+  labels: {}
+spec:
+  to:
+    kind: Service
+    name: frontend
+  tls: {}
+  port:
+    targetPort: 8080
+  alternateBackends: []
+```
+
 
 ### 14. Considerações
 
-> O Red Hat Service Interconnect (Skupper) oferece uma solução poderosa para integrar aplicações em diferentes ambientes, simplificando a comunicação entre serviços e proporcionando maior flexibilidade e escalabilidade. Ao abstrair a complexidade da rede subjacente, o Skupper permite que os desenvolvedores se concentrem na lógica de negócios de suas aplicações, sem se preocupar com os detalhes de conectividade.
+> O Red Hat Service Interconnect (Skupper): 
 
-> Com recursos como descoberta de serviços automática, roteamento inteligente e segurança integrada, o Skupper garante que as aplicações possam se comunicar de forma eficiente e segura, independentemente de sua localização. Essa abordagem simplifica a gestão da infraestrutura e reduz a necessidade de configurações manuais, agilizando o desenvolvimento e a implantação de aplicações distribuídas.
+Oferece uma solução poderosa para integrar aplicações em diferentes ambientes, simplificando a comunicação entre serviços e proporcionando maior flexibilidade e escalabilidade. Ao abstrair a complexidade da rede subjacente, o Skupper permite que os desenvolvedores se concentrem na lógica de negócios de suas aplicações, sem se preocupar com os detalhes de conectividade.
+
+> Com recursos como descoberta de serviços automática:
+
+O roteamento inteligente e segurança integrada, o Skupper garante que as aplicações possam se comunicar de forma eficiente e segura, independentemente de sua localização. Essa abordagem simplifica a gestão da infraestrutura e reduz a necessidade de configurações manuais, agilizando o desenvolvimento e a implantação de aplicações distribuídas.
 
 > Além disso, o Skupper oferece uma interface de usuário intuitiva e ferramentas de linha de comando poderosas, facilitando a configuração e o monitoramento da comunicação entre serviços. Com sua arquitetura extensível e suporte a diversos protocolos, o Skupper se adapta a diferentes cenários de integração, atendendo às necessidades de projetos de todos os portes.
 
-> Em resumo, o Red Hat Service Interconnect (Skupper) é uma ferramenta essencial para empresas que buscam simplificar a integração de aplicações, melhorar a eficiência operacional e garantir a segurança da comunicação entre seus sistemas. Ao adotar o Skupper, as organizações podem acelerar a inovação, reduzir custos e impulsionar o crescimento de seus negócios.
+## Resumo
+
+Neste workshop, você aprendeu como usar o Red Hat Service Interconnect (Skupper) para conectar um banco de dados a um cluster Kubernetes, permitindo que aplicações distribuídas se comuniquem de forma eficiente e segura. Com o Skupper, você pode simplificar a integração de serviços em ambientes heterogêneos, facilitando o desenvolvimento e a implantação de aplicações modernas. Esperamos que este workshop tenha sido útil e que você possa aplicar esses conhecimentos em seus próprios projetos. Obrigado por participar!
