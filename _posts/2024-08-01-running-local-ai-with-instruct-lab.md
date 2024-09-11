@@ -48,7 +48,7 @@ This project has the objective to create a VAN (Virtual Application Network) tha
 
 - Site B: An OpenShift site that exposes the Instruct Lab chat model. This site will be responsible for sending the user input to the Instruct Lab chat model and receiving the response from the Merlinite-7b-lab-Q4_K_M.gguf model.
 
-In order to connect the two sites, we will use [Skupper](https://skupper.io/), a tool that enables secure communication between services in different environments. Skupper will be used to create a secure connection between the two sites, allowing the Ollama Pilot application to send requests to the llama3 model and receive the response from the starcode2 model.
+In order to connect the two sites, we will use [Skupper](https://skupper.io/), a tool that enables secure communication between services in different environments. Skupper will be used to create a secure connection between the two sites, allowing the Ollama Pilot application to send requests to the llama3 model and receive the response from the merlinite model.
 
 At the end of the project, you will be able to use your own CHATBOT with protected data.
 
