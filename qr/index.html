@@ -1,46 +1,43 @@
----
-layout: none
----
+<script>
+    // Função para obter o parâmetro 'id' da URL
+    function getQueryParam(param) {
+        var urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Redirecionamento de QR Code</title>
-    <script>
-        // Função para obter o parâmetro 'id' da URL
-        function getQueryParam(param) {
-            var urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
+    // Função para garantir que a URL seja absoluta
+    function ensureAbsoluteUrl(url) {
+        if (!/^https?:\/\//i.test(url)) {
+            return 'https://' + url;
         }
+        return url;
+    }
 
-        // Ao carregar a página, executar o redirecionamento
-        window.onload = function() {
-            var id = getQueryParam('id');
-            if (id) {
-                // Carregar o mapeamento de URLs do arquivo JSON
-                fetch('{{ "/qr/urls.json" | relative_url }}')
-                    .then(response => response.json())
-                    .then(urlMap => {
-                        if (urlMap[id]) {
-                            // Redirecionar para a URL correspondente
-                            window.location.href = urlMap[id];
-                        } else {
-                            document.body.innerHTML = '<h1>ID não encontrado.</h1>';
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Erro ao carregar o mapeamento de URLs:', error);
-                        document.body.innerHTML = '<h1>Erro ao carregar as URLs.</h1>';
-                    });
-            } else {
-                document.body.innerHTML = '<h1>ID não especificado.</h1>';
-            }
+    // Ao carregar a página, executar o redirecionamento
+    window.onload = function() {
+        var id = getQueryParam('id');
+        if (id) {
+            // Carregar o mapeamento de URLs do arquivo JSON
+            fetch('{{ "/qr/urls.json" | relative_url }}')
+                .then(response => response.json())
+                .then(urlMap => {
+                    if (urlMap[id]) {
+                        // Obter a URL e garantir que seja absoluta
+                        var targetUrl = ensureAbsoluteUrl(urlMap[id]);
+
+                        // Redirecionar para a URL correspondente
+                        window.location.href = targetUrl;
+                    } else {
+                        document.body.innerHTML = '<h1>ID não encontrado.</h1>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar o mapeamento de URLs:', error);
+                    document.body.innerHTML = '<h1>Erro ao carregar as URLs.</h1>';
+                });
+        } else {
+            document.body.innerHTML = '<h1>ID não especificado.</h1>';
         }
-    </script>
-</head>
-<body>
-    <h1>Redirecionando...</h1>
-</body>
-</html>
+    }
+</script>
 
