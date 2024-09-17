@@ -126,7 +126,7 @@ INFO 2024-07-30 18:59:01,612 server.py:219: server After application startup com
 
 ## 2. Private Skupper deployment
 
-The second step is to deploy the private Skupper in Site A. The private Skupper will be responsible for creating a secure connection between the two sites, allowing the Ollama Pilot application to send requests to the llama3 model and receive the response from the starcode2 model.
+The second step is to deploy the private Skupper in Site A. The private Skupper will be responsible for creating a secure connection between the two sites, allowing the Ollama Pilot application to send requests to the llama3 model and receive the response from the merlinite model. Open a new terminal and run the following commands:
 
 ### Install Skupper
 
