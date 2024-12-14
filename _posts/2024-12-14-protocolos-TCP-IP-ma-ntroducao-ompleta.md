@@ -49,9 +49,11 @@ Os protocolos TCP/IP (Transmission Control Protocol/Internet Protocol) formam a 
 
 O modelo TCP/IP é um framework fundamental para a comunicação de dados em redes modernas, estruturado em quatro camadas principais. Cada camada desempenha uma função específica, permitindo que os dados sejam transmitidos de forma eficiente e confiável. Neste artigo, começaremos com uma análise detalhada da primeira camada: **Camada de Aplicação**.
 
-### Camada de Aplicação: O Interface Usuário-Redes
+### Camada de Aplicação: A Interface do Usuário
 
 A Camada de Aplicação no modelo TCP/IP representa o ponto de contato direto entre os usuários e a rede. Ela oferece as ferramentas e protocolos necessários para que aplicativos e serviços possam interagir com o sistema de comunicação. Esta camada traduz solicitações e respostas de aplicações em dados compreensíveis pelas camadas inferiores do modelo.
+
+Essa camada também é conhecida como a **Camada 7** no modelo OSI (Open Systems Interconnection), que é um modelo de referência semelhante ao TCP/IP. No entanto, o modelo TCP/IP é mais amplamente utilizado e mais diretamente relacionado à arquitetura da internet.
 
 #### Funcionalidades Principais
 
@@ -172,6 +174,7 @@ Essa demonstração prática destaca como os protocolos na Camada de Aplicação
 
 ## Referências
 
+0. Tanenbaum, A. S., & Wetherall, D. J. (2011). *Computer Networks*.
 1. Baran, P. (1964). *On Distributed Communications: Introduction to Distributed Communications Network*.
 2. Roberts, L. (1967). *Multiple Computer Networks and Intercomputer Communication*.
 3. Braden, R. (1989). RFC 1122: *Requirements for Internet Hosts - Communication Layers*.
