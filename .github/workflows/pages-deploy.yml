@@ -1,116 +1,38 @@
-name: "GitHub Pages"
+name: Jekyll site CI
 
 on:
   push:
-    branches:
-      - main
-      - master
-    paths-ignore:
-      - .gitignore
-      - README.md
-      - LICENSE
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      # Configure GitHub Pages
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v3
-
-      # Instalar Python e as dependências
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-
-      - name: Install Python dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install qrcode[pil] pillow
-
-      # Verificar se o diretório qr existe e o arquivo gerar_qrcodes.py existe
-      - name: Check for qr directory and script
-        id: check_qr
-        run: |
-          if [ -d "qr" ] && [ -f "qr/gerar_qrcodes.py" ]; then
-            echo "qr_exists=true" >> $GITHUB_ENV
-          else
-            echo "qr_exists=false" >> $GITHUB_ENV
-            mkdir -p qr
-          fi
-
-      # Executar o script Python para gerar urls.json e QR codes apenas se existir
-      - name: Generate urls.json and QR codes
-        if: env.qr_exists == 'true'
-        run: |
-          python qr/gerar_qrcodes.py
-        continue-on-error: true
-
-      # Configurar o Ruby e o Bundler
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.2.2'
-          bundler-cache: true
-
-      # Build do Jekyll
-      - name: Build site
-        run: bundle exec jekyll build
-        env:
-          JEKYLL_ENV: "production"
-
-      # Verificar se _site foi gerado corretamente
-      - name: Check build output
-        run: ls -la _site
-
-      # Teste do site (com opções mais permissivas)
-      - name: Test site
-        run: |
-          bundle exec htmlproofer _site \
-            --disable-external=true \
-            --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/" \
-            --allow-missing-href \
-            --allow-hash-href
-        continue-on-error: true
-
-      # Manual artifact preparation for GitHub Pages
-      - name: Prepare artifact
-        run: |
-          tar -czf artifact.tar.gz -C _site .
-          echo "ARTIFACT_PATH=artifact.tar.gz" >> $GITHUB_ENV
-
-      # Direct upload using GitHub's API without relying on actions/upload-artifact
-      - name: Upload artifact to GitHub Pages
-        uses: actions/upload-artifact@v4  # Using v4 directly instead of upload-pages-artifact
-        with:
-          name: github-pages
-          path: ${{ env.ARTIFACT_PATH }}
-          retention-days: 1
-
-  deploy:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+    - uses: actions/checkout@v4
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2'
+        bundler-cache: true
+    - name: Set up Pages
+      uses: actions/configure-pages@v3
+    - name: Install dependencies
+      run: bundle install
+    - name: Build site
+      run: bundle exec jekyll build
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: "_site"
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v2
