@@ -1,4 +1,4 @@
-name: Manual Jekyll Pages Deploy
+name: Build and deploy Jekyll site
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # Need write permission to push to gh-pages branch
+  contents: write
 
 jobs:
   build-and-deploy:
@@ -21,79 +21,31 @@ jobs:
           ruby-version: '3.2.2'
           bundler-cache: true
       
-      - name: Fix gem conflicts
-        run: |
-          bundle update
-          bundle clean --force
-          
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+      - name: Bundle update
+        run: bundle update
       
-      - name: Install Python dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install qrcode[pil] pillow
-      
-      - name: Check for QR code generator
-        run: |
-          if [ -d "qr" ] && [ -f "qr/gerar_qrcodes.py" ]; then
-            python qr/gerar_qrcodes.py || echo "QR code generation failed but continuing"
-          else
-            echo "QR code generator not found, skipping"
-          fi
-      
-      - name: Debug environment
-        run: |
-          echo "Current directory:"
-          pwd
-          echo "Directory contents:"
-          ls -la
-          echo "Ruby version:"
-          ruby -v
-          echo "Bundler version:"
-          bundle -v
-      
-      - name: Build with Jekyll
+      - name: Build site
         run: |
           bundle exec jekyll build
+          touch _site/.nojekyll
         env:
           JEKYLL_ENV: production
       
-      - name: Check build output
+      - name: Verify site directory
         run: |
-          echo "Directory contents after build:"
-          ls -la
           if [ -d "_site" ]; then
-            echo "_site directory contents:"
+            echo "Site directory contents:"
             ls -la _site
           else
-            echo "_site directory not found!"
-            echo "Creating empty _site directory for deployment"
+            echo "ERROR: _site directory not found!"
             mkdir -p _site
-            echo "Hello World! Site under construction." > _site/index.html
+            echo "<html><body><h1>Site is being built</h1></body></html>" > _site/index.html
+            touch _site/.nojekyll
           fi
       
-      # Deploy to gh-pages branch
-      - name: Create gh-pages branch
-        run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
-          git checkout --orphan gh-pages
-      
-      - name: Clean up and prepare for deployment
-        run: |
-          git rm -rf .
-          git clean -fdx
-      
-      - name: Copy built site
-        run: |
-          cp -r _site/* . || echo "Copy failed but continuing"
-          touch .nojekyll
-      
-      - name: Commit and push
-        run: |
-          git add .
-          git commit -m "Deploy Jekyll site to gh-pages" || echo "Nothing to commit"
-          git push -f origin gh-pages
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: _site
+          branch: gh-pages
+          clean: true
