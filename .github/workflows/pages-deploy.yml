@@ -35,6 +35,7 @@ jobs:
         run: |
           if [ -d "_site" ]; then
             echo "Site directory contents:"
+            echo "www.rafaelvzago.com" > _site/CNAME
             ls -la _site
           else
             echo "ERROR: _site directory not found!"
