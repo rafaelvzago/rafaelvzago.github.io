@@ -21,11 +21,11 @@ jobs:
           ruby-version: '3.2.2'
           bundler-cache: true
       
-      - name: Install Jekyll and dependencies
+      - name: Fix gem conflicts
         run: |
-          gem install jekyll bundler
-          bundle install
-      
+          bundle update
+          bundle clean --force
+          
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -54,22 +54,19 @@ jobs:
           ruby -v
           echo "Bundler version:"
           bundle -v
-          echo "Jekyll version:"
-          jekyll -v
       
       - name: Build with Jekyll
-        run: bundle exec jekyll build
+        run: |
+          bundle exec jekyll build
         env:
           JEKYLL_ENV: production
       
       - name: Check build output
         run: |
-          echo "Current directory after build:"
-          pwd
           echo "Directory contents after build:"
           ls -la
-          echo "_site directory contents (if exists):"
           if [ -d "_site" ]; then
+            echo "_site directory contents:"
             ls -la _site
           else
             echo "_site directory not found!"
