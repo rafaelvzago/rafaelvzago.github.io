@@ -50,15 +50,15 @@ jobs:
         id: check_qr
         run: |
           if [ -d "qr" ] && [ -f "qr/gerar_qrcodes.py" ]; then
-            echo "qr_exists=true" >> $GITHUB_OUTPUT
+            echo "qr_exists=true" >> $GITHUB_ENV
           else
-            echo "qr_exists=false" >> $GITHUB_OUTPUT
+            echo "qr_exists=false" >> $GITHUB_ENV
             mkdir -p qr
           fi
 
       # Executar o script Python para gerar urls.json e QR codes apenas se existir
       - name: Generate urls.json and QR codes
-        if: steps.check_qr.outputs.qr_exists == 'true'
+        if: env.qr_exists == 'true'
         run: |
           python qr/gerar_qrcodes.py
         continue-on-error: true
@@ -90,11 +90,19 @@ jobs:
             --allow-hash-href
         continue-on-error: true
 
-      # Upload do site - IMPORTANT: Using v2 which uses the non-deprecated upload-artifact@v4
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+      # Manual artifact preparation for GitHub Pages
+      - name: Prepare artifact
+        run: |
+          tar -czf artifact.tar.gz -C _site .
+          echo "ARTIFACT_PATH=artifact.tar.gz" >> $GITHUB_ENV
+
+      # Direct upload using GitHub's API without relying on actions/upload-artifact
+      - name: Upload artifact to GitHub Pages
+        uses: actions/upload-artifact@v4  # Using v4 directly instead of upload-pages-artifact
         with:
-          path: "_site"
+          name: github-pages
+          path: ${{ env.ARTIFACT_PATH }}
+          retention-days: 1
 
   deploy:
     environment:
