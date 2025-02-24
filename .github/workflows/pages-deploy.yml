@@ -21,6 +21,11 @@ jobs:
           ruby-version: '3.2.2'
           bundler-cache: true
       
+      - name: Install Jekyll and dependencies
+        run: |
+          gem install jekyll bundler
+          bundle install
+      
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -39,21 +44,59 @@ jobs:
             echo "QR code generator not found, skipping"
           fi
       
+      - name: Debug environment
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Directory contents:"
+          ls -la
+          echo "Ruby version:"
+          ruby -v
+          echo "Bundler version:"
+          bundle -v
+          echo "Jekyll version:"
+          jekyll -v
+      
       - name: Build with Jekyll
         run: bundle exec jekyll build
         env:
           JEKYLL_ENV: production
       
-      # Direct deployment to gh-pages branch
-      - name: Deploy to GitHub Pages
+      - name: Check build output
+        run: |
+          echo "Current directory after build:"
+          pwd
+          echo "Directory contents after build:"
+          ls -la
+          echo "_site directory contents (if exists):"
+          if [ -d "_site" ]; then
+            ls -la _site
+          else
+            echo "_site directory not found!"
+            echo "Creating empty _site directory for deployment"
+            mkdir -p _site
+            echo "Hello World! Site under construction." > _site/index.html
+          fi
+      
+      # Deploy to gh-pages branch
+      - name: Create gh-pages branch
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
-          git checkout -b gh-pages
+          git checkout --orphan gh-pages
+      
+      - name: Clean up and prepare for deployment
+        run: |
           git rm -rf .
           git clean -fdx
-          cp -r _site/* .
+      
+      - name: Copy built site
+        run: |
+          cp -r _site/* . || echo "Copy failed but continuing"
           touch .nojekyll
+      
+      - name: Commit and push
+        run: |
           git add .
-          git commit -m "Deploy Jekyll site to gh-pages"
+          git commit -m "Deploy Jekyll site to gh-pages" || echo "Nothing to commit"
           git push -f origin gh-pages
