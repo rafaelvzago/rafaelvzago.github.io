@@ -13,7 +13,13 @@ image:
 
 Vim motions are a set of commands that empower you to navigate and edit code like a pro. This guide dives into different Vim motions and how to harness them for lightning-fast coding.
 
-## My Vim Journey: From VSCode and IntelliJ to Neovim
+## My Vim Journey: From VSCode and IntelliJ to Neovim and AstroVim
+
+After years of using VSCode and IntelliJ, I decided to make the switch to Neovim as my primary development tool. Neovim is a hyperextensible Vim-based text editor that provides a modern and more powerful experience compared to traditional Vim. Recently, I transitioned to AstroVim, a Neovim configuration that comes with a set of built-in plugins and features that enhance productivity.
+
+AstroVim offers an intuitive file explorer, search functionality, and other built-in plugins that make the development experience smoother and more efficient. The decision to switch was driven by the need for a more integrated and user-friendly environment, which AstroVim provides out of the box.
+
+This series of posts will document my journey and share the tips, tricks, and configurations that have made Neovim and AstroVim indispensable parts of my workflow.
 
 After years of using VSCode and IntelliJ, I decided to make the switch to Neovim as my primary development tool. This series of posts will document my journey and share the tips, tricks, and configurations that have made Neovim an indispensable part of my workflow. 
 
