@@ -84,14 +84,19 @@ Let's dive into a React app and explore how Vim motions streamline navigation:
 
 ## Entering Insert Mode: Multiple Entry Points
 
-Vim offers various ways to enter insert mode:
+Vim offers various ways to enter insert mode, each suited for different editing scenarios:
 
-* Before cursor: `i`
-* After cursor: `a`
-* Beginning of line: `I`
-* End of line: `A`
-* Below current line: `o`
-* Above current line: `O`
+* **Before cursor (`i`)**: Use this when you need to insert text right before the current cursor position. For example, adding a missing character in a variable name.
+
+* **After cursor (`a`)**: Ideal for appending text immediately after the cursor. This is useful when you want to add a semicolon at the end of a statement.
+
+* **Beginning of line (`I`)**: Quickly jump to the start of a line to insert text. This is handy for adding comments or annotations at the start of a line of code.
+
+* **End of line (`A`)**: Move to the end of a line to append text. Use this when you need to extend a line with additional code or comments.
+
+* **Below current line (`o`)**: Open a new line below the current one and enter insert mode. This is perfect for adding a new line of code in a block.
+
+* **Above current line (`O`)**: Similar to `o`, but opens a new line above. Use this when you need to insert a line before the current one, such as adding a new function definition.
 
 Other insert mode triggers include `c` (change), `s` (substitute), `y` (yank/copy), and `p` (paste). You can even copy entire lines with `yy`.
 
