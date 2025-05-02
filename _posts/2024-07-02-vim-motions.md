@@ -29,23 +29,18 @@ Today, we're starting with the foundation: Vim motions. Mastering these commands
 
 ## Vim Plugins: My Productivity Arsenal
 
-One of the things that makes Vim (and Neovim) so powerful is the ability to customize it with plugins. Here are some of the plugins I rely on for maximum productivity:
+AstroVim comes with a curated set of plugins that enhance the Neovim experience. Here are some of the default plugins included in AstroVim:
 
-* "Vundle.vim"
-* "undotree"
-* "vim-fugitive"
-* "gruvbox"
-* "copilot.vim"
-* "vim-log-highlighting"
-* "nerdtree"
-* "lightline.vim"
-* "vim-gitbranch"
-* "vim-terraform"
-* "vim-go"
-* "fzf"
-* "ale"
-* "fzf.vim"
-* "vim-tmux-navigator"
+* "nvim-treesitter" - Syntax highlighting and code navigation
+* "telescope.nvim" - Fuzzy finder and file explorer
+* "nvim-lspconfig" - Language Server Protocol configurations
+* "nvim-cmp" - Autocompletion plugin
+* "gitsigns.nvim" - Git integration
+* "lualine.nvim" - Status line
+* "which-key.nvim" - Keybinding helper
+* "nvim-tree.lua" - File explorer
+* "bufferline.nvim" - Buffer line for managing open files
+* "plenary.nvim" - Lua functions used by many plugins
 
 *(Complete plugin setup and details will be covered in future posts.)*
 
