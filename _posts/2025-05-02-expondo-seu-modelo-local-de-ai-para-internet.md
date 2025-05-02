@@ -9,3 +9,5 @@ tags: [AI, Internet, Exposição, Modelo Local]
 Este é o conteúdo inicial do post "Expondo seu modelo local de AI para Internet". Aqui você pode adicionar mais detalhes sobre como expor seu modelo de AI para a internet, incluindo dicas, ferramentas e melhores práticas.
 
 ## A história por trás deste padrão de solução
+
+A crescente demanda por aplicações orientadas por IA apresenta um desafio único: como implantar e operar modelos de IA com segurança em ambientes que exigem proteção estrita de dados, ao mesmo tempo em que expõe esses modelos a serviços voltados para o público[cite: 1, 2, 3]. Essa necessidade tornou-se evidente durante o desenvolvimento de um chatbot de IA local que lidaria com dados sensíveis e proprietários, exigindo uma solução onde o modelo pudesse ser mantido dentro de um ambiente protegido[cite: 172, 173, 174].
