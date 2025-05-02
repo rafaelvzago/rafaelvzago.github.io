@@ -2,7 +2,7 @@ name: Build and deploy Jekyll site
 
 on:
   push:
-    branches: ["main", "master"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.0.0
       
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -21,12 +21,15 @@ jobs:
           ruby-version: '3.2.2'
           bundler-cache: true
       
-      - name: Bundle update
-        run: bundle update
+      - name: Install dependencies
+        run: |
+          bundle install
+          bundle update
       
       - name: Build site
         run: |
-          bundle exec jekyll build
+          set -e
+          bundle exec jekyll build || { echo "Jekyll build failed"; exit 1; }
           touch _site/.nojekyll
         env:
           JEKYLL_ENV: production
