@@ -72,6 +72,20 @@ Vim also has a leader key for creating custom shortcuts, and a command mode for 
 
 ## Navigating Your Codebase
 
+AstroVim enhances navigation with additional keybindings that streamline your workflow:
+
+* **Window Navigation (Ctrl + h/j/k/l):** Quickly move between split windows using `Ctrl` combined with `h`, `j`, `k`, or `l`.
+
+* **Buffer Navigation (]b, [b):** Use `]b` to move to the next buffer and `[b` to move to the previous buffer, making it easy to switch between open files.
+
+* **Resize Windows (Ctrl + Arrow Keys):** Adjust window sizes with `Ctrl` and the arrow keys for up, down, left, and right.
+
+* **Toggle Neotree (Leader + e):** Open or close the file explorer with `Leader + e` for quick access to your project files.
+
+* **Toggle Comment (Leader + /):** Comment or uncomment lines with `Leader + /`, streamlining code documentation and debugging.
+
+* **Open Terminal (Leader + tf):** Launch a floating terminal with `Leader + tf` for quick command-line access without leaving Neovim.
+
 Let's dive into a React app and explore how Vim motions streamline navigation:
 
 * **Basic Movements (h, j, k, l):** Forget arrow keys! Use these for left, down, up, and right movement. Prefix with a number (e.g., `5j`) to move multiple lines.
