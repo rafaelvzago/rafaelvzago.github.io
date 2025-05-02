@@ -1,11 +1,11 @@
-# Personal Site Repository
+# Rafael Zago
 
 This repository contains the source code for my personal site.
 
 ## Contact Information
 
-- **Email**: your-email@example.com
-- **Twitter**: [@yourtwitterhandle](https://twitter.com/yourtwitterhandle)
-- **GitHub**: [your-github-username](https://github.com/your-github-username)
+- **Email**: rafaelvzago@example.com
+- **Twitter**: [@rafaelvzago](https://twitter.com/rafaelvzago)
+- **GitHub**: [rafaelvzago](https://github.com/rafaelvzago)
 
 For more information, feel free to reach out through any of the above channels.
