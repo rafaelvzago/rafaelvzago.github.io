@@ -22,8 +22,9 @@ jobs:
           bundler-cache: true
       
       - name: Install dependencies
-        run: bundle install
-        run: bundle update
+        run: |
+          bundle install
+          bundle update
       
       - name: Build site
         run: |
