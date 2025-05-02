@@ -41,6 +41,8 @@ AstroVim comes with a curated set of plugins that enhance the Neovim experience.
 * "nvim-tree.lua" - File explorer
 * "bufferline.nvim" - Buffer line for managing open files
 * "plenary.nvim" - Lua functions used by many plugins
+* "copilot.vim" - AI-powered code completion
+* "catppuccin/nvim" - Catppuccin Macchiato theme for Neovim
 
 *(Complete plugin setup and details will be covered in future posts.)*
 
