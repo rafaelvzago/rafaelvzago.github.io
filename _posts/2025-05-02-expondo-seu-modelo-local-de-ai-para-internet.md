@@ -24,11 +24,11 @@ Este padrão de solução demonstra como implantar e servir com segurança um ch
 
 Os principais componentes da solução incluem:
 
--   **InstructLab** para gerenciar e servir modelos de IA dentro de uma infraestrutura segura e privada[cite: 10, 11, 12, 181, 182, 183].
+-   **InstructLab** para gerenciar e servir modelos de IA dentro de uma infraestrutura segura e privada.
     
--   **Red Hat Service Interconnect (RHSI)** e **Skupper** para estabelecer uma comunicação segura e contínua entre sites isolados e ambientes públicos[cite: 11, 12, 182, 183].
+-   **Red Hat Service Interconnect (RHSI)** e **Skupper** para estabelecer uma comunicação segura e contínua entre sites isolados e ambientes públicos.
     
--   Uma **Rede Virtual de Aplicações (VAN)** que conecta com segurança dois sites: um site privado que hospeda o modelo de IA e um site OpenShift público que expõe o serviço de chatbot para usuários externos[cite: 183].
+-   Uma **Rede Virtual de Aplicações (VAN)** que conecta com segurança dois sites: um site privado que hospeda o modelo de IA e um site OpenShift público que expõe o serviço de chatbot para usuários externos.
 
 ## A história por trás deste padrão de solução
 
