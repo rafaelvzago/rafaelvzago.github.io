@@ -3,7 +3,7 @@ layout: post
 title: "TemPy: An IoT Architecture with Raspberry Pi and Skupper"
 date: 2024-02-15 00:00:00 -0300
 categories: [skupper, raspberry, grafana, opensource, english]
-tags: [skupper, raspberry, grafana, opensource, english]
+tags: [skupper, raspberry-pi, iot, grafana, prometheus, opensource, networking, monitoring, temperature-sensor]
 image:
   path: /assets/img/headers/tempy-com-skupper-e-grafana.webp
   alt: TemPy

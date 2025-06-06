@@ -3,7 +3,7 @@ layout: post
 title: "Carreira com Software Livre - O que é e como começar?"
 date: 2023-12-07 00:00:00 -0300
 categories: [carreira, opensource]
-tags: [carreira, opensource]
+tags: [carreira, opensource, software-livre, linux, apache, cncf, contribuicao, licencas]
 image:
   path: /assets/img/headers/carreira-com-softeware-livre-hero.webp
   alt: Opensource

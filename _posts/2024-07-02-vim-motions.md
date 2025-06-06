@@ -3,7 +3,7 @@ layout: post
 title:  "Vim Motions: Navigating and Editing Code Efficiently"
 date:   2024-07-02 14:31:00 -0300
 categories: vim productivity
-tags: [vim, developer]
+tags: [vim, neovim, astrovim, editor, produtividade, motions, desenvolvimento, tools]
 image:
   path: /assets/img/headers/vim-motions.jpg
   alt: Vim Motions

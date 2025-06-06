@@ -3,7 +3,7 @@ layout: post
 title: "Workshop: Patient Portal, conectando um banco de dados a um cluster K8S com Skupper"
 date: 2024-07-02
 categories: [skupper, multi, cloud, network, redhat]
-tags: [cloud, network, redhat]
+tags: [skupper, workshop, kubernetes, openshift, networking, database, tutorial, hands-on]
 image:
   path: /assets/img/headers/workshop-skupper-patient-portal.jpg
   alt: Zago
