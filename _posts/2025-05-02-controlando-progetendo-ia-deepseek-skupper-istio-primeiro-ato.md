@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Controlando e progetendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab e Istio - Primeiro Ato"
+title: "Controlando e protegendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab - Primeiro Ato"
 description: "Descubra como implantar e operar modelos de IA com segurança em ambientes híbridos, usando Skupper e InstructLab para proteger dados sensíveis."
 date: 2025-05-02
 categories: [AI, Internet]
-tags: [ai, deepseek, skupper, instructlab, istio, openshift, security, hybrid-cloud, pattern, llm]
+tags: [ai, deepseek, skupper, instructlab, kubernetes, security, hybrid-cloud, architecture, llm]
 image:
   path: /assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt1.png
   alt: Instructlab with Skupper
@@ -46,9 +46,7 @@ Os principais pontos dessa arquitetura são:
 - **Skupper**: cria uma **Rede Virtual de Aplicações (VAN)** entre ambientes privados e públicos, permitindo uma comunicação segura.
 - **OpenShift/Kubernetes**: usado para implantar o serviço de chatbot, garantindo que ele possa ser acessado por usuários externos de forma controlada.
 - **Podman**: utilizado para gerenciar contêineres de forma leve e segura, facilitando a implantação do InstructLab e do chatbot.
-- **Istio/OpenShift Service Mesh**: opcionalmente, pode ser usado para gerenciar o tráfego e a segurança entre os serviços, oferecendo recursos adicionais de monitoramento e controle.
-
-**IMPORTANTE:** Essa abordagem permite que serviços hospedados em diferentes ambientes conversem de forma segura usando o **Skupper**, protegendo tanto os dados quanto o modelo de IA e garantindo que o acesso externo seja feito de maneira controlada e segura. O uso do **Istio** ou do **OpenShift Service Mesh** pode ser considerado para adicionar uma camada extra de segurança e gerenciamento de tráfego, mas não é estritamente necessário para a funcionalidade básica da solução.
+**IMPORTANTE:** Essa abordagem permite que serviços hospedados em diferentes ambientes conversem de forma segura usando o **Skupper**, protegendo tanto os dados quanto o modelo de IA e garantindo que o acesso externo seja feito de maneira controlada e segura.
 
 ### Diagrama da Arquitetura
 
@@ -81,22 +79,22 @@ Os principais pontos dessa arquitetura são:
           Podman é um mecanismo de contêineres que permite aos usuários gerenciar contêineres sem a necessidade de um daemon. Ele fornece um ambiente seguro e leve para executar contêineres, tornando-o ideal para implantar modelos e serviços de IA em ambientes isolados.
     - [Skupper](https://skupper.io/)
           Skupper é uma plataforma de mensagens distribuídas e seguras que permite a comunicação entre serviços em diferentes ambientes. Ele cria uma sobreposição de rede segura que permite que os serviços interajam sem expor dados sensíveis diretamente, garantindo a privacidade dos dados e a comunicação segura. Usaremos a versão cli do Skupper para criar uma conexão segura entre os ambientes privado e público.
-    - [Istio](https://istio.io/)
-            Istio é uma malha de serviços que fornece uma maneira de conectar, proteger e monitorar serviços em uma arquitetura de microserviços. Ele oferece recursos avançados de gerenciamento de tráfego, segurança e observabilidade, tornando-o uma escolha popular para implantações complexas em nuvem híbrida.
-    - [OpenShift Service Mesh](https://www.openshift.com/products/service-mesh)
-            OpenShift Service Mesh é uma implementação do Istio otimizada para o OpenShift, que fornece uma maneira fácil de gerenciar a comunicação entre serviços em um cluster OpenShift. Ele oferece recursos avançados de segurança, monitoramento e controle de tráfego, permitindo que as equipes gerenciem suas aplicações de forma eficiente e segura.
+    - [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/)
+            NGINX Ingress Controller é uma solução para expor serviços HTTP e HTTPS de dentro de um cluster Kubernetes. Ele fornece balanceamento de carga, terminação SSL e roteamento baseado em nome, tornando-o ideal para expor aplicações web de forma segura e eficiente.
 
 # Uma visão detalhada da arquitetura da solução
 
-Esta arquitetura é baseada em uma configuração híbrida onde o modelo de IA é treinado e servido via **InstructLab** em um ambiente privado (Ambiente Local Privado) e só pode ser acessado por usuários externos através de um site **OpenShift** público (Openshift Cluster), usando **Skupper** para comunicação segura. O **Skupper** garante que os dados trocados entre esses dois ambientes permaneçam seguros, criando uma **Rede Virtual de Aplicações (VAN)** entre os sites. Além disso, o **Istio** ou o **OpenShift Service Mesh** pode ser usado para gerenciar o tráfego e a segurança entre os serviços, oferecendo recursos adicionais de monitoramento e controle.
+Esta arquitetura é baseada em uma configuração híbrida onde o modelo de IA é treinado e servido via **InstructLab** em um ambiente privado (Ambiente Local Privado) e só pode ser acessado por usuários externos através de um site **Kubernetes** público, usando **Skupper** para comunicação segura. O **Skupper** garante que os dados trocados entre esses dois ambientes permaneçam seguros, criando uma **Rede Virtual de Aplicações (VAN)** entre os sites.
 
-## Istio ou OpenShift Service Mesh?
+## Exposição de Serviços com NGINX Ingress
 
-Você pode estar se perguntando se deve usar o **Istio** ou o **OpenShift Service Mesh**. A escolha entre os dois depende do seu ambiente e das suas necessidades específicas:
-- **Istio** é uma malha de serviços independente que pode ser usada em qualquer ambiente Kubernetes, oferecendo recursos avançados de gerenciamento de tráfego, segurança e observabilidade.
-- **OpenShift Service Mesh** é uma implementação do Istio otimizada para o OpenShift, que fornece uma maneira fácil de gerenciar a comunicação entre serviços em um cluster OpenShift. Ele oferece recursos avançados de segurança, monitoramento e controle de tráfego, permitindo que as equipes gerenciem suas aplicações de forma eficiente e segura.
+Para expor o chatbot de IA para usuários externos, utilizamos o **NGINX Ingress Controller**, que oferece:
+- **Balanceamento de Carga**: Distribuição eficiente de tráfego entre múltiplas instâncias
+- **Terminação SSL/TLS**: Criptografia segura das conexões
+- **Roteamento Avançado**: Roteamento baseado em path e host
+- **LoadBalancer Service**: Acesso direto com IP externo do provedor de nuvem
 
-Nessa série de artigos sobre a jornada de implantação de um modelo de IA com segurança, vou criar dois artigos diferentes: um usando o **Istio** e outro usando o **OpenShift Service Mesh**. Assim, você poderá escolher a abordagem que melhor se adapta às suas necessidades.
+Essa abordagem fornece uma solução robusta e escalável para expor aplicações de IA de forma segura em ambientes Kubernetes.
 
 ## Visão Geral da Arquitetura
 
@@ -108,15 +106,15 @@ O **Ambiente Local Privado** hospeda o modelo de IA usando InstructLab e é resp
 
 - Retornar a resposta do modelo para o Openshift Cluster com segurança.
 
-O **Openshift Cluster** ou um cluster Kubernetes público é responsável por:
+O **Cluster Kubernetes** público é responsável por:
 
-- Expor o chatbot de IA para usuários externos.
+- Expor o chatbot de IA para usuários externos via NGINX Ingress ou LoadBalancer.
 
 - Enviar solicitações para o modelo InstructLab privado no Ambiente Local Privado.
 
 - Exibir a resposta da IA do modelo hospedado no Ambiente Local Privado.
 
-Por design, o modelo em execução no ambiente privado (Ambiente Local Privado) é isolado e não pode ser acessado diretamente por clientes externos. Todas as interações com o modelo são mediadas pelo cluster kubernetes públic, que pode ser tanto um cluster OpenShift quanto um cluster Kubernetes padrão. Isso garante que o modelo permaneça protegido, enquanto ainda permite que os usuários externos interajam com o serviço de chatbot de forma segura.
+Por design, o modelo em execução no ambiente privado (Ambiente Local Privado) é isolado e não pode ser acessado diretamente por clientes externos. Todas as interações com o modelo são mediadas pelo cluster Kubernetes público, garantindo que o modelo permaneça protegido, enquanto ainda permite que os usuários externos interajam com o serviço de chatbot de forma segura.
 
 ## E o modelo de IA?
 
@@ -126,25 +124,20 @@ A vantagem de usar o instructlab é que ele permite treinar e servir modelos de 
 
 ## Sobre o Conjunto de Tecnologias
 
-Esta solução usa o **Skupper** e o **InstructLab** para proteger a implantação do modelo de IA. O **OpenShift** garante o dimensionamento flexível do serviço de chatbot, enquanto o **Skupper** permite uma comunicação contínua e segura entre os sites isolados, criando um ambiente de nuvem híbrida robusto para aplicações orientadas por IA.
-
-Além disso, o uso do **Istio** ou do **OpenShift Service Mesh** pode ser considerado para adicionar uma camada extra de segurança e gerenciamento de tráfego, mas não é estritamente necessário para a funcionalidade básica da solução.
+Esta solução usa o **Skupper** e o **InstructLab** para proteger a implantação do modelo de IA. O **Kubernetes** garante o dimensionamento flexível do serviço de chatbot com NGINX Ingress e LoadBalancer services, enquanto o **Skupper** permite uma comunicação contínua e segura entre os sites isolados, criando um ambiente de nuvem híbrida robusto para aplicações orientadas por IA.
 
 ## Próximos Passos
 
-Para ver essa solução em ação e aprender como implementá-la passo a passo, continue lendo o próximo artigo: **"Implantando o Chatbot InstructLab no OpenShift"**, onde abordaremos todos os detalhes técnicos da implementação.
+Para ver essa solução em ação e aprender como implementá-la passo a passo, continue lendo o próximo artigo: **"Controlando e protegendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab - Segundo Ato"**, onde abordaremos todos os detalhes técnicos da implementação.
 
 ## Referências
 
 - [Comandos extraídos do projeto InstructLab](https://github.com/instructlab)
-- [Primeiros passos com o InstructLab: Ajuste de modelo de IA generativo](https://developers.redhat.com/blog/2024/06/12/getting-started-instructlab-generative-ai-model-tuning#model_alignment_and_training_with_instructlab)
 - [Guia de instalação do InstructLab](https://github.com/instructlab/instructlab/blob/main/README.md#-installing-ilab)
 - [Chatbot ILAB Frontend](https://github.com/rafaelvzago/ilab-client)
-- [Red Hat Developer](https://developers.redhat.com)
-- [Hugging Face Token](https://huggingface.co/docs/hub/en/security-tokens)
 - [DeepSeek-R1-Distill-Qwen-1.5B](https://huggingface.co/deepseek/DeepSeek-R1-Distill-Qwen-1.5B)
 - [llama.cpp](https://github.com/ggerganov/llama.cpp)
-- [Skupper](https://skupper.io/)
-- [OpenShift](https://www.openshift.com/)
-- [Istio](https://istio.io/)
-- [OpenShift Service Mesh](https://www.openshift.com/products/service-mesh)
+- [Skupper Documentation](https://skupper.io/)
+- [Kubernetes Documentation](https://kubernetes.io/docs/)
+- [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/)
+- [Podman Documentation](https://docs.podman.io/)
