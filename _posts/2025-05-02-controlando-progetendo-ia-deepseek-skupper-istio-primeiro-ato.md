@@ -122,6 +122,39 @@ O modelo de IA utilizado nesta solução é o **DeepSeek-R1-Distill-Qwen-1.5B**,
 
 A vantagem de usar o instructlab é que ele permite treinar e servir modelos de IA de forma segura, garantindo que os dados sensíveis permaneçam protegidos. O InstructLab facilita o processo de treinamento e serviço de modelos de IA, tornando-o uma escolha ideal para ambientes onde a segurança e a privacidade dos dados são fundamentais. Nessa solução vamos baixar o modelo **DeepSeek-R1-Distill-Qwen-1.5B** do Hugging Face, converter para o formato necessário e treiná-lo usando o InstructLab.
 
+# A Ascensão do DeepSeek: Uma Tempestade Perfeita de Desempenho, Preço e Código Aberto
+
+O entusiasmo em torno dos modelos de IA da DeepSeek origina-se de uma poderosa combinação de desempenho impressionante, custo-benefício disruptivo e um compromisso com princípios de código aberto. Isso permitiu que a empresa conquistasse um espaço significativo em um mercado dominado por gigantes da tecnologia como OpenAI, Google e Meta.
+
+### Diferenciais Chave: O Que Distingue o DeepSeek
+
+As principais distinções entre o DeepSeek e outros modelos proeminentes como GPT, Llama e Mistral residem em sua **arquitetura**, **relação desempenho-custo** e sua **filosofia de código aberto**.
+
+#### Eficiência Arquitetural: A Vantagem do Mixture of Experts (MoE)
+
+No cerne da eficiência do DeepSeek está o uso de uma arquitetura **Mixture of Experts (MoE)**. Diferente dos modelos tradicionais que ativam todos os seus parâmetros para cada tarefa, um modelo MoE é composto por inúmeras redes "especialistas" menores. Para qualquer entrada, o modelo direciona inteligentemente a tarefa para os especialistas mais relevantes. Essa ativação esparsa resulta em custos computacionais significativamente mais baixos e tempos de inferência mais rápidos, sem uma queda proporcional no desempenho.
+
+#### Economia Disruptiva: Alto Desempenho a um Custo Menor
+
+Um grande catalisador para o entusiasmo em torno do DeepSeek tem sido seu notável **custo-benefício**. A API para usar os modelos do DeepSeek é consideravelmente mais barata que a de concorrentes como a série GPT da OpenAI. Além disso, relatos indicaram que os modelos do DeepSeek foram treinados com uma fração do orçamento de outros modelos de grande escala. Essa combinação de alto desempenho, particularmente em áreas complexas como programação e matemática, a um preço significativamente mais baixo, tornou-o uma opção atrativa para desenvolvedores e empresas.
+
+#### O Poder do Código Aberto
+
+Em um cenário onde muitos dos modelos mais poderosos são proprietários e de código fechado, a DeepSeek adotou uma abordagem de **código aberto** para muitos de seus modelos. Esta estratégia tem várias vantagens chave:
+
+* **Transparência e Confiança:** Abrir o código do modelo permite que a comunidade global de pesquisa e desenvolvimento analise, entenda e construa sobre a tecnologia, fomentando um maior grau de confiança.
+* **Inovação Acelerada:** Ao tornar seus modelos acessíveis, a DeepSeek incentiva um ambiente colaborativo onde desenvolvedores podem contribuir para sua melhoria e adaptá-lo para uma vasta gama de aplicações.
+* **Acessibilidade:** Reduz a barreira de entrada para empresas menores e desenvolvedores individuais que talvez não tenham os recursos para acessar modelos proprietários caros.
+
+### A Explicação do Hype: Uma Confluência de Fatores
+
+O entusiasmo em torno do DeepSeek pode ser atribuído à convergência dos fatores mencionados acima:
+
+* **Desafiando a Narrativa "Maior é Melhor":** O sucesso do DeepSeek demonstrou que um desempenho impressionante pode ser alcançado através de design de arquitetura e métodos de treinamento mais inteligentes, em vez de simplesmente usar quantidades massivas de poder computacional. Isso gerou uma conversa mais ampla sobre o futuro do desenvolvimento de IA e a sustentabilidade de modelos cada vez maiores.
+* **Forte Desempenho em Benchmarks:** Os modelos do DeepSeek têm consistentemente se posicionado no topo ou perto do topo em vários benchmarks, especialmente nos campos exigentes de **programação e matemática**. Isso atraiu atenção significativa da comunidade técnica.
+* **Uma Alternativa Viável:** A combinação de baixo custo e alto desempenho posicionou o DeepSeek como uma alternativa convincente aos modelos mais estabelecidos e, muitas vezes, mais caros. Isso é particularmente verdadeiro para desenvolvedores que procuram modelos poderosos e eficientes para tarefas especializadas.
+* **Dinâmicas Geopolíticas e de Mercado:** Como um proeminente laboratório de IA da China, a ascensão do DeepSeek também introduziu uma nova dinâmica no cenário global de IA, desafiando o domínio de empresas sediadas nos EUA e provocando discussões sobre a democratização da tecnologia de IA avançada.
+
 ## Sobre o Conjunto de Tecnologias
 
 Esta solução usa o **Skupper** e o **InstructLab** para proteger a implantação do modelo de IA. O **Kubernetes** garante o dimensionamento flexível do serviço de chatbot com NGINX Ingress e LoadBalancer services, enquanto o **Skupper** permite uma comunicação contínua e segura entre os sites isolados, criando um ambiente de nuvem híbrida robusto para aplicações orientadas por IA.
