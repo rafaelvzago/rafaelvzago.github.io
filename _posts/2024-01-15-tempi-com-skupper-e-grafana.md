@@ -177,7 +177,7 @@ temperature_celsius 19.81
 # TYPE temperature_fahrenheit gauge
 temperature_fahrenheit 67.66
 ```
-6. CHeck the prometheus-adapter sservice to check if the labels are being added to the service:
+6. Check the prometheus-adapter service to check if the labels are being added to the service:
 ```bash
 kubectl get svc tempy-prometheus-adapter-service -o wide
 NAME                               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE   SELECTOR
@@ -293,7 +293,7 @@ kubectl apply -f grafana/grafana-deployment.yaml
 ```bash
 kubectl apply -f grafana/grafana-service.yaml
 ```
-Important: My cluster is configrued to use the ingress controller, so I have to create an ingress to expose the grafana service, if your cluster is not configured to use the ingress controller, you will neeed either to expose the grafana service using a nodeport or a loadbalancer.
+Important: My cluster is configured to use the ingress controller, so I have to create an ingress to expose the grafana service, if your cluster is not configured to use the ingress controller, you will need either to expose the grafana service using a nodeport or a loadbalancer.
 
 4. Create a data source connection in grafana that points to the prometheus service:
 ```bash

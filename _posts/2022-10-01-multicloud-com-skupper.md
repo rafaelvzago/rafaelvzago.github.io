@@ -39,7 +39,7 @@ _tl;dr_
 
 > O Skupper é uma ferramenta que permite conectar diferentes ambientes de computação em nuvem de maneira segura e sem complicações. Imagine que você tem duas salas diferentes, cada uma com seu próprio conjunto de ferramentas. Skupper é como uma porta segura que permite que essas salas "conversem" entre si, compartilhando ferramentas conforme necessário. Isso é útil quando você tem diferentes partes de um aplicativo rodando em diferentes lugares, mas elas precisam trabalhar juntas como se estivessem no mesmo lugar.
 
-### Para quem tem algum conheciemento de cloud:
+### Para quem tem algum conhecimento de cloud:
 
 > O Skupper é uma solução de rede de serviço para Kubernetes que permite a comunicação segura e fácil entre clusters. Ele cria uma camada de rede virtual que conecta pods em diferentes clusters como se estivessem na mesma rede local. Isso é feito sem a necessidade de privilégios de administrador do cluster e sem a necessidade de expor serviços à Internet pública. Além disso, o Skupper não é intrusivo com sua aplicação, pois não cria side-cars ou outros containers dentro dos Pods. Ele é open-source e oferece criptografia de ponta a ponta usando certificados digitais.
 
@@ -57,7 +57,7 @@ _tl;dr_
 **Esse exemplo consiste em dois serviços:**
 
 **1. Frontend**
-- Um serviço de _backend_ que expõe um endpoint `/api/hello`. Que tem como resposta  Oi, `<seu-nome>`. Eu sou `<meu-nome> (<nome-pod>)`. O deploy será feito no _namespace_ `confi_oeste`;
+- Um serviço de _backend_ que expõe um endpoint `/api/hello`. Que tem como resposta  Oi, `<seu-nome>`. Eu sou `<meu-nome> (<nome-pod>)`. O deploy será feito no _namespace_ `config_oeste`;
 
 **2. Backend**
 - Um serviço de _frontend_ que expõe um endpoint `/api/hello` que faz uma chamada para o serviço de _backend_ e retorna a resposta, mas nesse caso o serviço esta rodando em outro _namespace_ chama `config_leste`, este por sua vez pode estar em outro cluster ou namespace.
@@ -73,7 +73,7 @@ _Detalhes:_
 3. É _open-source_;
 4. Você pode conectar, em seu _cluster_, serviços externos como: Bancos de dados, aplicações legadas e ainda de alta criticidade;
 5. Criptografado de ponta a ponta usando certificados digitais;
-6. Baixa curva de aprenddizagem.
+6. Baixa curva de aprendizagem.
 7. MTLS [9] por padrão. MTLS é um protocolo de segurança que garante que a comunicação entre dois pontos seja feita de maneira segura e criptografada.
 8. Utilização de certificados próprios caso necessário, ou seja, você pode usar os certificados da sua empresa ou gerar novos certificados para o Skupper ( que é o padrão e são criados automaticamente).
 
@@ -233,6 +233,6 @@ A introdução do Skupper em cada namespace nos permite criar uma rede de aplica
 
 O serviço de back-end está localizado no leste, mas o serviço de front-end no oeste pode "vê-lo" como se fosse local. Quando o front-end envia uma solicitação ao back-end, o Skupper encaminha a solicitação para o namespace em que o back-end está sendo executado e roteia a resposta de volta ao front-end.
 
-Nâo foi necessário expor o serviço de back-end à Internet pública. O Skupper criou uma rede de aplicativos que conecta os serviços em diferentes clusters. O serviço de back-end está localizado no leste, mas o serviço de front-end no oeste pode "vê-lo" como se fosse local. Quando o front-end envia uma solicitação ao back-end, o Skupper encaminha a solicitação para o namespace em que o back-end está sendo executado e roteia a resposta de volta ao front-end.
+Não foi necessário expor o serviço de back-end à Internet pública. O Skupper criou uma rede de aplicativos que conecta os serviços em diferentes clusters. O serviço de back-end está localizado no leste, mas o serviço de front-end no oeste pode "vê-lo" como se fosse local. Quando o front-end envia uma solicitação ao back-end, o Skupper encaminha a solicitação para o namespace em que o back-end está sendo executado e roteia a resposta de volta ao front-end.
 
 Nenhuma VPN ou conexão Layer 3 foi necessária. O Skupper cria uma rede de aplicativos que conecta os serviços em diferentes clusters. O serviço de back-end está localizado no leste, mas o serviço de front-end no oeste pode "vê-lo" como se fosse local. Quando o front-end envia uma solicitação ao back-end, o Skupper encaminha a solicitação para o namespace em que o back-end está sendo executado e roteia a resposta de volta ao front-end.

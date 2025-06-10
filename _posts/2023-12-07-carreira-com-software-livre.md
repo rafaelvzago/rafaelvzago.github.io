@@ -61,7 +61,7 @@ O Software Livre é um movimento que tem como objetivo promover a liberdade de u
 - Atualmente existem mais de 1.000.000 de projetos de software livre no GitHub.
 - O GitHub é a maior plataforma de desenvolvimento de software livre do mundo. [GitHub](https://github.com)
 - O Linux é o sistema operacional mais utilizado no mundo. [Linux](https://www.kernel.org/)
-- Existem mais de projetos 1861 projetos na CNCf. Tanto projetos graduaos, incubados, sabdbvox e arquivados. [CNCf](https://www.cncf.io/projects/)
+- Existem mais de projetos 1861 projetos na CNCF. Tanto projetos graduados, incubados, sandbox e arquivados. [CNCF](https://www.cncf.io/projects/)
 - Existem mais de 300 projetos na Apache. [Apache](https://projects.apache.org/projects.html?language)
 
 ## CNCF - Cloud Native Computing Foundation
@@ -69,7 +69,7 @@ O Software Livre é um movimento que tem como objetivo promover a liberdade de u
 - **CNCF (Cloud Native Computing Foundation)**: Uma organização sem fins lucrativos.
   - **Objetivo**: Promover o desenvolvimento de software livre para a nuvem.
   - **Características**:
-    - **Foco em Cloud Native**: Concentra-se em tecnologias que empoderam sistemas escaláveis, resilientes e agéis baseados em contêineres.
+    - **Foco em Cloud Native**: Concentra-se em tecnologias que empoderam sistemas escaláveis, resilientes e ágeis baseados em contêineres.
     - **Comunidade Aberta e Colaborativa**: Encoraja a colaboração e contribuição abertas entre membros da indústria, desenvolvedores e usuários finais.
     - **Padrões e Práticas de Governança**: Estabelece padrões e melhores práticas para garantir interoperabilidade e eficiência.
     - **Apoio à Inovação e Sustentabilidade**: Fomenta a inovação e sustentabilidade de projetos e comunidades de software livre.

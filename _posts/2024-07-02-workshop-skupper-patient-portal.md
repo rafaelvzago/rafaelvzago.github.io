@@ -256,7 +256,7 @@ spec:
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: fronted
+  name: frontend
   namespace: SEU-NAME-SPACE
   labels: {}
 spec:
