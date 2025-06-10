@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Controlando e progetendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab e Istio - Segundo Ato"
+title: "Controlando e protegendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab - Segundo Ato"
 description: "Neste artigo, vamos implementar passo a passo o chatbot com o Instructlab, além de expor o serviço de forma segura usando Skupper"
 date: 2025-05-04
 categories: [AI, Kubernetes, instructlab]
-tags: [ai, deepseek, skupper, instructlab, kubernetes, deployment, chatbot, tutorial, hands-on]
+tags: [ai, deepseek, skupper, instructlab, kubernetes, podman, llama-cpp, gguf]
 image:
   path: /assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt2.png
   alt: Instructlab with Skupper
@@ -12,7 +12,7 @@ image:
 
 ## Veja a Solução em Ação
 
-Neste artigo, vamos perparar todo o ambiente para servir o modelo de IA generativo Deepseek usando o InstructLab, baixando o modelo, convertendo-o para o formato GGUF e implantando o chatbot InstructLab. Além disso, vamos expor o serviço de forma segura usando Skupper.
+Neste artigo, vamos preparar todo o ambiente para servir o modelo de IA generativo Deepseek usando o InstructLab, baixando o modelo, convertendo-o para o formato GGUF e implantando o chatbot InstructLab. Além disso, vamos expor o serviço de forma segura usando Skupper.
 
 ### Conceitos e Comandos Usados na Demonstração
 
@@ -498,9 +498,9 @@ Neste segundo ato da série, estabelecemos com sucesso a base fundamental para u
 ### Próximos Passos
 
 No **terceiro e último ato**, vamos:
-- Implantar a interface web do chatbot usando Istio Service Mesh
-- Configurar roteamento avançado e observabilidade
-- Integrar Kiali, Jaeger e Grafana para monitoramento completo
+- Implantar a interface web do chatbot no Kubernetes
+- Configurar NGINX Ingress e LoadBalancer para acesso externo
+- Integrar a solução completa com o InstructLab
 - Finalizar a solução end-to-end
 
 Esta arquitetura fornece a base sólida para organizações que precisam manter seus modelos de IA seguros enquanto oferecem interfaces acessíveis aos usuários finais.
@@ -511,7 +511,8 @@ Esta arquitetura fornece a base sólida para organizações que precisam manter 
 - [Primeiros passos com o InstructLab: Ajuste de modelo de IA generativo](https://developers.redhat.com/blog/2024/06/12/getting-started-instructlab-generative-ai-model-tuning#model_alignment_and_training_with_instructlab)
 - [Guia de instalação do InstructLab](https://github.com/instructlab/instructlab/blob/main/README.md#-installing-ilab)
 - [Chatbot ILAB Frontend](https://github.com/rafaelvzago/ilab-client)
-- [Red Hat Developer](https://developers.redhat.com)
 - [Hugging Face Token](https://huggingface.co/docs/hub/en/security-tokens)
 - [llama.cpp](https://github.com/ggerganov/llama.cpp)
 - [Skupper Documentation](https://skupper.io/docs/)
+- [DeepSeek Model](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B)
+- [Podman Documentation](https://docs.podman.io/)
