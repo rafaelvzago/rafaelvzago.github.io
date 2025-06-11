@@ -3,7 +3,7 @@ layout: post
 title: "Quem sou eu?"
 date: 2023-12-04 00:00:00 -0300
 categories: [sobre, off-topic]
-tags: [zago, rafael]
+tags: [sobre, pessoal, rafael-zago, devops, redhat, palestrante, instrutor]
 image:
   path: /assets/img/headers/quem-sou-eu-hero.webp
   alt: Zago

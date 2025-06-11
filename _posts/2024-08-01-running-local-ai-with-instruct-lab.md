@@ -3,7 +3,7 @@ layout: post
 title: "Running local AI with Instruct Lab and Skupper"
 date: 2024-08-01 00:00
 categories: [skupper, instructlab, chatbot]
-tags: [cloud, network, redhat]
+tags: [ai, instructlab, skupper, llm, chatbot, machine-learning, openshift, local-ai, security]
 image:
   path: /assets/img/headers/instructlab_workshop-skupper-patient-portal.jpg
   alt: Instructlab with Skupper

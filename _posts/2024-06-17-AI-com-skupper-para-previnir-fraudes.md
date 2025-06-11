@@ -3,7 +3,7 @@ layout: post
 title: "Using Skupper and OpenShift AI/ML to Prevent Insurance Fraud"
 date: 2024-06-17 00:00:00 -0300
 categories: [AI, Skupper]
-tags: [zago, rafael]
+tags: [ai, machine-learning, skupper, openshift, fraud-detection, insurance, networking, security]
 image:
   path: /assets/img/headers/AI-com-skupper-para-previnir-fraudes.webp
   alt: Zago

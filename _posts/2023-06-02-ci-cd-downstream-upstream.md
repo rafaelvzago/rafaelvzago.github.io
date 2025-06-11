@@ -3,7 +3,7 @@ layout: post
 title: "CI/CD Upstream vs Downstream"
 date: 2023-06-02 00:00:00 -0300
 categories: [pipeline]
-tags: [pipeline, ci, cd]
+tags: [ci-cd, pipeline, devops, automation, upstream-downstream, redhat, skupper]
 image:
   path: /assets/img/headers/ci-cd-downstream-upstream-hero.webp
   alt: Opensource
