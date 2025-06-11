@@ -1,0 +1,255 @@
+<!doctype html><html lang="pt-BR" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover" ><meta name="generator" content="Jekyll v4.4.1" /><meta property="og:title" content="Controlando e protegendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab - Terceiro e Último Ato" /><meta property="og:locale" content="pt_BR" /><meta name="description" content="Neste artigo, vamos implementar e conectar o modelo de IA DeepSeek com o InstructLab usando Skupper para conectar de forma segura um modelo de IA privado com uma interface pública." /><meta property="og:description" content="Neste artigo, vamos implementar e conectar o modelo de IA DeepSeek com o InstructLab usando Skupper para conectar de forma segura um modelo de IA privado com uma interface pública." /><link rel="canonical" href="https://rafaelvzago.github.io/posts/controlando-progetendo-ia-deepseek-skupper-istio-terceiro-ultimo-ato/" /><meta property="og:url" content="https://rafaelvzago.github.io/posts/controlando-progetendo-ia-deepseek-skupper-istio-terceiro-ultimo-ato/" /><meta property="og:site_name" content="Rafael Zago" /><meta property="og:image" content="https://rafaelvzago.github.io/assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt3.png" /><meta property="og:image:alt" content="Instructlab with Skupper" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2025-05-05T00:00:00-03:00" /><meta name="twitter:card" content="summary_large_image" /><meta property="twitter:image" content="https://rafaelvzago.github.io/assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt3.png" /><meta name="twitter:image:alt" content="Instructlab with Skupper" /><meta property="twitter:title" content="Controlando e protegendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab - Terceiro e Último Ato" /><meta name="twitter:site" content="@rafaelvzago" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-05-05T00:00:00-03:00","datePublished":"2025-05-05T00:00:00-03:00","description":"Neste artigo, vamos implementar e conectar o modelo de IA DeepSeek com o InstructLab usando Skupper para conectar de forma segura um modelo de IA privado com uma interface pública.","headline":"Controlando e protegendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab - Terceiro e Último Ato","image":{"alt":"Instructlab with Skupper","url":"https://rafaelvzago.github.io/assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt3.png","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rafaelvzago.github.io/posts/controlando-progetendo-ia-deepseek-skupper-istio-terceiro-ultimo-ato/"},"url":"https://rafaelvzago.github.io/posts/controlando-progetendo-ia-deepseek-skupper-istio-terceiro-ultimo-ato/"}</script><title>Controlando e protegendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab - Terceiro e Último Ato | Rafael Zago</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Rafael Zago"><meta name="application-name" content="Rafael Zago"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="https://fonts.gstatic.com" ><link rel="preconnect" href="https://cdn.jsdelivr.net" ><link rel="dns-prefetch" href="https://cdn.jsdelivr.net" ><link rel="stylesheet" href="/assets/css/jekyll-theme-chirpy.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.32.2/dist/tocbot.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css"> <script src="/assets/js/dist/theme.min.js"></script> <script defer src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/glightbox@3.3.0/dist/js/glightbox.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.13/dayjs.min.js,npm/dayjs@1.11.13/locale/pt.js,npm/dayjs@1.11.13/plugin/relativeTime.js,npm/dayjs@1.11.13/plugin/localizedFormat.js,npm/tocbot@4.32.2/dist/tocbot.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script defer src="/app.min.js?baseurl=&register=" ></script><body><aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end"><header class="profile-wrapper"> <a href="/" id="avatar" class="rounded-circle"><img src="https://gravatar.com/userimage/75121319/3dc8bb7e7befedea878842edafcb1335.jpeg?size=256" width="112" height="112" alt="avatar" onerror="this.style.display='none'"></a> <a class="site-title d-block" href="/">Rafael Zago</a><p class="site-subtitle fst-italic mb-0">Meu bloco de notas na interwebs..</p></header><nav class="flex-column flex-grow-1 w-100 ps-0"><ul class="nav"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream"></i> <span>CATEGORIAS</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive"></i> <span>ARQUIVOS</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle"></i> <span>SOBRE</span> </a></ul></nav><div class="sidebar-bottom d-flex flex-wrap align-items-center w-100"> <button type="button" class="btn btn-link nav-link" aria-label="Switch Mode" id="mode-toggle"> <i class="fas fa-adjust"></i> </button> <span class="icon-border"></span> <a href="https://github.com/rafaevzago" aria-label="github" target="_blank" rel="noopener noreferrer" > <i class="fab fa-github"></i> </a> <a href="https://twitter.com/rafaelvzago" aria-label="twitter" target="_blank" rel="noopener noreferrer" > <i class="fa-brands fa-x-twitter"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></aside><div id="main-wrapper" class="d-flex justify-content-center"><div class="container d-flex flex-column px-xxl-5"><header id="topbar-wrapper" class="flex-shrink-0" aria-label="Top Bar"><div id="topbar" class="d-flex align-items-center justify-content-between px-lg-3 h-100" ><nav id="breadcrumb" aria-label="Breadcrumb"> <span> <a href="/">Home</a> </span> <span>Controlando e protegendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab - Terceiro e Último Ato</span></nav><button type="button" id="sidebar-trigger" class="btn btn-link" aria-label="Sidebar"> <i class="fas fa-bars fa-fw"></i> </button><div id="topbar-title"> Post</div><button type="button" id="search-trigger" class="btn btn-link" aria-label="Search"> <i class="fas fa-search fa-fw"></i> </button> <search id="search" class="align-items-center ms-3 ms-lg-0"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Buscar..." > </search> <button type="button" class="btn btn-link text-decoration-none" id="search-cancel">Cancelar</button></div></header><div class="row flex-grow-1"><main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4"><article class="px-1" data-toc="true"><header><h1 data-toc-skip>Controlando e protegendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab - Terceiro e Último Ato</h1><p class="post-desc fw-light mb-4">Neste artigo, vamos implementar e conectar o modelo de IA DeepSeek com o InstructLab usando Skupper para conectar de forma segura um modelo de IA privado com uma interface pública.</p><div class="post-meta text-muted"> <span> Postado em <time data-ts="1746414000" data-df="DD/MM/YYYY" data-bs-toggle="tooltip" data-bs-placement="bottom" > 05/05/2025 </time> </span><div class="mt-3 mb-3"> <a href="/assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt3.png" class="popup img-link preview-img shimmer"><img src="/assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt3.png" alt="Instructlab with Skupper" width="1200" height="630" loading="lazy"></a><figcaption class="text-center pt-2 pb-2">Instructlab with Skupper</figcaption></div><div class="d-flex justify-content-between"> <span> Por <em> <a href="https://github.com/rafaelvzago">Rafael Zago</a> </em> </span><div> <span class="readtime" data-bs-toggle="tooltip" data-bs-placement="bottom" title="1255 palavras" > <em>6 min</em> de leitura</span></div></div></div></header><div id="toc-bar" class="d-flex align-items-center justify-content-between invisible"> <span class="label text-truncate">Controlando e protegendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab - Terceiro e Último Ato</span> <button type="button" class="toc-trigger btn me-1"> <i class="fa-solid fa-list-ul fa-fw"></i> </button></div><button id="toc-solo-trigger" type="button" class="toc-trigger btn btn-outline-secondary btn-sm"> <span class="label ps-2 pe-1">Conteúdo</span> <i class="fa-solid fa-angle-right fa-fw"></i> </button> <dialog id="toc-popup" class="p-0"><div class="header d-flex flex-row align-items-center justify-content-between"><div class="label text-truncate py-2 ms-4">Controlando e protegendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab - Terceiro e Último Ato</div><button id="toc-popup-close" type="button" class="btn mx-1 my-1 opacity-75"> <i class="fas fa-close"></i> </button></div><div id="toc-popup-content" class="px-4 py-3 pb-4"></div></dialog><div class="content"><h2 id="veja-a-solução-em-ação"><span class="me-2">Veja a Solução em Ação</span><a href="#veja-a-solução-em-ação" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>Neste artigo, vamos implementar passo a passo o chatbot InstructLab no Kubernetes usando Skupper para conectar de forma segura um modelo de IA privado com uma interface pública. Esta é a continuação prática do padrão de solução apresentado no artigo anterior.</p><h3 id="conceitos-e-comandos-usados-na-demonstração"><span class="me-2">Conceitos e Comandos Usados na Demonstração</span><a href="#conceitos-e-comandos-usados-na-demonstração" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><blockquote><p>NOTA: Os comandos a seguir são utilizados para configurar o ambiente e implantar o chatbot InstructLab. Eles são extraídos do projeto InstructLab e adaptados para esta demonstração.</p><p><strong><code class="language-plaintext highlighter-rouge">kubectl apply -f &lt;manifest&gt;</code></strong>: Aplica manifests YAML no cluster.</p><p><strong><code class="language-plaintext highlighter-rouge">kubectl create namespace &lt;namespace&gt;</code></strong>: Cria um novo namespace no Kubernetes.</p><p><strong><code class="language-plaintext highlighter-rouge">kubectl get pods -n &lt;namespace&gt;</code></strong>: Verifica os pods em um namespace específico.</p><p><strong><code class="language-plaintext highlighter-rouge">kubectl get services -n &lt;namespace&gt;</code></strong>: Lista os serviços em um namespace.</p><p><strong><code class="language-plaintext highlighter-rouge">kubectl port-forward service/&lt;service-name&gt; &lt;local-port&gt;:&lt;service-port&gt; -n &lt;namespace&gt;</code></strong>: Redireciona uma porta local para um serviço no cluster.</p></blockquote><h3 id="executar-a-demonstração"><span class="me-2">Executar a demonstração</span><a href="#executar-a-demonstração" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><h4 id="antes-de-começar"><span class="me-2">Antes de começar</span><a href="#antes-de-começar" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><p>Para configurar a demonstração, você precisa ter os seguintes pré-requisitos:</p><ul><li><p>Acesso a um cluster Kubernetes com o Skupper instalado.</p><li><p>Um servidor executando o modelo de chat do InstructLab.</p><li><p>Acesso a um terminal para executar os comandos.</p><li><p>Acesso a um navegador da web para interagir com o chatbot.</p><li><p>Cliente kubectl instalado e configurado para acessar o cluster Kubernetes.</p><li><p>Cliente skupper instalado e configurado para acessar o cluster Kubernetes.</p><li><p>Podman instalado para executar o Skupper privado.</p></ul><h3 id="implantando-o-chatbot-instructlab"><span class="me-2">Implantando o Chatbot InstructLab</span><a href="#implantando-o-chatbot-instructlab" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>Antes de executar o chatbot, vamos entender a parte final desta solução, o aplicativo Frontend. Este aplicativo será implantado em um cluster OpenShift e será responsável por enviar a entrada do usuário para o modelo de chat do InstructLab e exibir a resposta para o usuário. O aplicativo será implantado no mesmo namespace onde o Skupper público está em execução.</p><p>Vamos agora implementar a aplicação diretamente no Kubernetes.</p><p>O diretório <code class="language-plaintext highlighter-rouge">manifests/</code> contém os recursos Kubernetes necessários:</p><ul><li><code class="language-plaintext highlighter-rouge">deployment.yaml</code> - Deployment da aplicação com health checks<li><code class="language-plaintext highlighter-rouge">service.yaml</code> - Service ClusterIP para acesso interno<li><code class="language-plaintext highlighter-rouge">ingress.yaml</code> - Ingress NGINX para exposição externa<li><code class="language-plaintext highlighter-rouge">loadbalancer-service.yaml</code> - Service LoadBalancer para acesso externo</ul><h4 id="clonando-o-repositório"><span class="me-2">Clonando o repositório</span><a href="#clonando-o-repositório" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><p>Antes de começar a implantação, clone o repositório com os manifests necessários:</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span> <button aria-label="copy" data-title-succeed="Copiado!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="c"># Clonar o repositório ilab-client</span>
+git clone https://github.com/rafaelvzago/ilab-client.git
+<span class="nb">cd </span>ilab-client
+</pre></table></code></div></div><h4 id="instalando-o-nginx-ingress-controller"><span class="me-2">Instalando o NGINX Ingress Controller</span><a href="#instalando-o-nginx-ingress-controller" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><p>Primeiro, vamos instalar o NGINX Ingress Controller no cluster:</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span> <button aria-label="copy" data-title-succeed="Copiado!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre><span class="c"># Instalar NGINX Ingress Controller</span>
+kubectl apply <span class="nt">-f</span> https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/cloud/deploy.yaml
+
+<span class="c"># Aguardar o controller estar pronto</span>
+kubectl <span class="nb">wait</span> <span class="nt">--namespace</span> ingress-nginx <span class="se">\</span>
+  <span class="nt">--for</span><span class="o">=</span><span class="nv">condition</span><span class="o">=</span>ready pod <span class="se">\</span>
+  <span class="nt">--selector</span><span class="o">=</span>app.kubernetes.io/component<span class="o">=</span>controller <span class="se">\</span>
+  <span class="nt">--timeout</span><span class="o">=</span>120s
+
+<span class="c"># Verificar se o ingress controller está rodando</span>
+kubectl get pods <span class="nt">-n</span> ingress-nginx
+kubectl get services <span class="nt">-n</span> ingress-nginx
+</pre></table></code></div></div><blockquote><p>NOTA:</p><p>O NGINX Ingress Controller é responsável por rotear o tráfego HTTP/HTTPS externo para os serviços dentro do cluster. Ele cria automaticamente um LoadBalancer service que expõe o cluster externamente.</p></blockquote><h4 id="implantando-a-aplicação"><span class="me-2">Implantando a aplicação</span><a href="#implantando-a-aplicação" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span> <button aria-label="copy" data-title-succeed="Copiado!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="c"># Implantar aplicação</span>
+kubectl apply <span class="nt">-f</span> manifests/deployment.yaml <span class="nt">-n</span> ilab-chat
+kubectl apply <span class="nt">-f</span> manifests/service.yaml <span class="nt">-n</span> ilab-chat
+</pre></table></code></div></div><h4 id="configurando-loadbalancer-service"><span class="me-2">Configurando LoadBalancer Service</span><a href="#configurando-loadbalancer-service" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><p>Crie um arquivo <code class="language-plaintext highlighter-rouge">loadbalancer-service.yaml</code> ou aplique diretamente:</p><div class="language-yaml highlighter-rouge"><div class="code-header"> <span data-label-text="YAML"><i class="fas fa-code fa-fw small"></i></span> <button aria-label="copy" data-title-succeed="Copiado!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Service</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">ilab-client-lb</span>
+  <span class="na">namespace</span><span class="pi">:</span> <span class="s">ilab-chat</span>
+  <span class="na">labels</span><span class="pi">:</span>
+    <span class="na">app</span><span class="pi">:</span> <span class="s">ilab-client</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">type</span><span class="pi">:</span> <span class="s">LoadBalancer</span>
+  <span class="na">ports</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">port</span><span class="pi">:</span> <span class="m">8080</span>
+    <span class="na">targetPort</span><span class="pi">:</span> <span class="m">8080</span>
+    <span class="na">protocol</span><span class="pi">:</span> <span class="s">TCP</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">http</span>
+  <span class="na">selector</span><span class="pi">:</span>
+    <span class="na">app</span><span class="pi">:</span> <span class="s">ilab-client</span>
+</pre></table></code></div></div><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span> <button aria-label="copy" data-title-succeed="Copiado!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre><span class="c"># Aplicar LoadBalancer service</span>
+kubectl apply <span class="nt">-f</span> - <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh">
+apiVersion: v1
+kind: Service
+metadata:
+  name: ilab-client-lb
+  namespace: ilab-chat
+  labels:
+    app: ilab-client
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: ilab-client
+</span><span class="no">EOF
+</span></pre></table></code></div></div><h4 id="configurando-nginx-ingress"><span class="me-2">Configurando NGINX Ingress</span><a href="#configurando-nginx-ingress" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><p>Crie um arquivo <code class="language-plaintext highlighter-rouge">ingress.yaml</code> ou aplique diretamente:</p><div class="language-yaml highlighter-rouge"><div class="code-header"> <span data-label-text="YAML"><i class="fas fa-code fa-fw small"></i></span> <button aria-label="copy" data-title-succeed="Copiado!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre><td class="rouge-code"><pre><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">networking.k8s.io/v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Ingress</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">ilab-client-ingress</span>
+  <span class="na">namespace</span><span class="pi">:</span> <span class="s">ilab-chat</span>
+  <span class="na">annotations</span><span class="pi">:</span>
+    <span class="na">kubernetes.io/ingress.class</span><span class="pi">:</span> <span class="s">nginx</span>
+    <span class="na">nginx.ingress.kubernetes.io/rewrite-target</span><span class="pi">:</span> <span class="s">/</span>
+    <span class="na">nginx.ingress.kubernetes.io/ssl-redirect</span><span class="pi">:</span> <span class="s2">"</span><span class="s">false"</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">rules</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">http</span><span class="pi">:</span>
+      <span class="na">paths</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">path</span><span class="pi">:</span> <span class="s">/</span>
+        <span class="na">pathType</span><span class="pi">:</span> <span class="s">Prefix</span>
+        <span class="na">backend</span><span class="pi">:</span>
+          <span class="na">service</span><span class="pi">:</span>
+            <span class="na">name</span><span class="pi">:</span> <span class="s">ilab-client</span>
+            <span class="na">port</span><span class="pi">:</span>
+              <span class="na">number</span><span class="pi">:</span> <span class="m">8080</span>
+</pre></table></code></div></div><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span> <button aria-label="copy" data-title-succeed="Copiado!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre><td class="rouge-code"><pre><span class="c"># Aplicar Ingress NGINX</span>
+kubectl apply <span class="nt">-f</span> - <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh">
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ilab-client-ingress
+  namespace: ilab-chat
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ilab-client
+            port:
+              number: 8080
+</span><span class="no">EOF
+</span></pre></table></code></div></div><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span> <button aria-label="copy" data-title-succeed="Copiado!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre><span class="c"># Verificar deployment</span>
+kubectl get pods <span class="nt">-n</span> ilab-chat
+kubectl get services <span class="nt">-n</span> ilab-chat
+kubectl get ingress <span class="nt">-n</span> ilab-chat
+</pre></table></code></div></div><blockquote><p>NOTA:</p><p>O comando <code class="language-plaintext highlighter-rouge">kubectl apply -f manifests/deployment.yaml -n ilab-chat</code> implanta o deployment da aplicação InstructLab no namespace <code class="language-plaintext highlighter-rouge">ilab-chat</code>. O deployment define como a aplicação será executada, incluindo o número de réplicas e as configurações do container.</p><p>O comando <code class="language-plaintext highlighter-rouge">kubectl apply -f manifests/service.yaml -n ilab-chat</code> cria um serviço ClusterIP para a aplicação, permitindo que outros pods no cluster acessem a aplicação pelo nome do serviço.</p><p>O <strong>LoadBalancer Service</strong> obtém um IP externo do provedor de nuvem (AWS ELB, GCP Load Balancer, Azure Load Balancer) para acesso direto à aplicação na porta 8080.</p><p>O <strong>Ingress NGINX</strong> permite acesso HTTP/HTTPS à aplicação através do Ingress Controller, oferecendo recursos avançados como roteamento baseado em path, SSL/TLS termination, e balanceamento de carga.</p></blockquote><h4 id="verificando-a-implantação"><span class="me-2">Verificando a implantação</span><a href="#verificando-a-implantação" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><p>Para verificar se a aplicação foi implantada corretamente, vamos rodar um pod com o curl no namespace <code class="language-plaintext highlighter-rouge">ilab-chat</code> e fazer uma requisição para o serviço do InstructLab que vai ser roteado para o <code class="language-plaintext highlighter-rouge">connector</code> do Skupper que está rodando no site privado.</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span> <button aria-label="copy" data-title-succeed="Copiado!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="c"># Rodar um pod temporário com curl</span>
+kubectl run curl <span class="se">\</span>
+    <span class="nt">--image</span><span class="o">=</span>quay.io/skupper/lanyard <span class="se">\</span>
+    <span class="nt">-n</span> ilab-chat <span class="se">\</span>
+    <span class="nt">--restart</span><span class="o">=</span>Never <span class="se">\</span>
+    <span class="nt">--rm</span> <span class="se">\</span>
+    <span class="nt">-i</span> <span class="se">\</span>
+    <span class="nt">--tty</span> <span class="se">\</span>
+    <span class="nt">--</span> <span class="se">\</span>
+    curl instructlab:8000
+</pre></table></code></div></div><p>Saída esperada:</p><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span> <button aria-label="copy" data-title-succeed="Copiado!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>{"s{"message":"Hello from InstructLab! Visit us at https://instructlab.ai"}pod "curl" deleted
+</pre></table></code></div></div><blockquote><p>NOTA:</p><p>O comando <code class="language-plaintext highlighter-rouge">kubectl run curl</code> cria um pod temporário com a imagem <code class="language-plaintext highlighter-rouge">quay.io/skupper/lanyard</code>, que contém o utilitário <code class="language-plaintext highlighter-rouge">curl</code>. O pod é executado no namespace <code class="language-plaintext highlighter-rouge">ilab-chat</code> e é removido automaticamente após a execução (<code class="language-plaintext highlighter-rouge">--rm</code>).</p></blockquote><h3 id="acesso-à-aplicação"><span class="me-2">Acesso à aplicação</span><a href="#acesso-à-aplicação" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>Você tem três opções para acessar a aplicação implantada:</p><h4 id="opção-1-port-forward-desenvolvimento-local"><span class="me-2">Opção 1: Port-forward (desenvolvimento local)</span><a href="#opção-1-port-forward-desenvolvimento-local" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span> <button aria-label="copy" data-title-succeed="Copiado!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="c"># Port-forward para a aplicação</span>
+kubectl port-forward service/ilab-client 8080:8080 <span class="nt">-n</span> ilab-chat
+</pre></table></code></div></div><p>Agora você pode acessar a aplicação em <code class="language-plaintext highlighter-rouge">http://localhost:8080</code>.</p><h4 id="opção-2-loadbalancer-service-acesso-direto"><span class="me-2">Opção 2: LoadBalancer Service (acesso direto)</span><a href="#opção-2-loadbalancer-service-acesso-direto" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span> <button aria-label="copy" data-title-succeed="Copiado!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="c"># Obter o IP externo do LoadBalancer</span>
+kubectl get service ilab-client-lb <span class="nt">-n</span> ilab-chat
+
+<span class="c"># Aguardar até que EXTERNAL-IP não seja &lt;pending&gt;</span>
+<span class="c"># Em seguida, acesse: http://&lt;EXTERNAL-IP&gt;:8080</span>
+</pre></table></code></div></div><h4 id="opção-3-nginx-ingress-produção-recomendada"><span class="me-2">Opção 3: NGINX Ingress (produção recomendada)</span><a href="#opção-3-nginx-ingress-produção-recomendada" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span> <button aria-label="copy" data-title-succeed="Copiado!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="c"># Obter o IP do Ingress Controller</span>
+kubectl get service ingress-nginx-controller <span class="nt">-n</span> ingress-nginx
+
+<span class="c"># Verificar o status do Ingress</span>
+kubectl get ingress ilab-client-ingress <span class="nt">-n</span> ilab-chat
+
+<span class="c"># Acessar via Ingress (substitua &lt;INGRESS-IP&gt; pelo IP obtido):</span>
+<span class="c"># http://&lt;INGRESS-IP&gt;/</span>
+<span class="c"># ou configure DNS para apontar para o IP do Ingress</span>
+</pre></table></code></div></div><blockquote><p>NOTA:</p><p><strong>Port-forward</strong>: Ideal para desenvolvimento e testes locais.</p><p><strong>LoadBalancer</strong>: Fornece acesso direto com IP externo, ideal para ambientes simples.</p><p><strong>Ingress</strong>: Solução mais robusta para produção, permite configuração de SSL/TLS, múltiplos domínios e roteamento avançado.</p></blockquote><h2 id="conclusão"><span class="me-2">Conclusão</span><a href="#conclusão" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>Parabéns! Você implementou com sucesso um chatbot InstructLab no Kubernetes usando Skupper para conectar de forma segura um modelo de IA privado com uma interface pública. Esta solução permite que organizações mantenham seus modelos de IA em ambientes seguros e controlados, enquanto ainda fornecem acesso aos usuários finais através de uma interface web escalável.</p><p>A combinação de InstructLab e Skupper fornece uma arquitetura robusta que atende aos requisitos de segurança e escalabilidade necessários para aplicações de IA empresariais.</p><p>Referências:</p><ul><li><a href="https://github.com/instructlab">Comandos extraídos do projeto InstructLab</a><li><a href="https://github.com/instructlab/instructlab/blob/main/README.md#-installing-ilab">Guia de instalação do InstructLab</a><li><a href="https://github.com/rafaelvzago/ilab-client">Chatbot ILAB Frontend</a><li><a href="https://kubernetes.github.io/ingress-nginx/">NGINX Ingress Controller</a><li><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/">Kubernetes Ingress</a><li><a href="https://kubernetes.io/docs/concepts/services-networking/service/">Kubernetes Services</a><li><a href="https://skupper.io/docs/">Skupper Documentation</a></ul></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw me-1"></i> <a href="/categories/ai/">AI</a>, <a href="/categories/kubernetes/">Kubernetes</a>, <a href="/categories/instructlab/">instructlab</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw me-1"></i> <a href="/tags/ai/" class="post-tag no-text-decoration" >ai</a> <a href="/tags/skupper/" class="post-tag no-text-decoration" >skupper</a> <a href="/tags/instructlab/" class="post-tag no-text-decoration" >instructlab</a> <a href="/tags/kubernetes/" class="post-tag no-text-decoration" >kubernetes</a> <a href="/tags/nginx/" class="post-tag no-text-decoration" >nginx</a> <a href="/tags/ingress/" class="post-tag no-text-decoration" >ingress</a> <a href="/tags/loadbalancer/" class="post-tag no-text-decoration" >loadbalancer</a></div><div class=" post-tail-bottom d-flex justify-content-between align-items-center mt-5 pb-2 " ><div class="license-wrapper"> Esta postagem está licenciada sob <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> pelo autor.</div><div class="share-wrapper d-flex align-items-center"> <span class="share-label text-muted">Compartilhar</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=Controlando%20e%20protegendo%20modelos%20de%20IA%20com%20seguran%C3%A7a%20usando%20Deepseek,%20Skupper%20e%20InstructLab%20-%20Terceiro%20e%20%C3%9Altimo%20Ato%20-%20Rafael%20Zago&url=https%3A%2F%2Frafaelvzago.github.io%2Fposts%2Fcontrolando-progetendo-ia-deepseek-skupper-istio-terceiro-ultimo-ato%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter"> <i class="fa-fw fa-brands fa-square-x-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=Controlando%20e%20protegendo%20modelos%20de%20IA%20com%20seguran%C3%A7a%20usando%20Deepseek,%20Skupper%20e%20InstructLab%20-%20Terceiro%20e%20%C3%9Altimo%20Ato%20-%20Rafael%20Zago&u=https%3A%2F%2Frafaelvzago.github.io%2Fposts%2Fcontrolando-progetendo-ia-deepseek-skupper-istio-terceiro-ultimo-ato%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://t.me/share/url?url=https%3A%2F%2Frafaelvzago.github.io%2Fposts%2Fcontrolando-progetendo-ia-deepseek-skupper-istio-terceiro-ultimo-ato%2F&text=Controlando%20e%20protegendo%20modelos%20de%20IA%20com%20seguran%C3%A7a%20usando%20Deepseek,%20Skupper%20e%20InstructLab%20-%20Terceiro%20e%20%C3%9Altimo%20Ato%20-%20Rafael%20Zago" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <button id="copy-link" aria-label="Copy link" class="btn small" data-bs-toggle="tooltip" data-bs-placement="top" title="Copie o link" data-title-succeed="Link copiado com sucesso!" > <i class="fa-fw fas fa-link pe-none fs-6"></i> </button> </span></div></div></div></article></main><aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 text-muted"><div class="access"><section id="access-lastmod"><h2 class="panel-heading">Atualizados recentemente</h2><ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2"><li class="text-truncate lh-lg"> <a href="/posts/controlando-progetendo-ia-deepseek-skupper-istio-terceiro-ultimo-ato/">Controlando e protegendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab - Terceiro e Último Ato</a><li class="text-truncate lh-lg"> <a href="/posts/controlando-progetendo-ia-deepseek-skupper-istio-segundo-ato/">Controlando e protegendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab - Segundo Ato</a><li class="text-truncate lh-lg"> <a href="/posts/controlando-progetendo-ia-deepseek-skupper-istio-primeiro-ato/">Controlando e protegendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab - Primeiro Ato</a><li class="text-truncate lh-lg"> <a href="/posts/RTL-Linux/">Real-Time Linux: Uma Jornada de Baixa Latência</a><li class="text-truncate lh-lg"> <a href="/posts/protocolos-TCP-IP-o-inicio/">TCP/IP O início e a evolução</a></ul></section><section><h2 class="panel-heading">Trending Tags</h2><div class="d-flex flex-wrap mt-3 mb-1 me-3"> <a class="post-tag btn btn-outline-primary" href="/tags/skupper/">skupper</a> <a class="post-tag btn btn-outline-primary" href="/tags/ai/">ai</a> <a class="post-tag btn btn-outline-primary" href="/tags/kubernetes/">kubernetes</a> <a class="post-tag btn btn-outline-primary" href="/tags/networking/">networking</a> <a class="post-tag btn btn-outline-primary" href="/tags/instructlab/">instructlab</a> <a class="post-tag btn btn-outline-primary" href="/tags/redhat/">redhat</a> <a class="post-tag btn btn-outline-primary" href="/tags/devops/">devops</a> <a class="post-tag btn btn-outline-primary" href="/tags/openshift/">openshift</a> <a class="post-tag btn btn-outline-primary" href="/tags/security/">security</a> <a class="post-tag btn btn-outline-primary" href="/tags/deepseek/">deepseek</a></div></section></div><div class="toc-border-cover z-3"></div><section id="toc-wrapper" class="invisible position-sticky ps-0 pe-4 pb-4"><h2 class="panel-heading ps-3 pb-2 mb-0">Conteúdo</h2><nav id="toc"></nav></section></aside></div><div class="row"><div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-md-4"><aside id="related-posts" aria-labelledby="related-label"><h3 class="mb-4" id="related-label">Leia também</h3><nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4"><article class="col"> <a href="/posts/controlando-progetendo-ia-deepseek-skupper-istio-segundo-ato/" class="post-preview card h-100"><div class="card-body"> <time data-ts="1746327600" data-df="DD/MM/YYYY" > 04/05/2025 </time><h4 class="pt-0 my-2">Controlando e protegendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab - Segundo Ato</h4><div class="text-muted"><p>Neste artigo, vamos implementar passo a passo o chatbot com o Instructlab, além de expor o serviço de forma segura usando Skupper</p></div></div></a></article><article class="col"> <a href="/posts/controlando-progetendo-ia-deepseek-skupper-istio-primeiro-ato/" class="post-preview card h-100"><div class="card-body"> <time data-ts="1746154800" data-df="DD/MM/YYYY" > 02/05/2025 </time><h4 class="pt-0 my-2">Controlando e protegendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab - Primeiro Ato</h4><div class="text-muted"><p>Descubra como implantar e operar modelos de IA com segurança em ambientes híbridos, usando Skupper e InstructLab para proteger dados sensíveis.</p></div></div></a></article><article class="col"> <a href="/posts/running-local-ai-with-instruct-lab/" class="post-preview card h-100"><div class="card-body"> <time data-ts="1722481200" data-df="DD/MM/YYYY" > 01/08/2024 </time><h4 class="pt-0 my-2">Running local AI with Instruct Lab and Skupper</h4><div class="text-muted"><p>Welcome to the Ollama Pilot. Problem to solve The main goal of this project is to create a secure connection between two sites, enabling the communication between the engineer machine and an In...</p></div></div></a></article></nav></aside><nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation"> <a href="/posts/controlando-progetendo-ia-deepseek-skupper-istio-segundo-ato/" class="btn btn-outline-primary" aria-label="Anterior" ><p>Controlando e protegendo modelos de IA com segurança usando Deepseek, Skupper e InstructLab - Segundo Ato</p></a><div class="btn btn-outline-primary disabled" aria-label="Próximo"><p>-</p></div></nav><footer aria-label="Site Info" class=" d-flex flex-column justify-content-center text-muted flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3 " ><p>© <time>2025</time> <a href="https://github.com/rafaelvzago">Rafael Zago</a>. <span data-bs-toggle="tooltip" data-bs-placement="top" title="Exceto onde indicado de outra forma, as postagens do blog neste site são licenciadas sob a Creative Commons Attribution 4.0 International (CC BY 4.0) License pelo autor." >Alguns direitos reservados.</span></p><p>Feito com <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> usando o tema <a data-bs-toggle="tooltip" data-bs-placement="top" title="v7.3.0" href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener" >Chirpy</a></p></footer></div></div><div id="search-result-wrapper" class="d-flex justify-content-center d-none"><div class="col-11 content"><div id="search-hints"><section><h2 class="panel-heading">Trending Tags</h2><div class="d-flex flex-wrap mt-3 mb-1 me-3"> <a class="post-tag btn btn-outline-primary" href="/tags/skupper/">skupper</a> <a class="post-tag btn btn-outline-primary" href="/tags/ai/">ai</a> <a class="post-tag btn btn-outline-primary" href="/tags/kubernetes/">kubernetes</a> <a class="post-tag btn btn-outline-primary" href="/tags/networking/">networking</a> <a class="post-tag btn btn-outline-primary" href="/tags/instructlab/">instructlab</a> <a class="post-tag btn btn-outline-primary" href="/tags/redhat/">redhat</a> <a class="post-tag btn btn-outline-primary" href="/tags/devops/">devops</a> <a class="post-tag btn btn-outline-primary" href="/tags/openshift/">openshift</a> <a class="post-tag btn btn-outline-primary" href="/tags/security/">security</a> <a class="post-tag btn btn-outline-primary" href="/tags/deepseek/">deepseek</a></div></section></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><aside aria-label="Scroll to Top"> <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow"> <i class="fas fa-angle-up"></i> </button></aside></div><div id="mask" class="d-none position-fixed w-100 h-100 z-1"></div><aside id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-animation="true" data-bs-autohide="false" ><div class="toast-header"> <button type="button" class="btn-close ms-auto" data-bs-dismiss="toast" aria-label="Close" ></button></div><div class="toast-body text-center pt-0"><p class="px-2 mb-3">Uma nova versão do conteúdo está disponível.</p><button type="button" class="btn btn-primary" aria-label="Update"> atualização </button></div></aside><script> document.addEventListener('DOMContentLoaded', () => { SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<article class="px-1 px-sm-2 px-lg-4 px-xl-0"><header><h2><a href="{url}">{title}</a></h2><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div></header><p>{content}</p></article>', noResultsText: '<p class="mt-5">Oops! Nenhum resultado encontrado.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="me-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); }); </script>
