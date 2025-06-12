@@ -19,19 +19,19 @@ Neste artigo, vamos preparar todo o ambiente para servir o modelo de IA generati
 > NOTA Certifique-se de explicar o que cada comando Skupper faz na primeira vez que você o usa, especialmente para pessoas não familiarizadas com o Skupper. Os seguintes comandos devem ser explicados:
 >
 > **`skupper init`**: Inicializa a rede Skupper, configurando os componentes necessários para habilitar a comunicação segura entre os serviços.
-> 
+>
 > **`skupper expose`**: Expõe um serviço local através da rede Skupper, permitindo que ele seja acessado a partir de outros sites conectados ao Skupper.
-> 
+>
 > **`skupper token`**: Gera um token de conexão que pode ser usado por outros sites para se conectar à rede Skupper, garantindo uma comunicação segura.
-> 
+>
 > **`skupper link`**: Estabelece um link seguro entre dois sites Skupper usando o token criado por `skupper token`.
-> 
+>
 > **`skupper service status`**: Exibe o status dos serviços expostos através do Skupper, mostrando o que está acessível e como está conectado dentro da rede.
-> 
+>
 > **`ilab download`**: Baixa o modelo a ser usado pelo chatbot.
-> 
+>
 > **`ilab model serve`**: Inicia o servidor que será responsável por receber a entrada do usuário, enviá-la para o modelo LLaMA3 e enviar a resposta de volta ao usuário.
-> 
+>
 > **`ilab model chat`**: Inicia o chatbot, permitindo que o usuário interaja com ele.
 
 ### Executar a demonstração
@@ -67,13 +67,13 @@ pip install instructlab
 > NOTA
 >
 > O comando `mkdir instructlab && cd instructlab` é usado para criar um diretório chamado `instructlab` e navegar até ele.
-> 
+>
 > O comando `sudo dnf install gcc gcc-c++ make git python3.11 python3.11-devel` é usado para instalar as dependências necessárias para o InstructLab.
-> 
+>
 > O comando `python3.11 -m venv --upgrade-deps venv` é usado para criar um ambiente virtual chamado `venv` para o InstructLab.
-> 
+>
 > O comando `source venv/bin/activate` é usado para ativar o ambiente virtual.
-> 
+>
 > O comando `pip install instructlab` é usado para instalar o InstructLab no ambiente virtual.
 
 #### Inicializar a Configuração do InstructLab
@@ -112,9 +112,9 @@ Enjoy!
 > NOTA
 >
 > O comando `ilab config init` é usado para inicializar a configuração do InstructLab, criando o arquivo `config.yaml` com a configuração padrão.
-> 
+>
 > O usuário é solicitado a fornecer os valores necessários para inicializar o ambiente, como o caminho para o repositório de taxonomia e o caminho para o modelo.
-> 
+>
 > Após executar o `ilab config init`, seus diretórios serão semelhantes aos seguintes em um sistema Linux:
 
 ##### Arquivos e diretórios criados
@@ -135,12 +135,12 @@ host_port: 0.0.0.0:8000
 > NOTA
 >
 > O `host_port:` O endereço IP e a porta onde o modelo será exposto.
-> 
+>
 > Neste caso, o modelo será exposto em todas as interfaces.
 
 ### Baixando e Convertendo o modelo DEEPSEEK para o InstructLab
 
-Agora, você precisa baixar o modelo que será usado pelo chatbot e convertê-lo para o formato GGUF.  O InstructLab suporta vários modelos, mas para esta demonstração, usaremos o modelo DEEPSEEK.  O comando `ilab model download` é usado para baixar o modelo a ser usado pelo chatbot. 
+Agora, você precisa baixar o modelo que será usado pelo chatbot e convertê-lo para o formato GGUF.  O InstructLab suporta vários modelos, mas para esta demonstração, usaremos o modelo DEEPSEEK.  O comando `ilab model download` é usado para baixar o modelo a ser usado pelo chatbot.
 
 #### Criando um token do hugginface
 
@@ -149,6 +149,7 @@ Para baixar o modelo, você precisa de um token do Hugging Face.  Se você não 
 ```bash
 export HF_TOKEN=<seu_token>
 ```
+
 > NOTA
 > O comando `export HF_TOKEN=<seu_token>` é usado para definir a variável de ambiente `HF_TOKEN` com o seu token do Hugging Face.  Isso é necessário para baixar o modelo do Hugging Face.
 
@@ -212,6 +213,7 @@ Para expor o serviço do InstructLab para a internet, você precisa implantar o 
 Nessa demonstração, estamos utilizando o Kubernetes como plataforma para implantar o Skupper público. O Skupper público será responsável por expor o serviço do InstructLab para a internet, permitindo que o aplicativo Ollama Pilot envie solicitações ao modelo de chat do InstructLab. Para instalar o skupper, vamos usar o `skupper` cli, que é uma ferramenta de linha de comando para interagir com o Skupper.
 
 #### Instalar o Skupper Público
+
 Para instalar o Skupper público, vamos usar o `skupper` cli, que é uma ferramenta de linha de comando para interagir com o Skupper. O Skupper CLI é usado para criar e gerenciar sites Skupper, além de expor serviços e estabelecer links entre sites.
 
 1. **Instalar o Skupper CLI**
@@ -220,10 +222,11 @@ Para instalar o Skupper público, vamos usar o `skupper` cli, que é uma ferrame
 
    ```bash
    curl https://skupper.io/v2/install.sh | sh
-  ```
-    > NOTA
-    >
-    > O comando `curl https://skupper.io/v2/install.sh | sh` é usado para baixar e instalar o Skupper CLI no seu ambiente local. Isso é necessário para interagir com o Skupper e implantar o serviço do InstructLab.
+   ```
+
+  > NOTA
+  >
+  > O comando `curl https://skupper.io/v2/install.sh | sh` é usado para baixar e instalar o Skupper CLI no seu ambiente local. Isso é necessário para interagir com o Skupper e implantar o serviço do InstructLab.
 
 2. **Instalar o Skupper no cluster Kubernetes**
 
@@ -242,13 +245,14 @@ Para instalar o Skupper público, vamos usar o `skupper` cli, que é uma ferrame
 3. **Criar o namespace e inicializar o Skupper no cluster Kubernetes**
 
     Após instalar o Skupper CLI, você precisa criar um namespace no cluster Kubernetes onde o Skupper será implantado. Execute o seguinte comando para criar um namespace chamado `ilab-chat` e inicializar o Skupper:
-    
+
     ```bash
 
     kubectl create ns ilab-chat
     export SKUPPER_PLATFORM=kubernetes
     skupper site create ilab-chat -n ilab-chat --enable-link-access
     ```
+
     > NOTA
     > O comando `kubectl create ns ilab-chat` cria um novo namespace chamado `ilab-chat` no cluster Kubernetes. Isso é necessário para isolar os recursos do Skupper e do InstructLab em um namespace separado.
     > O comando `export SKUPPER_PLATFORM=kubernetes` define a plataforma como Kubernetes, que é necessária para o Skupper funcionar corretamente.
@@ -269,11 +273,11 @@ Para instalar o Skupper público, vamos usar o `skupper` cli, que é uma ferrame
     NAME                            READY   STATUS    RESTARTS   AGE
     skupper-router-cfc4c58f-pmhqv   2/2     Running   0          47s
     ```
+
   > NOTA
   >
   > O comando `kubectl get pods -n ilab-chat` é usado para verificar o status dos pods no namespace `ilab-chat`. A saída deve mostrar que o pod `skupper-router` está em execução, o que indica que o Skupper foi instalado com sucesso.
   > O pod skupper-router é o componente principal do Skupper, responsável pelo roteamento de tráfego entre sites.
-
 
 ### Implantação do Skupper Privado
 
@@ -302,9 +306,9 @@ skupper connector create instructlab 8000 --host localhost
 > NOTA
 >
 > `SKUPPER_PLATFORM=podman` é usado para definir a plataforma como podman.  Isso é necessário porque o Skupper privado será executado em um contêiner podman.
-> 
+>
 > `skupper site create ilab-podman` é usado para criar um site Skupper chamado `ilab-podman`, configurando os componentes necessários para habilitar a comunicação segura entre os serviços.
-> 
+>
 > `skupper connector create instructlab 8000 --host localhost` é usado para criar um conector que conecta o serviço InstructLab local (executando na porta 8000) à rede Skupper, tornando-o disponível para sites remotos.
 
 ### Comunicação Segura Entre os Dois Sites com Skupper
@@ -330,9 +334,9 @@ skupper system setup --force
 > NOTA
 >
 > O comando `mkdir -p` cria a estrutura de diretórios necessária para o Skupper gerenciar recursos de entrada.
-> 
+>
 > O arquivo `link.yaml` é movido para o diretório de recursos onde o Skupper pode detectá-lo automaticamente.
-> 
+>
 > `skupper system setup --force` força a reconfiguração do sistema Skupper para aplicar o novo link.
 
 Verifique o status do link Skupper:
@@ -350,31 +354,17 @@ Endpoint:       skupper-router-inter-router-ilab-chat.apps.*********.com:443
 > NOTA
 >
 > `skupper link status` é usado para exibir o status de um link específico na rede Skupper.
-> 
+>
 > O status "Ok" indica que a conexão foi estabelecida com sucesso.
-> 
+>
 > O endpoint mostra a URL pública onde o link está ativo (mascarado por segurança).
-
-### Criando o Listener e o Connector para cada site.
-
-Para expor o serviço do InstructLab para a VAN(Virtual Application Network) do Skupper, precisamos criar um connector no site privado e um listener no site público. O connector é responsável por conectar o serviço local (modelo IA) à rede Skupper, enquanto o listener cria um ponto de entrada na rede Skupper para receber conexões.
-
-
-#### Criando o Connector no Site Privado
-No terminal onde o Skupper **privado** está em execução, execute o seguinte comando para criar o connector:
-
-```bash
-skupper connector create instructlab 8000 --host localhost
-```
 
 > NOTA
 >
-> O comando `skupper connector create instructlab 8000 --host localhost` cria um conector que conecta o serviço local (modelo IA) à rede Skupper, permitindo que ele seja acessado por outros sites conectados ao Skupper.
 > O parâmetro `instructlab` é o nome do serviço que será exposto, e `8000` é a porta onde o serviço está sendo executado.
 > O parâmetro `--host localhost` especifica que o conector deve se conectar ao serviço local na interface de loopback (localhost), permitindo que o serviço seja acessado dentro do ambiente privado.
 
 #### Criando o Listener no Site Público
-
 
 A última etapa é criar um listener no site público para receber as conexões do connector no site privado. Esta é a configuração que permite que o aplicativo no cluster público acesse o modelo de IA no ambiente privado.
 
@@ -391,10 +381,9 @@ skupper listener create instructlab 8000
 >
 
 > **Relacionamento Connector e Listener no Skupper:**
-> 
-> - **Connector** (site privado): `skupper connector create instructlab 8000 --host localhost` - conecta o serviço local (modelo IA) à rede Skupper
+>
 > - **Listener** (site público): `skupper listener create instructlab 8000` - cria um ponto de entrada na rede Skupper para receber conexões
-> 
+>
 > O **connector** "empurra" o serviço local para a rede Skupper, enquanto o **listener** "puxa" esse serviço para o site remoto. Juntos, eles criam um túnel seguro que permite que aplicações no site público acessem serviços no site privado como se fossem locais.
 
 ## Iniciando o Serviço do Modelo no Site Privado
@@ -452,8 +441,6 @@ INFO 2025-01-15 10:30:45,125 Server ready to accept connections
 
 Agora o modelo DeepSeek está rodando no ambiente privado e disponível através da conexão segura Skupper para aplicações no site público.
 
-
-
 ### Testando a Conectividade através do Skupper do Site Público
 
 Agora que temos o modelo de IA rodando no site privado e a conexão Skupper estabelecida, vamos testar se a comunicação está funcionando corretamente a partir do site público (OpenShift).
@@ -466,7 +453,6 @@ Warning: would violate PodSecurity "restricted:latest": allowPrivilegeEscalation
 {"message":"Hello from InstructLab! Visit us at https://instructlab.ai"}pod "curl" deleted
 
 ```
-
 
 > NOTA
 >
@@ -498,6 +484,7 @@ Neste segundo ato da série, estabelecemos com sucesso a base fundamental para u
 ### Próximos Passos
 
 No **terceiro e último ato**, vamos:
+
 - Implantar a interface web do chatbot no Kubernetes
 - Configurar NGINX Ingress e LoadBalancer para acesso externo
 - Integrar a solução completa com o InstructLab
@@ -516,3 +503,4 @@ Esta arquitetura fornece a base sólida para organizações que precisam manter 
 - [Skupper Documentation](https://skupper.io/docs/)
 - [DeepSeek Model](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B)
 - [Podman Documentation](https://docs.podman.io/)
+
