@@ -14,7 +14,7 @@ O [OpenShift Service Mesh](https://www.redhat.com/en/technologies/cloud-computin
 
 Entre os destaques, o OSSM3 oferece integração aprimorada com virtualização, suporte robusto a upgrades (tanto in-place quanto revisados), e uma experiência de gerenciamento mais rica com a inclusão do Kiali Console como operador padrão e um console dedicado para administração do mesh. A solução também amplia o suporte a ambientes multi-cluster, promovendo alta disponibilidade e resiliência.
 
-No âmbito do ISTIO, o controle passa a ser realizado em nível de cluster, proporcionando visibilidade global. Mudanças importantes incluem a remoção do gerenciamento de gateways pelo operador (agora feito via injeção por rota ou serviço), a descontinuação do Istio Operator Resource (IOR) e o fim do suporte à federação de meshes, exigindo contato direto com a Red Hat para necessidades específicas.
+No âmbito do Istio, o controle passa a ser realizado em nível de cluster, proporcionando visibilidade global. Mudanças importantes incluem a remoção do gerenciamento de gateways pelo operador (agora feito via injeção por rota ou serviço), a descontinuação do Istio Operator Resource (IOR) e o fim do suporte à federação de meshes, exigindo contato direto com a Red Hat para necessidades específicas.
 
 Por fim, o OSSM3 traz o modo Istio Ambient Mode, com destaque para Zero Trust Tunnels (ztunnel), Waypoints (Envoy) para recursos avançados de camada 7 e a operação sidecarless, que reduz o consumo de recursos e simplifica a arquitetura.
 
