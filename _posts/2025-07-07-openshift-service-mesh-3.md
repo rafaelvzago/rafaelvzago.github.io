@@ -2,7 +2,7 @@
 title: "OpenShift Service Mesh 3.0"
 date: 2025-07-07
 categories: [OpenShift, Service Mesh, Istio]
-tags: [openshift, service-mesh, istio, kiali, ambient-mode, devops, security, observability, redhat, migration]
+tags: [openshift, service-mesh, Istio, kiali, ambient-mode, devops, security, observability, redhat, migration]
 image:
   path: /assets/img/headers/openshift-service-mesh-3.png
   alt: OpenShift Service Mesh 3 Overview
@@ -10,7 +10,7 @@ image:
 
 ## Overview
 
-O [OpenShift Service Mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh) 3 (OSSM3) marca uma nova era na gestão de service meshes no ecossistema Red Hat, trazendo mudanças significativas e recursos avançados para ambientes corporativos. A principal novidade é a adoção do ISTIO como núcleo da solução, substituindo o Maistra e alinhando o OSSM3 com as tendências globais de [service mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh).
+O [OpenShift Service Mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh) 3 (OSSM3) marca uma nova era na gestão de service meshes no ecossistema Red Hat, trazendo mudanças significativas e recursos avançados para ambientes corporativos. A principal novidade é a adoção do Istio como núcleo da solução, substituindo o Maistra e alinhando o OSSM3 com as tendências globais de [service mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh).
 
 Entre os destaques, o OSSM3 oferece integração aprimorada com virtualização, suporte robusto a upgrades (tanto in-place quanto revisados), e uma experiência de gerenciamento mais rica com a inclusão do Kiali Console como operador padrão e um console dedicado para administração do mesh. A solução também amplia o suporte a ambientes multi-cluster, promovendo alta disponibilidade e resiliência.
 
@@ -83,7 +83,7 @@ metadata:
   name: default
 spec:
   version: v1.24.3
-  namespace: istio-system
+  namespace: Istio-system
   updateStrategy:
     type: InPlace
   values:
@@ -192,7 +192,7 @@ Existem várias coisas que os clientes podem fazer HOJE para se prepararem para 
 
 Os procedimentos de migração documentados visam mover as cargas de trabalho para o Red Hat [OpenShift Service Mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh) 3, mantendo a conectividade da aplicação.
 
-- Os planos de controle do [Service Mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh) 2 e 3 são implantados em paralelo no mesmo *namespace* (por exemplo, `istio-system`).
+- Os planos de controle do [Service Mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh) 2 e 3 são implantados em paralelo no mesmo *namespace* (por exemplo, `Istio-system`).
 - Os rótulos (*labels*) das cargas de trabalho são então configurados para migrar para o plano de controle do [Service Mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh) 3 durante o próximo *rollout*.
 
 ## Istio Ambient Mode (Developer Preview) "Sidecar-less" [service mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh)
@@ -216,7 +216,7 @@ Uma das maiores desvantagens dos service meshes tradicionais tem sido a exigênc
 
 ![Istio Ambient Mode](assets/openshift-service-mesh-ambient-mode.png)
 
-- **istio-cni**: É um *daemonset* que configura o redirecionamento do tráfego do pod com o ztunnel.
+- **Istio-cni**: É um *daemonset* que configura o redirecionamento do tráfego do pod com o ztunnel.
 - **Ztunnel**: É um proxy por nó (*per node*) para lidar eficientemente com funcionalidades da Camada 4 (L4).
   - Um proxy leve, de alta performance, "escrito em Rust", e específico para o Istio.
   - Habilita funcionalidades do mesh como criptografia mTLS, políticas de L4 e telemetria.
@@ -255,7 +255,7 @@ Em suma, o OSSM3 é uma atualização crucial que fortalece o ecossistema do Ope
 ## Referencias
 
 - **[OpenShift Service Mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh)**
-- **[Istio](https://istio.io/)**
+- **[Istio](https://Istio.io/)**
 - **[Kiali](https://kiali.io/)**
 - **[Argo Rollouts](https://github.com/gitops-examples/rollouts-demo-osm)**
 - **[Envoy Proxy](https://www.envoyproxy.io/)**
