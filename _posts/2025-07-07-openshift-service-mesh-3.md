@@ -96,7 +96,7 @@ spec:
 
 ### Observabilidade com Kiali Console
 
-O OSSM3 inclui o **Kiali Console** como operador padrão, oferecendo uma experiência de observabilidade nativa e integrada para service meshes. O Kiali proporciona:
+O OSSM3 oferece suporte ao **Kiali Console** através de operador separado para observabilidade. É importante notar que o Kiali não é uma novidade exclusiva da v3, pois também era suportado na v2. De fato, na v2 o Kiali era instalado por padrão, enquanto na v3 precisa ser instalado separadamente. Essa mudança reflete a ideia de que o OSSM 3 oferece maior flexibilidade e pode ser integrado com uma ampla gama de soluções; o operador sail gerencia apenas o Istio. O Kiali proporciona:
 
 - **Visualização da Topologia**: Interface gráfica intuitiva para mapear dependências entre serviços e compreender o fluxo de tráfego em tempo real.
 - **Métricas Integradas**: Acesso direto às métricas do Istio com dashboards pré-configurados para monitoramento de performance e latência.
@@ -104,7 +104,7 @@ O OSSM3 inclui o **Kiali Console** como operador padrão, oferecendo uma experi�
 - **Troubleshooting Avançado**: Ferramentas para identificar rapidamente problemas de conectividade, erros de configuração e gargalos de performance.
 - **Console Dedicado**: Um console específico para administração do mesh, separado do OpenShift Console principal, permitindo foco exclusivo na gestão do [service mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh).
 
-A integração nativa do Kiali elimina a necessidade de configurações adicionais complexas, proporcionando observabilidade completa desde o primeiro momento de implantação do OSSM3.
+Com a instalação separada do Kiali Operator, os usuários têm maior controle sobre as funcionalidades de observabilidade, podendo configurar exatamente o que necessitam para seu ambiente específico.
 
 ### Request Authentication usando JWT
 
@@ -145,7 +145,7 @@ Ele consiste em um proxy Envoy independente que é gerenciado pelo plano de cont
 - Um gateway de entrada (*ingress*) - um ponto de entrada para o mesh.
 - Um gateway de saída (*egress*) - um ponto de saída do mesh.
 
-A partir do [Service Mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh) 2.6, também é possível configurar gateways usando a API de Gateway do Kubernetes.
+A partir do [Service Mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh) 2.6, também foi possível configurar gateways usando a API de Gateway do Kubernetes. Embora tecnicamente verdadeiro, em retrospectiva, a implementação era bastante imatura. Recomendamos fortemente que usuários interessados na API Gateway façam uso do OSSM v3 no OCP 4.19 ou superior, onde os CRDs são adequadamente gerenciados e suportados na plataforma OpenShift subjacente.
 
 No [OpenShift Service Mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh) 3, os gateways não são mais gerenciados pelo operador. Isso proporciona maior simplicidade, flexibilidade e incentiva a prática recomendada de gateways gerenciados juntamente com as aplicações.
 
