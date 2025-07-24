@@ -89,23 +89,23 @@ A saída será semelhante à seguinte, com o usuário sendo solicitado a fornece
 ```bash
 Welcome to InstructLab CLI.
 This guide will help you to setup your environment.
-Please provide the following values to initiate the environment \[press Enter for defaults]:
-Path to taxonomy repo \[\/home\/user\/.local\/share\/instructlab\/taxonomy]:
-Path to your model \[\/home\/user\/.cache\/instructlab\/models\/merlinite-7b-lab-Q4_K_M.gguf]:
-Generating \`\/home\/user\/.config\/instructlab\/config.yaml\` and \`\/home\/user\/.local\/share\/instructlab\/internal\/train_configuration\/profiles\`...
+Please provide the following values to initiate the environment [press Enter for defaults]:
+Path to taxonomy repo [/home/user/.local/share/instructlab/taxonomy]:
+Path to your model [/home/user/.cache/instructlab/models/merlinite-7b-lab-Q4_K_M.gguf]:
+Generating `/home/user/.config/instructlab/config.yaml` and `/home/user/.local/share/instructlab/internal/train_configuration/profiles`...
 Please choose a train profile to use.
 Train profiles assist with the complexity of configuring specific GPU hardware with the InstructLab Training library.
 You can still take advantage of hardware acceleration for training even if your hardware is not listed.
-\[0] No profile (CPU, Apple Metal, AMD ROCm)
-\[1] Nvidia A100\/H100 x2 (A100_H100_x2.yaml)
-\[2] Nvidia A100\/H100 x4 (A100_H100_x4.yaml)
-\[3] Nvidia A100\/H100 x8 (A100_H100_x8.yaml)
-\[4] Nvidia L40 x4 (L40_x4.yaml)
-\[5] Nvidia L40 x8 (L40_x8.yaml)
-\[6] Nvidia L4 x8 (L4_x8.yaml)
-Enter the number of your choice \[hit enter for no profile] \[0]:
+[0] No profile (CPU, Apple Metal, AMD ROCm)
+[1] Nvidia A100\/H100 x2 (A100_H100_x2.yaml)
+[2] Nvidia A100\/H100 x4 (A100_H100_x4.yaml)
+[3] Nvidia A100\/H100 x8 (A100_H100_x8.yaml)
+[4] Nvidia L40 x4 (L40_x4.yaml)
+[5] Nvidia L40 x8 (L40_x8.yaml)
+[6] Nvidia L4 x8 (L4_x8.yaml)
+Enter the number of your choice [hit enter for no profile] [0]:
 No profile selected - any hardware acceleration for training must be configured manually.
-Initialization completed successfully, you're ready to start using \`ilab\`.
+Initialization completed successfully, you're ready to start using `ilab`.
 Enjoy!
 ```
 
@@ -371,7 +371,7 @@ A última etapa é criar um listener no site público para receber as conexões 
 - Ainda no terminal onde o Skupper **público** está em execução, execute o seguinte comando para criar o listener, já que é neste site o serviço será consumido:
 
 ```bash
-skupper listener create instructlab 8000
+skupper listener create instructlab 8000 -n ilab-chat
 ```
 
 > NOTA
