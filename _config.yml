@@ -36,11 +36,14 @@ google_site_verification: # fill in to your verification string
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
-google_analytics:
-  id: G-9J3YRPN8EN
+# Analytics configuration
+analytics:
+  google:
+    id: G-9J3YRPN8EN
 
+# Google Tag Manager configuration
 google_tag_manager:
-  id: GTM-592PS4S2
+  container_id: GTM-592PS4S2
 
 # Prefer color scheme setting.
 #
