@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎁 Amigo Secreto 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .app-title {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 28px;
+            text-align: center;
+        }
+        
+        /* Loading State */
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        /* Success State */
+        .success {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .greeting {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .greeting strong {
+            color: #667eea;
+        }
+        
+        .instruction {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .receiver-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 0 0 25px 0;
+            border: 3px solid #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .receiver-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .receiver-name {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            text-align: center;
+            word-wrap: break-word;
+        }
+        
+        .receiver-phone {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .receiver-phone::before {
+            content: '📱';
+            margin-right: 8px;
+        }
+        
+        .copy-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .copy-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+        
+        .warning {
+            margin-top: 10px;
+            padding: 15px;
+            background: #fff3cd;
+            border-radius: 10px;
+            color: #856404;
+            font-size: 16px;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .warning-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        /* Error State */
+        .error {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .error-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .error-title {
+            color: #721c24;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .error-message {
+            font-size: 18px;
+            color: #721c24;
+            margin-bottom: 20px;
+        }
+        
+        .error-hint {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #28a745;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: none;
+            animation: slideUp 0.3s ease-out;
+            z-index: 1000;
+            font-weight: bold;
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateX(-50%) translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .toast.show {
+            display: block;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .app-title {
+                font-size: 24px;
+            }
+            
+            .greeting {
+                font-size: 18px;
+            }
+            
+            .instruction {
+                font-size: 16px;
+            }
+            
+            .receiver-card {
+                padding: 25px 15px;
+            }
+            
+            .receiver-name {
+                font-size: 24px;
+            }
+            
+            .receiver-phone {
+                font-size: 18px;
+            }
+            
+            .copy-btn {
+                padding: 10px 25px;
+                font-size: 15px;
+            }
+            
+            .warning {
+                font-size: 14px;
+                padding: 12px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 25px 15px;
+            }
+            
+            .app-title {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+            
+            .receiver-name {
+                font-size: 20px;
+            }
+            
+            .receiver-phone {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="app-title">🎁 Amigo Secreto 2025</h1>
+        <div id="content">
+            <!-- Content will be dynamically inserted here -->
+        </div>
+    </div>
+    
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // ====== CORE DECODING FUNCTIONS ======
+        
+        /**
+         * Decode a Base64 ciphered pair string
+         * @param {string} cipheredString - Base64 encoded string
+         * @returns {Object} Decoded pair with giver and receiver info
+         */
+        function decodePair(cipheredString) {
+            try {
+                // Step 1: Decode from Base64
+                const base64Decoded = atob(cipheredString.trim());
+                
+                // Step 2: Convert from Latin-1 bytes to UTF-8 string
+                // atob() returns a binary string where each character represents a byte
+                // We need to convert these bytes to proper UTF-8
+                const bytes = new Uint8Array(base64Decoded.length);
+                for (let i = 0; i < base64Decoded.length; i++) {
+                    bytes[i] = base64Decoded.charCodeAt(i);
+                }
+                const decoded = new TextDecoder('utf-8').decode(bytes);
+                
+                // Step 3: Split by separator
+                const parts = decoded.split('|');
+                
+                // Step 4: Validate format (must have exactly 4 parts)
+                if (parts.length !== 4) {
+                    throw new Error('Invalid cipher format');
+                }
+                
+                // Step 5: Return structured data
+                return {
+                    success: true,
+                    giver: {
+                        name: parts[0],
+                        phone: parts[1]
+                    },
+                    receiver: {
+                        name: parts[2],
+                        phone: parts[3]
+                    }
+                };
+            } catch (error) {
+                return {
+                    success: false,
+                    error: 'Link inválido ou corrompido'
+                };
+            }
+        }
+        
+        /**
+         * Get ciphered string from URL (supports multiple formats)
+         * @returns {string|null} Ciphered string or null if not found
+         */
+        function getCipherFromURL() {
+            // Option A: Query parameter (?c=...)
+            const urlParams = new URLSearchParams(window.location.search);
+            const cipher = urlParams.get('c');
+            if (cipher) return cipher;
+            
+            // Option B: Hash fragment (#...)
+            const hash = window.location.hash.substring(1);
+            if (hash) return hash;
+            
+            // Option C: Path (/reveal/...)
+            const path = window.location.pathname;
+            const match = path.match(/\/reveal\/(.+)/);
+            if (match) return decodeURIComponent(match[1]);
+            
+            return null;
+        }
+        
+        /**
+         * Format phone number for display
+         * @param {string} phone - Phone number (11 digits)
+         * @returns {string} Formatted phone as (XX) XXXXX-XXXX
+         */
+        function formatPhone(phone) {
+            const digits = phone.replace(/\D/g, '');
+            
+            if (digits.length === 11) {
+                return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+            }
+            
+            // Fallback for non-standard formats
+            return phone;
+        }
+        
+        // ====== UI RENDERING FUNCTIONS ======
+        
+        /**
+         * Show loading state
+         */
+        function showLoading() {
+            const content = document.getElementById('content');
+            content.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p class="loading-text">Carregando...</p>
+                </div>
+            `;
+        }
+        
+        /**
+         * Show success state with decoded data
+         * @param {Object} data - Decoded pair data
+         */
+        function showSuccess(data) {
+            const content = document.getElementById('content');
+            content.innerHTML = `
+                <div class="success">
+                    <div class="greeting">
+                        <p>Olá, <strong>${escapeHtml(data.giver.name)}</strong>! 👋</p>
+                    </div>
+                    
+                    <h2 class="instruction">Você tirou:</h2>
+                    
+                    <div class="receiver-card">
+                        <div class="receiver-icon">🎯</div>
+                        <div class="receiver-name">${escapeHtml(data.receiver.name)}</div>
+                        <div class="receiver-phone">${formatPhone(data.receiver.phone)}</div>
+                        <button class="copy-btn" onclick="copyPhone('${escapeHtml(data.receiver.phone)}')">
+                            <span>📋</span>
+                            <span>Copiar Telefone</span>
+                        </button>
+                    </div>
+                    
+                    <div class="warning">
+                        <div class="warning-icon">⚠️</div>
+                        <p><strong>Mantenha em segredo!</strong><br>Não compartilhe este link com ninguém.</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        /**
+         * Show error state
+         * @param {string} message - Error message to display
+         */
+        function showError(message) {
+            const content = document.getElementById('content');
+            content.innerHTML = `
+                <div class="error">
+                    <div class="error-icon">❌</div>
+                    <h2 class="error-title">Erro</h2>
+                    <p class="error-message">${escapeHtml(message)}</p>
+                    <p class="error-hint">Entre em contato com o organizador do sorteio.</p>
+                </div>
+            `;
+        }
+        
+        /**
+         * Escape HTML to prevent XSS
+         * @param {string} text - Text to escape
+         * @returns {string} Escaped text
+         */
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // ====== INTERACTION FUNCTIONS ======
+        
+        /**
+         * Copy phone number to clipboard
+         * @param {string} phone - Phone number to copy
+         */
+        function copyPhone(phone) {
+            // Modern clipboard API
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(phone)
+                    .then(() => {
+                        showToast('✓ Telefone copiado!');
+                    })
+                    .catch(() => {
+                        fallbackCopy(phone);
+                    });
+            } else {
+                fallbackCopy(phone);
+            }
+        }
+        
+        /**
+         * Fallback copy method for older browsers
+         * @param {string} text - Text to copy
+         */
+        function fallbackCopy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                showToast('✓ Telefone copiado!');
+            } catch (err) {
+                showToast('❌ Erro ao copiar');
+            }
+            
+            document.body.removeChild(textarea);
+        }
+        
+        /**
+         * Show toast notification
+         * @param {string} message - Message to display
+         */
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        // ====== MAIN INITIALIZATION ======
+        
+        /**
+         * Initialize the application
+         */
+        function init() {
+            // Show loading state
+            showLoading();
+            
+            // Simulate minimal loading delay for UX
+            setTimeout(() => {
+                // Get cipher from URL
+                const cipher = getCipherFromURL();
+                
+                if (!cipher) {
+                    showError('Link inválido. Nenhum código encontrado na URL.');
+                    return;
+                }
+                
+                // Decode the cipher
+                const result = decodePair(cipher);
+                
+                if (result.success) {
+                    showSuccess(result);
+                } else {
+                    showError(result.error);
+                }
+            }, 500);
+        }
+        
+        // Run on page load
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
