@@ -9,6 +9,8 @@ image:
   alt: O Que Acontece Quando Você Conversa com uma IA
 ---
 
+{% include embed/youtube.html id='uhxG2B96k7Q' %}
+
 # Desvendando os Modelos de Linguagem de Grande Escala
 
 Você já parou para pensar no que realmente acontece quando você digita uma pergunta para o ChatGPT, Claude ou qualquer outro chatbot moderno? Por trás da interface amigável existe uma engenharia fascinante que, de certa forma, é mais simples conceitualmente do que parece — mas absurdamente complexa em escala.
