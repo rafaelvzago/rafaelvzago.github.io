@@ -65,3 +65,58 @@ This is Rafael Zago's personal blog built with Jekyll using the Chirpy theme. Th
 ## Code Style
 
 - **Indentation**: Use 4 spaces for indentation (no tabs)
+
+## Commit Message Standard
+
+### Format
+
+```
+<type>(<scope>): <short description>
+
+[optional body]
+```
+
+**Rules:**
+- Type and scope in English (conventional standard)
+- Description in English (keeps history searchable and consistent)
+- 72-character limit on the subject line
+- Imperative mood: "add post about X", not "added post about X"
+
+### Types
+
+| Type | When to use |
+|------|-------------|
+| `post` | New blog post published |
+| `draft` | New draft post (not yet published) |
+| `fix` | Typo corrections, broken links, layout bugs |
+| `feat` | New site feature (new page, new section, new widget) |
+| `chore` | Dependency updates, Gemfile changes, Makefile |
+| `config` | Changes to `_config.yml`, Jekyll or theme settings |
+| `ci` | GitHub Actions, deployment workflow changes |
+| `style` | CSS, layout, or visual-only changes |
+| `docs` | Changes to README, CLAUDE.md, or meta-documentation |
+| `asset` | New or updated images, favicons, static files |
+
+### Scopes (optional but recommended)
+
+| Scope | Meaning |
+|-------|---------|
+| `post/<slug>` | Specific post (e.g., `post(post/intro-k8s)`) |
+| `about` | About page |
+| `theme` | Chirpy theme customization |
+| `deps` | Gem/bundler dependencies |
+| `analytics` | Google Analytics config |
+| `qr` | QR code system |
+
+### Examples
+
+```
+post(post/intro-openshift): add new post about OpenShift service mesh
+fix(post/deepseek): correct typos in first act section
+chore(deps): update jekyll-theme-chirpy to 7.3.0
+config: enable table of contents for all posts
+asset: add header image for kubernetes post
+feat: add tag cloud to sidebar
+ci: update github pages deployment workflow
+docs(claude): add commit message standard to CLAUDE.md
+```
