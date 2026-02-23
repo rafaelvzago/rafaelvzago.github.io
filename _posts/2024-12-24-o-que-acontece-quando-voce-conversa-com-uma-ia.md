@@ -11,27 +11,27 @@ image:
 
 {% include embed/youtube.html id='uhxG2B96k7Q' %}
 
-# Desvendando os Modelos de Linguagem de Grande Escala
+# Desvendando os modelos de linguagem de grande escala
 
-Você já parou para pensar no que realmente acontece quando você digita uma pergunta para o ChatGPT, Claude ou qualquer outro chatbot moderno? Por trás da interface amigável existe uma engenharia fascinante que, de certa forma, é mais simples conceitualmente do que parece — mas absurdamente complexa em escala.
+Quando você digita uma mensagem pro ChatGPT ou pro Claude, o que acontece do outro lado é mais simples do que parece, mas opera numa escala difícil de visualizar.
 
-## A Essência: Um Narrador de Futebol Digital
+## A essência: um narrador de futebol digital
 
 Imagine a cena: final de Copa do Mundo, Brasil e Argentina, últimos minutos de jogo. O Galvão Bueno está narrando, a bola chega no atacante brasileiro, ele dribla um, dribla dois... e de repente o áudio falha. A transmissão continua, mas a voz do narrador desapareceu.
 
-Agora imagine que você tem uma máquina capaz de analisar tudo que o Galvão disse até aquele momento — o tom, o ritmo, os bordões, o contexto do jogo — e prever qual seria a próxima palavra que ele diria. *"Vai que é tua..."*, *"Haja coração..."*, *"GOOOOOL..."*?
+Agora imagine que você tem uma máquina capaz de analisar tudo que o Galvão disse até aquele momento, o tom, o ritmo, os bordões, o contexto do jogo, e prever qual seria a próxima palavra que ele diria. *"Vai que é tua..."*, *"Haja coração..."*, *"GOOOOOL..."*?
 
 Com essa máquina, você poderia completar a narração palavra por palavra: alimentar o que já foi dito, receber uma previsão da próxima palavra mais provável, adicionar essa palavra à narração, e repetir até completar a transmissão inteira.
 
-**Esse é exatamente o princípio fundamental por trás de um LLM.**
+É basicamente isso que um LLM faz.
 
-Um modelo de linguagem de grande escala é essencialmente uma função matemática extremamente sofisticada que recebe um texto como entrada e produz uma distribuição de probabilidades sobre todas as possíveis próximas palavras (ou, mais precisamente, tokens). É como ter milhares de narradores internos votando em qual seria a próxima palavra mais adequada.
+Um modelo de linguagem de grande escala é essencialmente uma função matemática sofisticada que recebe um texto como entrada e produz uma distribuição de probabilidades sobre todas as possíveis próximas palavras (ou, mais precisamente, tokens). É como ter milhares de narradores internos votando em qual seria a próxima palavra mais adequada.
 
 ![Infográfico: Como funcionam os LLMs](/assets/o-que-acontece-quando-voce-conversa-com-uma-ia-infografico.png)
 
-## Probabilidades, Não Certezas
+## Probabilidades, não certezas
 
-Uma distinção crucial: o modelo não "decide" qual palavra vem a seguir. Em vez disso, ele atribui uma probabilidade a cada palavra do seu vocabulário. Por exemplo:
+Vale notar: o modelo não "decide" qual palavra vem a seguir. Em vez disso, ele atribui uma probabilidade a cada palavra do seu vocabulário. Por exemplo:
 
 | Próxima Palavra | Probabilidade |
 |-----------------|---------------|
@@ -43,33 +43,33 @@ Uma distinção crucial: o modelo não "decide" qual palavra vem a seguir. Em ve
 
 O sistema então seleciona uma palavra com base nessas probabilidades. Esse processo de amostragem é controlado por um parâmetro chamado **temperatura**:
 
-- **Temperatura baixa**: O modelo age como um narrador contido, tipo Milton Leite — escolhe as palavras mais prováveis e seguras, gerando respostas previsíveis e conservadoras
-- **Temperatura alta**: O modelo vira um Galvão empolgado em final de Copa — aceita palavras menos prováveis, tornando as respostas mais criativas e emocionantes (mas potencialmente menos coerentes)
+- **Temperatura baixa**: O modelo age como um narrador contido, tipo Milton Leite: escolhe as palavras mais prováveis e seguras, gerando respostas previsíveis e conservadoras
+- **Temperatura alta**: O modelo vira um Galvão empolgado em final de Copa: aceita palavras menos prováveis e as respostas ficam mais criativas e emocionantes (mas potencialmente menos coerentes)
 
-Isso explica por que você pode fazer a mesma pergunta várias vezes e receber respostas diferentes — assim como dois narradores nunca descreveriam o mesmo lance da mesma forma, o modelo introduz variação através desse processo de amostragem.
+Isso explica por que você pode fazer a mesma pergunta várias vezes e receber respostas diferentes. Dois narradores nunca descrevem o mesmo lance da mesma forma; o modelo introduz variação através desse processo de amostragem.
 
-## O Treinamento: Absorvendo a Internet
+## O treinamento: absorvendo a internet
 
-Como um modelo aprende a fazer essas previsões? A resposta está no volume monumental de dados de treinamento.
+Como um modelo aprende a fazer essas previsões? A resposta está no volume enorme de dados de treinamento.
 
-### A Escala dos Dados
+### A escala dos dados
 
-Para contextualizar: se você lesse 24 horas por dia, sem pausas, levaria aproximadamente **2.600 anos** para consumir a quantidade de texto usada para treinar o GPT-3 — e o GPT-4 utilizou um volume estimado em **10 a 20 vezes maior**. Modelos como Llama 3 da Meta foram treinados com mais de 15 trilhões de tokens.
+Para contextualizar: se você lesse 24 horas por dia, sem pausas, levaria aproximadamente **2.600 anos** para consumir a quantidade de texto usada no GPT-3. O GPT-4 utilizou um volume estimado em **10 a 20 vezes maior**. Modelos como Llama 3 da Meta foram treinados com mais de 15 trilhões de tokens.
 
-O modelo processa todo esse texto através de um objetivo simples: dado um trecho de texto, prever qual é a próxima palavra. Parece trivial, mas esse objetivo aparentemente simples força o modelo a desenvolver uma compreensão profunda da linguagem, incluindo:
+O modelo processa todo esse texto através de um objetivo simples: dado um trecho de texto, prever qual é a próxima palavra. Parece trivial, mas esse objetivo força o modelo a desenvolver uma compreensão profunda da linguagem. O modelo acaba aprendendo:
 
 - Gramática e sintaxe
 - Contexto e coerência
 - Conhecimento factual
 - Raciocínio lógico (até certo ponto)
 
-### Parâmetros: Os Controles do Modelo
+### Parâmetros: os controles do modelo
 
-Um LLM é definido por milhões — ou bilhões — de valores numéricos chamados **parâmetros** ou **pesos**. Pense neles como os controles de uma mesa de som extremamente complexa: cada ajuste altera sutilmente como o modelo se comporta.
+Um LLM é definido por bilhões (às vezes trilhões) de valores numéricos chamados **parâmetros** ou **pesos**. Pense neles como os controles de uma mesa de som com bilhões de controles: cada ajuste altera sutilmente como o modelo se comporta.
 
 O GPT-4 possui estimados **1,7 trilhão de parâmetros**. O Llama 3.1 da Meta tem versões de 8B, 70B e 405B parâmetros. O Claude 3 Opus tem cerca de 175 bilhões.
 
-### Retropropagação: Aprendendo com os Erros
+### Retropropagação: aprendendo com os erros
 
 Nenhum humano ajusta esses parâmetros manualmente. Eles começam com valores aleatórios (o modelo inicial produz apenas ruído) e são refinados através de um processo chamado **retropropagação** (backpropagation):
 
@@ -80,15 +80,15 @@ Nenhum humano ajusta esses parâmetros manualmente. Eles começam com valores al
 
 ![Fluxo de Retropropagação](/assets/llm-retropropagacao.png)
 
-Repita isso trilhões de vezes e o modelo começa a produzir previsões surpreendentemente precisas — não apenas nos textos que viu, mas também em textos completamente novos.
+Repita isso trilhões de vezes e o modelo começa a produzir previsões bem precisas, inclusive em textos que nunca viu.
 
-## Pré-Treinamento vs. Fine-Tuning: Duas Etapas Distintas
+## Pré-treinamento vs. fine-tuning: duas etapas distintas
 
 O processo descrito acima é o **pré-treinamento**. Ele ensina o modelo a ser um excelente completador de texto, mas há um problema: completar texto da internet não é o mesmo que ser um assistente útil.
 
 Um modelo pré-treinado pode continuar qualquer texto, mas não necessariamente vai responder perguntas de forma útil ou evitar conteúdo problemático.
 
-### RLHF: Aprendizado por Reforço com Feedback Humano
+### RLHF: aprendizado por reforço com feedback humano
 
 Para transformar um completador de texto em um assistente, os desenvolvedores aplicam uma segunda fase de treinamento chamada **RLHF** (Reinforcement Learning from Human Feedback):
 
@@ -98,19 +98,19 @@ Para transformar um completador de texto em um assistente, os desenvolvedores ap
 
 Esse processo alinha o modelo com as expectativas humanas de utilidade, segurança e precisão.
 
-## A Arquitetura Transformer: O Coração dos LLMs Modernos
+## A arquitetura Transformer: o coração dos LLMs modernos
 
-Antes de 2017, modelos de linguagem processavam texto sequencialmente — uma palavra por vez. Isso era lento e dificultava capturar dependências de longo alcance.
+Antes de 2017, modelos de linguagem processavam texto sequencialmente, uma palavra por vez. Isso era lento e dificultava capturar dependências de longo alcance.
 
 O paper "Attention Is All You Need" (Vaswani et al., 2017) introduziu a arquitetura **Transformer**, que revolucionou o campo.
 
-### Embeddings: Traduzindo Palavras em Números
+### Embeddings: traduzindo palavras em números
 
-O primeiro passo em qualquer modelo de linguagem é converter texto em números. Cada palavra (ou token) é representada por um vetor — uma lista de centenas ou milhares de números.
+O primeiro passo em qualquer modelo de linguagem é converter texto em números. Cada palavra (ou token) é representada por um vetor, uma lista de centenas ou milhares de números.
 
 Esses vetores são chamados **embeddings** e codificam o "significado" das palavras de forma que palavras similares tenham vetores similares.
 
-### O Mecanismo de Atenção
+### O mecanismo de atenção
 
 O grande diferencial dos Transformers é o mecanismo de **atenção** (attention). Em vez de processar palavras uma por vez, o modelo analisa todas as palavras simultaneamente e permite que cada palavra "consulte" todas as outras para refinar seu significado.
 
@@ -124,7 +124,7 @@ Attention(Q, K, V) = softmax(QK^T / √d_k) V
 
 Onde Q (Query), K (Key) e V (Value) são projeções aprendidas dos embeddings de entrada.
 
-### Camadas e Profundidade
+### Camadas e profundidade
 
 Um Transformer típico empilha múltiplas camadas, cada uma contendo:
 
@@ -134,13 +134,13 @@ Um Transformer típico empilha múltiplas camadas, cada uma contendo:
 
 O GPT-4, por exemplo, possui estimadas 120 dessas camadas empilhadas, enquanto o Llama 3.1 405B tem 126 camadas.
 
-### Visualizando a Arquitetura
+### Visualizando a arquitetura
 
 ![Arquitetura do Transformer](/assets/llm-transformer-arquitetura.png)
 
 O diagrama acima ilustra o fluxo de dados através de um Transformer. O texto entra, é convertido em embeddings, passa por múltiplas camadas de atenção e redes feed-forward, e finalmente produz uma distribuição de probabilidades sobre o vocabulário.
 
-## A Escala Computacional: Números que Impressionam
+## A escala computacional: números que impressionam
 
 Treinar um LLM moderno requer poder computacional absurdo. Para ilustrar:
 
@@ -156,7 +156,7 @@ Isso só é possível graças a:
 
 O custo de treinar um modelo de ponta pode facilmente ultrapassar dezenas de milhões de dólares apenas em computação.
 
-## Testando na Prática com Python
+## Testando na prática com Python
 
 Podemos explorar alguns desses conceitos com código. Aqui está um exemplo usando o **Gemini** do Google no **Google Colab**:
 
@@ -175,7 +175,7 @@ model = genai.GenerativeModel('gemini-2.0-flash')
 
 def ver_probabilidades(texto: str):
     """Mostra possíveis continuações usando Gemini."""
-    
+
     prompt = f"""Você é um especialista em modelos de linguagem. Dado o início da frase "{texto}", liste as 5 palavras mais prováveis que um modelo de linguagem escolheria como próxima palavra.
 
 Responda APENAS neste formato exato, com porcentagens estimadas:
@@ -185,9 +185,9 @@ palavra3 - XX%
 palavra4 - XX%
 palavra5 - XX%
 """
-    
+
     response = model.generate_content(prompt)
-    
+
     print(f"Texto: '{texto}'")
     print(f"\nPróximas palavras mais prováveis:")
     print("-" * 40)
@@ -215,28 +215,17 @@ escuro - 8%
 
 Este código demonstra exatamente o que discutimos: o modelo analisa o contexto e estima quais palavras têm maior probabilidade de continuar a frase.
 
-## Conectando com Outros Projetos
+## Conectando com outros projetos
 
-Se você está interessado em executar modelos de linguagem localmente, recomendo conferir meu post sobre [InstructLab e Skupper](/posts/running-local-ai-with-instruct-lab/), onde exploro como criar chatbots com dados protegidos usando conexões seguras entre diferentes ambientes.
+Se você quer rodar modelos localmente, veja meu post sobre [InstructLab e Skupper](/posts/running-local-ai-with-instruct-lab/), onde exploro como criar chatbots com dados protegidos usando conexões seguras entre diferentes ambientes.
 
 ## Conclusão
 
-Os LLMs são, em sua essência, sofisticados completadores de texto que aprenderam padrões linguísticos a partir de volumes colossais de dados. A combinação de:
+No fundo, LLMs são completadores de texto que aprenderam padrões a partir de volumes enormes de dados. Um objetivo simples (prever a próxima palavra), escala absurda (bilhões de parâmetros, trilhões de tokens), uma arquitetura eficiente (Transformer com atenção) e uma fase de alinhamento (RLHF). Junto, isso produz sistemas que parecem "entender" linguagem, embora estejam executando operações matemáticas em larga escala.
 
-- **Objetivo simples**: Prever a próxima palavra
-- **Escala massiva**: Bilhões de parâmetros e trilhões de tokens de treinamento
-- **Arquitetura eficiente**: Transformers com mecanismos de atenção
-- **Alinhamento humano**: RLHF para utilidade e segurança
+Entender esses fundamentos ajuda a usar melhor as ferramentas, identificar limitações (alucinações, vieses) e avaliar com mais realismo o que elas de fato fazem.
 
-...resulta em sistemas que parecem "entender" linguagem, embora estejam apenas executando operações matemáticas extremamente sofisticadas.
-
-Entender esses fundamentos nos ajuda a:
-
-1. **Usar melhor** essas ferramentas (prompt engineering)
-2. **Identificar limitações** (alucinações, vieses)
-3. **Avaliar criticamente** as capacidades reais vs. percebidas
-
-Os LLMs são ferramentas poderosas, mas não são mágica — são matemática em escala impressionante.
+LLMs são ferramentas úteis. Não são mágica, não são inteligência geral. São matemática numa escala que é difícil de visualizar.
 
 ---
 
@@ -247,4 +236,3 @@ Os LLMs são ferramentas poderosas, mas não são mágica — são matemática e
 3. Ouyang, L. et al. (2022). [*Training language models to follow instructions with human feedback*](https://arxiv.org/abs/2203.02155). NeurIPS.
 4. Radford, A. et al. (2019). [*Language Models are Unsupervised Multitask Learners*](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf). OpenAI.
 5. 3Blue1Brown. (2024). [*How LLMs Work*](https://www.youtube.com/watch?v=LPZh9BOjkQs). YouTube.
-
