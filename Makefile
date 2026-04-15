@@ -1,4 +1,4 @@
-.PHONY: setup serve
+.PHONY: setup serve build test spec-init spec-version
 
 setup:
 	sudo dnf install -y gcc-c++ make patch perl-core zlib zlib-devel readline readline-devel \
@@ -11,3 +11,15 @@ setup:
 
 serve:
 	bundle exec jekyll serve
+
+build:
+	bundle exec jekyll build
+
+test: build
+	bundle exec htmlproofer ./_site
+
+spec-init:
+	uvx --from git+https://github.com/github/spec-kit.git specify init . --ai claude --script sh
+
+spec-version:
+	uvx --from git+https://github.com/github/spec-kit.git specify version
