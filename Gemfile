@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-gem "jekyll-theme-chirpy"
+gem "jekyll-theme-chirpy", "~> 7.4.1"
 
 group :test do
   gem "html-proofer", "~> 4.4"
@@ -26,5 +26,5 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 gem 'csv', '>= 3.3'
 
 # Fix for `base64` gem version conflict with `http_parser.rb` on JRuby builds
-gem 'base64'
+gem 'base64', "~> 0.2"
 
