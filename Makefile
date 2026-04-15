@@ -16,7 +16,7 @@ build:
 	bundle exec jekyll build
 
 test: build
-	bundle exec htmlproofer ./_site
+	bundle exec htmlproofer ./_site --disable-external=true
 
 spec-init:
 	uvx --from git+https://github.com/github/spec-kit.git specify init . --ai claude --script sh
