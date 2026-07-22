@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "deny": [
+      "Edit(_config.yml)",
+      "Write(_config.yml)",
+      "Edit(LICENSE)",
+      "Write(LICENSE)",
+      "Edit(Gemfile)",
+      "Write(Gemfile)",
+      "Edit(Gemfile.lock)",
+      "Write(Gemfile.lock)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'if echo \"$TOOL_INPUT\" | grep -qE \"_config\\.yml|LICENSE|Gemfile|Gemfile\\.lock\"; then echo \"BLOCKED: _config.yml, LICENSE, Gemfile, and Gemfile.lock are protected files\" >&2; exit 1; fi'"
+          }
+        ]
+      }
+    ]
+  }
+}
