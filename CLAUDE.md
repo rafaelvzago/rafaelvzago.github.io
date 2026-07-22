@@ -18,7 +18,8 @@ This is Rafael Zago's personal blog built with Jekyll using the Chirpy theme. Th
 - `bundle exec jekyll clean` - Clean the build directory
 
 ### Testing
-- `bundle exec htmlproofer ./_site` - Run HTML validation tests after building
+- `make test` - **MUST pass before any task is considered complete**. Runs `bundle exec jekyll build` followed by `bundle exec htmlproofer ./_site`
+- `bundle exec htmlproofer ./_site` - Run HTML validation tests after building (included in `make test`)
 
 ## Content Structure
 
@@ -37,6 +38,11 @@ This is Rafael Zago's personal blog built with Jekyll using the Chirpy theme. Th
 - Header images for posts are in `assets/img/headers/`
 - Favicons are in `assets/img/favicons/`
 
+### Sub-Sites
+- `qr/` - QR code redirect system (spec: `specs/qr-system/spec.md`). Accessed via direct URL only
+- `amigo/` - Secret Santa (Amigo Secreto) reveal app. Standalone HTML file, no Jekyll frontmatter. Accessed via direct URL only
+- Sub-sites are NOT linked from the homepage navigation and MUST NOT be added to `_tabs/`
+
 ### QR Code System
 - QR code generation system in `qr/` directory
 - `gerar_qrcodes.py` generates QR codes from URLs listed in `urls.txt`
@@ -49,6 +55,11 @@ This is Rafael Zago's personal blog built with Jekyll using the Chirpy theme. Th
 - **Timezone**: America/Sao_Paulo
 - **Base URL**: https://rafaelvzago.github.io
 - **Google Analytics**: G-9J3YRPN8EN
+
+### Dependency Management
+- All gems in `Gemfile` MUST have explicit version constraints (e.g., `~> 7.4.1`)
+- Run `bundle update <gem>` to update a specific gem, then verify with `make test`
+- Never remove version constraints from the Gemfile
 
 ## Git Workflow
 
@@ -63,6 +74,55 @@ This is Rafael Zago's personal blog built with Jekyll using the Chirpy theme. Th
 - Use appropriate header images from `assets/img/headers/`
 - Include relevant categories and tags in post frontmatter
 - TOC is enabled by default for posts
+
+## Content Quality
+
+All user-facing content (blog posts, page text in `_tabs/`) MUST be processed through the `/humanizer` skill before being considered final. This includes:
+- New blog posts
+- Significant edits to existing posts
+- About page or other tab page text updates
+
+Run `/humanizer` on the content before committing. This does NOT apply to technical documentation (CLAUDE.md, specs, README) or configuration files.
+
+## Spec-Driven Development (SDD)
+
+This project uses [GitHub spec-kit](https://github.com/github/spec-kit) for Spec-Driven Development. Specs are structured, behavior-oriented documents that serve as the source of truth for AI-assisted changes.
+
+### Directory Layout
+
+- `.specify/memory/constitution.md` - Project principles (read this before any change)
+- `.specify/templates/` - Templates for new specs, plans, and tasks
+- `.specify/scripts/` - Automation scripts for the SDD workflow
+- `.claude/skills/` - Spec-kit slash commands for Claude
+- `specs/` - Feature specification directories (one folder per feature)
+
+### Existing Baseline Specs
+
+- `specs/site-core/` - Jekyll + Chirpy configuration, theme, analytics, PWA
+- `specs/content-workflow/` - Blog post lifecycle, frontmatter, images, lastmod plugin
+- `specs/deployment/` - GitHub Actions CI/CD pipeline, gh-pages, CNAME
+- `specs/qr-system/` - QR code generation and redirect system
+
+### Workflow (for new features or significant changes)
+
+1. **Read the constitution** (`.specify/memory/constitution.md`) before starting
+2. **Check existing specs** in `specs/` for related features
+3. **Create a spec** using `/speckit-specify` for new features
+4. **Plan implementation** using `/speckit-plan` with tech stack details
+5. **Break into tasks** using `/speckit-tasks`
+6. **Implement** using `/speckit-implement`
+
+### When to use SDD
+
+- Adding a new site feature (new page, widget, integration)
+- Making structural changes (config, deployment, theme customization)
+- Modifying the QR system or adding a new subsystem
+
+### When NOT to use SDD
+
+- Writing or editing a blog post (just follow the content-workflow spec)
+- Fixing a typo or broken link
+- Updating a dependency version
 
 ## Code Style
 
@@ -79,6 +139,7 @@ This is Rafael Zago's personal blog built with Jekyll using the Chirpy theme. Th
 ```
 
 **Rules:**
+- All commits MUST follow this format. Non-compliant commits MUST be amended before merging
 - Type and scope in English (conventional standard)
 - Description in English (keeps history searchable and consistent)
 - 72-character limit on the subject line
