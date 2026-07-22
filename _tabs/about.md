@@ -21,6 +21,7 @@ Hoje sou senior software automation engineer na Red Hat, mas já passei por algu
 Sou devops de coração e também membro da organização do DevOpsDays SP
 
 - Organização do DevOpsDays 2020
+- Membro do Comitê Técnico - TDC 2026
 
 Abaixo estão as poucas contribuições que já fiz:
 
@@ -42,6 +43,8 @@ Abaixo estão as poucas contribuições que já fiz:
 - [Painel De startups a grandes empresas: Como escalar projetos de Inteligência Artificial com sucesso?](https://thedevconf.com/tdc/2025/florianopolis/trilha-inteligencia-artificial) - TDC 2025 Florianópolis
 - [DevOps na Vida Real: Falhas, Automatizações e Histórias que Ninguém Conta](https://thedevconf.com/tdc/2025/florianopolis/community-lounge) - TDC 2025 Florianópolis
 - [IA na Real: Como Você Está Usando ou Evitando a Inteligência Artificial?](https://thedevconf.com/tdc/2025/florianopolis/community-lounge) - TDC 2025 Florianópolis
+- [Criando sua IA Opensource com Deepseek e Protegendo seus dados.](https://thedevconf.com/palestrante/rafael-zago) - TDC 2025 Experience RIO (Ago 14, 2025)
+- [Criando sua IA Opensource com Deepseek e Protegendo seus dados.](https://thedevconf.com/palestrante/rafael-zago) - TDC 2025 SUMMIT BRASÍLIA (Nov 26, 2025)
 
 #### 2024
 
@@ -53,6 +56,7 @@ Abaixo estão as poucas contribuições que já fiz:
 - [Momento How To: How to Open-source](https://thedevconf.com/palestrante/rafael-zago) - TDC 2024 São Paulo  
 - [Painel 2: IA e o Futuro da Programação](https://developers.redhat.com/devnation/devnation-sao-paulo-2024) - DevNation Day São Paulo 2024  
 - [Usando Skupper e OpenShift AI/ML para Prevenir Fraudesde seguros de carros](https://app.4.events/palestrante-rafael-zago-4957-c18443) - #CPBR16 - Campus Party Brasil 2024
+- [Skupper.io: Conectando Serviços em Diferentes Clusters Kubernetes](https://thedevconf.com/palestrante/rafael-zago) - FLISOL-DF 2024 (Abr 27, 2024)
 
 #### 2023
 
@@ -79,9 +83,11 @@ Abaixo estão as poucas contribuições que já fiz:
 
 ### Trilhas Coordenadas  
 
-- [Trilha SRE e Observabilidade](https://thedevconf.com/palestrante/rafael-zago) - TDC 2025 Florianópolis  
-- [Community Lounge](https://thedevconf.com/palestrante/rafael-zago) - TDC 2024 Summit Brasília  
-- [Workshop Edgecraft: IA para Prevenir Fraudes em Seguros de Carros](https://thedevconf.com/palestrante/rafael-zago) - TDC 2024 Florianópolis  
+- [Trilha SRE e Observabilidade](https://thedevconf.com/palestrante/rafael-zago) - TDC 2025 Florianópolis
+- [Trilha Arquitetura Cloud](https://thedevconf.com/palestrante/rafael-zago) - TDC 2025 Florianópolis
+- [Programming Track](https://thedevconf.com/palestrante/rafael-zago) - TDC 2025 SUMMIT BRASÍLIA
+- [Community Lounge](https://thedevconf.com/palestrante/rafael-zago) - TDC 2024 Summit Brasília
+- [Workshop Edgecraft: IA para Prevenir Fraudes em Seguros de Carros](https://thedevconf.com/palestrante/rafael-zago) - TDC 2024 Florianópolis
 
 ### Workshops  
 
