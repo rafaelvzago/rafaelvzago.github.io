@@ -10,15 +10,13 @@ image:
 
 ## Overview
 
-O [OpenShift Service Mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh) 3 (OSSM3) marca uma nova era na gestão de service meshes no ecossistema Red Hat, trazendo mudanças significativas e recursos avançados para ambientes corporativos. A principal novidade é a adoção do Istio como núcleo da solução, substituindo o Maistra e alinhando o OSSM3 com as tendências globais de [service mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh).
+O [OpenShift Service Mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh) 3 (OSSM3) substitui o Maistra pelo Istio upstream como núcleo da solução. O Maistra era um fork customizado do Istio mantido pela Red Hat; com o OSSM3, a base passa a ser o Istio direto do projeto da comunidade — sem patches específicos, sem rebase.
 
-Entre os destaques, o OSSM3 oferece integração aprimorada com virtualização, suporte robusto a upgrades (tanto in-place quanto revisados), e uma experiência de gerenciamento mais rica com a inclusão do Kiali Console como operador padrão e um console dedicado para administração do mesh. A solução também amplia o suporte a ambientes multi-cluster, promovendo alta disponibilidade e resiliência.
+Entre as mudanças concretas: upgrades do control plane podem ser feitos in-place ou via revisão (canary), o Kiali precisa ser instalado separadamente via Kiali Operator, e o suporte a multi-cluster usa as topologias padrão do Istio upstream.
 
 No âmbito do Istio, o controle passa a ser realizado em nível de cluster, proporcionando visibilidade global. Mudanças importantes incluem a remoção do gerenciamento de gateways pelo operador (agora feito via injeção por rota ou serviço), a descontinuação do Istio Operator Resource (IOR) e o fim do suporte à federação de meshes, exigindo contato direto com a Red Hat para necessidades específicas.
 
 Por fim, o OSSM3 traz o modo Istio Ambient Mode, com destaque para Zero Trust Tunnels (ztunnel), Waypoints (Envoy) para recursos avançados de camada 7 e a operação sidecarless, que reduz o consumo de recursos e simplifica a arquitetura.
-
-Essas inovações posicionam o OSSM3 como uma solução moderna, escalável e alinhada às demandas de segurança, observabilidade e flexibilidade das organizações que utilizam o OpenShift.
 
 ---
 
@@ -39,33 +37,33 @@ Essas inovações posicionam o OSSM3 como uma solução moderna, escalável e al
 
 ### Foco em Segurança
 
-Aproveite segurança abrangente no networking de aplicações com criptografia mTLS transparente e políticas granulares, facilitando a implementação de redes zero trust.
+O mTLS é habilitado por padrão entre os serviços no mesh. Políticas de autorização permitem definir quem pode falar com quem usando seletores de namespace, service account ou labels de workload.
 
 ### Gerenciamento de Tráfego
 
-Controle o fluxo de tráfego e chamadas de API entre serviços, tornando as comunicações mais confiáveis e a rede mais resiliente.
+VirtualServices e DestinationRules do Istio controlam balanceamento, retries, timeouts e injeção de falhas. A API de Gateway do Kubernetes também está suportada no OSSM3 no OCP 4.19+.
 
 ### Topologias Multicluster
 
-Implemente um único [service mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh) em múltiplos clusters OpenShift, garantindo alta disponibilidade entre clusters, zonas e regiões, com gestão unificada.
+O OSSM3 suporta os modelos multi-primary, primary-remote e external control plane do Istio upstream. Isso permite distribuir o mesh entre clusters em zonas ou regiões diferentes.
 
 ### Telemetria
 
-Compreenda as dependências entre serviços e o fluxo de tráfego via OpenShift Console, permitindo rápida identificação de problemas.
+O OpenShift Console exibe métricas do Istio via Console Plugin. Para rastreamento distribuído, a Red Hat recomenda migrar para OpenTelemetry + Tempo.
 
 ### Aplicação de Políticas
 
-Implemente políticas organizacionais nas interações entre serviços, garantindo o cumprimento de regras de acesso e distribuição justa de recursos.
+AuthorizationPolicies controlam o tráfego com base em source, destination e atributos do request. PeerAuthentication define o modo mTLS por namespace ou workload.
 
 ### Observabilidade
 
-Visualize, valide e solucione problemas do [service mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh) com o [OpenShift Service Mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh) Console Plugin. Monitore a saúde dos componentes e inspecione traces e logs em uma interface unificada.
+O Console Plugin do OpenShift Service Mesh mostra a saúde dos componentes, traces e logs. O Kiali, instalado separadamente, adiciona visualização de topologia e validação de configuração do Istio.
 
 ## Principais Mudanças e Recursos
 
 ### Istio substitui o Maistra
 
-A principal mudança do OSSM 3 em relação à versão 2.x é a adoção do Istio upstream como núcleo da solução, substituindo o Maistra (que era uma distribuição customizada do Istio). Essa transição alinha o [OpenShift Service Mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh) com o Istio padrão da comunidade, trazendo maior compatibilidade com o ecossistema Istio e acesso mais rápido a novos recursos e correções. Com o Istio upstream, o OSSM3 oferece uma base tecnológica mais alinhada com o projeto original, maior flexibilidade e suporte ampliado para integrações, além de simplificar operações e atualizações futuras.
+A principal mudança do OSSM 3 em relação à versão 2.x é a adoção do Istio upstream como núcleo da solução, substituindo o Maistra (que era uma distribuição customizada do Istio). Na prática, isso significa que o OSSM3 usa os CRDs, operadores e comportamentos padrão do projeto Istio — sem patches específicos do Maistra. Recursos e correções do upstream chegam sem necessidade de rebase, e a documentação da comunidade Istio se aplica diretamente ao OSSM3.
 
 ### Estratégias de Upgrade
 
@@ -96,15 +94,9 @@ spec:
 
 ### Observabilidade com Kiali Console
 
-O OSSM3 oferece suporte ao **Kiali Console** através de operador separado para observabilidade. É importante notar que o Kiali não é uma novidade exclusiva da v3, pois também era suportado na v2. De fato, na v2 o Kiali era instalado por padrão, enquanto na v3 precisa ser instalado separadamente. Essa mudança reflete a ideia de que o OSSM 3 oferece maior flexibilidade e pode ser integrado com uma ampla gama de soluções; o operador sail gerencia apenas o Istio. O Kiali proporciona:
+O OSSM3 oferece suporte ao **Kiali Console** através de operador separado para observabilidade. É importante notar que o Kiali não é uma novidade exclusiva da v3, pois também era suportado na v2. De fato, na v2 o Kiali era instalado por padrão, enquanto na v3 precisa ser instalado separadamente. Essa mudança reflete a ideia de que o OSSM 3 pode ser integrado com uma ampla gama de soluções; o operador sail gerencia apenas o Istio.
 
-- **Visualização da Topologia**: Interface gráfica intuitiva para mapear dependências entre serviços e compreender o fluxo de tráfego em tempo real.
-- **Métricas Integradas**: Acesso direto às métricas do Istio com dashboards pré-configurados para monitoramento de performance e latência.
-- **Gestão de Configurações**: Interface centralizada para validar e gerenciar políticas de tráfego, segurança e configurações do Istio.
-- **Troubleshooting Avançado**: Ferramentas para identificar rapidamente problemas de conectividade, erros de configuração e gargalos de performance.
-- **Console Dedicado**: Um console específico para administração do mesh, separado do OpenShift Console principal, permitindo foco exclusivo na gestão do [service mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh).
-
-Com a instalação separada do Kiali Operator, os usuários têm maior controle sobre as funcionalidades de observabilidade, podendo configurar exatamente o que necessitam para seu ambiente específico.
+O Kiali exibe a topologia do mesh como grafo de serviços, com métricas de latência e taxa de erro por aresta. Ele valida configurações do Istio — VirtualServices mal formados, conflitos de PeerAuthentication, referências a hosts inexistentes — e mostra traces distribuídos quando integrado ao Jaeger ou Tempo.
 
 ### Request Authentication usando JWT
 
@@ -112,13 +104,7 @@ O OSSM3 oferece suporte robusto para autenticação de requests baseada em JSON 
 
 #### Recursos Principais
 
-- **Múltiplos Issuers**: Suporte a diferentes provedores de JWT simultaneamente
-- **Validação JWKS**: Recuperação automática de chaves públicas via JWKS URI
-- **Claims Customizados**: Acesso a claims específicos para decisões de autorização
-- **Audience Validation**: Verificação de audiência para garantir que tokens sejam destinados ao serviço correto
-- **Token Forwarding**: Propagação segura de tokens JWT através do [service mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh)
-
-A implementação JWT no OSSM3 garante autenticação forte e flexível, integrando-se nativamente com provedores de identidade externos e oferecendo controle detalhado sobre pol��ticas de acesso.
+A `RequestAuthentication` do OSSM3 valida JWTs usando JWKS URI — as chaves públicas são buscadas automaticamente. É possível configurar múltiplos issuers simultaneamente, extrair claims específicos para uso em `AuthorizationPolicy`, validar o campo `aud` do token e propagar o token original para serviços de destino.
 
 ### Operators
 
@@ -128,14 +114,7 @@ O operador do [OpenShift Service Mesh](https://www.redhat.com/en/technologies/cl
 
 #### Kiali Operator para Observabilidade
 
-Para funcionalidades de observabilidade, o OSSM3 utiliza o **Kiali Operator** como componente separado e dedicado. Esta separação de responsabilidades oferece:
-
-- **Especialização**: Cada operador foca em sua área específica de expertise
-- **Flexibilidade**: Permite atualizações independentes do Kiali sem afetar o núcleo do Istio
-- **Modularidade**: Facilita a manutenção e troubleshooting de componentes específicos
-- **Escalabilidade**: Possibilita configurações personalizadas de observabilidade conforme necessidades do ambiente
-
-Esta arquitetura modular resulta em uma solução mais robusta, onde o operador OSSM3 mantém foco total no gerenciamento do Istio, enquanto o Kiali Operator oferece toda a stack de observabilidade necessária para monitoramento e análise do [service mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh).
+Para observabilidade, o OSSM3 usa o **Kiali Operator** como componente separado. O ponto central é simples: o Sail Operator gerencia o Istio, e o Kiali Operator gerencia o Kiali — cada um atualiza no próprio ciclo de release. Se uma nova versão do Kiali corrige um bug de visualização, você atualiza o Kiali Operator sem tocar no control plane do Istio.
 
 ### Gateways no OpenShift Service Mesh 3
 
@@ -244,11 +223,7 @@ Em contraste, os proxies **Waypoint** são, por padrão, implantados em um escop
 
 ## Conclusao
 
-O [OpenShift Service Mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh) 3 representa um avanço significativo na forma como as organizações gerenciam, protegem e observam suas aplicações baseadas em microserviços no OpenShift. A transição para o Istio como núcleo não apenas alinha a solução com o padrão de mercado, mas também oferece uma base mais sólida, flexível e preparada para o futuro.
-
-As melhorias na observabilidade com o Kiali, as estratégias de upgrade flexíveis e o gerenciamento simplificado de operadores e gateways capacitam as equipes de DevOps a operar com mais agilidade e segurança. A introdução do Istio Ambient Mode, mesmo em Developer Preview, sinaliza um futuro promissor com uma arquitetura "sidecar-less" que promete reduzir a sobrecarga de recursos e simplificar ainda mais a malha de serviços.
-
-Em suma, o OSSM3 é uma atualização crucial que fortalece o ecossistema do OpenShift, fornecendo as ferramentas necessárias para construir e operar aplicações resilientes, seguras e escaláveis, ao mesmo tempo em que estabelece um caminho claro para a inovação contínua no gerenciamento de [service mesh](https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh).
+A mudança mais relevante do OSSM3 é a base no Istio upstream — sem fork, sem patches específicos do Maistra. Isso reduz o delta entre o que a documentação da comunidade diz e o que o cluster faz de verdade. A migração exige trabalho: os planos de controle v2 e v3 rodam em paralelo durante a transição, e gateways precisam ser recriados via injeção manual. O Ambient Mode ainda está em Developer Preview — quem precisa de suporte de produção fica com o modelo de sidecars por enquanto.
 
 ---
 
