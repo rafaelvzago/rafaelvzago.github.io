@@ -21,7 +21,8 @@ package-lock.json
 # Misc
 assets/js/dist
 .aider*
+.claude/settings.local.json
+.scratch/
 
 # Spec-kit local state
 .specify/feature.json
-.claude/settings.local.json

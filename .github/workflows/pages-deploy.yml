@@ -3,6 +3,21 @@ name: Build and deploy Jekyll site
 on:
   push:
     branches: ["main"]
+    paths-ignore:
+      - '.claude/**'
+      - '.cursor/**'
+      - 'docs/**'
+      - '.scratch/**'
+      - 'AGENTS.md'
+      - 'CLAUDE.md'
+      - 'PROGRESS.md'
+      - 'README.md'
+      - 'LICENSE'
+      - 'Makefile'
+      - '.editorconfig'
+      - '.gitattributes'
+      - '.gitignore'
+      - '.tool-versions'
   workflow_dispatch:
 
 permissions:

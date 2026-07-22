@@ -1,0 +1,16 @@
+---
+description: Follow docs/agents/sdlc.md as the default Cursor/Claude development process
+alwaysApply: true
+---
+
+# Follow the project agentic SDLC
+
+At session start, read and follow `docs/agents/sdlc.md`.
+
+- Prefer remote `main` over a stale local clone or memory.
+- Do not invent a parallel SDLC.
+- Skills live at user level (`~/.cursor/skills/` / `~/.claude/skills/`); read the skill before using it; do not vendor skill bodies into this repo.
+- Tracker binding: `docs/agents/issue-tracker.md`.
+- Root `AGENTS.md` / `CLAUDE.md` are commands and domain only — they do **not** override `docs/agents/sdlc.md`.
+
+Flow in order: clarify (`batch-grill-me`) → spec (`to-spec`) → tickets (`to-tickets`) → implement loop with local preview → ship only after human approval.
