@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+**Process (SDLC):** follow [`docs/agents/sdlc.md`](docs/agents/sdlc.md). This file and `AGENTS.md` cover commands and domain; they do not override the playbook.
+
 ## Project Overview
 
 This is Rafael Zago's personal blog built with Jekyll using the Chirpy theme. The site is written in Portuguese (pt-BR) and focuses on cloud, DevOps, infrastructure, automation, and AI-related topics. The site is deployed to GitHub Pages.
@@ -65,3 +67,17 @@ This is Rafael Zago's personal blog built with Jekyll using the Chirpy theme. Th
 ## Code Style
 
 - **Indentation**: Use 4 spaces for indentation (no tabs)
+
+## Agent System
+
+This repository uses a Claude Code agent system with specialized agents:
+
+- **Writer** (`/write-post`) -- Creates new blog posts following established patterns
+- **Reviewer** (`/review-post`) -- Reviews posts for quality, formatting, and SEO
+- **Content Analyst** (`/analyze-content`) -- Analyzes content gaps and suggests topics
+- **Committer** (`/commit`) -- Creates conventional commits with pre-commit checks
+
+Agents support subagent chaining (e.g., Writer can auto-spawn Reviewer after creating a post).
+
+See `AGENTS.md` for behavioral rules and invariants.
+See `.claude/agents/` for agent definitions, `.claude/skills/` for workflows, `.claude/commands/` for invocation.

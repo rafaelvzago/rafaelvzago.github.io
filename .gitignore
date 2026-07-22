@@ -21,3 +21,5 @@ package-lock.json
 # Misc
 assets/js/dist
 .aider*
+.claude/settings.local.json
+.scratch/
