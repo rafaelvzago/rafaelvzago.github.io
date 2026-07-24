@@ -1,5 +1,5 @@
 ---
-description: Spec-Driven Development workflow for AI agents working on this Jekyll blog
+description: Spec-Driven Development workflow for AI agents working on this Hugo blog
 globs:
 alwaysApply: true
 ---
@@ -26,16 +26,16 @@ Do NOT create a spec for:
 
 ## Existing Specs Reference
 
-- `specs/site-core/spec.md` - Jekyll + Chirpy configuration, theme, analytics, PWA
-- `specs/content-workflow/spec.md` - Blog post lifecycle, frontmatter rules, images, lastmod plugin
+- `specs/site-core/spec.md` - Hugo + Archie configuration, theme, analytics
+- `specs/content-workflow/spec.md` - Blog post lifecycle, frontmatter rules, images, gitinfo
 - `specs/deployment/spec.md` - GitHub Actions CI/CD, gh-pages branch, CNAME
 - `specs/qr-system/spec.md` - QR code generation and redirect
 
 ## Constitution Key Rules
 
-- Blog content in Portuguese (pt-BR); code/config/commits in English
-- Theme: jekyll-theme-chirpy (do not vendor or override theme files)
-- Posts: `_posts/YYYY-MM-DD-slug.md` with required frontmatter
+- Blog content bilingual (`pt-br` + `en`); code/config/commits in English
+- Theme: Archie git submodule (do not edit `themes/archie/` — use `layouts/` overrides)
+- Posts: `content/<lang>/posts/YYYY-MM-DD-slug.md` with required frontmatter
 - Indentation: 4 spaces, no tabs
-- Quality: `bundle exec jekyll build` must succeed; images need alt text
+- Quality: `make test` / `hugo --minify` must succeed; images need alt text
 - Commits: `<type>(<scope>): <description>` format (see CLAUDE.md)

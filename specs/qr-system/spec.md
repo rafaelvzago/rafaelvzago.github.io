@@ -82,5 +82,5 @@ A person scans a printed QR code at an event. The QR code encodes a URL like `ht
 
 - The Python `qrcode` library is installed in the author's local environment
 - QR code images are committed to the repository (they are small PNGs)
-- The redirect page is served as part of the Jekyll site at `/qr/`
+- The redirect page is served as static files under `static/qr/` at `/qr/` (no Hugo wrapper)
 - Google Analytics on the main site captures QR-driven traffic via the redirect

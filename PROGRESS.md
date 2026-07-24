@@ -1,19 +1,16 @@
 # Progress
 
-## Hugo migration (branch `hugo`)
+## Hugo cutover + Jekyll rollback (PRD #33)
 
-- PRD: https://github.com/rafaelvzago/rafaelvzago.github.io/issues/33
-- Tickets #34–#38 completed locally (no push)
-- Local preview: `hugo server` → http://127.0.0.1:1313/
-- Pending human: local testing, then explicit request to push/PR
+- Baseline tag: `jekyll-baseline-2026-07-24` → `6955e18` (Jekyll/Chirpy on `origin/main`)
+- Rollback runbook: [`docs/agents/rollback-jekyll.md`](docs/agents/rollback-jekyll.md)
+- Cutover branch: `feat/multilingual` (Hugo + Archie + pt-BR/en)
+- Tickets: [#39](https://github.com/rafaelvzago/rafaelvzago.github.io/issues/39) T6, [#40](https://github.com/rafaelvzago/rafaelvzago.github.io/issues/40) T7, [#41](https://github.com/rafaelvzago/rafaelvzago.github.io/issues/41) T8, [#42](https://github.com/rafaelvzago/rafaelvzago.github.io/issues/42) T9
+- Content freeze: no new posts on `main` until cutover merges
+- Ship gate: local preview approval before PR (#41 → #42)
 
 ## Multilingual pt-br + en (branch `feat/multilingual`)
 
-- Local PRD: `.scratch/prd-multilingual.md` (no GitHub issues, no push)
 - Config: `hugo.toml` languages; content in `content/pt-br/` + `content/en/`
 - UI: `i18n/{pt-br,en}.toml`, language switcher, localized chrome
-- Content: About + all 20 posts bilingual (matching filenames)
-- Specs/constitution/AGENTS updated for bilingual
 - Preview: http://127.0.0.1:1313/ and http://127.0.0.1:1313/en/
-- `make test` passes locally
-- Stop condition: local only — do not push / open PR unless asked
