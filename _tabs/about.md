@@ -21,7 +21,7 @@ Hoje sou senior software automation engineer na Red Hat, mas já passei por algu
 Sou devops de coração e também membro da organização do DevOpsDays SP
 
 - Organização do DevOpsDays 2020
-- Membro do Comitê Técnico - TDC 2026
+- Membro do Comitê Técnico - TDC 2026 — [perfil de palestrante no TDC](https://thedevconf.com/palestrante/rafael-zago)
 
 Abaixo estão as poucas contribuições que já fiz:
 
@@ -35,6 +35,13 @@ Abaixo estão as poucas contribuições que já fiz:
 - [DNE 224 - Trabalhar para Gringa](https://devnaestrada.com.br/2019/09/20/trabalhar-na-gringa.html)
 
 ### Talks/Palestras  
+
+Meu [perfil de palestrante no The Developer's Conference (TDC)](https://thedevconf.com/palestrante/rafael-zago) reúne comitês, trilhas e palestras.
+
+#### 2026
+
+- [Multi-Cloud Service Mesh: Dominando a Conectividade entre Clusters Kubernetes Distribuídos com Istio](/posts/openshift-service-mesh-3-multicluster-acm-kiali/) - TDC 2026 Florianópolis — Trilha Arquitetura Cloud (Jul 24, 2026)
+- [Como eu uso IA no desenvolvimento](/posts/como-eu-uso-ia-no-desenvolvimento/) - [FLISOL DF 2026](https://flisoldf.blog.br/)
 
 #### 2025
 
