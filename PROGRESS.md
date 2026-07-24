@@ -1,17 +1,15 @@
 # Progress
 
-## Hugo cutover + Jekyll rollback (PRD #33)
+## Hugo cutover + Jekyll rollback (PRD #33) — SHIPPED
 
-- Baseline tag: `jekyll-baseline-2026-07-24` → `6955e18` (Jekyll/Chirpy on `origin/main`)
-- Rollback runbook: [`docs/agents/rollback-jekyll.md`](docs/agents/rollback-jekyll.md)
-- Cutover branch: `feat/multilingual` (Hugo + Archie + pt-BR/en)
-- Tickets: [#39](https://github.com/rafaelvzago/rafaelvzago.github.io/issues/39) T6, [#40](https://github.com/rafaelvzago/rafaelvzago.github.io/issues/40) T7, [#41](https://github.com/rafaelvzago/rafaelvzago.github.io/issues/41) T8, [#42](https://github.com/rafaelvzago/rafaelvzago.github.io/issues/42) T9
-- Content freeze: no new posts on `main` until cutover merges
-- Ship gate: local preview at http://127.0.0.1:1313/ — agent smoke passed; awaiting human OK before PR (#41 → #42)
-- Post-cutover: retire [`docs/agents/rollback-jekyll.md`](docs/agents/rollback-jekyll.md) ~2 weeks after stable live Hugo (keep tag `jekyll-baseline-2026-07-24` forever)
+- Merged to `main` @ `734a380` (2026-07-24); preview LGTM
+- Deploy: Actions run [30120888331](https://github.com/rafaelvzago/rafaelvzago.github.io/actions/runs/30120888331) success → `gh-pages`
+- Live: https://www.rafaelvzago.com (Hugo/Archie, bilingual)
+- Baseline tag: `jekyll-baseline-2026-07-24` → `6955e18`
+- Rollback runbook: [`docs/agents/rollback-jekyll.md`](docs/agents/rollback-jekyll.md) — **retire ~2026-08-07** if stable; **keep tag forever**
+- Note: GitHub PR create API returned HTTP 500 for this repo; cutover merged to `main` after LGTM
 
-## Multilingual pt-br + en (branch `feat/multilingual`)
+## Multilingual pt-br + en
 
 - Config: `hugo.toml` languages; content in `content/pt-br/` + `content/en/`
-- UI: `i18n/{pt-br,en}.toml`, language switcher, localized chrome
-- Preview: http://127.0.0.1:1313/ and http://127.0.0.1:1313/en/
+- Preview: `hugo server` → http://127.0.0.1:1313/ and `/en/`
