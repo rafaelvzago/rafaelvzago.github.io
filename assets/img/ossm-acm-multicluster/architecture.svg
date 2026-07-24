@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
   <title id="title">Arquitetura OpenShift Service Mesh multi-cluster com ACM</title>
   <desc id="desc">Um cluster hub executa ACM, Observatorium e Thanos. Dois clusters spoke executam primários Istio, conectados por gateways east-west e confiança mTLS compartilhada. Kiali, Perses e Tempo ficam no primeiro spoke.</desc>
   <defs>

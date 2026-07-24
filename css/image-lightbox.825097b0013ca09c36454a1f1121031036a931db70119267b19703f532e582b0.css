@@ -59,6 +59,14 @@ article .body img[src$=".svg"],
   border-radius: 2px;
 }
 
+/* SVG as <img> collapses to ~0px with width/height:auto + max-height in Chromium */
+.image-lightbox__img[src$=".svg"],
+.image-lightbox__img[src*=".svg?"] {
+  width: min(96vw, 1200px);
+  height: auto;
+  max-height: 92vh;
+}
+
 .image-lightbox__close {
   position: fixed;
   top: 0.75rem;
