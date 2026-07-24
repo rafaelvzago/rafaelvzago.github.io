@@ -51,3 +51,6 @@ other = "Carregando índice de busca..."
 
 [search_noscript]
 other = "A busca precisa de JavaScript para carregar o índice e filtrar os resultados."
+
+[back_to_top]
+other = "Voltar ao topo"

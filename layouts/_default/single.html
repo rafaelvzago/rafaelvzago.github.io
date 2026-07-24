@@ -44,5 +44,8 @@
     {{- partial "disqus.html" . -}}
     {{- end -}}
   </article>
+  {{- if eq .Section "posts" -}}
+  <button type="button" class="back-to-top" aria-label="{{ i18n "back_to_top" }}" title="{{ i18n "back_to_top" }}">↑</button>
+  {{- end -}}
 </main>
 {{ end }}

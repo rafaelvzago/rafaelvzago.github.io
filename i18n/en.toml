@@ -51,3 +51,6 @@ other = "Loading search index..."
 
 [search_noscript]
 other = "Search requires JavaScript to load the index and filter results."
+
+[back_to_top]
+other = "Back to top"
