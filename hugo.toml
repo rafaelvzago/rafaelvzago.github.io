@@ -25,9 +25,9 @@ favicon = "/assets/img/favicons/favicon.ico"
 mathjax = false
 katex = false
 mainSections = ["posts"]
-customcss = ["css/post-layout.css", "css/copy-code.css", "css/image-lightbox.css"]
-customCSS = ["css/post-layout.css", "css/copy-code.css", "css/image-lightbox.css"]
-customJS = ["js/copy-code.js", "js/image-lightbox.js", "js/global-search.js"]
+customcss = ["css/post-layout.css", "css/copy-code.css", "css/image-lightbox.css", "css/back-to-top.css"]
+customCSS = ["css/post-layout.css", "css/copy-code.css", "css/image-lightbox.css", "css/back-to-top.css"]
+customJS = ["js/copy-code.js", "js/image-lightbox.js", "js/global-search.js", "js/back-to-top.js"]
 
 [params.gtm]
 id = "GTM-592PS4S2"
