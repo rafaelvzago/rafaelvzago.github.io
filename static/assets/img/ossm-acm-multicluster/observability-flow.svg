@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 860" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="860" viewBox="0 0 1440 860" role="img" aria-labelledby="title desc">
   <title id="title">Fluxos de métricas, traces e alertas</title>
   <desc id="desc">Métricas dos dois spokes passam por User Workload Monitoring e ACM até Thanos. Perses e Kiali consultam Thanos. Traces do segundo spoke são encaminhados com mTLS ao coletor e Tempo no primeiro spoke. A métrica de saúde do Kiali pode ser avaliada localmente e no hub.</desc>
   <defs>
