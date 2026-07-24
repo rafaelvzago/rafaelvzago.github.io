@@ -51,7 +51,7 @@ A person scans a printed QR code at an event. The QR code encodes a URL like `ht
 - **FR-003**: The script MUST output `qr/urls.json` mapping IDs to destination URLs
 - **FR-004**: `qr/index.html` MUST read the `id` query parameter, fetch `urls.json`, and redirect to the mapped URL
 - **FR-005**: `qr/index.html` MUST handle missing id, unknown id, and fetch errors with user-friendly messages in Portuguese
-- **FR-006**: `qr/index.html` MUST use `layout: none` to avoid the Chirpy theme wrapper
+- **FR-006**: `static/qr/index.html` MUST be plain static HTML (no Hugo/theme wrapper)
 
 ### Key Entities
 
@@ -82,5 +82,5 @@ A person scans a printed QR code at an event. The QR code encodes a URL like `ht
 
 - The Python `qrcode` library is installed in the author's local environment
 - QR code images are committed to the repository (they are small PNGs)
-- The redirect page is served as part of the Jekyll site at `/qr/`
+- The redirect page is served as static files under `static/qr/` at `/qr/` (no Hugo wrapper)
 - Google Analytics on the main site captures QR-driven traffic via the redirect

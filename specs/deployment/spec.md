@@ -1,14 +1,15 @@
 # Feature Specification: Deployment Pipeline
 
 **Created**: 2026-04-15
-**Status**: Baseline (brownfield)
+**Updated**: 2026-07-23
+**Status**: Baseline (Hugo)
 **Type**: Existing system documentation
 
 ## User Scenarios & Testing
 
 ### User Story 1 - Author publishes a post by pushing to main (Priority: P1)
 
-The author merges changes into the `main` branch. GitHub Actions automatically builds the Jekyll site and deploys to GitHub Pages.
+The author merges changes into the `main` branch. GitHub Actions automatically builds the Hugo site and deploys to GitHub Pages.
 
 **Why this priority**: Automated deployment is the only way content reaches readers.
 
@@ -16,9 +17,9 @@ The author merges changes into the `main` branch. GitHub Actions automatically b
 
 **Acceptance Scenarios**:
 
-1. **Given** a commit is pushed to `main`, **When** the GitHub Actions workflow triggers, **Then** it builds the site with `JEKYLL_ENV=production` and deploys `_site/` to the `gh-pages` branch
-2. **Given** the build succeeds, **When** deployment completes, **Then** the `CNAME` file containing `www.rafaelvzago.com` exists in `_site/`
-3. **Given** the `_site/` directory contains `.nojekyll`, **When** GitHub Pages serves the files, **Then** files starting with underscores are served correctly
+1. **Given** a commit is pushed to `main`, **When** the GitHub Actions workflow triggers, **Then** it builds the site with Hugo Extended and deploys `public/` to the `gh-pages` branch
+2. **Given** the build succeeds, **When** deployment completes, **Then** the `CNAME` file containing `www.rafaelvzago.com` exists in `public/`
+3. **Given** the `public/` directory contains `.nojekyll`, **When** GitHub Pages serves the files, **Then** files starting with underscores are served correctly
 
 ---
 
@@ -38,21 +39,21 @@ The author uses the GitHub Actions `workflow_dispatch` trigger to manually rebui
 
 ### Edge Cases
 
-- What happens when `_site/` directory is not created? The workflow creates a fallback `index.html` with a "Site is being built" message.
-- What happens when the Jekyll build fails? The workflow exits with error before attempting deployment.
+- What happens when `public/index.html` is missing after build? The workflow fails before deploy.
+- What happens when the Hugo build fails? The workflow exits with error before attempting deployment.
 
 ## Requirements
 
 ### Functional Requirements
 
 - **FR-001**: Pushes to `main` branch MUST trigger the build-and-deploy workflow
-- **FR-002**: The workflow MUST use Ruby 3.4 with bundler cache
-- **FR-003**: The workflow MUST build with `JEKYLL_ENV=production`
-- **FR-004**: The workflow MUST create `.nojekyll` in `_site/` to prevent GitHub Pages from re-processing with Jekyll
-- **FR-005**: The workflow MUST inject `CNAME` file with `www.rafaelvzago.com` into `_site/`
-- **FR-006**: Deployment MUST use `JamesIves/github-pages-deploy-action@v4.7.3` targeting the `gh-pages` branch with `clean: true`
+- **FR-002**: The workflow MUST install Hugo Extended (pinned version) with theme submodule checkout
+- **FR-003**: The workflow MUST build with `hugo --minify --gc` and `fetch-depth: 0` for gitinfo
+- **FR-004**: The workflow MUST create `.nojekyll` in `public/` to prevent GitHub Pages from re-processing with Jekyll
+- **FR-005**: The workflow MUST inject `CNAME` file with `www.rafaelvzago.com` into `public/`
+- **FR-006**: Deployment MUST use `JamesIves/github-pages-deploy-action@v4.7.3` targeting the `gh-pages` branch with `clean: true` and `folder: public`
 - **FR-007**: `workflow_dispatch` MUST be available for manual triggers
-- **FR-008**: Spec-kit files (`.specify/`, `specs/`, `.claude/`) MUST NOT appear in `_site/`
+- **FR-008**: Spec-kit files (`.specify/`, `specs/`, `.claude/`) MUST NOT appear in `public/`
 - **FR-009**: All commits merged to `main` MUST follow the conventional commit format defined in the constitution (`<type>(<scope>): <description>`)
 
 ## Current Implementation
@@ -60,17 +61,17 @@ The author uses the GitHub Actions `workflow_dispatch` trigger to manually rebui
 | Concern | File(s) |
 |---------|---------|
 | CI/CD workflow | `.github/workflows/pages-deploy.yml` |
-| Jekyll config | `_config.yml` (exclude list) |
-| Custom domain | `CNAME` injected at build time (line 37 of workflow) |
+| Hugo config | `hugo.toml` |
+| Custom domain | `CNAME` injected at build time into `public/` |
 
 ### Workflow Steps
 
-1. `actions/checkout@v4`
-2. `ruby/setup-ruby@v1` (Ruby 3.4, bundler cache)
-3. `bundle exec jekyll build` with `JEKYLL_ENV=production`
-4. `touch _site/.nojekyll`
-5. Verify `_site/` exists, write `CNAME`
-6. `JamesIves/github-pages-deploy-action@v4.7.3` (folder: `_site`, branch: `gh-pages`, clean: true)
+1. `actions/checkout@v4` (`submodules: recursive`, `fetch-depth: 0`)
+2. `peaceiris/actions-hugo` (Hugo Extended)
+3. `hugo --minify --gc`
+4. `touch public/.nojekyll` and write `CNAME`
+5. Verify `public/index.html` exists
+6. `JamesIves/github-pages-deploy-action@v4.7.3` (folder: `public`, branch: `gh-pages`, clean: true)
 
 ## Success Criteria
 

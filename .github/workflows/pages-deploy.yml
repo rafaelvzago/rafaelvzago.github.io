@@ -1,4 +1,4 @@
-name: Build and deploy Jekyll site
+name: Build and deploy Hugo site
 
 on:
   push:
@@ -23,43 +23,47 @@ on:
 permissions:
   contents: write
 
+env:
+  HUGO_VERSION: "0.147.4"
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4'
-          bundler-cache: true
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
 
       - name: Build site
         run: |
           set -e
-          bundle exec jekyll build || { echo "Jekyll build failed"; exit 1; }
-          touch _site/.nojekyll
+          hugo --minify --gc
+          touch public/.nojekyll
+          echo "www.rafaelvzago.com" > public/CNAME
         env:
-          JEKYLL_ENV: production
-      
+          HUGO_ENVIRONMENT: production
+          TZ: America/Sao_Paulo
+
       - name: Verify site directory
         run: |
-          if [ -d "_site" ]; then
-            echo "Site directory contents:"
-            echo "www.rafaelvzago.com" > _site/CNAME
-            ls -la _site
-          else
-            echo "ERROR: _site directory not found!"
-            mkdir -p _site
-            echo "<html><body><h1>Site is being built</h1></body></html>" > _site/index.html
-            touch _site/.nojekyll
+          if [ ! -d "public" ] || [ ! -f "public/index.html" ]; then
+            echo "ERROR: public/index.html not found after Hugo build"
+            exit 1
           fi
-      
+          echo "Site directory contents:"
+          ls -la public
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.7.3
         with:
-          folder: _site
+          folder: public
           branch: gh-pages
           clean: true

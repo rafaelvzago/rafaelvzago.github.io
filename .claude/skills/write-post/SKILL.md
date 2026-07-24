@@ -1,103 +1,94 @@
 # Skill: write-post
 
-Cria um novo post para o blog seguindo os padroes estabelecidos no repositorio.
+Cria um novo post para o blog seguindo os padroes estabelecidos. Suporta **pt-BR** (padrao) e **en**.
 
 ## Workflow
 
-### 1. Calibracao de Estilo
+### 1. Definir Locale
 
-Leia os 3 posts mais recentes em `_posts/` para calibrar tom, estrutura e nivel de profundidade tecnica:
+- Padrao: `pt-br` → `content/pt-br/posts/`
+- Se o usuario pedir ingles / `en` / bilingual pair: escrever em `content/en/posts/`
+- Para escopo bilingue, criar o par com o **mesmo filename** nos dois `contentDir`s (ou escrever um e sinalizar o irmao pendente)
+
+### 2. Calibracao de Estilo
+
+Leia os 3 posts mais recentes **do mesmo locale**:
 
 ```bash
-ls -t _posts/*.md | head -3
+ls -t content/pt-br/posts/*.md | head -3   # ou content/en/posts/
 ```
 
 Leia o frontmatter e as primeiras 50 linhas de cada um.
 
-### 2. Definir Metadados
+### 3. Definir Metadados
 
-Com base no topico fornecido pelo usuario (ou derivado do prompt):
+- **titulo** no idioma do post (max 60 caracteres)
+- **slug** a partir do titulo: lowercase, sem acentos, hifens (compartilhado entre locales quando for par)
+- **tags** comparando com AGENTS.md
+- **description** SEO 150-160 caracteres **no idioma do post**
+- Header sugerido: `assets/img/headers/{slug}.png` (ou `.webp`/`.jpg` se o padrao do tema exigir)
 
-- Propor **titulo** em portugues (max 60 caracteres para SEO)
-- Gerar **slug** a partir do titulo: lowercase, sem acentos, hifens no lugar de espacos
-- Propor **categorias** comparando com o registro em AGENTS.md
-- Propor **tags** comparando com o registro em AGENTS.md
-- Gerar **description** para SEO (150-160 caracteres)
-- Sugerir nome para imagem de header: `assets/img/headers/{slug}.png`
+Sinalizar tags novas para confirmacao.
 
-Se categorias ou tags novas forem propostas, sinalizar para o usuario confirmar.
+### 4. Gerar Frontmatter
 
-### 3. Gerar Frontmatter
+Formato canonico em AGENTS.md. Data = hoje (ou a pedida, ate +7 dias).
 
-Usar o formato canonico definido em AGENTS.md:
+### 5. Escrever Conteudo
 
-```yaml
----
-layout: post
-title: "Titulo"
-description: "Descricao SEO 150-160 chars"
-date: YYYY-MM-DD
-categories: [Cat1, Cat2]
-tags: [tag1, tag2, tag3]
-image:
-  path: /assets/img/headers/slug.png
-  alt: Descricao da imagem
----
+- **pt-BR:** portugues com acentuacao correta
+- **en:** ingles natural; evitar calques do portugues
+- Usar `##` como heading de nivel mais alto (nunca `#`)
+- Estrutura: introducao, secoes `##`, sub-secoes `###`, conclusao
+- Code blocks com language tags
+- Links internos no locale correto (`/posts/...` ou `/en/posts/...`)
+- Minimo 150 linhas de conteudo substantivo
+- Rodar `/humanizer` no rascunho final
+
+### 6. Criar Arquivo
+
+```text
+content/pt-br/posts/YYYY-MM-DD-slug.md
+# ou
+content/en/posts/YYYY-MM-DD-slug.md
 ```
 
-A data deve ser a data atual (hoje).
-
-### 4. Escrever Conteudo
-
-Regras de conteudo:
-- Escrever em **portugues (pt-BR)** com acentuacao correta
-- Se o topico foi fornecido em ingles, traduzir para portugues
-- Usar `##` como heading de nivel mais alto (nunca `#`)
-- Estrutura: introducao, secoes com `##`, sub-secoes com `###`, conclusao
-- Negrito para termos tecnicos na primeira mencao
-- Code blocks com language tags (```bash, ```yaml, ```python, etc.)
-- Incluir links externos relevantes com URLs completas
-- Minimo 150 linhas de conteudo substantivo
-- Referenciar posts existentes sobre topicos relacionados quando relevante
-
-### 5. Criar Arquivo
-
-Escrever o arquivo em `_posts/YYYY-MM-DD-slug.md`.
-
-### 6. Validacao
-
-Executar as checagens obrigatorias:
+### 7. Validacao (locale-aware)
 
 ```bash
-# Verificar frontmatter
-head -15 _posts/YYYY-MM-DD-slug.md
-
-# Verificar acentuacao
-grep -inE '\b(codigo|voce|nao|tambem|alem|ate|pagina|unico|possivel|necessario|basico|metodo|titulo|topico|analise|numero|conteudo|seguranca|producao|informacao|aplicacao|integracao|solucao|funcao|execucao|configuracao|operacao|referencia|experiencia)\b' _posts/YYYY-MM-DD-slug.md
-
-# Contar linhas
-wc -l _posts/YYYY-MM-DD-slug.md
+head -15 CONTENT_PATH
+wc -l CONTENT_PATH
 ```
 
-### 7. Reportar
+**Se pt-BR:**
 
-Informar ao usuario:
-- Arquivo criado com path completo
-- Nome sugerido para imagem de header (o usuario precisa fornece-la)
-- Categorias/tags novas que precisam de confirmacao
+```bash
+grep -inE '\b(codigo|voce|nao|tambem|alem|ate|pagina|unico|possivel|necessario|basico|metodo|titulo|topico|analise|numero|conteudo|seguranca|producao|informacao|aplicacao|integracao|solucao|funcao|execucao|configuracao|operacao|referencia|experiencia)\b' CONTENT_PATH
+```
+
+**Se en:**
+
+```bash
+grep -inE '\b(teh|recieve|seperate|occured|definately|accomodate|untill|wich|becuase|alot|could of|should of|would of)\b' CONTENT_PATH
+```
+
+Corrigir ERRORS antes de reportar como pronto. Revisar gramatica EN manualmente (artigos, concordancia, calques).
+
+### 8. Reportar
+
+- Path completo + locale
+- Header image sugerida
+- Tags novas
 - Resultado das validacoes
+- Se so um locale foi escrito: lembrar o irmao em falta
 
-### 8. Encadeamento (opcional)
+### 9. Encadeamento (opcional)
 
-Se invocado com `--review` ou se o usuario solicitar, spawnar o Reviewer como subagente:
-
-```
-Agent(subagent_type="general-purpose", prompt="Execute the review-post skill on _posts/YYYY-MM-DD-slug.md")
-```
+Com `--review` ou pedido do usuario, spawnar Reviewer no path criado (o Reviewer detecta o locale).
 
 ## Regras
 
-- Conteudo em portugues por padrao; aceitar override explicito para ingles
+- Locale explicito do usuario vence; padrao pt-BR
 - Nunca criar posts com datas futuras alem de 7 dias
-- Se o topico estiver fora do foco do blog (cloud, DevOps, infra, automacao, AI/ML), avisar o usuario
-- Se o usuario fornecer URL de video YouTube, usar `{% raw %}{% include embed/youtube.html id='VIDEO_ID' %}{% endraw %}`
+- Nunca usar `git add .`
+- Nunca modificar `hugo.toml` sem pedido explicito

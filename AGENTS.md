@@ -7,20 +7,21 @@ Regras comportamentais e invariantes para todos os agentes que operam neste repo
 ## Comandos de Setup
 
 ```bash
-bundle exec jekyll serve          # servidor de desenvolvimento
-bundle exec jekyll serve --drafts # incluindo rascunhos
-bundle exec jekyll build          # build para producao
-bundle exec htmlproofer ./_site   # validacao HTML
+git submodule update --init --recursive  # theme Archie
+hugo server                               # servidor de desenvolvimento
+hugo server --buildDrafts                 # incluindo rascunhos
+hugo --minify                             # build para producao (public/)
+make test                                 # build + validacao
 ```
 
 ## Regras Globais
 
-1. Todo conteudo novo deve ser escrito em portugues (pt-BR) com acentuacao correta, salvo quando o usuario pedir explicitamente em ingles.
+1. O site e bilingue (`pt-br` padrao em `/`, `en` em `/en/`). Conteudo novo vai em `content/pt-br/` ou `content/en/` (mesmo caminho relativo liga traducoes). Posts em pt-BR exigem acentuacao correta; posts em ingles devem soar naturais. Posts publicados DEVEM ter irmao na outra lingua quando o escopo for bilingue.
 2. Nunca fazer push direto em `main`. Push de feature branch / PR so apos preview local e aprovacao humana (ver `docs/agents/sdlc.md` §5). Fora do passo Ship, nao executar `git push`.
-3. Nunca modificar arquivos protegidos: `_config.yml`, `LICENSE`, `Gemfile`, `Gemfile.lock`.
-4. Nunca modificar arquivos em `_plugins/` a menos que explicitamente solicitado.
+3. Nunca modificar arquivos protegidos: `hugo.toml` (sem pedido explicito), `LICENSE`.
+4. Nunca modificar arquivos em `themes/archie/` diretamente — use overrides em `layouts/` ou atualize o submodule.
 5. Nunca usar `git add .` ou `git add -A`. Sempre adicionar arquivos individualmente.
-6. Posts devem usar `##` como heading de nivel mais alto (Chirpy renderiza o titulo do frontmatter como `<h1>`).
+6. Posts devem usar `##` como heading de nivel mais alto (o titulo do frontmatter vira `<h1>`).
 7. Nunca criar posts com datas no futuro alem de 7 dias.
 8. Slugs de posts devem ser lowercase, sem acentos, separados por hifens.
 
@@ -30,23 +31,24 @@ Todo post novo deve seguir exatamente este formato:
 
 ```yaml
 ---
-layout: post
 title: "Titulo do Post em Portugues"
 description: "Descricao para SEO com 150-160 caracteres"
 date: YYYY-MM-DD
-categories: [Categoria1, Categoria2]
+slug: "titulo-do-post-em-portugues"
 tags: [tag1, tag2, tag3]
-image:
-  path: /assets/img/headers/nome-do-arquivo.ext
-  alt: Descricao da imagem
+toc: true
+images:
+  - "/assets/img/headers/nome-do-arquivo.ext"
 ---
 ```
 
-Campos obrigatorios para posts novos: `layout`, `title`, `description`, `date`, `categories`, `tags`, `image.path`, `image.alt`.
+Campos obrigatorios para posts novos: `title`, `description`, `date`, `slug`, `tags`, `images`.
 
 Para posts existentes (pre-2025) que nao possuem `description`, o Reviewer deve emitir WARNING, nao ERROR.
 
 ## Registro de Categorias Aprovadas
+
+(Categorias Chirpy foram fundidas em tags na migracao Hugo. Prefira tags.)
 
 ```
 AI, carreira, chatbot, CI/CD, cloud, DevOps, english, grafana,
@@ -56,7 +58,7 @@ pipeline, productivity, raspberry, redhat, rtos, Service Mesh,
 skupper, Skupper, sobre, tcpip, tecnologia, vim
 ```
 
-Novas categorias podem ser adicionadas, mas o agente deve sinalizar para confirmacao do usuario.
+Novas categorias/tags podem ser adicionadas, mas o agente deve sinalizar para confirmacao do usuario.
 
 ## Registro de Tags Aprovadas
 
@@ -89,25 +91,33 @@ Verificar que todos os campos obrigatorios estao presentes no frontmatter de pos
 
 ### 2. Formato de Nome de Arquivo
 
-Nome do arquivo deve seguir `YYYY-MM-DD-slug.md`. A data no nome deve ser consistente com o campo `date:` do frontmatter.
+Nome do arquivo deve seguir `YYYY-MM-DD-slug.md` em `content/pt-br/posts/` ou `content/en/posts/`. A data no nome deve ser consistente com o campo `date:` do frontmatter.
 
 ### 3. Referencia de Imagem
 
-O caminho em `image.path` deve corresponder a um arquivo existente em `assets/img/headers/`.
+Caminhos em `images` devem corresponder a arquivos existentes em `static/assets/img/headers/` (URL `/assets/img/headers/...`).
 
-### 4. Acentuacao Portuguesa
+### 4. Qualidade de idioma (pt-BR e en)
 
-Nenhuma palavra portuguesa comum deve aparecer sem acento no conteudo:
+Detectar o locale pelo path: `content/pt-br/...` → pt-BR; `content/en/...` → en. Rodar o check do locale do arquivo (e o do irmao, se existir).
+
+**pt-BR — acentuacao obrigatoria** (cada hit = ERROR):
 
 ```bash
-grep -inE '\b(codigo|voce|nao|tambem|alem|ate|pagina|unico|possivel|necessario|basico|metodo|titulo|topico|analise|numero|conteudo|seguranca|producao|informacao|aplicacao|integracao|solucao|funcao|execucao|configuracao|operacao|referencia|experiencia)\b' _posts/ARQUIVO.md
+grep -inE '\b(codigo|voce|nao|tambem|alem|ate|pagina|unico|possivel|necessario|basico|metodo|titulo|topico|analise|numero|conteudo|seguranca|producao|informacao|aplicacao|integracao|solucao|funcao|execucao|configuracao|operacao|referencia|experiencia)\b' content/pt-br/posts/ARQUIVO.md
 ```
 
-Se encontrar ocorrencias, reportar como ERROR.
+**en — gramatica / typos comuns** (cada hit = ERROR, exceto dentro de code fences):
+
+```bash
+grep -inE '\b(teh|recieve|seperate|occured|definately|accomodate|untill|wich|becuase|alot|loose\b|their\s+is|there\s+are\s+a\b|could\s+of\b|should\s+of\b|would\s+of\b)\b' content/en/posts/ARQUIVO.md
+```
+
+Alem do grep, o Reviewer DEVE revisar o corpo EN para: concordancia verbal, artigos (a/an/the), tempo verbal inconsistente, e calques do portugues (ex.: "the same of", "depends of", "in the next"). Posts em qualquer idioma DEVEM passar pelo `/humanizer` antes de publicar.
 
 ### 5. Categorias e Tags
 
-Comparar categorias e tags propostas contra os registros aprovados. Sinalizar valores novos para confirmacao.
+Comparar tags propostas contra o registro aprovado. Sinalizar valores novos para confirmacao.
 
 ## Encadeamento de Subagentes
 

@@ -14,31 +14,38 @@ git log --oneline -5
 
 ### 2. Filtrar Arquivos Protegidos
 
-Se algum dos arquivos abaixo estiver modificado, **NAO** incluir no commit:
-- `_config.yml`
+Se algum dos arquivos abaixo estiver modificado, **NAO** incluir no commit sem pedido explicito:
+- `hugo.toml`
 - `LICENSE`
-- `Gemfile`
-- `Gemfile.lock`
 
 Avisar o usuario se encontrar modificacoes nesses arquivos.
 
 ### 3. Executar Checagens Obrigatorias
 
-Para cada arquivo `.md` em `_posts/` que sera commitado:
+Para cada arquivo `.md` em `content/posts/` que sera commitado:
 
 **Frontmatter:**
 ```bash
-head -15 _posts/ARQUIVO.md
+head -15 content/posts/ARQUIVO.md
 ```
-Verificar campos obrigatorios: `layout`, `title`, `date`, `categories`, `tags`, `image`.
+Verificar campos obrigatorios: `title`, `description`, `date`, `slug`, `tags`, `images`.
 
 **Nome de arquivo:**
 Verificar formato `YYYY-MM-DD-slug.md`.
 
-**Acentuacao:**
+**Qualidade de idioma (por locale do path):**
+
+pt-BR (`content/pt-br/...`):
 ```bash
-grep -inE '\b(codigo|voce|nao|tambem|alem|ate|pagina|unico|possivel|necessario|basico|metodo|titulo|topico|analise|numero|conteudo|seguranca|producao|informacao|aplicacao|integracao|solucao|funcao|execucao|configuracao|operacao|referencia|experiencia)\b' _posts/ARQUIVO.md
+grep -inE '\b(codigo|voce|nao|tambem|alem|ate|pagina|unico|possivel|necessario|basico|metodo|titulo|topico|analise|numero|conteudo|seguranca|producao|informacao|aplicacao|integracao|solucao|funcao|execucao|configuracao|operacao|referencia|experiencia)\b' content/pt-br/posts/ARQUIVO.md
 ```
+
+en (`content/en/...`):
+```bash
+grep -inE '\b(teh|recieve|seperate|occured|definately|accomodate|untill|wich|becuase|alot|could of|should of|would of)\b' content/en/posts/ARQUIVO.md
+```
+
+Revisar gramatica EN (artigos, concordancia, calques) alem do grep.
 
 **Imagem:**
 ```bash
@@ -60,7 +67,7 @@ Determinar o tipo e escopo do commit:
 - `ci` — GitHub Actions workflows
 
 **Escopos:**
-- `posts` — arquivos em `_posts/`
+- `posts` — arquivos em `content/pt-br/posts/` ou `content/en/posts/`
 - `assets` — imagens e media
 - `config` — configuracoes
 - `skills` — `.claude/skills/`
@@ -82,7 +89,7 @@ Exemplos:
 Adicionar arquivos individualmente:
 
 ```bash
-git add _posts/YYYY-MM-DD-slug.md
+git add content/posts/YYYY-MM-DD-slug.md
 git add assets/img/headers/imagem.png
 ```
 

@@ -1,0 +1,8 @@
+{{- $src := .Destination | safeURL -}}
+{{- $alt := .Text | default "" -}}
+<a href="{{ $src }}" class="img-lightbox" data-lightbox>
+	<img src="{{ $src }}" alt="{{ $alt }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">
+</a>
+{{- with .Title -}}
+<span class="img-caption">{{ . }}</span>
+{{- end -}}

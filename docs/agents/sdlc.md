@@ -92,11 +92,14 @@ Every ticket body includes: What to build, Acceptance criteria, Blocked by.
 **Preview commands (this project):**
 
 ```bash
-bundle exec jekyll serve          # http://localhost:4000
-bundle exec jekyll serve --drafts # including drafts
-bundle exec jekyll build          # production build
-bundle exec htmlproofer ./_site   # HTML validation after build
+git submodule update --init --recursive   # Archie theme
+hugo server                 # http://127.0.0.1:1313/
+hugo server --buildDrafts  # including drafts
+hugo --minify              # production build → public/
+make test                  # build + htmlproofer/smoke on public/
 ```
+
+Jekyll rollback (emergency only): [`rollback-jekyll.md`](./rollback-jekyll.md) and tag `jekyll-baseline-2026-07-24`.
 
 Hard rules:
 

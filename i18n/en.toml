@@ -1,0 +1,53 @@
+[posted_on]
+other = "Posted on"
+
+[draft]
+other = "DRAFT"
+
+[tldr]
+other = "tl;dr:"
+
+[toc]
+other = "Table of contents"
+
+[read_more]
+other = "Read more ⟶"
+
+[home]
+other = "Home"
+
+[copy_code]
+other = "Copy"
+
+[copied_code]
+other = "Copied!"
+
+[copy_code_aria]
+other = "Copy code"
+
+[lang_switch]
+other = "Language"
+
+[toggle_dark]
+other = "Toggle dark mode"
+
+[lightbox_close]
+other = "Close"
+
+[lightbox_dialog]
+other = "Expanded image"
+
+[search_label]
+other = "Find entries"
+
+[search_placeholder]
+other = "Search by title, tag, or content"
+
+[search_hint]
+other = "Search across indexed content. Press <kbd>/</kbd> or <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>K</kbd> from any page."
+
+[search_loading]
+other = "Loading search index..."
+
+[search_noscript]
+other = "Search requires JavaScript to load the index and filter results."

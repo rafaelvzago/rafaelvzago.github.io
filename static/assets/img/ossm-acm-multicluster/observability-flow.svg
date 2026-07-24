@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 860" role="img" aria-labelledby="title desc">
+  <title id="title">Fluxos de métricas, traces e alertas</title>
+  <desc id="desc">Métricas dos dois spokes passam por User Workload Monitoring e ACM até Thanos. Perses e Kiali consultam Thanos. Traces do segundo spoke são encaminhados com mTLS ao coletor e Tempo no primeiro spoke. A métrica de saúde do Kiali pode ser avaliada localmente e no hub.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#000000" flood-opacity=".13"/>
+    </filter>
+    <marker id="arrowBlue" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,5.5 L0,11 Z" fill="#0066cc"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,5.5 L0,11 Z" fill="#6750a4"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,5.5 L0,11 Z" fill="#ee0000"/>
+    </marker>
+    <style>
+      .heading { font: 700 34px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #151515; }
+      .subheading { font: 500 18px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #5f6b76; }
+      .lane { font: 700 19px system-ui, -apple-system, "Segoe UI", sans-serif; letter-spacing: .03em; }
+      .title { font: 700 19px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #151515; }
+      .body { font: 500 15px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #5f6b76; }
+      .edge { font: 700 14px system-ui, -apple-system, "Segoe UI", sans-serif; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="860" fill="#ffffff"/>
+  <text x="720" y="54" text-anchor="middle" class="heading">Observabilidade de ponta a ponta</text>
+  <text x="720" y="84" text-anchor="middle" class="subheading">Três pipelines independentes, conectados no ponto certo</text>
+
+  <rect x="40" y="120" width="1360" height="205" rx="24" fill="#eef6fc"/>
+  <text x="70" y="158" class="lane" fill="#004b95">MÉTRICAS</text>
+
+  <g filter="url(#shadow)">
+    <rect x="80" y="190" width="210" height="90" rx="18" fill="#ffffff"/>
+    <rect x="370" y="190" width="210" height="90" rx="18" fill="#ffffff"/>
+    <rect x="660" y="190" width="210" height="90" rx="18" fill="#ffffff"/>
+    <rect x="950" y="190" width="210" height="90" rx="18" fill="#ffffff"/>
+    <rect x="1210" y="190" width="150" height="90" rx="18" fill="#ffffff"/>
+  </g>
+  <text x="185" y="225" text-anchor="middle" class="title">Istio / Kiali</text>
+  <text x="185" y="251" text-anchor="middle" class="body">spokes 1 e 2</text>
+  <text x="475" y="225" text-anchor="middle" class="title">UWM Prometheus</text>
+  <text x="475" y="251" text-anchor="middle" class="body">scrape local · 30 s</text>
+  <text x="765" y="225" text-anchor="middle" class="title">ACM collector</text>
+  <text x="765" y="251" text-anchor="middle" class="body">somente allowlist</text>
+  <text x="1055" y="225" text-anchor="middle" class="title">Hub Thanos</text>
+  <text x="1055" y="251" text-anchor="middle" class="body">visão da frota · ~5 min</text>
+  <text x="1285" y="225" text-anchor="middle" class="title">Kiali</text>
+  <text x="1285" y="251" text-anchor="middle" class="body">Perses</text>
+  <path d="M290 235 H370" stroke="#0066cc" stroke-width="5" marker-end="url(#arrowBlue)"/>
+  <path d="M580 235 H660" stroke="#0066cc" stroke-width="5" marker-end="url(#arrowBlue)"/>
+  <path d="M870 235 H950" stroke="#0066cc" stroke-width="5" marker-end="url(#arrowBlue)"/>
+  <path d="M1160 235 H1210" stroke="#0066cc" stroke-width="5" marker-end="url(#arrowBlue)"/>
+
+  <rect x="40" y="350" width="1360" height="205" rx="24" fill="#f3effb"/>
+  <text x="70" y="388" class="lane" fill="#4f378b">TRACES</text>
+  <g filter="url(#shadow)">
+    <rect x="80" y="420" width="210" height="90" rx="18" fill="#ffffff"/>
+    <rect x="370" y="420" width="210" height="90" rx="18" fill="#ffffff"/>
+    <rect x="660" y="420" width="210" height="90" rx="18" fill="#ffffff"/>
+    <rect x="950" y="420" width="210" height="90" rx="18" fill="#ffffff"/>
+    <rect x="1210" y="420" width="150" height="90" rx="18" fill="#ffffff"/>
+  </g>
+  <text x="185" y="455" text-anchor="middle" class="title">Istio proxies</text>
+  <text x="185" y="481" text-anchor="middle" class="body">spoke 2</text>
+  <text x="475" y="455" text-anchor="middle" class="title">OTEL forwarder</text>
+  <text x="475" y="481" text-anchor="middle" class="body">cluster.name preservado</text>
+  <text x="765" y="455" text-anchor="middle" class="title">Route mTLS</text>
+  <text x="765" y="481" text-anchor="middle" class="body">receiver no spoke 1</text>
+  <text x="1055" y="455" text-anchor="middle" class="title">TempoStack</text>
+  <text x="1055" y="481" text-anchor="middle" class="body">tenant do mesh</text>
+  <text x="1285" y="455" text-anchor="middle" class="title">Kiali</text>
+  <text x="1285" y="481" text-anchor="middle" class="body">OCP Traces</text>
+  <path d="M290 465 H370" stroke="#6750a4" stroke-width="5" marker-end="url(#arrowPurple)"/>
+  <path d="M580 465 H660" stroke="#6750a4" stroke-width="5" marker-end="url(#arrowPurple)"/>
+  <path d="M870 465 H950" stroke="#6750a4" stroke-width="5" marker-end="url(#arrowPurple)"/>
+  <path d="M1160 465 H1210" stroke="#6750a4" stroke-width="5" marker-end="url(#arrowPurple)"/>
+
+  <rect x="40" y="580" width="1360" height="220" rx="24" fill="#fff1f1"/>
+  <text x="70" y="618" class="lane" fill="#a30000">SAÚDE E ALERTAS</text>
+  <g filter="url(#shadow)">
+    <rect x="80" y="650" width="210" height="100" rx="18" fill="#ffffff"/>
+    <rect x="370" y="650" width="210" height="100" rx="18" fill="#ffffff"/>
+    <rect x="660" y="650" width="210" height="100" rx="18" fill="#ffffff"/>
+    <rect x="950" y="650" width="210" height="100" rx="18" fill="#ffffff"/>
+    <rect x="1210" y="650" width="150" height="100" rx="18" fill="#ffffff"/>
+  </g>
+  <text x="185" y="686" text-anchor="middle" class="title">Kiali health cache</text>
+  <text x="185" y="712" text-anchor="middle" class="body">kiali_health_status</text>
+  <text x="475" y="686" text-anchor="middle" class="title">ServiceMonitor</text>
+  <text x="475" y="712" text-anchor="middle" class="body">TLS com service CA</text>
+  <text x="765" y="680" text-anchor="middle" class="title">PrometheusRule</text>
+  <text x="765" y="706" text-anchor="middle" class="body">alerta local</text>
+  <text x="765" y="729" text-anchor="middle" class="body">exported_namespace</text>
+  <text x="1055" y="680" text-anchor="middle" class="title">ACM allowlist</text>
+  <text x="1055" y="706" text-anchor="middle" class="body">envia a série</text>
+  <text x="1055" y="729" text-anchor="middle" class="body">ao hub</text>
+  <text x="1285" y="680" text-anchor="middle" class="title">Thanos</text>
+  <text x="1285" y="706" text-anchor="middle" class="body">Ruler</text>
+  <text x="1285" y="729" text-anchor="middle" class="body">fleet-wide</text>
+  <path d="M290 700 H370" stroke="#ee0000" stroke-width="5" marker-end="url(#arrowRed)"/>
+  <path d="M580 700 H660" stroke="#ee0000" stroke-width="5" marker-end="url(#arrowRed)"/>
+  <path d="M870 700 H950" stroke="#ee0000" stroke-width="5" stroke-dasharray="10 8" marker-end="url(#arrowRed)"/>
+  <path d="M1160 700 H1210" stroke="#ee0000" stroke-width="5" marker-end="url(#arrowRed)"/>
+
+  <text x="720" y="835" text-anchor="middle" class="body">Métricas e traces têm latências e políticas de retenção diferentes; não use um pipeline para inferir a saúde do outro.</text>
+</svg>
