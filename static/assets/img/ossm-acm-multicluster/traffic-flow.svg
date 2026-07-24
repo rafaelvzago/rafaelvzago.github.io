@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 720" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="720" viewBox="0 0 1440 720" role="img" aria-labelledby="title desc">
   <title id="title">Fluxo de tráfego entre clusters</title>
   <desc id="desc">Uma requisição parte do cliente no primeiro spoke, é resolvida pelo control plane local, cruza um gateway east-west com mTLS e chega ao workload no segundo spoke.</desc>
   <defs>
