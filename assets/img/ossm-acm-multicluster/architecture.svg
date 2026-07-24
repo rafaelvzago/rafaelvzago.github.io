@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">Arquitetura OpenShift Service Mesh multi-cluster com ACM</title>
+  <desc id="desc">Um cluster hub executa ACM, Observatorium e Thanos. Dois clusters spoke executam primários Istio, conectados por gateways east-west e confiança mTLS compartilhada. Kiali, Perses e Tempo ficam no primeiro spoke.</desc>
+  <defs>
+    <linearGradient id="hubGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#151515"/>
+      <stop offset="1" stop-color="#2b2b2b"/>
+    </linearGradient>
+    <linearGradient id="spokeGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f3f4f6"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity=".16"/>
+    </filter>
+    <marker id="arrowRed" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#ee0000"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#0066cc"/>
+    </marker>
+    <style>
+      .heading { font: 700 34px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #151515; }
+      .subheading { font: 500 18px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #5f6b76; }
+      .card-title { font: 700 25px system-ui, -apple-system, "Segoe UI", sans-serif; }
+      .label { font: 600 17px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #151515; }
+      .label-light { font: 600 17px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #ffffff; }
+      .small { font: 500 15px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #5f6b76; }
+      .small-light { font: 500 15px system-ui, -apple-system, "Segoe UI", sans-serif; fill: #d2d2d2; }
+      .pill { font: 700 14px system-ui, -apple-system, "Segoe UI", sans-serif; letter-spacing: .04em; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="900" fill="#ffffff"/>
+  <text x="720" y="54" text-anchor="middle" class="heading">Arquitetura final</text>
+  <text x="720" y="84" text-anchor="middle" class="subheading">Hub de gestão e observabilidade; service mesh nos dois spokes</text>
+
+  <g filter="url(#shadow)">
+    <rect x="420" y="120" width="600" height="250" rx="28" fill="url(#hubGradient)"/>
+  </g>
+  <rect x="448" y="145" width="92" height="30" rx="15" fill="#ee0000"/>
+  <text x="494" y="166" text-anchor="middle" class="pill" fill="#ffffff">HUB</text>
+  <text x="448" y="212" class="card-title" fill="#ffffff">OpenShift + ACM</text>
+  <text x="448" y="242" class="small-light">Sem control plane do Service Mesh</text>
+  <g>
+    <rect x="448" y="275" width="165" height="62" rx="14" fill="#3c3c3c"/>
+    <text x="531" y="301" text-anchor="middle" class="label-light">Observatorium</text>
+    <text x="531" y="323" text-anchor="middle" class="small-light">API mTLS</text>
+    <rect x="628" y="275" width="165" height="62" rx="14" fill="#3c3c3c"/>
+    <text x="711" y="301" text-anchor="middle" class="label-light">Thanos</text>
+    <text x="711" y="323" text-anchor="middle" class="small-light">métricas da frota</text>
+    <rect x="808" y="275" width="184" height="62" rx="14" fill="#3c3c3c"/>
+    <text x="900" y="301" text-anchor="middle" class="label-light">Thanos Ruler</text>
+    <text x="900" y="323" text-anchor="middle" class="small-light">alertas globais</text>
+  </g>
+
+  <path d="M530 520 C530 445 560 425 610 370" fill="none" stroke="#0066cc" stroke-width="5" marker-end="url(#arrowBlue)"/>
+  <path d="M910 520 C910 445 880 425 830 370" fill="none" stroke="#0066cc" stroke-width="5" marker-end="url(#arrowBlue)"/>
+  <rect x="544" y="414" width="352" height="40" rx="20" fill="#e7f1fa"/>
+  <text x="720" y="440" text-anchor="middle" class="label" fill="#004b95">UWM → ACM collector → Thanos</text>
+
+  <g filter="url(#shadow)">
+    <rect x="80" y="520" width="560" height="300" rx="28" fill="url(#spokeGradient)" stroke="#d2d2d2" stroke-width="2"/>
+  </g>
+  <rect x="108" y="545" width="116" height="30" rx="15" fill="#0066cc"/>
+  <text x="166" y="566" text-anchor="middle" class="pill" fill="#ffffff">SPOKE 1</text>
+  <text x="108" y="612" class="card-title" fill="#151515">Istio primary · network1</text>
+  <text x="108" y="642" class="small">OSSM 3 / Sail Operator</text>
+  <g>
+    <rect x="108" y="674" width="150" height="62" rx="14" fill="#ffffff" stroke="#b8bbbe"/>
+    <text x="183" y="701" text-anchor="middle" class="label">istiod</text>
+    <text x="183" y="723" text-anchor="middle" class="small">ztunnel + CNI</text>
+    <rect x="273" y="674" width="150" height="62" rx="14" fill="#ffffff" stroke="#b8bbbe"/>
+    <text x="348" y="701" text-anchor="middle" class="label">Kiali</text>
+    <text x="348" y="723" text-anchor="middle" class="small">visão central</text>
+    <rect x="438" y="674" width="174" height="62" rx="14" fill="#ffffff" stroke="#b8bbbe"/>
+    <text x="525" y="701" text-anchor="middle" class="label">Perses + Tempo</text>
+    <text x="525" y="723" text-anchor="middle" class="small">métricas + traces</text>
+  </g>
+  <rect x="108" y="755" width="504" height="40" rx="12" fill="#fce8e8"/>
+  <text x="360" y="781" text-anchor="middle" class="label" fill="#a30000">Ambient + sidecar workloads</text>
+
+  <g filter="url(#shadow)">
+    <rect x="800" y="520" width="560" height="300" rx="28" fill="url(#spokeGradient)" stroke="#d2d2d2" stroke-width="2"/>
+  </g>
+  <rect x="828" y="545" width="116" height="30" rx="15" fill="#0066cc"/>
+  <text x="886" y="566" text-anchor="middle" class="pill" fill="#ffffff">SPOKE 2</text>
+  <text x="828" y="612" class="card-title" fill="#151515">Istio primary · network2</text>
+  <text x="828" y="642" class="small">Mesmo meshID e mesma Root CA</text>
+  <g>
+    <rect x="828" y="674" width="150" height="62" rx="14" fill="#ffffff" stroke="#b8bbbe"/>
+    <text x="903" y="701" text-anchor="middle" class="label">istiod</text>
+    <text x="903" y="723" text-anchor="middle" class="small">ztunnel + CNI</text>
+    <rect x="993" y="674" width="150" height="62" rx="14" fill="#ffffff" stroke="#b8bbbe"/>
+    <text x="1068" y="701" text-anchor="middle" class="label">Kiali RBAC</text>
+    <text x="1068" y="723" text-anchor="middle" class="small">sem servidor</text>
+    <rect x="1158" y="674" width="174" height="62" rx="14" fill="#ffffff" stroke="#b8bbbe"/>
+    <text x="1245" y="701" text-anchor="middle" class="label">OTEL forwarder</text>
+    <text x="1245" y="723" text-anchor="middle" class="small">mTLS para spoke 1</text>
+  </g>
+  <rect x="828" y="755" width="504" height="40" rx="12" fill="#fce8e8"/>
+  <text x="1080" y="781" text-anchor="middle" class="label" fill="#a30000">Ambient + sidecar workloads</text>
+
+  <path d="M640 610 C700 572 740 572 800 610" fill="none" stroke="#ee0000" stroke-width="6" marker-end="url(#arrowRed)"/>
+  <path d="M800 642 C740 680 700 680 640 642" fill="none" stroke="#ee0000" stroke-width="6" marker-end="url(#arrowRed)"/>
+  <rect x="650" y="566" width="140" height="44" rx="22" fill="#ffffff" stroke="#ee0000" stroke-width="2"/>
+  <text x="720" y="586" text-anchor="middle" class="label" fill="#a30000">East-West</text>
+  <text x="720" y="603" text-anchor="middle" class="small">15008 · 15443</text>
+
+  <g transform="translate(90,850)">
+    <circle cx="10" cy="0" r="7" fill="#0066cc"/>
+    <text x="28" y="6" class="small">métricas centralizadas</text>
+    <circle cx="246" cy="0" r="7" fill="#ee0000"/>
+    <text x="264" y="6" class="small">tráfego de aplicação com mTLS</text>
+    <rect x="540" y="-8" width="18" height="16" rx="4" fill="#ffffff" stroke="#b8bbbe"/>
+    <text x="570" y="6" class="small">componente no cluster</text>
+  </g>
+</svg>
