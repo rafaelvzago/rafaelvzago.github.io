@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+    {{- partial "header.html" . -}}
+    <body
+        data-copy-label="{{ i18n "copy_code" }}"
+        data-copied-label="{{ i18n "copied_code" }}"
+        data-copy-aria="{{ i18n "copy_code_aria" }}"
+        data-lightbox-close="{{ i18n "lightbox_close" }}"
+        data-lightbox-dialog="{{ i18n "lightbox_dialog" }}"
+        data-search-url="{{ "/search/" | relLangURL }}">
+        {{- partial "gtm-body.html" . -}}
+        <div class="content">
+        {{- partial "head.html" . -}}
+        {{- block "main" . }}{{- end }}
+        {{- partial "footer.html" . -}}
+        </div>
+    </body>
+</html>

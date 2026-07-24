@@ -1,0 +1,8 @@
+<div class="description">
+	{{- with .Description -}}
+		{{- . -}}
+	{{- else -}}
+		{{- /* Plain text only: never pull leading images/embeds from .Summary */ -}}
+		{{- .Plain | truncate 200 -}}
+	{{- end -}}
+</div>

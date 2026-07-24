@@ -3,9 +3,14 @@
 vendor
 Gemfile.lock
 
-# Jekyll cache
+# Jekyll cache (legacy)
 .jekyll-cache
 _site
+
+# Hugo
+public/
+resources/
+.hugo_build.lock
 
 # RubyGems
 *.gem

@@ -1,0 +1,135 @@
+baseURL = "https://www.rafaelvzago.com/"
+title = "Rafael Zago"
+theme = "archie"
+copyright = "© Rafael Zago"
+enableGitInfo = true
+defaultContentLanguage = "pt-br"
+defaultContentLanguageInSubdir = false
+timeZone = "America/Sao_Paulo"
+
+# Code highlighting
+pygmentsStyle = "monokai"
+pygmentsCodeFences = true
+pygmentsCodeFencesGuessSyntax = true
+
+[pagination]
+pagerSize = 10
+
+[permalinks]
+posts = "/posts/:slug/"
+
+[params]
+mode = "toggle"
+useCDN = false
+favicon = "/assets/img/favicons/favicon.ico"
+mathjax = false
+katex = false
+mainSections = ["posts"]
+customcss = ["css/post-layout.css", "css/copy-code.css", "css/image-lightbox.css"]
+customCSS = ["css/post-layout.css", "css/copy-code.css", "css/image-lightbox.css"]
+customJS = ["js/copy-code.js", "js/image-lightbox.js", "js/global-search.js"]
+
+[params.gtm]
+id = "GTM-592PS4S2"
+
+[[params.social]]
+name = "GitHub"
+icon = "github"
+url = "https://github.com/rafaelvzago"
+
+[[params.social]]
+name = "Twitter"
+icon = "twitter"
+url = "https://twitter.com/rafaelvzago"
+
+[[params.social]]
+name = "LinkedIn"
+icon = "simple:linkedin"
+url = "https://www.linkedin.com/in/rafaelvzago"
+
+[languages]
+[languages.pt-br]
+languageCode = "pt-BR"
+languageName = "Português"
+weight = 1
+contentDir = "content/pt-br"
+title = "Rafael Zago"
+
+[languages.pt-br.params]
+subtitle = "Meu bloco de notas na interwebs.."
+description = "Conteúdo de cloud, DevOps, infraestrutura, automação, Linux, containers, Kubernetes, OpenShift e AI."
+
+[[languages.pt-br.menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[languages.pt-br.menu.main]]
+name = "Posts"
+url = "/posts/"
+weight = 2
+
+[[languages.pt-br.menu.main]]
+name = "Sobre"
+url = "/about/"
+weight = 3
+
+[[languages.pt-br.menu.main]]
+name = "Tags"
+url = "/tags/"
+weight = 4
+
+[[languages.pt-br.menu.main]]
+name = "Busca"
+url = "/search/"
+weight = 5
+
+[languages.en]
+languageCode = "en-US"
+languageName = "English"
+weight = 2
+contentDir = "content/en"
+title = "Rafael Zago"
+
+[languages.en.params]
+subtitle = "My scratchpad on the interwebs.."
+description = "Notes on cloud, DevOps, infrastructure, automation, Linux, containers, Kubernetes, OpenShift, and AI."
+
+[[languages.en.menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[languages.en.menu.main]]
+name = "Posts"
+url = "/posts/"
+weight = 2
+
+[[languages.en.menu.main]]
+name = "About"
+url = "/about/"
+weight = 3
+
+[[languages.en.menu.main]]
+name = "Tags"
+url = "/tags/"
+weight = 4
+
+[[languages.en.menu.main]]
+name = "Search"
+url = "/search/"
+weight = 5
+
+[services.googleAnalytics]
+id = "G-9J3YRPN8EN"
+
+[privacy.googleAnalytics]
+disable = false
+respectDoNotTrack = true
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.tableOfContents]
+startLevel = 2
+endLevel = 3

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+	{{ partial "header.html" . }}
+	<body
+		data-copy-label="{{ i18n "copy_code" }}"
+		data-copied-label="{{ i18n "copied_code" }}"
+		data-copy-aria="{{ i18n "copy_code_aria" }}"
+		data-lightbox-close="{{ i18n "lightbox_close" }}"
+		data-lightbox-dialog="{{ i18n "lightbox_dialog" }}"
+		data-search-url="{{ "/search/" | relLangURL }}">
+		{{ partial "gtm-body.html" . }}
+		<div class="content">
+			{{ partial "head.html" . }}
+
+			
+			<main class="list">
+				<div class="site-description">
+					{{- if isset .Site.Params "subtitle" -}}
+					<p>{{ .Site.Params.Subtitle | .Page.RenderString }}</p>
+					{{- end -}}
+				</div>
+				{{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+				{{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) }}
+				{{ range $paginator.Pages }}
+				<section class="list-item">
+					<h1 class="title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h1>
+					<time>{{ dateFormat ":date_medium" .Date }}{{ if .Draft }} <span class="draft-label">{{ i18n "draft" }}</span> {{ end }}</time>
+					<br>{{ partial "pagedescription.html" . }}
+					<a class="readmore" href="{{ .RelPermalink }}">{{ i18n "read_more" }}</a>
+				</section>
+				{{ end }}
+				{{ template "partials/paginator.html" . }}
+			</main>
+			{{ partial "footer.html" . }}
+		</div>
+		
+	</body>
+</html>

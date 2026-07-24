@@ -1,0 +1,30 @@
+/* TOC sits above the article, not in a side column that steals width */
+.toc.toc-inline {
+  max-width: none;
+  max-inline-size: none;
+  position: static;
+  margin-block: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.toc.toc-inline > summary {
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-inline-start: 0.5rem;
+  font-size: 0.9em;
+}
+
+.lang-switch__current {
+  font-weight: 700;
+}
+
+.lang-switch__sep {
+  opacity: 0.5;
+}

@@ -1,0 +1,53 @@
+[posted_on]
+other = "Publicado em"
+
+[draft]
+other = "RASCUNHO"
+
+[tldr]
+other = "tl;dr:"
+
+[toc]
+other = "Tabela de conteúdos"
+
+[read_more]
+other = "Leia mais ⟶"
+
+[home]
+other = "Home"
+
+[copy_code]
+other = "Copiar"
+
+[copied_code]
+other = "Copiado!"
+
+[copy_code_aria]
+other = "Copiar código"
+
+[lang_switch]
+other = "Idioma"
+
+[toggle_dark]
+other = "Alternar tema escuro"
+
+[lightbox_close]
+other = "Fechar"
+
+[lightbox_dialog]
+other = "Imagem ampliada"
+
+[search_label]
+other = "Buscar posts"
+
+[search_placeholder]
+other = "Buscar por título, tag ou conteúdo"
+
+[search_hint]
+other = "Busca no conteúdo indexado. Pressione <kbd>/</kbd> ou <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>K</kbd> em qualquer página."
+
+[search_loading]
+other = "Carregando índice de busca..."
+
+[search_noscript]
+other = "A busca precisa de JavaScript para carregar o índice e filtrar os resultados."
