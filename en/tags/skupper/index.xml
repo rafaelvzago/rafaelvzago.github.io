@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Skupper on Rafael Zago</title><link>https://www.rafaelvzago.com/en/tags/skupper/</link><description>Recent content in Skupper on Rafael Zago</description><generator>Hugo</generator><language>en-US</language><copyright>© Rafael Zago</copyright><lastBuildDate>Fri, 24 Jul 2026 16:16:10 -0300</lastBuildDate><atom:link href="https://www.rafaelvzago.com/en/tags/skupper/index.xml" rel="self" type="application/rss+xml"/><item><title>Skupper + InstructLab: controlling and protecting AI (act 3)</title><link>https://www.rafaelvzago.com/en/posts/controlando-progetendo-ia-deepseek-skupper-istio-terceiro-ultimo-ato/</link><pubDate>Mon, 05 May 2025 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/controlando-progetendo-ia-deepseek-skupper-istio-terceiro-ultimo-ato/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt3.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt3.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="see-the-solution-in-action">See the Solution in Action&lt;/h2>
+&lt;p>In this article we deploy the InstructLab chatbot on Kubernetes step by step, using Skupper to securely connect a private AI model to a public interface. This is the hands-on continuation of the solution pattern from the previous article.&lt;/p>
+&lt;h3 id="concepts-and-commands-used-in-the-demo">Concepts and Commands Used in the Demo&lt;/h3>
+&lt;blockquote>
+&lt;p>NOTE: The following commands configure the environment and deploy the InstructLab chatbot. They are taken from the InstructLab project and adapted for this demo.&lt;/p></description></item><item><title>Skupper + InstructLab: controlling and protecting AI (act 2)</title><link>https://www.rafaelvzago.com/en/posts/controlando-progetendo-ia-deepseek-skupper-istio-segundo-ato/</link><pubDate>Sun, 04 May 2025 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/controlando-progetendo-ia-deepseek-skupper-istio-segundo-ato/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt2.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt2.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="see-the-solution-in-action">See the Solution in Action&lt;/h2>
+&lt;p>In this article we prepare the full environment to serve the generative DeepSeek AI model with InstructLab: download the model, convert it to GGUF, and deploy the InstructLab chatbot. We also expose the service securely with Skupper.&lt;/p>
+&lt;h3 id="concepts-and-commands-used-in-the-demo">Concepts and Commands Used in the Demo&lt;/h3>
+&lt;blockquote>
+&lt;p>NOTE Make sure you explain what each Skupper command does the first time you use it, especially for people new to Skupper. The following commands should be explained:&lt;/p></description></item><item><title>Skupper + InstructLab: controlling and protecting AI (act 1)</title><link>https://www.rafaelvzago.com/en/posts/controlando-progetendo-ia-deepseek-skupper-istio-primeiro-ato/</link><pubDate>Fri, 02 May 2025 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/controlando-progetendo-ia-deepseek-skupper-istio-primeiro-ato/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt1.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt1.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="the-story-behind-this-solution-pattern">The story behind this solution pattern&lt;/h2>
+&lt;p>Growing demand for AI-driven applications brings a hard problem: how do you deploy and operate AI models securely in environments that need strict data protection, while those models still have to be reachable by public services? That need became clear while building a local AI chatbot meant to handle sensitive and proprietary information — we needed a design that kept the model inside a protected environment.&lt;/p></description></item><item><title>InstructLab and Skupper: local AI without exposing data</title><link>https://www.rafaelvzago.com/en/posts/running-local-ai-with-instruct-lab/</link><pubDate>Thu, 01 Aug 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/running-local-ai-with-instruct-lab/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/instructlab_workshop-skupper-patient-portal.jpg" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/instructlab_workshop-skupper-patient-portal.jpg" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h1 id="welcome-to-the-ollama-pilot">Welcome to the Ollama Pilot.&lt;/h1>
+&lt;h2 id="problem-to-solve">Problem to solve&lt;/h2>
+&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/instructlab_banner.jpg" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/instructlab_banner.jpg" alt="contest" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;p>The main goal of this project is to create a secure connection between two sites, enabling the communication between the engineer machine and an Instruct Lab Model. The merlinite-7b-lab-Q4_K_M.gguf model will be used for the chatbot, and it is available in the Instruct Lab. The license of the model is available in the &lt;a href="https://instructlab.ai/">Instruct Labs&lt;/a>.&lt;/p>
+&lt;p>But, why the banner? Well, the engineer needs to know who is better, Lebron or Jordan. The chatbot will be responsible for answering this question. The chatbot will receive the user input and send it to the llama3 model. The response from the merlinite model will be sent back to the user.&lt;/p></description></item><item><title>Skupper workshop: Patient Portal on Kubernetes</title><link>https://www.rafaelvzago.com/en/posts/workshop-skupper-patient-portal/</link><pubDate>Tue, 02 Jul 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/workshop-skupper-patient-portal/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/workshop-skupper-patient-portal.jpg" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/workshop-skupper-patient-portal.jpg" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="description">Description&lt;/h2>
+&lt;p>This workshop introduces Red Hat Service Interconnect, an application integration solution that lets different systems communicate efficiently and securely.&lt;/p>
+&lt;h2 id="solution-architecture">Solution architecture&lt;/h2>
+&lt;p>&lt;a href="assets/workshop_skupper_arquitetura.png" class="img-lightbox" data-lightbox>
+	&lt;img src="assets/workshop_skupper_arquitetura.png" alt="Architecture" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="service-topology">Service topology&lt;/h2>
+&lt;p>&lt;a href="assets/workshop_skupper_solution-topology.png" class="img-lightbox" data-lightbox>
+	&lt;img src="assets/workshop_skupper_solution-topology.png" alt="Topology" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="workshop-outline">Workshop outline&lt;/h2>
+&lt;ol>
+&lt;li>Sign in to Red Hat Developer.&lt;/li>
+&lt;li>Create an OpenShift cluster.&lt;/li>
+&lt;li>Access the OpenShift cluster.&lt;/li>
+&lt;li>In the Red Hat OpenShift Sandbox project, open your project.&lt;/li>
+&lt;li>Create a virtual machine with OpenShift Virtualization.&lt;/li>
+&lt;li>Install packages on the virtual machine:
+&lt;ul>
+&lt;li>podman&lt;/li>
+&lt;li>kubernetes-client&lt;/li>
+&lt;li>skupper&lt;/li>
+&lt;li>oc&lt;/li>
+&lt;li>wget&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Deploy the database with Podman.&lt;/li>
+&lt;li>Deploy the application frontend and backend.&lt;/li>
+&lt;li>Configure Service Interconnect (Skupper) so the database running under Podman can talk to the app on OpenShift.&lt;/li>
+&lt;li>Access the application and confirm communication works.&lt;/li>
+&lt;li>Closing notes.&lt;/li>
+&lt;/ol>
+&lt;h2 id="links">Links&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Resource&lt;/th>
+ &lt;th>Link&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>[1] Red Hat Developer&lt;/td>
+ &lt;td>&lt;a href="https://developers.redhat.com/">https://developers.redhat.com/&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>[2] OC&lt;/td>
+ &lt;td>&lt;a href="https://docs.openshift.com/container-platform/4.15/cli_reference/openshift_cli/getting-started-cli.html">https://docs.openshift.com/container-platform/4.15/cli_reference/openshift_cli/getting-started-cli.html&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>[3] Skupper&lt;/td>
+ &lt;td>&lt;a href="https://skupper.io/">https://skupper.io/&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;ul>
+&lt;li>A Red Hat Developer account&lt;/li>
+&lt;li>Basic Kubernetes knowledge&lt;/li>
+&lt;li>Basic Red Hat OpenShift knowledge&lt;/li>
+&lt;li>Basic Podman knowledge&lt;/li>
+&lt;li>Google Chrome preferred—it lets you paste commands into the VM console over browser VNC.&lt;/li>
+&lt;/ul>
+&lt;h2 id="step-by-step">Step by step&lt;/h2>
+&lt;h3 id="1-sign-in-to-red-hat-developer">1. Sign in to Red Hat Developer&lt;/h3>
+&lt;p>Go to &lt;a href="https://developers.redhat.com/">Red Hat Developer&lt;/a> and sign in with your account.&lt;/p></description></item><item><title>OpenShift AI and Skupper: insurance fraud prevention</title><link>https://www.rafaelvzago.com/en/posts/ai-com-skupper-para-previnir-fraudes/</link><pubDate>Mon, 17 Jun 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/ai-com-skupper-para-previnir-fraudes/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/AI-com-skupper-para-previnir-fraudes.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/AI-com-skupper-para-previnir-fraudes.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="description">Description&lt;/h2>
+&lt;p>This workshop demonstrates how to use Skupper to connect local data services to cloud-based AI/ML environments. The workshop includes a Go application in a podman container that exposes internal data for Skupper connection. The AI/ML model training is performed in an OpenShift AI cluster on AWS using Openshift AI/ML services.&lt;/p>
+&lt;h2 id="disclaimer">Disclaimer&lt;/h2>
+&lt;p>This lab uses the example from the &lt;a href="https://github.com/rh-aiservices-bu/insurance-claim-processing">AI/ML Workshop&lt;/a> created by the Red Hat AI Services team. The original workshop is available on GitHub and includes all the necessary information to run the lab. The lab was adapted to use Skupper to connect the local data services to the cloud-based AI/ML environment.&lt;/p></description></item><item><title>TemPy: IoT with Raspberry Pi, Skupper, and Grafana</title><link>https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/</link><pubDate>Thu, 15 Feb 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/tempy-com-skupper-e-grafana.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/tempy-com-skupper-e-grafana.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="description">Description&lt;/h2>
+&lt;p>This project is a proof of concept for an IoT architecture using a Raspberry Pi and a temperature sensor that exposes the temperature data through a REST API. Along with the REST API, there is a cloud integration with any cloud provider using &lt;a href="https://skupper.io/">Skupper&lt;/a> that enables the data to be visualized in a Grafana dashboard.&lt;/p>
+&lt;blockquote>
+&lt;p>Clone the repository and follow the instructions to run the project. &lt;a href="https://github.com/rafaelvzago/skupper-tempy">https://github.com/rafaelvzago/skupper-tempy&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git clone https://github.com/rafaelvzago/skupper-tempy.git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="table-of-contents">Table of Contents&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#hardware">Hardware&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#raspberry-configuration">Raspberry Configuration&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#temperature-capture">Temperature Capture&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#skupper-role">Skupper Role&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#connection-to-a-cluster-using-skupper-and-storage-data-into-prometheus">Connection to a cluster using skupper and storage data into prometheus&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#prometheus">Prometheus&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#grafana">Grafana&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#repository">Repository&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="architecture">Architecture&lt;/h2>
+&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/tempy-arch.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/tempy-arch.png" alt="arch" loading="lazy" decoding="async">
+&lt;/a>&lt;/p></description></item><item><title>CI/CD upstream vs downstream: when to use each</title><link>https://www.rafaelvzago.com/en/posts/ci-cd-downstream-upstream/</link><pubDate>Fri, 02 Jun 2023 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/ci-cd-downstream-upstream/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/ci-cd-downstream-upstream-hero.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/ci-cd-downstream-upstream-hero.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="integrating-skupper-upstream-and-downstream">Integrating Skupper upstream and downstream&lt;/h2>
+&lt;p>Integrating upstream and downstream projects is rarely simple. Here is a practical approach for Skupper on the upstream side and its commercial downstream line, using familiar tools for each side of the work.&lt;/p>
+&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>Skupper is an open-source project that provides a service network for Kubernetes. It is developed by Red Hat and released under the Apache 2.0 license. That is the upstream version—the one under active development.&lt;/p></description></item><item><title>Skupper: multicloud app network in a few commands</title><link>https://www.rafaelvzago.com/en/posts/multicloud-com-skupper/</link><pubDate>Sat, 01 Oct 2022 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/multicloud-com-skupper/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/multicloud-com-skupper-hero.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/multicloud-com-skupper-hero.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="references-and-technologies-used">References and technologies used&lt;/h2>
+&lt;ol>
+&lt;li>&lt;a href="https://skupper.io">https://skupper.io&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://minikube.sigs.k8s.io">https://minikube.sigs.k8s.io&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/skupperproject/skupper-example-hello-world">Repository with the code&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://qpid.apache.org/components/dispatch-router/index.html">Qpid-dispatch&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://activemq.apache.org/">ActiveMQ&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">Kubectl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kubernetes.io/docs/home/">Kubernetes&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">MTLS&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://en.wikipedia.org/wiki/Open_source">Open-source&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/skupperproject/skupper-router">Skupper-router&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/skupperproject/skupper">Skupper&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h2 id="tools">Tools&lt;/h2>
+&lt;ul>
+&lt;li>A computer with minikube [2] installed;&lt;/li>
+&lt;li>A terminal to run the commands;&lt;/li>
+&lt;li>&lt;code>kubectl&lt;/code> &amp;gt; 1.15 [6] or newer.&lt;/li>
+&lt;/ul>
+&lt;h2 id="solution-overview">Solution overview&lt;/h2>
+&lt;p>Skupper [1] lets you connect two or more cloud environments in a non-intrusive, secure way. Those environments can sit on different cloud providers—AWS, GCP, Azure, and others—or on native Kubernetes clusters.&lt;/p></description></item></channel></rss>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Rafael Zago</title><link>https://www.rafaelvzago.com/posts/</link><description>Recent content in Posts on Rafael Zago</description><generator>Hugo</generator><language>pt-BR</language><copyright>© Rafael Zago</copyright><lastBuildDate>Fri, 24 Jul 2026 16:16:10 -0300</lastBuildDate><atom:link href="https://www.rafaelvzago.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenShift Service Mesh 3: multi-cluster com ACM e Kiali</title><link>https://www.rafaelvzago.com/posts/openshift-service-mesh-3-multicluster-acm-kiali/</link><pubDate>Thu, 23 Jul 2026 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/openshift-service-mesh-3-multicluster-acm-kiali/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/openshift-service-mesh-3-multicluster-acm-kiali.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/openshift-service-mesh-3-multicluster-acm-kiali.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;p>Multi-cluster com service mesh costuma falhar no detalhe chato: &lt;code>meshID&lt;/code>, &lt;code>clusterName&lt;/code> e &lt;code>network&lt;/code> precisam bater em todo lugar. Se um diverge, o Kiali mostra topologia pela metade ou o tráfego entre clusters não completa o handshake. Instalar o control plane duas vezes não resolve isso.&lt;/p>
+&lt;p>No &lt;a href="https://www.rafaelvzago.com/posts/openshift-service-mesh-3/">post sobre OpenShift Service Mesh 3&lt;/a> falei da mudança do Maistra para o Istio upstream. Aqui é o passo seguinte: dois spokes no mesmo mesh multi-primary, com ACM no hub.&lt;/p></description></item><item><title>Como eu uso IA no desenvolvimento (Cursor e Claude)</title><link>https://www.rafaelvzago.com/posts/como-eu-uso-ia-no-desenvolvimento/</link><pubDate>Wed, 22 Jul 2026 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/como-eu-uso-ia-no-desenvolvimento/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/como-eu-uso-ia-no-desenvolvimento.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/como-eu-uso-ia-no-desenvolvimento.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;p>A pergunta que mais ouço sobre IA no dia a dia não é &amp;ldquo;qual modelo você usa?&amp;rdquo;. É &amp;ldquo;como você organiza isso para não virar bagunça?&amp;rdquo;.&lt;/p>
+&lt;p>Eu uso IA o tempo todo, no código e neste blog. O que mudou a minha rotina não foi um prompt milagroso. Foi tratar o agente como alguém que entra no projeto sem contexto: se a regra não está em arquivo, ela não existe. Skills, &lt;code>AGENTS.md&lt;/code>, agentes com papéis estreitos e eu revisando o resultado. Sem mágica.&lt;/p></description></item><item><title>Claude Code: do PRD ao pull request com agentes</title><link>https://www.rafaelvzago.com/posts/claude-code-automatizando-workflow-prd-pr/</link><pubDate>Fri, 08 May 2026 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/claude-code-automatizando-workflow-prd-pr/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/claude-code-automatizando-workflow-prd-pr.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/claude-code-automatizando-workflow-prd-pr.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="introdução">Introdução&lt;/h2>
+&lt;p>Descobri o Claude Code há alguns meses quando nosso time estava lutando para manter a consistência em code reviews. Depois de seis semanas usando a ferramenta, conseguimos reduzir o tempo médio de PR de 4 dias para 1 dia — e isso foi só o começo.&lt;/p>
+&lt;p>O Claude Code automatiza boa parte do workflow de desenvolvimento. PRDs, TDD, code review, até a configuração de MCP. Não é mágica, mas funciona bem o suficiente para fazer diferença no dia a dia.&lt;/p></description></item><item><title>Como funciona uma IA quando você conversa com ela</title><link>https://www.rafaelvzago.com/posts/o-que-acontece-quando-voce-conversa-com-uma-ia/</link><pubDate>Wed, 24 Dec 2025 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/o-que-acontece-quando-voce-conversa-com-uma-ia/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/o-que-acontece-quando-voce-conversa-com-uma-ia.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/o-que-acontece-quando-voce-conversa-com-uma-ia.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+ &lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/uhxG2B96k7Q?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video">&lt;/iframe>
+ &lt;/div>
+
+&lt;h1 id="desvendando-os-modelos-de-linguagem-de-grande-escala">Desvendando os modelos de linguagem de grande escala&lt;/h1>
+&lt;p>Quando você digita uma mensagem pro ChatGPT ou pro Claude, o que acontece do outro lado é mais simples do que parece, mas opera numa escala difícil de visualizar.&lt;/p>
+&lt;h2 id="a-essência-um-narrador-de-futebol-digital">A essência: um narrador de futebol digital&lt;/h2>
+&lt;p>Imagine a cena: final de Copa do Mundo, Brasil e Argentina, últimos minutos de jogo. O Galvão Bueno está narrando, a bola chega no atacante brasileiro, ele dribla um, dribla dois&amp;hellip; e de repente o áudio falha. A transmissão continua, mas a voz do narrador desapareceu.&lt;/p></description></item><item><title>OpenShift Service Mesh 3: o que muda com o Istio</title><link>https://www.rafaelvzago.com/posts/openshift-service-mesh-3/</link><pubDate>Mon, 07 Jul 2025 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/openshift-service-mesh-3/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/openshift-service-mesh-3.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/openshift-service-mesh-3.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>O &lt;a href="https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh">OpenShift Service Mesh&lt;/a> 3 (OSSM3) substitui o Maistra pelo Istio upstream como núcleo da solução. O Maistra era um fork customizado do Istio mantido pela Red Hat; com o OSSM3, a base passa a ser o Istio direto do projeto da comunidade — sem patches específicos, sem rebase.&lt;/p>
+&lt;p>Entre as mudanças concretas: upgrades do control plane podem ser feitos in-place ou via revisão (canary), o Kiali precisa ser instalado separadamente via Kiali Operator, e o suporte a multi-cluster usa as topologias padrão do Istio upstream.&lt;/p></description></item><item><title>Jenkins CasC: pipelines de alta performance com GitOps</title><link>https://www.rafaelvzago.com/posts/dominando-pipelines-de-alta-performance/</link><pubDate>Fri, 13 Jun 2025 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/dominando-pipelines-de-alta-performance/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/dominando-pipelines-de-alta-performance.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/dominando-pipelines-de-alta-performance.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="a-necessidade-de-evoluir-os-desafios-do-jenkins-básico">A Necessidade de Evoluir: Os Desafios do Jenkins &amp;ldquo;Básico&amp;rdquo;&lt;/h2>
+&lt;p>Jenkins é, sem dúvida, um dos servidores de automação mais poderosos e populares do mundo. Ele é o motor de inúmeros pipelines de CI/CD que compilam, testam e implantam aplicações. No entanto, quando gerenciado manualmente através da interface web — uma prática que muitos chamam de &amp;ldquo;ClickOps&amp;rdquo; — ele revela suas fraquezas.&lt;/p>
+&lt;p>O &amp;ldquo;ClickOps&amp;rdquo; leva a desafios significativos que podem comprometer a agilidade e a confiabilidade de qualquer projeto, especialmente em ambientes complexos como os de MLOps:&lt;/p></description></item><item><title>Skupper + InstructLab: controlando e protegendo IA (ato 3)</title><link>https://www.rafaelvzago.com/posts/controlando-progetendo-ia-deepseek-skupper-istio-terceiro-ultimo-ato/</link><pubDate>Mon, 05 May 2025 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/controlando-progetendo-ia-deepseek-skupper-istio-terceiro-ultimo-ato/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt3.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt3.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="veja-a-solução-em-ação">Veja a Solução em Ação&lt;/h2>
+&lt;p>Neste artigo, vamos implementar passo a passo o chatbot InstructLab no Kubernetes usando Skupper para conectar de forma segura um modelo de IA privado com uma interface pública. Esta é a continuação prática do padrão de solução apresentado no artigo anterior.&lt;/p>
+&lt;h3 id="conceitos-e-comandos-usados-na-demonstração">Conceitos e Comandos Usados na Demonstração&lt;/h3>
+&lt;blockquote>
+&lt;p>NOTA: Os comandos a seguir são utilizados para configurar o ambiente e implantar o chatbot InstructLab. Eles são extraídos do projeto InstructLab e adaptados para esta demonstração.&lt;/p></description></item><item><title>Skupper + InstructLab: controlando e protegendo IA (ato 2)</title><link>https://www.rafaelvzago.com/posts/controlando-progetendo-ia-deepseek-skupper-istio-segundo-ato/</link><pubDate>Sun, 04 May 2025 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/controlando-progetendo-ia-deepseek-skupper-istio-segundo-ato/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt2.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt2.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="veja-a-solução-em-ação">Veja a Solução em Ação&lt;/h2>
+&lt;p>Neste artigo, vamos preparar todo o ambiente para servir o modelo de IA generativo Deepseek usando o InstructLab, baixando o modelo, convertendo-o para o formato GGUF e implantando o chatbot InstructLab. Além disso, vamos expor o serviço de forma segura usando Skupper.&lt;/p>
+&lt;h3 id="conceitos-e-comandos-usados-na-demonstração">Conceitos e Comandos Usados na Demonstração&lt;/h3>
+&lt;blockquote>
+&lt;p>NOTA Certifique-se de explicar o que cada comando Skupper faz na primeira vez que você o usa, especialmente para pessoas não familiarizadas com o Skupper. Os seguintes comandos devem ser explicados:&lt;/p></description></item><item><title>Skupper + InstructLab: controlando e protegendo IA (ato 1)</title><link>https://www.rafaelvzago.com/posts/controlando-progetendo-ia-deepseek-skupper-istio-primeiro-ato/</link><pubDate>Fri, 02 May 2025 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/controlando-progetendo-ia-deepseek-skupper-istio-primeiro-ato/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt1.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/controlando-e-protegendo-modelos-de-ia-pt1.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="a-história-por-trás-deste-padrão-de-solução">A história por trás deste padrão de solução&lt;/h2>
+&lt;p>A crescente demanda por aplicações orientadas por IA traz um desafio importante: como implantar e operar modelos de IA com segurança em ambientes que exigem proteção rigorosa dos dados, ao mesmo tempo em que esses modelos precisam ser acessíveis por serviços públicos. Essa necessidade ficou clara durante o desenvolvimento de um chatbot de IA local, projetado para lidar com informações sensíveis e proprietárias, o que exigiu uma solução capaz de manter o modelo protegido dentro de um ambiente seguro.&lt;/p></description></item><item><title>Real-Time Linux: baixa latência com PREEMPT_RT</title><link>https://www.rafaelvzago.com/posts/rtl-linux/</link><pubDate>Fri, 20 Dec 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/rtl-linux/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/rtl.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/rtl.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="introdução">Introdução&lt;/h2>
+&lt;p>Real-Time Linux (RTL) é uma extensão do kernel do Linux que transforma o sistema operacional em um ambiente de tempo real. Isso significa que, além de suas funcionalidades tradicionais, ele agora é capaz de lidar com tarefas que exigem alta previsibilidade e baixa latência, como sistemas de automação industrial, dispositivos médicos e até sistemas de entretenimento.&lt;/p>
+&lt;p>No final de 2024, o Linux Kernel passou a incorporar totalmente o Real-Time Linux (RTL), marcando um momento histórico na evolução do sistema. Mas como chegamos até aqui?&lt;/p></description></item><item><title>TCP/IP: origem e evolução dos protocolos</title><link>https://www.rafaelvzago.com/posts/protocolos-tcp-ip-o-inicio/</link><pubDate>Sat, 14 Dec 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/protocolos-tcp-ip-o-inicio/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/tcpip-protocols-hero.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/tcpip-protocols-hero.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h1 id="protocolos-tcpip-uma-introdução-completa">Protocolos TCP/IP: Uma Introdução Completa&lt;/h1>
+&lt;h2 id="o-arpanet-e-as-origens-do-tcpip">O ARPANET e as Origens do TCP/IP&lt;/h2>
+&lt;p>A história dos protocolos TCP/IP começa no final dos anos 1950, durante o auge da Guerra Fria. O Departamento de Defesa dos EUA (DoD) buscava uma rede de comando e controle que pudesse sobreviver a um ataque nuclear. Na época, as comunicações militares utilizavam a rede telefônica pública, considerada vulnerável devido à sua hierarquia rígida e falta de redundância.&lt;/p></description></item><item><title>InstructLab e Skupper: IA local sem expor seus dados</title><link>https://www.rafaelvzago.com/posts/running-local-ai-with-instruct-lab/</link><pubDate>Thu, 01 Aug 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/running-local-ai-with-instruct-lab/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/instructlab_workshop-skupper-patient-portal.jpg" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/instructlab_workshop-skupper-patient-portal.jpg" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="bem-vindo-ao-ollama-pilot">Bem-vindo ao Ollama Pilot&lt;/h2>
+&lt;h2 id="problema-a-resolver">Problema a resolver&lt;/h2>
+&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/instructlab_banner.jpg" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/instructlab_banner.jpg" alt="contest" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;p>O objetivo principal deste projeto é criar uma conexão segura entre dois sites, permitindo a comunicação entre a máquina do engenheiro e um modelo Instruct Lab. O modelo merlinite-7b-lab-Q4_K_M.gguf será usado no chatbot e está disponível no Instruct Lab. A licença do modelo está em &lt;a href="https://instructlab.ai/">Instruct Labs&lt;/a>.&lt;/p>
+&lt;p>E por que o banner? Porque o engenheiro precisa saber quem é melhor: LeBron ou Jordan. O chatbot responde a essa pergunta: recebe o input do usuário, envia ao modelo e devolve a resposta do merlinite.&lt;/p></description></item><item><title>Vim motions: navegar e editar código mais rápido</title><link>https://www.rafaelvzago.com/posts/vim-motions/</link><pubDate>Tue, 02 Jul 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/vim-motions/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/vim-motions.jpg" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/vim-motions.jpg" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="vim-motions-o-poder-dos-atalhos-no-teclado">Vim Motions: o poder dos atalhos no teclado&lt;/h2>
+&lt;p>Vim motions são um conjunto de comandos que permitem navegar e editar código com fluidez. Este guia passa pelos principais motions e como usá-los no dia a dia.&lt;/p>
+&lt;h2 id="minha-jornada-de-vscode-e-intellij-ao-neovim-e-astrovim">Minha jornada: de VSCode e IntelliJ ao Neovim e AstroVim&lt;/h2>
+&lt;p>Depois de anos no VSCode e no IntelliJ, migrei o Neovim como ferramenta principal. Neovim é um editor baseado em Vim, bem mais extensível, com uma experiência moderna em relação ao Vim clássico. Recentemente passei a usar AstroVim, uma configuração de Neovim com plugins e recursos prontos que aceleram o fluxo de trabalho.&lt;/p></description></item><item><title>Workshop Skupper: Patient Portal em cluster Kubernetes</title><link>https://www.rafaelvzago.com/posts/workshop-skupper-patient-portal/</link><pubDate>Tue, 02 Jul 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/workshop-skupper-patient-portal/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/workshop-skupper-patient-portal.jpg" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/workshop-skupper-patient-portal.jpg" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="descrição">Descrição&lt;/h2>
+&lt;p>Este workshop tem como objetivo apresentar o Red Hat Service Interconnect, uma solução de integração de aplicações que permite a comunicação entre diferentes sistemas de forma eficiente e segura.&lt;/p>
+&lt;h2 id="arquitetura-da-solução">Arquitetura da Solução&lt;/h2>
+&lt;p>&lt;a href="assets/workshop_skupper_arquitetura.png" class="img-lightbox" data-lightbox>
+	&lt;img src="assets/workshop_skupper_arquitetura.png" alt="Arquitetura" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="topologia-de-serviços">Topologia de Serviços&lt;/h2>
+&lt;p>&lt;a href="assets/workshop_skupper_solution-topology.png" class="img-lightbox" data-lightbox>
+	&lt;img src="assets/workshop_skupper_solution-topology.png" alt="Topologia" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="resumo-do-workshop">Resumo do Workshop&lt;/h2>
+&lt;ol>
+&lt;li>Logar no Red Hat Developer.&lt;/li>
+&lt;li>Criar um cluster Openshift.&lt;/li>
+&lt;li>Acessar o cluster Openshift.&lt;/li>
+&lt;li>No projeto do Red Hat Openshift Sandbox, acessar o seu projeto.&lt;/li>
+&lt;li>Criar uma máquina virtual no Openshift Virtualization.&lt;/li>
+&lt;li>Instalar pacotes na máquina virtual:
+&lt;ul>
+&lt;li>podman&lt;/li>
+&lt;li>kubernetes-client&lt;/li>
+&lt;li>skupper&lt;/li>
+&lt;li>oc&lt;/li>
+&lt;li>wget&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Fazer o deploy do banco de dados com o podman.&lt;/li>
+&lt;li>Fazer o deploy do frontend e do backend da aplicação.&lt;/li>
+&lt;li>Configurar o Service Interconnect (Skupper) para fazer a comunicação do banco de dados rodando em um podman com a aplicação rodando no Openshift.&lt;/li>
+&lt;li>Acessar a aplicação e verificar se a comunicação está funcionando.&lt;/li>
+&lt;li>Considerações.&lt;/li>
+&lt;/ol>
+&lt;h2 id="links">Links&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Recurso&lt;/th>
+ &lt;th>Link&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>[1] Red Hat Developer&lt;/td>
+ &lt;td>&lt;a href="https://developers.redhat.com/">https://developers.redhat.com/&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>[2] OC&lt;/td>
+ &lt;td>&lt;a href="https://docs.openshift.com/container-platform/4.15/cli_reference/openshift_cli/getting-started-cli.html">https://docs.openshift.com/container-platform/4.15/cli_reference/openshift_cli/getting-started-cli.html&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>[3] Skupper&lt;/td>
+ &lt;td>&lt;a href="https://skupper.io/">https://skupper.io/&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="pré-requisitos">Pré-requisitos&lt;/h2>
+&lt;ul>
+&lt;li>Conta no Red Hat Developer&lt;/li>
+&lt;li>Conhecimento básico em Kubernetes&lt;/li>
+&lt;li>Conhecimento básico em Red Hat OpenShift&lt;/li>
+&lt;li>Conhecimento básico em Podman&lt;/li>
+&lt;li>Google Chrome, a preferência por ele é pela funcionalidade de colar comandos no console da máquina virtual pelo VNC via browser.&lt;/li>
+&lt;/ul>
+&lt;h2 id="passo-a-passo">Passo a passo&lt;/h2>
+&lt;h3 id="1-logar-no-red-hat-developer">1. Logar no Red Hat Developer&lt;/h3>
+&lt;p>Acesse o site do &lt;a href="https://developers.redhat.com/">Red Hat Developer&lt;/a> e faça o login com a sua conta.&lt;/p></description></item><item><title>OpenShift AI e Skupper: prevenção de fraude em seguros</title><link>https://www.rafaelvzago.com/posts/ai-com-skupper-para-previnir-fraudes/</link><pubDate>Mon, 17 Jun 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/ai-com-skupper-para-previnir-fraudes/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/AI-com-skupper-para-previnir-fraudes.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/AI-com-skupper-para-previnir-fraudes.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="descrição">Descrição&lt;/h2>
+&lt;p>Este workshop mostra como usar Skupper para conectar serviços de dados locais a ambientes de AI/ML na nuvem. Inclui uma aplicação Go em um container podman que expõe dados internos para conexão via Skupper. O treinamento do modelo AI/ML roda em um cluster OpenShift AI na AWS, usando os serviços de OpenShift AI/ML.&lt;/p>
+&lt;h2 id="aviso">Aviso&lt;/h2>
+&lt;p>Este lab usa o exemplo do &lt;a href="https://github.com/rh-aiservices-bu/insurance-claim-processing">AI/ML Workshop&lt;/a> criado pelo time Red Hat AI Services. O workshop original está no GitHub e traz tudo o que é preciso para rodar o lab. A adaptação aqui usa Skupper para ligar os serviços de dados locais ao ambiente de AI/ML na nuvem.&lt;/p></description></item><item><title>TemPy: IoT com Raspberry Pi, Skupper e Grafana</title><link>https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/</link><pubDate>Thu, 15 Feb 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/tempy-com-skupper-e-grafana.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/tempy-com-skupper-e-grafana.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="descrição">Descrição&lt;/h2>
+&lt;p>Este projeto é uma prova de conceito de uma arquitetura IoT com Raspberry Pi e um sensor de temperatura que expõe os dados por uma API REST. Junto com a API, há integração com qualquer provedor de nuvem usando &lt;a href="https://skupper.io/">Skupper&lt;/a>, para visualizar os dados em um dashboard Grafana.&lt;/p>
+&lt;blockquote>
+&lt;p>Clone o repositório e siga as instruções para rodar o projeto. &lt;a href="https://github.com/rafaelvzago/skupper-tempy">https://github.com/rafaelvzago/skupper-tempy&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git clone https://github.com/rafaelvzago/skupper-tempy.git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="sumário">Sumário&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/#hardware">Hardware&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/#configura%c3%a7%c3%a3o-do-raspberry">Configuração do Raspberry&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/#captura-de-temperatura">Captura de temperatura&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/#papel-do-skupper">Papel do Skupper&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/#conex%c3%a3o-com-o-cluster-via-skupper-e-armazenamento-no-prometheus">Conexão com o cluster via Skupper e armazenamento no Prometheus&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/#prometheus">Prometheus&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/#grafana">Grafana&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/#reposit%c3%b3rio">Repositório&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="arquitetura">Arquitetura&lt;/h2>
+&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/tempy-arch.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/tempy-arch.png" alt="arch" loading="lazy" decoding="async">
+&lt;/a>&lt;/p></description></item><item><title>Carreira com software livre: o que é e como começar</title><link>https://www.rafaelvzago.com/posts/carreira-com-software-livre/</link><pubDate>Thu, 07 Dec 2023 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/carreira-com-software-livre/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/carreira-com-softeware-livre-hero.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/carreira-com-softeware-livre-hero.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h1 id="carreira-com-software-livre---o-que-é-e-como-começar">Carreira com Software Livre - O que é e como começar?&lt;/h1>
+&lt;h2 id="introdução">Introdução&lt;/h2>
+&lt;p>Software Livre é um movimento que tem como objetivo promover a liberdade de uso, estudo, modificação e distribuição de software. O movimento do Software Livre é baseado em quatro liberdades essenciais:&lt;/p>
+&lt;ol>
+&lt;li>A liberdade de executar o programa, para qualquer propósito (liberdade nº 0).&lt;/li>
+&lt;li>A liberdade de estudar como o programa funciona e adaptá-lo para as suas necessidades (liberdade nº 1). O acesso ao código-fonte é um pré-requisito para esta liberdade.&lt;/li>
+&lt;li>A liberdade de redistribuir cópias de modo que você possa ajudar ao seu próximo (liberdade nº 2).&lt;/li>
+&lt;li>A liberdade de aperfeiçoar o programa, e liberar os seus aperfeiçoamentos, de modo que toda a comunidade se beneficie (liberdade nº 3). O acesso ao código-fonte é um pré-requisito para esta liberdade.&lt;/li>
+&lt;/ol>
+&lt;h2 id="tipos-de-licenças-para-software-livre">Tipos de licenças para software livre&lt;/h2>
+&lt;p>Existem diversos tipos de licenças para software livre, sendo as mais populares a GPL, LGPL, MIT, Apache, BSD e a Mozilla. Cada uma dessas licenças possui suas próprias características e restrições, porém, todas elas garantem as quatro liberdades essenciais do movimento do Software Livre.&lt;/p></description></item><item><title>Quem sou eu? Sobre Rafael Zago</title><link>https://www.rafaelvzago.com/posts/quem-sou-eu/</link><pubDate>Mon, 04 Dec 2023 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/quem-sou-eu/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/quem-sou-eu-hero.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/quem-sou-eu-hero.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h3 id="apresentação">Apresentação&lt;/h3>
+&lt;p>Qué pasa?&lt;/p>
+&lt;p>Olá! Não me leve muito a sério, ok? Eu criei esse espaço para compartilhar um pouco do conhecimento que eu tenho e que 90% dele, eu ganhei na internet. Então já passou da hora de devolver um pouco para o mundo.&lt;/p>
+&lt;p>Hoje sou senior software automation engineer na Red Hat, mas já passei por algumas empresas (pequenas e grandes) fazendo de tudo um pouco:&lt;/p>
+&lt;ul>
+&lt;li>DevOps de coração e SysAdmin de vocação.&lt;/li>
+&lt;li>Criando métodos de aprendizagem e estruturando treinamentos.&lt;/li>
+&lt;li>Trabalhei, por muitos anos, com suporte de aplicações de vários tamanhos e complexidade.&lt;/li>
+&lt;li>Sou instrutor da Caelum/Alura.&lt;/li>
+&lt;li>Sou padrinho do carinha mais dahora da terra! Sem clubismo…&lt;/li>
+&lt;/ul>
+&lt;h2 id="comunidades">Comunidades&lt;/h2>
+&lt;p>Sou devops de coração e também membro da organização do DevOpsDays SP&lt;/p></description></item><item><title>CI/CD upstream vs downstream: quando usar cada um</title><link>https://www.rafaelvzago.com/posts/ci-cd-downstream-upstream/</link><pubDate>Fri, 02 Jun 2023 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/ci-cd-downstream-upstream/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/ci-cd-downstream-upstream-hero.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/ci-cd-downstream-upstream-hero.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h1 id="integrando-skupper-com-skupper-uma-abordagem-upstream-e-downstream">Integrando Skupper com Skupper: Uma abordagem upstream e downstream&lt;/h1>
+&lt;p>Quando se trata de desenvolvimento de software, integrar projetos upstream e downstream pode ser um desafio. Neste artigo, vamos explorar uma abordagem eficaz para integrar o Skupper e o Skupper, utilizando ferramentas populares para cada lado do desenvolvimento.&lt;/p>
+&lt;h2 id="introdução">Introdução&lt;/h2>
+&lt;p>O Skupper é um projeto de software livre que fornece uma solução de rede de serviço para Kubernetes. O Skupper é desenvolvido pela Red Hat e está disponível sob a licença Apache 2.0. Essa é a versão upstream do Skupper, o que significa que é a versão que está sendo desenvolvida ativamente pela Red Hat.&lt;/p></description></item><item><title>Skupper: rede de apps multicloud em poucos comandos</title><link>https://www.rafaelvzago.com/posts/multicloud-com-skupper/</link><pubDate>Sat, 01 Oct 2022 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/multicloud-com-skupper/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/multicloud-com-skupper-hero.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/multicloud-com-skupper-hero.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="referências-e-tecnologias-utilizadas">Referências e tecnologias utilizadas:&lt;/h2>
+&lt;ol>
+&lt;li>&lt;a href="https://skupper.io">https://skupper.io&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://minikube.sigs.k8s.io">https://minikube.sigs.k8s.io&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/skupperproject/skupper-example-hello-world">Repositório com os Códigos&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://qpid.apache.org/components/dispatch-router/index.html">Qpid-dispatch&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://activemq.apache.org/">ActiveMQ&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">Kubectl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kubernetes.io/pt-br/docs/home/">Kubernetes&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://pt.wikipedia.org/wiki/Transport_Layer_Security">MTLS&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://pt.wikipedia.org/wiki/C%C3%B3digo_aberto">Open-source&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/skupperproject/skupper-router">Skupper-router&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/skupperproject/skupper">Skupper&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h2 id="ferramentas">Ferramentas&lt;/h2>
+&lt;ul>
+&lt;li>Um computador com o minikube [2] instalado;&lt;/li>
+&lt;li>Um terminal para executar os comandos;&lt;/li>
+&lt;li>&lt;code>kubectl&lt;/code> &amp;gt; 1.15 [6] ou mais nova.&lt;/li>
+&lt;/ul>
+&lt;h2 id="descrição-da-solução">Descrição da solução&lt;/h2>
+&lt;p>O Skupper [1] é uma ferramenta que permite conectar dois ou mais ambientes de cloud de uma maneira não intrusiva e segura. Tais ambientes podem ser de diferentes provedores de serviço em nuvem como: AWS, GCP, AZURE entre outras, e, inclusive, clusters kubernetes nativos.&lt;/p></description></item></channel></rss>

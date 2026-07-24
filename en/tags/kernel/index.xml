@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kernel on Rafael Zago</title><link>https://www.rafaelvzago.com/en/tags/kernel/</link><description>Recent content in Kernel on Rafael Zago</description><generator>Hugo</generator><language>en-US</language><copyright>© Rafael Zago</copyright><lastBuildDate>Fri, 24 Jul 2026 16:16:10 -0300</lastBuildDate><atom:link href="https://www.rafaelvzago.com/en/tags/kernel/index.xml" rel="self" type="application/rss+xml"/><item><title>Real-Time Linux: low latency with PREEMPT_RT</title><link>https://www.rafaelvzago.com/en/posts/rtl-linux/</link><pubDate>Fri, 20 Dec 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/rtl-linux/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/rtl.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/rtl.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>Real-Time Linux (RTL) is a Linux kernel extension that turns the operating system into a real-time environment. On top of the usual Linux features, it can handle work that needs high predictability and low latency—industrial automation, medical devices, even entertainment systems.&lt;/p>
+&lt;p>At the end of 2024, the Linux kernel fully absorbed Real-Time Linux (RTL). That was a historic milestone. How did we get here?&lt;/p>
+&lt;hr>
+&lt;h2 id="the-rtl-journey">The RTL journey&lt;/h2>
+&lt;p>The idea of adding real-time capabilities to Linux goes back to the late 1990s, when the first patches aimed to improve performance and cut kernel latency. Those patches grew into more solid projects such as PREEMPT-RT.&lt;/p></description></item></channel></rss>

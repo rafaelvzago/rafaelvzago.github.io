@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Network on Rafael Zago</title><link>https://www.rafaelvzago.com/en/tags/network/</link><description>Recent content in Network on Rafael Zago</description><generator>Hugo</generator><language>en-US</language><copyright>© Rafael Zago</copyright><lastBuildDate>Fri, 24 Jul 2026 16:16:10 -0300</lastBuildDate><atom:link href="https://www.rafaelvzago.com/en/tags/network/index.xml" rel="self" type="application/rss+xml"/><item><title>Skupper workshop: Patient Portal on Kubernetes</title><link>https://www.rafaelvzago.com/en/posts/workshop-skupper-patient-portal/</link><pubDate>Tue, 02 Jul 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/workshop-skupper-patient-portal/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/workshop-skupper-patient-portal.jpg" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/workshop-skupper-patient-portal.jpg" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="description">Description&lt;/h2>
+&lt;p>This workshop introduces Red Hat Service Interconnect, an application integration solution that lets different systems communicate efficiently and securely.&lt;/p>
+&lt;h2 id="solution-architecture">Solution architecture&lt;/h2>
+&lt;p>&lt;a href="assets/workshop_skupper_arquitetura.png" class="img-lightbox" data-lightbox>
+	&lt;img src="assets/workshop_skupper_arquitetura.png" alt="Architecture" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="service-topology">Service topology&lt;/h2>
+&lt;p>&lt;a href="assets/workshop_skupper_solution-topology.png" class="img-lightbox" data-lightbox>
+	&lt;img src="assets/workshop_skupper_solution-topology.png" alt="Topology" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="workshop-outline">Workshop outline&lt;/h2>
+&lt;ol>
+&lt;li>Sign in to Red Hat Developer.&lt;/li>
+&lt;li>Create an OpenShift cluster.&lt;/li>
+&lt;li>Access the OpenShift cluster.&lt;/li>
+&lt;li>In the Red Hat OpenShift Sandbox project, open your project.&lt;/li>
+&lt;li>Create a virtual machine with OpenShift Virtualization.&lt;/li>
+&lt;li>Install packages on the virtual machine:
+&lt;ul>
+&lt;li>podman&lt;/li>
+&lt;li>kubernetes-client&lt;/li>
+&lt;li>skupper&lt;/li>
+&lt;li>oc&lt;/li>
+&lt;li>wget&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Deploy the database with Podman.&lt;/li>
+&lt;li>Deploy the application frontend and backend.&lt;/li>
+&lt;li>Configure Service Interconnect (Skupper) so the database running under Podman can talk to the app on OpenShift.&lt;/li>
+&lt;li>Access the application and confirm communication works.&lt;/li>
+&lt;li>Closing notes.&lt;/li>
+&lt;/ol>
+&lt;h2 id="links">Links&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Resource&lt;/th>
+ &lt;th>Link&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>[1] Red Hat Developer&lt;/td>
+ &lt;td>&lt;a href="https://developers.redhat.com/">https://developers.redhat.com/&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>[2] OC&lt;/td>
+ &lt;td>&lt;a href="https://docs.openshift.com/container-platform/4.15/cli_reference/openshift_cli/getting-started-cli.html">https://docs.openshift.com/container-platform/4.15/cli_reference/openshift_cli/getting-started-cli.html&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>[3] Skupper&lt;/td>
+ &lt;td>&lt;a href="https://skupper.io/">https://skupper.io/&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;ul>
+&lt;li>A Red Hat Developer account&lt;/li>
+&lt;li>Basic Kubernetes knowledge&lt;/li>
+&lt;li>Basic Red Hat OpenShift knowledge&lt;/li>
+&lt;li>Basic Podman knowledge&lt;/li>
+&lt;li>Google Chrome preferred—it lets you paste commands into the VM console over browser VNC.&lt;/li>
+&lt;/ul>
+&lt;h2 id="step-by-step">Step by step&lt;/h2>
+&lt;h3 id="1-sign-in-to-red-hat-developer">1. Sign in to Red Hat Developer&lt;/h3>
+&lt;p>Go to &lt;a href="https://developers.redhat.com/">Red Hat Developer&lt;/a> and sign in with your account.&lt;/p></description></item></channel></rss>

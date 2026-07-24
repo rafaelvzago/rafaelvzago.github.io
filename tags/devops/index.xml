@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Devops on Rafael Zago</title><link>https://www.rafaelvzago.com/tags/devops/</link><description>Recent content in Devops on Rafael Zago</description><generator>Hugo</generator><language>pt-BR</language><copyright>© Rafael Zago</copyright><lastBuildDate>Fri, 24 Jul 2026 16:16:10 -0300</lastBuildDate><atom:link href="https://www.rafaelvzago.com/tags/devops/index.xml" rel="self" type="application/rss+xml"/><item><title>Como eu uso IA no desenvolvimento (Cursor e Claude)</title><link>https://www.rafaelvzago.com/posts/como-eu-uso-ia-no-desenvolvimento/</link><pubDate>Wed, 22 Jul 2026 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/como-eu-uso-ia-no-desenvolvimento/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/como-eu-uso-ia-no-desenvolvimento.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/como-eu-uso-ia-no-desenvolvimento.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;p>A pergunta que mais ouço sobre IA no dia a dia não é &amp;ldquo;qual modelo você usa?&amp;rdquo;. É &amp;ldquo;como você organiza isso para não virar bagunça?&amp;rdquo;.&lt;/p>
+&lt;p>Eu uso IA o tempo todo, no código e neste blog. O que mudou a minha rotina não foi um prompt milagroso. Foi tratar o agente como alguém que entra no projeto sem contexto: se a regra não está em arquivo, ela não existe. Skills, &lt;code>AGENTS.md&lt;/code>, agentes com papéis estreitos e eu revisando o resultado. Sem mágica.&lt;/p></description></item><item><title>Claude Code: do PRD ao pull request com agentes</title><link>https://www.rafaelvzago.com/posts/claude-code-automatizando-workflow-prd-pr/</link><pubDate>Fri, 08 May 2026 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/claude-code-automatizando-workflow-prd-pr/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/claude-code-automatizando-workflow-prd-pr.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/claude-code-automatizando-workflow-prd-pr.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="introdução">Introdução&lt;/h2>
+&lt;p>Descobri o Claude Code há alguns meses quando nosso time estava lutando para manter a consistência em code reviews. Depois de seis semanas usando a ferramenta, conseguimos reduzir o tempo médio de PR de 4 dias para 1 dia — e isso foi só o começo.&lt;/p>
+&lt;p>O Claude Code automatiza boa parte do workflow de desenvolvimento. PRDs, TDD, code review, até a configuração de MCP. Não é mágica, mas funciona bem o suficiente para fazer diferença no dia a dia.&lt;/p></description></item><item><title>OpenShift Service Mesh 3: o que muda com o Istio</title><link>https://www.rafaelvzago.com/posts/openshift-service-mesh-3/</link><pubDate>Mon, 07 Jul 2025 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/openshift-service-mesh-3/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/openshift-service-mesh-3.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/openshift-service-mesh-3.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>O &lt;a href="https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh">OpenShift Service Mesh&lt;/a> 3 (OSSM3) substitui o Maistra pelo Istio upstream como núcleo da solução. O Maistra era um fork customizado do Istio mantido pela Red Hat; com o OSSM3, a base passa a ser o Istio direto do projeto da comunidade — sem patches específicos, sem rebase.&lt;/p>
+&lt;p>Entre as mudanças concretas: upgrades do control plane podem ser feitos in-place ou via revisão (canary), o Kiali precisa ser instalado separadamente via Kiali Operator, e o suporte a multi-cluster usa as topologias padrão do Istio upstream.&lt;/p></description></item><item><title>Jenkins CasC: pipelines de alta performance com GitOps</title><link>https://www.rafaelvzago.com/posts/dominando-pipelines-de-alta-performance/</link><pubDate>Fri, 13 Jun 2025 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/dominando-pipelines-de-alta-performance/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/dominando-pipelines-de-alta-performance.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/dominando-pipelines-de-alta-performance.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="a-necessidade-de-evoluir-os-desafios-do-jenkins-básico">A Necessidade de Evoluir: Os Desafios do Jenkins &amp;ldquo;Básico&amp;rdquo;&lt;/h2>
+&lt;p>Jenkins é, sem dúvida, um dos servidores de automação mais poderosos e populares do mundo. Ele é o motor de inúmeros pipelines de CI/CD que compilam, testam e implantam aplicações. No entanto, quando gerenciado manualmente através da interface web — uma prática que muitos chamam de &amp;ldquo;ClickOps&amp;rdquo; — ele revela suas fraquezas.&lt;/p>
+&lt;p>O &amp;ldquo;ClickOps&amp;rdquo; leva a desafios significativos que podem comprometer a agilidade e a confiabilidade de qualquer projeto, especialmente em ambientes complexos como os de MLOps:&lt;/p></description></item><item><title>Quem sou eu? Sobre Rafael Zago</title><link>https://www.rafaelvzago.com/posts/quem-sou-eu/</link><pubDate>Mon, 04 Dec 2023 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/quem-sou-eu/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/quem-sou-eu-hero.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/quem-sou-eu-hero.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h3 id="apresentação">Apresentação&lt;/h3>
+&lt;p>Qué pasa?&lt;/p>
+&lt;p>Olá! Não me leve muito a sério, ok? Eu criei esse espaço para compartilhar um pouco do conhecimento que eu tenho e que 90% dele, eu ganhei na internet. Então já passou da hora de devolver um pouco para o mundo.&lt;/p>
+&lt;p>Hoje sou senior software automation engineer na Red Hat, mas já passei por algumas empresas (pequenas e grandes) fazendo de tudo um pouco:&lt;/p>
+&lt;ul>
+&lt;li>DevOps de coração e SysAdmin de vocação.&lt;/li>
+&lt;li>Criando métodos de aprendizagem e estruturando treinamentos.&lt;/li>
+&lt;li>Trabalhei, por muitos anos, com suporte de aplicações de vários tamanhos e complexidade.&lt;/li>
+&lt;li>Sou instrutor da Caelum/Alura.&lt;/li>
+&lt;li>Sou padrinho do carinha mais dahora da terra! Sem clubismo…&lt;/li>
+&lt;/ul>
+&lt;h2 id="comunidades">Comunidades&lt;/h2>
+&lt;p>Sou devops de coração e também membro da organização do DevOpsDays SP&lt;/p></description></item><item><title>CI/CD upstream vs downstream: quando usar cada um</title><link>https://www.rafaelvzago.com/posts/ci-cd-downstream-upstream/</link><pubDate>Fri, 02 Jun 2023 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/ci-cd-downstream-upstream/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/ci-cd-downstream-upstream-hero.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/ci-cd-downstream-upstream-hero.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h1 id="integrando-skupper-com-skupper-uma-abordagem-upstream-e-downstream">Integrando Skupper com Skupper: Uma abordagem upstream e downstream&lt;/h1>
+&lt;p>Quando se trata de desenvolvimento de software, integrar projetos upstream e downstream pode ser um desafio. Neste artigo, vamos explorar uma abordagem eficaz para integrar o Skupper e o Skupper, utilizando ferramentas populares para cada lado do desenvolvimento.&lt;/p>
+&lt;h2 id="introdução">Introdução&lt;/h2>
+&lt;p>O Skupper é um projeto de software livre que fornece uma solução de rede de serviço para Kubernetes. O Skupper é desenvolvido pela Red Hat e está disponível sob a licença Apache 2.0. Essa é a versão upstream do Skupper, o que significa que é a versão que está sendo desenvolvida ativamente pela Red Hat.&lt;/p></description></item><item><title>Skupper: rede de apps multicloud em poucos comandos</title><link>https://www.rafaelvzago.com/posts/multicloud-com-skupper/</link><pubDate>Sat, 01 Oct 2022 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/multicloud-com-skupper/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/multicloud-com-skupper-hero.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/multicloud-com-skupper-hero.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="referências-e-tecnologias-utilizadas">Referências e tecnologias utilizadas:&lt;/h2>
+&lt;ol>
+&lt;li>&lt;a href="https://skupper.io">https://skupper.io&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://minikube.sigs.k8s.io">https://minikube.sigs.k8s.io&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/skupperproject/skupper-example-hello-world">Repositório com os Códigos&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://qpid.apache.org/components/dispatch-router/index.html">Qpid-dispatch&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://activemq.apache.org/">ActiveMQ&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">Kubectl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kubernetes.io/pt-br/docs/home/">Kubernetes&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://pt.wikipedia.org/wiki/Transport_Layer_Security">MTLS&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://pt.wikipedia.org/wiki/C%C3%B3digo_aberto">Open-source&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/skupperproject/skupper-router">Skupper-router&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/skupperproject/skupper">Skupper&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h2 id="ferramentas">Ferramentas&lt;/h2>
+&lt;ul>
+&lt;li>Um computador com o minikube [2] instalado;&lt;/li>
+&lt;li>Um terminal para executar os comandos;&lt;/li>
+&lt;li>&lt;code>kubectl&lt;/code> &amp;gt; 1.15 [6] ou mais nova.&lt;/li>
+&lt;/ul>
+&lt;h2 id="descrição-da-solução">Descrição da solução&lt;/h2>
+&lt;p>O Skupper [1] é uma ferramenta que permite conectar dois ou mais ambientes de cloud de uma maneira não intrusiva e segura. Tais ambientes podem ser de diferentes provedores de serviço em nuvem como: AWS, GCP, AZURE entre outras, e, inclusive, clusters kubernetes nativos.&lt;/p></description></item></channel></rss>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Iot on Rafael Zago</title><link>https://www.rafaelvzago.com/tags/iot/</link><description>Recent content in Iot on Rafael Zago</description><generator>Hugo</generator><language>pt-BR</language><copyright>© Rafael Zago</copyright><lastBuildDate>Fri, 24 Jul 2026 16:16:10 -0300</lastBuildDate><atom:link href="https://www.rafaelvzago.com/tags/iot/index.xml" rel="self" type="application/rss+xml"/><item><title>TemPy: IoT com Raspberry Pi, Skupper e Grafana</title><link>https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/</link><pubDate>Thu, 15 Feb 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/tempy-com-skupper-e-grafana.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/tempy-com-skupper-e-grafana.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="descrição">Descrição&lt;/h2>
+&lt;p>Este projeto é uma prova de conceito de uma arquitetura IoT com Raspberry Pi e um sensor de temperatura que expõe os dados por uma API REST. Junto com a API, há integração com qualquer provedor de nuvem usando &lt;a href="https://skupper.io/">Skupper&lt;/a>, para visualizar os dados em um dashboard Grafana.&lt;/p>
+&lt;blockquote>
+&lt;p>Clone o repositório e siga as instruções para rodar o projeto. &lt;a href="https://github.com/rafaelvzago/skupper-tempy">https://github.com/rafaelvzago/skupper-tempy&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git clone https://github.com/rafaelvzago/skupper-tempy.git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="sumário">Sumário&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/#hardware">Hardware&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/#configura%c3%a7%c3%a3o-do-raspberry">Configuração do Raspberry&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/#captura-de-temperatura">Captura de temperatura&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/#papel-do-skupper">Papel do Skupper&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/#conex%c3%a3o-com-o-cluster-via-skupper-e-armazenamento-no-prometheus">Conexão com o cluster via Skupper e armazenamento no Prometheus&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/#prometheus">Prometheus&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/#grafana">Grafana&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/posts/tempi-com-skupper-e-grafana/#reposit%c3%b3rio">Repositório&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="arquitetura">Arquitetura&lt;/h2>
+&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/tempy-arch.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/tempy-arch.png" alt="arch" loading="lazy" decoding="async">
+&lt;/a>&lt;/p></description></item></channel></rss>

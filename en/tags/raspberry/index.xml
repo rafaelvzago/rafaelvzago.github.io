@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Raspberry on Rafael Zago</title><link>https://www.rafaelvzago.com/en/tags/raspberry/</link><description>Recent content in Raspberry on Rafael Zago</description><generator>Hugo</generator><language>en-US</language><copyright>© Rafael Zago</copyright><lastBuildDate>Fri, 24 Jul 2026 16:16:10 -0300</lastBuildDate><atom:link href="https://www.rafaelvzago.com/en/tags/raspberry/index.xml" rel="self" type="application/rss+xml"/><item><title>TemPy: IoT with Raspberry Pi, Skupper, and Grafana</title><link>https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/</link><pubDate>Thu, 15 Feb 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/tempy-com-skupper-e-grafana.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/tempy-com-skupper-e-grafana.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="description">Description&lt;/h2>
+&lt;p>This project is a proof of concept for an IoT architecture using a Raspberry Pi and a temperature sensor that exposes the temperature data through a REST API. Along with the REST API, there is a cloud integration with any cloud provider using &lt;a href="https://skupper.io/">Skupper&lt;/a> that enables the data to be visualized in a Grafana dashboard.&lt;/p>
+&lt;blockquote>
+&lt;p>Clone the repository and follow the instructions to run the project. &lt;a href="https://github.com/rafaelvzago/skupper-tempy">https://github.com/rafaelvzago/skupper-tempy&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git clone https://github.com/rafaelvzago/skupper-tempy.git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="table-of-contents">Table of Contents&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#hardware">Hardware&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#raspberry-configuration">Raspberry Configuration&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#temperature-capture">Temperature Capture&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#skupper-role">Skupper Role&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#connection-to-a-cluster-using-skupper-and-storage-data-into-prometheus">Connection to a cluster using skupper and storage data into prometheus&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#prometheus">Prometheus&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#grafana">Grafana&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#repository">Repository&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="architecture">Architecture&lt;/h2>
+&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/tempy-arch.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/tempy-arch.png" alt="arch" loading="lazy" decoding="async">
+&lt;/a>&lt;/p></description></item></channel></rss>

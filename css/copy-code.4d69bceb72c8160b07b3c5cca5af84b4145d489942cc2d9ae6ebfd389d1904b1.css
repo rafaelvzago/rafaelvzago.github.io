@@ -1,0 +1,31 @@
+.highlight.has-copy {
+  position: relative;
+}
+
+.copy-code-btn {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.4rem;
+  z-index: 2;
+  padding: 0.25rem 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--border-radius, 5px);
+  background: rgba(0, 0, 0, 0.55);
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.copy-code-btn:hover,
+.copy-code-btn:focus-visible {
+  background: rgba(0, 0, 0, 0.75);
+  outline: 2px solid var(--color-primary, #dc143c);
+  outline-offset: 1px;
+}
+
+.copy-code-btn.is-copied {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: var(--color-primary, #dc143c);
+}

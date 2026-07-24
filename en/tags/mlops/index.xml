@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mlops on Rafael Zago</title><link>https://www.rafaelvzago.com/en/tags/mlops/</link><description>Recent content in Mlops on Rafael Zago</description><generator>Hugo</generator><language>en-US</language><copyright>© Rafael Zago</copyright><lastBuildDate>Fri, 24 Jul 2026 16:16:10 -0300</lastBuildDate><atom:link href="https://www.rafaelvzago.com/en/tags/mlops/index.xml" rel="self" type="application/rss+xml"/><item><title>How an AI works when you talk to it</title><link>https://www.rafaelvzago.com/en/posts/o-que-acontece-quando-voce-conversa-com-uma-ia/</link><pubDate>Wed, 24 Dec 2025 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/o-que-acontece-quando-voce-conversa-com-uma-ia/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/o-que-acontece-quando-voce-conversa-com-uma-ia.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/o-que-acontece-quando-voce-conversa-com-uma-ia.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+ &lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/uhxG2B96k7Q?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video">&lt;/iframe>
+ &lt;/div>
+
+&lt;h2 id="unpacking-large-language-models">Unpacking large language models&lt;/h2>
+&lt;p>When you type a message to ChatGPT or Claude, what happens on the other side is simpler than it looks—but it runs at a scale that is hard to picture.&lt;/p>
+&lt;h2 id="the-essence-a-digital-football-commentator">The essence: a digital football commentator&lt;/h2>
+&lt;p>Picture this: World Cup final, Brazil vs Argentina, last minutes of the match. Galvão Bueno is calling the game, the ball reaches the Brazilian striker, he beats one defender, then another&amp;hellip; and suddenly the audio cuts out. The broadcast keeps rolling, but the commentator&amp;rsquo;s voice is gone.&lt;/p></description></item><item><title>Jenkins CasC: high-performance pipelines with GitOps</title><link>https://www.rafaelvzago.com/en/posts/dominando-pipelines-de-alta-performance/</link><pubDate>Fri, 13 Jun 2025 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/dominando-pipelines-de-alta-performance/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/dominando-pipelines-de-alta-performance.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/dominando-pipelines-de-alta-performance.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="the-need-to-evolve-challenges-of-basic-jenkins">The Need to Evolve: Challenges of &amp;ldquo;Basic&amp;rdquo; Jenkins&lt;/h2>
+&lt;p>Jenkins is one of the most powerful and popular automation servers in the world. It drives countless CI/CD pipelines that build, test, and deploy applications. Managed only through the web UI — what many call &amp;ldquo;ClickOps&amp;rdquo; — it shows its weak spots.&lt;/p>
+&lt;p>ClickOps creates problems that hurt agility and reliability on any project, especially in complex MLOps environments:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>No versioning or audit trail:&lt;/strong> Who changed a job config? Why? Without version control those questions are almost impossible to answer. Rolling back a bad change becomes a manual treasure hunt.&lt;/li>
+&lt;li>&lt;strong>Inconsistency and hard reproducibility:&lt;/strong> Cloning a Jenkins environment for development, staging, or disaster recovery is painful and error-prone. Small config drifts between environments cause unexpected failures.&lt;/li>
+&lt;li>&lt;strong>Painful scale and maintenance:&lt;/strong> Managing dozens or hundreds of jobs by hand does not scale. Maintenance becomes a bottleneck, and consistency across projects stays out of reach.&lt;/li>
+&lt;/ul>
+&lt;p>To get the reliability, speed, scale, and security modern projects need, you have to go beyond the basics.&lt;/p></description></item></channel></rss>

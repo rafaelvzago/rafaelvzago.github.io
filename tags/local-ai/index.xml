@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Local-Ai on Rafael Zago</title><link>https://www.rafaelvzago.com/tags/local-ai/</link><description>Recent content in Local-Ai on Rafael Zago</description><generator>Hugo</generator><language>pt-BR</language><copyright>© Rafael Zago</copyright><lastBuildDate>Fri, 24 Jul 2026 16:16:10 -0300</lastBuildDate><atom:link href="https://www.rafaelvzago.com/tags/local-ai/index.xml" rel="self" type="application/rss+xml"/><item><title>InstructLab e Skupper: IA local sem expor seus dados</title><link>https://www.rafaelvzago.com/posts/running-local-ai-with-instruct-lab/</link><pubDate>Thu, 01 Aug 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/running-local-ai-with-instruct-lab/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/instructlab_workshop-skupper-patient-portal.jpg" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/instructlab_workshop-skupper-patient-portal.jpg" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="bem-vindo-ao-ollama-pilot">Bem-vindo ao Ollama Pilot&lt;/h2>
+&lt;h2 id="problema-a-resolver">Problema a resolver&lt;/h2>
+&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/instructlab_banner.jpg" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/instructlab_banner.jpg" alt="contest" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;p>O objetivo principal deste projeto é criar uma conexão segura entre dois sites, permitindo a comunicação entre a máquina do engenheiro e um modelo Instruct Lab. O modelo merlinite-7b-lab-Q4_K_M.gguf será usado no chatbot e está disponível no Instruct Lab. A licença do modelo está em &lt;a href="https://instructlab.ai/">Instruct Labs&lt;/a>.&lt;/p>
+&lt;p>E por que o banner? Porque o engenheiro precisa saber quem é melhor: LeBron ou Jordan. O chatbot responde a essa pergunta: recebe o input do usuário, envia ao modelo e devolve a resposta do merlinite.&lt;/p></description></item></channel></rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>K8s on Rafael Zago</title><link>https://www.rafaelvzago.com/en/tags/k8s/</link><description>Recent content in K8s on Rafael Zago</description><generator>Hugo</generator><language>en-US</language><copyright>© Rafael Zago</copyright><lastBuildDate>Fri, 24 Jul 2026 16:16:10 -0300</lastBuildDate><atom:link href="https://www.rafaelvzago.com/en/tags/k8s/index.xml" rel="self" type="application/rss+xml"/><item><title>Skupper: multicloud app network in a few commands</title><link>https://www.rafaelvzago.com/en/posts/multicloud-com-skupper/</link><pubDate>Sat, 01 Oct 2022 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/multicloud-com-skupper/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/multicloud-com-skupper-hero.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/multicloud-com-skupper-hero.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="references-and-technologies-used">References and technologies used&lt;/h2>
+&lt;ol>
+&lt;li>&lt;a href="https://skupper.io">https://skupper.io&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://minikube.sigs.k8s.io">https://minikube.sigs.k8s.io&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/skupperproject/skupper-example-hello-world">Repository with the code&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://qpid.apache.org/components/dispatch-router/index.html">Qpid-dispatch&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://activemq.apache.org/">ActiveMQ&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">Kubectl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kubernetes.io/docs/home/">Kubernetes&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">MTLS&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://en.wikipedia.org/wiki/Open_source">Open-source&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/skupperproject/skupper-router">Skupper-router&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/skupperproject/skupper">Skupper&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h2 id="tools">Tools&lt;/h2>
+&lt;ul>
+&lt;li>A computer with minikube [2] installed;&lt;/li>
+&lt;li>A terminal to run the commands;&lt;/li>
+&lt;li>&lt;code>kubectl&lt;/code> &amp;gt; 1.15 [6] or newer.&lt;/li>
+&lt;/ul>
+&lt;h2 id="solution-overview">Solution overview&lt;/h2>
+&lt;p>Skupper [1] lets you connect two or more cloud environments in a non-intrusive, secure way. Those environments can sit on different cloud providers—AWS, GCP, Azure, and others—or on native Kubernetes clusters.&lt;/p></description></item></channel></rss>

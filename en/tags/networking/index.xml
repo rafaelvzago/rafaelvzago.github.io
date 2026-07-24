@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Networking on Rafael Zago</title><link>https://www.rafaelvzago.com/en/tags/networking/</link><description>Recent content in Networking on Rafael Zago</description><generator>Hugo</generator><language>en-US</language><copyright>© Rafael Zago</copyright><lastBuildDate>Fri, 24 Jul 2026 16:16:10 -0300</lastBuildDate><atom:link href="https://www.rafaelvzago.com/en/tags/networking/index.xml" rel="self" type="application/rss+xml"/><item><title>TCP/IP: origins and evolution of the protocols</title><link>https://www.rafaelvzago.com/en/posts/protocolos-tcp-ip-o-inicio/</link><pubDate>Sat, 14 Dec 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/protocolos-tcp-ip-o-inicio/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/tcpip-protocols-hero.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/tcpip-protocols-hero.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="tcpip-protocols-a-complete-introduction">TCP/IP protocols: a complete introduction&lt;/h2>
+&lt;h2 id="arpanet-and-the-origins-of-tcpip">ARPANET and the origins of TCP/IP&lt;/h2>
+&lt;p>The story of TCP/IP starts in the late 1950s, at the height of the Cold War. The U.S. Department of Defense (DoD) wanted a command-and-control network that could survive a nuclear attack. Military communications at the time relied on the public telephone network, which looked fragile: rigid hierarchy, little redundancy.&lt;/p>
+&lt;h3 id="early-research-and-paul-barans-contributions">Early research and Paul Baran&amp;rsquo;s contributions&lt;/h3>
+&lt;p>Around 1960, the DoD hired the RAND Corporation to look for a solution. Paul Baran proposed a highly fault-tolerant distributed design that used digital packet switching instead of analog signals. Large carriers like AT&amp;amp;T resisted at first, but Baran&amp;rsquo;s idea laid the groundwork for modern resilient networks.&lt;/p></description></item><item><title>Skupper workshop: Patient Portal on Kubernetes</title><link>https://www.rafaelvzago.com/en/posts/workshop-skupper-patient-portal/</link><pubDate>Tue, 02 Jul 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/workshop-skupper-patient-portal/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/workshop-skupper-patient-portal.jpg" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/workshop-skupper-patient-portal.jpg" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="description">Description&lt;/h2>
+&lt;p>This workshop introduces Red Hat Service Interconnect, an application integration solution that lets different systems communicate efficiently and securely.&lt;/p>
+&lt;h2 id="solution-architecture">Solution architecture&lt;/h2>
+&lt;p>&lt;a href="assets/workshop_skupper_arquitetura.png" class="img-lightbox" data-lightbox>
+	&lt;img src="assets/workshop_skupper_arquitetura.png" alt="Architecture" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="service-topology">Service topology&lt;/h2>
+&lt;p>&lt;a href="assets/workshop_skupper_solution-topology.png" class="img-lightbox" data-lightbox>
+	&lt;img src="assets/workshop_skupper_solution-topology.png" alt="Topology" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="workshop-outline">Workshop outline&lt;/h2>
+&lt;ol>
+&lt;li>Sign in to Red Hat Developer.&lt;/li>
+&lt;li>Create an OpenShift cluster.&lt;/li>
+&lt;li>Access the OpenShift cluster.&lt;/li>
+&lt;li>In the Red Hat OpenShift Sandbox project, open your project.&lt;/li>
+&lt;li>Create a virtual machine with OpenShift Virtualization.&lt;/li>
+&lt;li>Install packages on the virtual machine:
+&lt;ul>
+&lt;li>podman&lt;/li>
+&lt;li>kubernetes-client&lt;/li>
+&lt;li>skupper&lt;/li>
+&lt;li>oc&lt;/li>
+&lt;li>wget&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Deploy the database with Podman.&lt;/li>
+&lt;li>Deploy the application frontend and backend.&lt;/li>
+&lt;li>Configure Service Interconnect (Skupper) so the database running under Podman can talk to the app on OpenShift.&lt;/li>
+&lt;li>Access the application and confirm communication works.&lt;/li>
+&lt;li>Closing notes.&lt;/li>
+&lt;/ol>
+&lt;h2 id="links">Links&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Resource&lt;/th>
+ &lt;th>Link&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>[1] Red Hat Developer&lt;/td>
+ &lt;td>&lt;a href="https://developers.redhat.com/">https://developers.redhat.com/&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>[2] OC&lt;/td>
+ &lt;td>&lt;a href="https://docs.openshift.com/container-platform/4.15/cli_reference/openshift_cli/getting-started-cli.html">https://docs.openshift.com/container-platform/4.15/cli_reference/openshift_cli/getting-started-cli.html&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>[3] Skupper&lt;/td>
+ &lt;td>&lt;a href="https://skupper.io/">https://skupper.io/&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;ul>
+&lt;li>A Red Hat Developer account&lt;/li>
+&lt;li>Basic Kubernetes knowledge&lt;/li>
+&lt;li>Basic Red Hat OpenShift knowledge&lt;/li>
+&lt;li>Basic Podman knowledge&lt;/li>
+&lt;li>Google Chrome preferred—it lets you paste commands into the VM console over browser VNC.&lt;/li>
+&lt;/ul>
+&lt;h2 id="step-by-step">Step by step&lt;/h2>
+&lt;h3 id="1-sign-in-to-red-hat-developer">1. Sign in to Red Hat Developer&lt;/h3>
+&lt;p>Go to &lt;a href="https://developers.redhat.com/">Red Hat Developer&lt;/a> and sign in with your account.&lt;/p></description></item><item><title>OpenShift AI and Skupper: insurance fraud prevention</title><link>https://www.rafaelvzago.com/en/posts/ai-com-skupper-para-previnir-fraudes/</link><pubDate>Mon, 17 Jun 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/ai-com-skupper-para-previnir-fraudes/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/AI-com-skupper-para-previnir-fraudes.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/AI-com-skupper-para-previnir-fraudes.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="description">Description&lt;/h2>
+&lt;p>This workshop demonstrates how to use Skupper to connect local data services to cloud-based AI/ML environments. The workshop includes a Go application in a podman container that exposes internal data for Skupper connection. The AI/ML model training is performed in an OpenShift AI cluster on AWS using Openshift AI/ML services.&lt;/p>
+&lt;h2 id="disclaimer">Disclaimer&lt;/h2>
+&lt;p>This lab uses the example from the &lt;a href="https://github.com/rh-aiservices-bu/insurance-claim-processing">AI/ML Workshop&lt;/a> created by the Red Hat AI Services team. The original workshop is available on GitHub and includes all the necessary information to run the lab. The lab was adapted to use Skupper to connect the local data services to the cloud-based AI/ML environment.&lt;/p></description></item><item><title>TemPy: IoT with Raspberry Pi, Skupper, and Grafana</title><link>https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/</link><pubDate>Thu, 15 Feb 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/tempy-com-skupper-e-grafana.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/tempy-com-skupper-e-grafana.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="description">Description&lt;/h2>
+&lt;p>This project is a proof of concept for an IoT architecture using a Raspberry Pi and a temperature sensor that exposes the temperature data through a REST API. Along with the REST API, there is a cloud integration with any cloud provider using &lt;a href="https://skupper.io/">Skupper&lt;/a> that enables the data to be visualized in a Grafana dashboard.&lt;/p>
+&lt;blockquote>
+&lt;p>Clone the repository and follow the instructions to run the project. &lt;a href="https://github.com/rafaelvzago/skupper-tempy">https://github.com/rafaelvzago/skupper-tempy&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git clone https://github.com/rafaelvzago/skupper-tempy.git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="table-of-contents">Table of Contents&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#hardware">Hardware&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#raspberry-configuration">Raspberry Configuration&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#temperature-capture">Temperature Capture&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#skupper-role">Skupper Role&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#connection-to-a-cluster-using-skupper-and-storage-data-into-prometheus">Connection to a cluster using skupper and storage data into prometheus&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#prometheus">Prometheus&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#grafana">Grafana&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.rafaelvzago.com/en/posts/tempi-com-skupper-e-grafana/#repository">Repository&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="architecture">Architecture&lt;/h2>
+&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/tempy-arch.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/tempy-arch.png" alt="arch" loading="lazy" decoding="async">
+&lt;/a>&lt;/p></description></item><item><title>Skupper: multicloud app network in a few commands</title><link>https://www.rafaelvzago.com/en/posts/multicloud-com-skupper/</link><pubDate>Sat, 01 Oct 2022 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/multicloud-com-skupper/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/multicloud-com-skupper-hero.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/multicloud-com-skupper-hero.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="references-and-technologies-used">References and technologies used&lt;/h2>
+&lt;ol>
+&lt;li>&lt;a href="https://skupper.io">https://skupper.io&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://minikube.sigs.k8s.io">https://minikube.sigs.k8s.io&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/skupperproject/skupper-example-hello-world">Repository with the code&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://qpid.apache.org/components/dispatch-router/index.html">Qpid-dispatch&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://activemq.apache.org/">ActiveMQ&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">Kubectl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kubernetes.io/docs/home/">Kubernetes&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">MTLS&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://en.wikipedia.org/wiki/Open_source">Open-source&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/skupperproject/skupper-router">Skupper-router&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/skupperproject/skupper">Skupper&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h2 id="tools">Tools&lt;/h2>
+&lt;ul>
+&lt;li>A computer with minikube [2] installed;&lt;/li>
+&lt;li>A terminal to run the commands;&lt;/li>
+&lt;li>&lt;code>kubectl&lt;/code> &amp;gt; 1.15 [6] or newer.&lt;/li>
+&lt;/ul>
+&lt;h2 id="solution-overview">Solution overview&lt;/h2>
+&lt;p>Skupper [1] lets you connect two or more cloud environments in a non-intrusive, secure way. Those environments can sit on different cloud providers—AWS, GCP, Azure, and others—or on native Kubernetes clusters.&lt;/p></description></item></channel></rss>

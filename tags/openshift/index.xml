@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Openshift on Rafael Zago</title><link>https://www.rafaelvzago.com/tags/openshift/</link><description>Recent content in Openshift on Rafael Zago</description><generator>Hugo</generator><language>pt-BR</language><copyright>© Rafael Zago</copyright><lastBuildDate>Fri, 24 Jul 2026 16:16:10 -0300</lastBuildDate><atom:link href="https://www.rafaelvzago.com/tags/openshift/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenShift Service Mesh 3: multi-cluster com ACM e Kiali</title><link>https://www.rafaelvzago.com/posts/openshift-service-mesh-3-multicluster-acm-kiali/</link><pubDate>Thu, 23 Jul 2026 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/openshift-service-mesh-3-multicluster-acm-kiali/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/openshift-service-mesh-3-multicluster-acm-kiali.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/openshift-service-mesh-3-multicluster-acm-kiali.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;p>Multi-cluster com service mesh costuma falhar no detalhe chato: &lt;code>meshID&lt;/code>, &lt;code>clusterName&lt;/code> e &lt;code>network&lt;/code> precisam bater em todo lugar. Se um diverge, o Kiali mostra topologia pela metade ou o tráfego entre clusters não completa o handshake. Instalar o control plane duas vezes não resolve isso.&lt;/p>
+&lt;p>No &lt;a href="https://www.rafaelvzago.com/posts/openshift-service-mesh-3/">post sobre OpenShift Service Mesh 3&lt;/a> falei da mudança do Maistra para o Istio upstream. Aqui é o passo seguinte: dois spokes no mesmo mesh multi-primary, com ACM no hub.&lt;/p></description></item><item><title>OpenShift Service Mesh 3: o que muda com o Istio</title><link>https://www.rafaelvzago.com/posts/openshift-service-mesh-3/</link><pubDate>Mon, 07 Jul 2025 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/openshift-service-mesh-3/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/openshift-service-mesh-3.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/openshift-service-mesh-3.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>O &lt;a href="https://www.redhat.com/en/technologies/cloud-computing/openshift/what-is-openshift-service-mesh">OpenShift Service Mesh&lt;/a> 3 (OSSM3) substitui o Maistra pelo Istio upstream como núcleo da solução. O Maistra era um fork customizado do Istio mantido pela Red Hat; com o OSSM3, a base passa a ser o Istio direto do projeto da comunidade — sem patches específicos, sem rebase.&lt;/p>
+&lt;p>Entre as mudanças concretas: upgrades do control plane podem ser feitos in-place ou via revisão (canary), o Kiali precisa ser instalado separadamente via Kiali Operator, e o suporte a multi-cluster usa as topologias padrão do Istio upstream.&lt;/p></description></item><item><title>InstructLab e Skupper: IA local sem expor seus dados</title><link>https://www.rafaelvzago.com/posts/running-local-ai-with-instruct-lab/</link><pubDate>Thu, 01 Aug 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/running-local-ai-with-instruct-lab/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/instructlab_workshop-skupper-patient-portal.jpg" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/instructlab_workshop-skupper-patient-portal.jpg" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="bem-vindo-ao-ollama-pilot">Bem-vindo ao Ollama Pilot&lt;/h2>
+&lt;h2 id="problema-a-resolver">Problema a resolver&lt;/h2>
+&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/instructlab_banner.jpg" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/instructlab_banner.jpg" alt="contest" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;p>O objetivo principal deste projeto é criar uma conexão segura entre dois sites, permitindo a comunicação entre a máquina do engenheiro e um modelo Instruct Lab. O modelo merlinite-7b-lab-Q4_K_M.gguf será usado no chatbot e está disponível no Instruct Lab. A licença do modelo está em &lt;a href="https://instructlab.ai/">Instruct Labs&lt;/a>.&lt;/p>
+&lt;p>E por que o banner? Porque o engenheiro precisa saber quem é melhor: LeBron ou Jordan. O chatbot responde a essa pergunta: recebe o input do usuário, envia ao modelo e devolve a resposta do merlinite.&lt;/p></description></item><item><title>Workshop Skupper: Patient Portal em cluster Kubernetes</title><link>https://www.rafaelvzago.com/posts/workshop-skupper-patient-portal/</link><pubDate>Tue, 02 Jul 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/workshop-skupper-patient-portal/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/workshop-skupper-patient-portal.jpg" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/workshop-skupper-patient-portal.jpg" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="descrição">Descrição&lt;/h2>
+&lt;p>Este workshop tem como objetivo apresentar o Red Hat Service Interconnect, uma solução de integração de aplicações que permite a comunicação entre diferentes sistemas de forma eficiente e segura.&lt;/p>
+&lt;h2 id="arquitetura-da-solução">Arquitetura da Solução&lt;/h2>
+&lt;p>&lt;a href="assets/workshop_skupper_arquitetura.png" class="img-lightbox" data-lightbox>
+	&lt;img src="assets/workshop_skupper_arquitetura.png" alt="Arquitetura" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="topologia-de-serviços">Topologia de Serviços&lt;/h2>
+&lt;p>&lt;a href="assets/workshop_skupper_solution-topology.png" class="img-lightbox" data-lightbox>
+	&lt;img src="assets/workshop_skupper_solution-topology.png" alt="Topologia" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="resumo-do-workshop">Resumo do Workshop&lt;/h2>
+&lt;ol>
+&lt;li>Logar no Red Hat Developer.&lt;/li>
+&lt;li>Criar um cluster Openshift.&lt;/li>
+&lt;li>Acessar o cluster Openshift.&lt;/li>
+&lt;li>No projeto do Red Hat Openshift Sandbox, acessar o seu projeto.&lt;/li>
+&lt;li>Criar uma máquina virtual no Openshift Virtualization.&lt;/li>
+&lt;li>Instalar pacotes na máquina virtual:
+&lt;ul>
+&lt;li>podman&lt;/li>
+&lt;li>kubernetes-client&lt;/li>
+&lt;li>skupper&lt;/li>
+&lt;li>oc&lt;/li>
+&lt;li>wget&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Fazer o deploy do banco de dados com o podman.&lt;/li>
+&lt;li>Fazer o deploy do frontend e do backend da aplicação.&lt;/li>
+&lt;li>Configurar o Service Interconnect (Skupper) para fazer a comunicação do banco de dados rodando em um podman com a aplicação rodando no Openshift.&lt;/li>
+&lt;li>Acessar a aplicação e verificar se a comunicação está funcionando.&lt;/li>
+&lt;li>Considerações.&lt;/li>
+&lt;/ol>
+&lt;h2 id="links">Links&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Recurso&lt;/th>
+ &lt;th>Link&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>[1] Red Hat Developer&lt;/td>
+ &lt;td>&lt;a href="https://developers.redhat.com/">https://developers.redhat.com/&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>[2] OC&lt;/td>
+ &lt;td>&lt;a href="https://docs.openshift.com/container-platform/4.15/cli_reference/openshift_cli/getting-started-cli.html">https://docs.openshift.com/container-platform/4.15/cli_reference/openshift_cli/getting-started-cli.html&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>[3] Skupper&lt;/td>
+ &lt;td>&lt;a href="https://skupper.io/">https://skupper.io/&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="pré-requisitos">Pré-requisitos&lt;/h2>
+&lt;ul>
+&lt;li>Conta no Red Hat Developer&lt;/li>
+&lt;li>Conhecimento básico em Kubernetes&lt;/li>
+&lt;li>Conhecimento básico em Red Hat OpenShift&lt;/li>
+&lt;li>Conhecimento básico em Podman&lt;/li>
+&lt;li>Google Chrome, a preferência por ele é pela funcionalidade de colar comandos no console da máquina virtual pelo VNC via browser.&lt;/li>
+&lt;/ul>
+&lt;h2 id="passo-a-passo">Passo a passo&lt;/h2>
+&lt;h3 id="1-logar-no-red-hat-developer">1. Logar no Red Hat Developer&lt;/h3>
+&lt;p>Acesse o site do &lt;a href="https://developers.redhat.com/">Red Hat Developer&lt;/a> e faça o login com a sua conta.&lt;/p></description></item><item><title>OpenShift AI e Skupper: prevenção de fraude em seguros</title><link>https://www.rafaelvzago.com/posts/ai-com-skupper-para-previnir-fraudes/</link><pubDate>Mon, 17 Jun 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/posts/ai-com-skupper-para-previnir-fraudes/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/AI-com-skupper-para-previnir-fraudes.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/AI-com-skupper-para-previnir-fraudes.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="descrição">Descrição&lt;/h2>
+&lt;p>Este workshop mostra como usar Skupper para conectar serviços de dados locais a ambientes de AI/ML na nuvem. Inclui uma aplicação Go em um container podman que expõe dados internos para conexão via Skupper. O treinamento do modelo AI/ML roda em um cluster OpenShift AI na AWS, usando os serviços de OpenShift AI/ML.&lt;/p>
+&lt;h2 id="aviso">Aviso&lt;/h2>
+&lt;p>Este lab usa o exemplo do &lt;a href="https://github.com/rh-aiservices-bu/insurance-claim-processing">AI/ML Workshop&lt;/a> criado pelo time Red Hat AI Services. O workshop original está no GitHub e traz tudo o que é preciso para rodar o lab. A adaptação aqui usa Skupper para ligar os serviços de dados locais ao ambiente de AI/ML na nuvem.&lt;/p></description></item></channel></rss>

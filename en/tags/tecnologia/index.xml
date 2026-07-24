@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tecnologia on Rafael Zago</title><link>https://www.rafaelvzago.com/en/tags/tecnologia/</link><description>Recent content in Tecnologia on Rafael Zago</description><generator>Hugo</generator><language>en-US</language><copyright>© Rafael Zago</copyright><lastBuildDate>Fri, 24 Jul 2026 16:16:10 -0300</lastBuildDate><atom:link href="https://www.rafaelvzago.com/en/tags/tecnologia/index.xml" rel="self" type="application/rss+xml"/><item><title>How an AI works when you talk to it</title><link>https://www.rafaelvzago.com/en/posts/o-que-acontece-quando-voce-conversa-com-uma-ia/</link><pubDate>Wed, 24 Dec 2025 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/o-que-acontece-quando-voce-conversa-com-uma-ia/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/o-que-acontece-quando-voce-conversa-com-uma-ia.png" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/o-que-acontece-quando-voce-conversa-com-uma-ia.png" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+ &lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/uhxG2B96k7Q?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video">&lt;/iframe>
+ &lt;/div>
+
+&lt;h2 id="unpacking-large-language-models">Unpacking large language models&lt;/h2>
+&lt;p>When you type a message to ChatGPT or Claude, what happens on the other side is simpler than it looks—but it runs at a scale that is hard to picture.&lt;/p>
+&lt;h2 id="the-essence-a-digital-football-commentator">The essence: a digital football commentator&lt;/h2>
+&lt;p>Picture this: World Cup final, Brazil vs Argentina, last minutes of the match. Galvão Bueno is calling the game, the ball reaches the Brazilian striker, he beats one defender, then another&amp;hellip; and suddenly the audio cuts out. The broadcast keeps rolling, but the commentator&amp;rsquo;s voice is gone.&lt;/p></description></item><item><title>Real-Time Linux: low latency with PREEMPT_RT</title><link>https://www.rafaelvzago.com/en/posts/rtl-linux/</link><pubDate>Fri, 20 Dec 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/rtl-linux/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/rtl.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/rtl.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>Real-Time Linux (RTL) is a Linux kernel extension that turns the operating system into a real-time environment. On top of the usual Linux features, it can handle work that needs high predictability and low latency—industrial automation, medical devices, even entertainment systems.&lt;/p>
+&lt;p>At the end of 2024, the Linux kernel fully absorbed Real-Time Linux (RTL). That was a historic milestone. How did we get here?&lt;/p>
+&lt;hr>
+&lt;h2 id="the-rtl-journey">The RTL journey&lt;/h2>
+&lt;p>The idea of adding real-time capabilities to Linux goes back to the late 1990s, when the first patches aimed to improve performance and cut kernel latency. Those patches grew into more solid projects such as PREEMPT-RT.&lt;/p></description></item><item><title>TCP/IP: origins and evolution of the protocols</title><link>https://www.rafaelvzago.com/en/posts/protocolos-tcp-ip-o-inicio/</link><pubDate>Sat, 14 Dec 2024 00:00:00 -0300</pubDate><guid>https://www.rafaelvzago.com/en/posts/protocolos-tcp-ip-o-inicio/</guid><description>&lt;p>&lt;a href="https://www.rafaelvzago.com/assets/img/headers/tcpip-protocols-hero.webp" class="img-lightbox" data-lightbox>
+	&lt;img src="https://www.rafaelvzago.com/assets/img/headers/tcpip-protocols-hero.webp" alt="" loading="lazy" decoding="async">
+&lt;/a>&lt;/p>
+&lt;h2 id="tcpip-protocols-a-complete-introduction">TCP/IP protocols: a complete introduction&lt;/h2>
+&lt;h2 id="arpanet-and-the-origins-of-tcpip">ARPANET and the origins of TCP/IP&lt;/h2>
+&lt;p>The story of TCP/IP starts in the late 1950s, at the height of the Cold War. The U.S. Department of Defense (DoD) wanted a command-and-control network that could survive a nuclear attack. Military communications at the time relied on the public telephone network, which looked fragile: rigid hierarchy, little redundancy.&lt;/p>
+&lt;h3 id="early-research-and-paul-barans-contributions">Early research and Paul Baran&amp;rsquo;s contributions&lt;/h3>
+&lt;p>Around 1960, the DoD hired the RAND Corporation to look for a solution. Paul Baran proposed a highly fault-tolerant distributed design that used digital packet switching instead of analog signals. Large carriers like AT&amp;amp;T resisted at first, but Baran&amp;rsquo;s idea laid the groundwork for modern resilient networks.&lt;/p></description></item></channel></rss>
