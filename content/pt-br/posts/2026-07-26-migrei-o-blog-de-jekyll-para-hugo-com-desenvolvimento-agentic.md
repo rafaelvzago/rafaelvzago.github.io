@@ -343,3 +343,6 @@ A API de criar PR no GitHub devolveu HTTP 500 neste repositório no dia do ship.
 5. Contrato em git (`AGENTS.md`, `docs/agents/sdlc.md`) vence prompt favorito no chat
 
 Se você só quer a lista de arquivos, este post é longo demais. Se você quer ver um agente atravessar uma migração sem queimar produção, o caminho foi esse: issue [#33](https://github.com/rafaelvzago/rafaelvzago.github.io/issues/33), tickets [#34](https://github.com/rafaelvzago/rafaelvzago.github.io/issues/34)–[#42](https://github.com/rafaelvzago/rafaelvzago.github.io/issues/42), tag `jekyll-baseline-2026-07-24`, e um humano que disse "ok" no preview antes do ship.
+
+{{< youtube X_LzAxnIvCI >}}
+

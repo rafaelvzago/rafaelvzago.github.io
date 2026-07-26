@@ -343,3 +343,6 @@ The GitHub "create PR" API returned HTTP 500 for this repository on ship day. No
 5. Contracts in git (`AGENTS.md`, `docs/agents/sdlc.md`) beat a favorite prompt in chat
 
 If you only want a file list, this post is too long. If you want to see an agent walk a migration without burning production, the path was this: issue [#33](https://github.com/rafaelvzago/rafaelvzago.github.io/issues/33), tickets [#34](https://github.com/rafaelvzago/rafaelvzago.github.io/issues/34)–[#42](https://github.com/rafaelvzago/rafaelvzago.github.io/issues/42), tag `jekyll-baseline-2026-07-24`, and a human who said "ok" on the preview before ship.
+
+{{< youtube X_LzAxnIvCI >}}
+
