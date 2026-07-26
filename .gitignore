@@ -19,6 +19,9 @@ resources/
 node_modules
 package-lock.json
 
+# Netlify CLI local state (site id / auth cache — do not commit)
+.netlify/
+
 # IDE configurations
 .idea
 .vscode
