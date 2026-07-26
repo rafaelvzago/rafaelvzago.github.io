@@ -1,0 +1,21 @@
+# Netlify preview from the `development` branch only.
+# Live site stays on GitHub Pages (`main` → gh-pages).
+# In Netlify UI/API set: Production branch = development; no other branch deploys.
+
+[build]
+    command = "git submodule update --init --recursive && hugo --minify --gc"
+    publish = "public"
+
+[build.environment]
+    HUGO_VERSION = "0.147.4"
+    HUGO_ENABLEGITINFO = "true"
+    TZ = "America/Sao_Paulo"
+
+# PRs whose base is `development` (Deploy Previews).
+[context.deploy-preview]
+    command = "git submodule update --init --recursive && hugo --minify --gc --baseURL \"$DEPLOY_PRIME_URL\""
+
+# Ignore pushes to non-production branches (feature branches).
+# Only `development` (Netlify production branch) should build.
+[context.branch-deploy]
+    ignore = "exit 0"
