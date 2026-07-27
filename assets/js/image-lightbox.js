@@ -83,9 +83,8 @@
   function wrapBareImage(img) {
     if (
       img.dataset.lightboxSkip === "1" ||
-      img.closest("a.img-lightbox") ||
-      img.closest("#image-lightbox") ||
-      img.closest("a.soc")
+      img.closest("a") ||
+      img.closest("#image-lightbox")
     ) {
       return;
     }

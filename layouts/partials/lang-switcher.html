@@ -1,5 +1,5 @@
 {{- $page := . -}}
-{{- $flagByLang := dict "pt-br" "br.svg" "en" "us.svg" -}}
+{{- $flagByLang := dict "pt-br" "🇧🇷" "en" "🇺🇸" -}}
 <nav class="lang-switch" aria-label="{{ i18n "lang_switch" }}">
 	{{- range $idx, $lang := .Site.Languages -}}
 		{{- if $idx }}<span class="lang-switch__sep" aria-hidden="true">·</span>{{ end -}}
@@ -19,11 +19,11 @@
 		{{- $flag := index $flagByLang $lang.Lang -}}
 		{{- if eq $lang.Lang $page.Lang -}}
 			<span class="lang-switch__current" aria-current="true" aria-label="{{ $lang.LanguageName }}">
-				<img class="lang-switch__flag" src="/assets/img/flags/{{ $flag }}" alt="" width="20" height="14" decoding="async">
+				<span class="lang-switch__flag" aria-hidden="true">{{ $flag }}</span>
 			</span>
 		{{- else -}}
 			<a class="lang-switch__link" href="{{ $href }}" hreflang="{{ $lang.Lang }}" aria-label="{{ $lang.LanguageName }}">
-				<img class="lang-switch__flag" src="/assets/img/flags/{{ $flag }}" alt="" width="20" height="14" decoding="async">
+				<span class="lang-switch__flag" aria-hidden="true">{{ $flag }}</span>
 			</a>
 		{{- end -}}
 	{{- end -}}

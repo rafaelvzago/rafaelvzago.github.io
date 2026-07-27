@@ -4,7 +4,7 @@
 
 - PR: https://github.com/rafaelvzago/rafaelvzago.github.io/pull/47
 - Branch: `feat/lang-flags-llms-txt`
-- Language switcher uses BR/US SVG flags; `/llms.txt` published from `static/llms.txt`
+- Language switcher uses BR/US flag emoji; `/llms.txt` published from `static/llms.txt`
 
 ## Hugo cutover + Jekyll rollback (PRD #33) — SHIPPED
 
