@@ -1,10 +1,10 @@
 # Progress
 
-## Lang flags + llms.txt — PR READY
+## Lang flags + llms.txt — PR OPEN
 
+- PR: https://github.com/rafaelvzago/rafaelvzago.github.io/pull/47
 - Branch: `feat/lang-flags-llms-txt`
 - Language switcher uses BR/US SVG flags; `/llms.txt` published from `static/llms.txt`
-- Preview LGTM (local); opening PR for merge
 
 ## Hugo cutover + Jekyll rollback (PRD #33) — SHIPPED
 
