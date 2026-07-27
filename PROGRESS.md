@@ -1,11 +1,10 @@
 # Progress
 
-## Lang flags + llms.txt — IN PREVIEW
+## Lang flags + llms.txt — PR READY
 
 - Branch: `feat/lang-flags-llms-txt`
 - Language switcher uses BR/US SVG flags; `/llms.txt` published from `static/llms.txt`
-- Preview: http://127.0.0.1:1313/ · http://127.0.0.1:1313/en/ · http://127.0.0.1:1313/llms.txt
-- Awaiting local preview approval before Ship
+- Preview LGTM (local); opening PR for merge
 
 ## Hugo cutover + Jekyll rollback (PRD #33) — SHIPPED
 
