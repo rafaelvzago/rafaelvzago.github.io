@@ -1,0 +1,30 @@
+# Rafael Zago
+
+> Blog pessoal bilingue (pt-BR padrão, en em /en/) sobre cloud, DevOps, infraestrutura, Linux, containers, Kubernetes, OpenShift e AI.
+
+Site de notas técnicas de Rafael Zago. Conteúdo em português em /posts/; traduções em inglês em /en/posts/. Use o sitemap e os feeds RSS abaixo para descobrir posts individuais.
+
+## Site
+
+- [Home (pt-BR)](https://www.rafaelvzago.com/): Página inicial em português
+- [Sobre](https://www.rafaelvzago.com/about/): Sobre o autor
+- [Posts](https://www.rafaelvzago.com/posts/): Lista de posts em português
+- [Tags](https://www.rafaelvzago.com/tags/): Arquivo por tags
+- [Busca](https://www.rafaelvzago.com/search/): Busca no site
+- [Home (en)](https://www.rafaelvzago.com/en/): English home page
+- [About (en)](https://www.rafaelvzago.com/en/about/): About the author (English)
+- [Posts (en)](https://www.rafaelvzago.com/en/posts/): English post list
+- [Tags (en)](https://www.rafaelvzago.com/en/tags/): Tag archive (English)
+- [Search (en)](https://www.rafaelvzago.com/en/search/): Site search (English)
+
+## Feeds
+
+- [Sitemap](https://www.rafaelvzago.com/sitemap.xml): Mapa completo de URLs do site
+- [RSS (pt-BR)](https://www.rafaelvzago.com/index.xml): Feed RSS do conteúdo em português
+- [RSS (en)](https://www.rafaelvzago.com/en/index.xml): RSS feed for English content
+
+## Optional
+
+- [GitHub](https://github.com/rafaelvzago): Código e projetos
+- [LinkedIn](https://www.linkedin.com/in/rafaelvzago): Perfil profissional
+- [Twitter](https://twitter.com/rafaelvzago): Conta no X/Twitter
