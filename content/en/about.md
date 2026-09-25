@@ -41,6 +41,7 @@ My [The Developer's Conference (TDC) speaker profile](https://thedevconf.com/pal
 
 #### 2026
 
+- [Kubernetes Networking na era da Inteligência Artificial](https://community2.cncf.io/events/details/cncf-kcd-brasil-presents-kcd-sao-paulo-2026/) - KCD São Paulo 2026, with Ricardo Katz (Sep 26, 2026). [My inference section](/en/posts/inferencia-kubernetes-inferencepool/)
 - [Multi-Cloud Service Mesh: Mastering Connectivity Across Distributed Kubernetes Clusters with Istio](/en/posts/openshift-service-mesh-3-multicluster-acm-kiali/) - TDC 2026 Florianópolis — Cloud Architecture track (Jul 24, 2026)
 - [How I use AI in development](/en/posts/como-eu-uso-ia-no-desenvolvimento/) - [FLISOL DF 2026](https://flisoldf.blog.br/)
 
