@@ -13,24 +13,21 @@ images:
 
 Preparei uma demo de inferência para a palestra [Kubernetes Networking na era da Inteligência Artificial](https://kcd-sp-2026.kube.rip/), que apresento com Ricardo Katz no [KCD São Paulo 2026](https://community2.cncf.io/events/details/cncf-kcd-brasil-presents-kcd-sao-paulo-2026/). Minha parte acompanha uma requisição: ela entra por um Gateway Istio, encontra um `InferencePool` e chega a um dos pods que simulam o modelo.
 
-Na demo, separo duas decisões: o Gateway escolhe a rota pelo cabeçalho HTTP; o Endpoint Picker (EPP) escolhe o pod dentro do pool. Se o cabeçalho não bater em nenhuma rota, a requisição termina no Gateway com 404.
+São duas escolhas diferentes. A `HTTPRoute` define qual pool atende a chamada; o Endpoint Picker (EPP) escolhe um pod daquele pool. Separei as duas de propósito, porque uma resposta lenta e uma requisição sem rota pedem investigações bem diferentes.
 
-## Um pedido, duas decisões
+## Por que inferência muda o roteamento
 
-O cliente roda dentro do cluster Kind e envia `POST /v1/chat/completions`, no formato de API compatível com OpenAI. O corpo contém `model`, mas, nesta demo, ele não escolhe o pool. Quem faz isso é o cabeçalho `X-Demo-Pool`.
+Em um LLM real, o *prefill* processa o prompt e monta o KV cache. Depois vem o *decode*, que gera os tokens de saída um a um. Um prompt longo, uma resposta longa e uma conversa que repete o mesmo prefixo ocupam os servidores de maneiras diferentes. A [documentação do llm-d](https://llm-d.ai/docs/api-reference/glossary) explica essas fases e o papel do cache.
 
-O caminho fica assim:
+Isso afeta a escolha da réplica. Se um pod já guarda no cache o prefixo do prompt, pode evitar parte do trabalho de prefill. Se está com uma fila grande, pode ser uma escolha ruim para a próxima chamada. O [roteamento do llm-d](https://llm-d.ai/docs/well-lit-paths/foundations/optimized-baseline) foi pensado para considerar carga e afinidade de cache, sinais que uma simples contagem de requisições não mostra. O EPP também [permite filtrar, pontuar e escolher endpoints](https://llm-d.ai/docs/architecture/core/router/epp/scheduling), conforme os plugins configurados.
 
-```text
-cliente (pod no Kind)
-  -> Istio Gateway
-  -> HTTPRoute (path + X-Demo-Pool)
-  -> InferencePool
-  -> Endpoint Picker (EPP)
-  -> pod llm-d-inference-sim
-```
+Essa é a teoria por trás da arquitetura, não um resultado medido nesta demo. Aqui eu uso `llm-d-inference-sim` em modo `echo`. Ele não carrega um LLM real nem usa GPU; o roteiro mostra o roteamento e o pod que respondeu. Não mede ganho de KV cache, nem compara algoritmos de seleção.
 
-Há uma `HTTPRoute` para `fast` e outra para `quality`. O `backendRef` de cada rota aponta para seu `InferencePool`. Este é o trecho de [`fast-route`](https://github.com/rafaelvzago/kcd-ai-networking-demo/blob/main/k8s/model-routes.yaml):
+## A rota escolhe o pool; o EPP escolhe o pod
+
+O cliente roda dentro de um cluster Kind e envia `POST /v1/chat/completions`, no formato de API compatível com OpenAI. O corpo contém `model`, mas, nesta demo, esse campo não escolhe a rota. Criei o cabeçalho `X-Demo-Pool` para isso; ele é uma convenção do exemplo, não um campo obrigatório da Gateway API Inference Extension.
+
+Há uma `HTTPRoute` para `fast` e outra para `quality`. Este é o trecho de [`fast-route`](https://github.com/rafaelvzago/kcd-ai-networking-demo/blob/main/k8s/model-routes.yaml):
 
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1
@@ -53,20 +50,23 @@ spec:
           name: fast-router
 ```
 
-Quando chega `X-Demo-Pool: fast`, o Gateway encontra essa rota e usa `fast-router`. O EPP associado ao pool escolhe um dos pods elegíveis. Para `quality`, a outra rota aponta para `quality-router` e seu EPP.
+`parentRefs` liga a rota ao Gateway. Dentro desse `match`, o prefixo do caminho **e** o valor do cabeçalho precisam coincidir. O `backendRef` aponta para o `InferencePool` `fast-router`. O cliente usa `POST` por causa da API de chat, mas o método HTTP não aparece como condição nesse manifesto. A [referência de HTTPRoute](https://gateway-api.sigs.k8s.io/reference/api-types/httproute/) detalha como essas condições são combinadas.
 
-Não há Inference Payload Processor (IPP) instalado aqui. Nesta demo, as regras da `HTTPRoute` escolhem entre os pools; o Gateway não lê o campo `model` para fazer essa escolha.
+O [`InferencePool`](https://gateway-api-inference-extension.sigs.k8s.io/api-types/inferencepool/) agrupa os pods elegíveis por labels, define a porta de destino e aponta para seu EPP. Nos [valores do chart para `fast`](https://github.com/rafaelvzago/kcd-ai-networking-demo/blob/main/k8s/fast-router-values.yaml), o seletor é `app: fast-simulator`, na porta `8000`; o perfil `quality` usa `app: quality-simulator` em [seus próprios valores](https://github.com/rafaelvzago/kcd-ai-networking-demo/blob/main/k8s/quality-router-values.yaml). Cada pool tem seu EPP.
 
-O [diagrama interativo](https://kcd-sp-2026.kube.rip/diagrams/flow-inference-pool.html) permite avançar por cada etapa e abrir os detalhes dos recursos.
+A [sequência descrita pela extensão de inferência](https://gateway-api-inference-extension.sigs.k8s.io/#request-flow) ajuda a separar decisão de tráfego: o Gateway encontra o pool pela `HTTPRoute`, consulta o EPP pelo protocolo de processamento externo do Envoy (`ext-proc`) e, com a resposta, encaminha a requisição HTTP ao pod escolhido. O EPP devolve o endpoint; quem encaminha a chamada e a resposta é o Gateway. O EPP não escolhe o nó do Kubernetes nem troca a chamada para outro pool. Não instalei um Inference Payload Processor (IPP) nesta demo, e a rota não lê o JSON para decidir entre os pools.
 
-## Dois perfis para comparar o caminho
+![Visão geral do InferencePool: duas rotas saem do Gateway e levam aos pools, EPPs e simuladores fast e quality](/assets/img/kcd-inference/flow-overview.png "Visão geral das duas rotas e dos dois pools de inferência.")
 
-Os nomes `fast` e `quality` representam dois perfis de simulador. Eles compartilham o Gateway, mas usam rotas, pools e pods diferentes:
+O [diagrama interativo geral](https://kcd-sp-2026.kube.rip/diagrams/flow-inference-pool.html) permite avançar por essas etapas e abrir os recursos de cada uma. As setas representam a sequência das decisões; a requisição HTTP segue do Gateway para o pod escolhido.
 
-- `fast`: `fast-route` → `fast-router` → 3 pods `fast-simulator`; TTFT configurado: 100 ms.
-- `quality`: `quality-route` → `quality-router` → 1 pod `quality-simulator`; TTFT configurado: 500 ms.
+## O caminho do modelo rápido
 
-O `llm-d-inference-sim` roda em modo `echo`. Ele aceita o formato da chamada, devolve `usage` e expõe o pod que respondeu no cabeçalho `x-inference-pod`. Não existe um LLM real por trás desses nomes, então `quality` não é uma nota de qualidade de resposta. É só o nome do segundo perfil, com outro atraso configurado.
+Com `X-Demo-Pool: fast`, a chamada casa com `fast-route`, usa `fast-router` e pode chegar a qualquer um dos três pods `fast-simulator`. O [Deployment do simulador](https://github.com/rafaelvzago/kcd-ai-networking-demo/blob/main/k8s/fast-inference.yaml) configura `--mode echo` e `--time-to-first-token 100ms`.
+
+![Fluxo rápido: cliente, Gateway, fast-route, fast-router, EPP e modelo rápido em destaque](/assets/img/kcd-inference/flow-fast.png "A rota fast e seus três pods candidatos aparecem em destaque.")
+
+O [fluxo rápido interativo](https://kcd-sp-2026.kube.rip/diagrams/flow-fast.html) mostra as etapas do diagrama em tamanho maior. A imagem é um quadro do mesmo fluxo, usado na apresentação.
 
 Uma chamada feita pelo cliente dentro do cluster tem esta forma:
 
@@ -80,24 +80,32 @@ kubectl --context kind-kcd-ai-networking-demo -n ai-networking-demo \
     http://fast-inference-gateway-istio.ai-networking-demo.svc.cluster.local/v1/chat/completions
 ```
 
-Na resposta, eu olho primeiro para `x-inference-pod`. Ele mostra se a chamada chegou a um `fast-simulator` ou a um `quality-simulator`. O corpo traz `usage`, como se espera de uma resposta nesse formato de API. O [fluxo do modelo rápido](https://kcd-sp-2026.kube.rip/diagrams/flow-fast.html) e o [fluxo do modelo de qualidade](https://kcd-sp-2026.kube.rip/diagrams/flow-quality.html) mostram os dois caminhos separadamente.
+Na resposta, olho primeiro para `x-inference-pod`: ele identifica a réplica que atendeu. O JSON também traz `usage`, como uma resposta nesse formato de API. Na [gravação](https://kcd-sp-2026.kube.rip/inference-demo.html), envio 12 chamadas concorrentes para `fast`; elas chegam aos três pods, em uma distribuição de 1, 7 e 4 chamadas. É a contagem daquela execução, não uma promessa de round-robin ou de divisão uniforme.
 
-Na gravação, envio também 12 chamadas concorrentes para `fast`. Elas chegam às três réplicas, mas a contagem entre pods não é igual. O teste mostra seleção de endpoints; não promete round-robin nem uma distribuição uniforme em toda execução.
+## O caminho do modelo de qualidade
 
-## O valor que não tem rota
+Com `X-Demo-Pool: quality`, a outra `HTTPRoute` aponta para `quality-router`. O EPP desse pool seleciona o único pod `quality-simulator`, configurado com `--time-to-first-token 500ms`. O Gateway continua o mesmo; mudam a rota, o pool, o EPP e o pod candidato.
 
-Envio a mesma API com `X-Demo-Pool: invalid`. Nenhuma das duas `HTTPRoutes` aceita esse valor. O Istio Gateway devolve HTTP 404 antes de consultar qualquer `InferencePool` ou EPP, e a resposta não tem `x-inference-pod`.
+![Fluxo de qualidade: cliente, Gateway, quality-route, quality-router, EPP e modelo de qualidade em destaque](/assets/img/kcd-inference/flow-quality.png "O cabeçalho quality seleciona a outra rota e o único pod daquele pool.")
 
-Esse caso ajuda a localizar a falha. Se não houve rota, não faz sentido procurar um problema no modelo. O [diagrama do pool inválido](https://kcd-sp-2026.kube.rip/diagrams/flow-invalid.html) para no Gateway pelo mesmo motivo.
+Você pode percorrer o [fluxo de qualidade interativo](https://kcd-sp-2026.kube.rip/diagrams/flow-quality.html) para ver cada recurso. O nome `quality` serve para diferenciar os perfis do simulador. Como ambos rodam em modo `echo`, a demo não avalia se uma resposta é melhor que a outra.
 
-## O que o cronômetro mede
+## O caminho que termina em 404
 
-Configurei 100 ms de tempo até o primeiro token no simulador `fast` e 500 ms no `quality`. O roteiro usa `curl` com `time_starttransfer` para comparar as chamadas. Esse número mede o tempo até o primeiro byte visto pelo cliente, incluindo a passagem pela rede e pelo Gateway. É uma aproximação útil nesta demo, não uma medição isolada do TTFT do modelo.
+Envio a mesma API com `X-Demo-Pool: invalid`. Nenhuma das duas `HTTPRoutes` aceita esse valor. O Istio Gateway devolve HTTP 404 antes de consultar um `InferencePool` ou EPP. Por isso a resposta não traz `x-inference-pod`.
 
-As respostas gravadas mostram `usage`; a validação confere o pod que respondeu e se o primeiro byte de `fast` chegou antes do de `quality`. Ela não demonstra desempenho de GPU, throughput de um LLM, economia de tokens ou qualidade da resposta. O simulador deixa o roteamento visível sem depender de GPU ou de um provedor externo.
+![Fluxo inválido: o erro 404 aparece no Gateway e nenhuma rota ou pod fica ativo](/assets/img/kcd-inference/flow-invalid.png "O valor invalid não encontra rota; o fluxo termina no Gateway.")
 
-O cluster é preparado antes da gravação. As imagens e os charts ficam em cache para a instalação offline; durante o roteiro gravado, eu inspeciono os recursos e faço as chamadas. Quem quiser montar o ambiente encontra os pré-requisitos e os comandos no [README do projeto](https://github.com/rafaelvzago/kcd-ai-networking-demo#readme).
+O [diagrama interativo do valor inválido](https://kcd-sp-2026.kube.rip/diagrams/flow-invalid.html) para no mesmo ponto. Chamei o cenário de “pool inválido”, mas o Gateway nem chega a procurar um pool com esse nome. A falha é no casamento da rota. Quando isso acontece, investigar o modelo ou a fila dos pods não explica o 404.
 
-## Veja a demo
+## O que o cronômetro realmente mede
 
-A [gravação da minha parte](https://kcd-sp-2026.kube.rip/inference-demo.html) pausa em cada etapa, de modo que dá para conferir os pods, as rotas e as respostas sem acelerar o terminal. O [código da demo](https://github.com/rafaelvzago/kcd-ai-networking-demo) está aberto, incluindo os manifests, os scripts de validação e os diagramas.
+Os `100ms` e `500ms` são atrasos configurados no simulador para o parâmetro chamado `time-to-first-token`. Na gravação, o roteiro imprime `TTFT` ao lado de `curl -w '%{time_starttransfer}'`. O nome da variável é mais preciso que o rótulo do roteiro: segundo a [documentação do curl](https://curl.se/docs/manpage.html#time_starttransfer), ela mede desde o início da chamada até o **primeiro byte HTTP recebido pelo cliente**, incluindo negociação anterior e tempo de servidor. Isso é TTFB (*time to first byte*).
+
+A requisição da demo não pede `stream: true`; o cliente não observa separadamente o primeiro token gerado. Por isso não trato o número impresso como TTFT medido de um modelo real. Na gravação, `fast` ficou em torno de `0,105 s` e `quality` em `0,505 s` de TTFB, coerentes com os atrasos configurados, mas incluem também o percurso pelo Gateway e pela rede.
+
+O [script de validação](https://github.com/rafaelvzago/kcd-ai-networking-demo/blob/main/scripts/validate-model-routing.sh) confere o prefixo do pod que respondeu e se o primeiro byte de `fast` chegou antes do de `quality`. Ele não mede throughput, desempenho de GPU, economia de tokens ou qualidade de resposta. O `usage` aparece no JSON gravado, mas não faz parte dessa validação. Com um modelo real, medir TTFT exigiria observar a chegada do primeiro token gerado; as etapas seguintes da resposta precisariam de outras métricas.
+
+## Assista e rode a demo
+
+A [gravação da minha parte](https://kcd-sp-2026.kube.rip/inference-demo.html) pausa em cada etapa para mostrar os pods, as rotas e as respostas. O cluster é preparado antes, com imagens e charts em cache para instalação offline; durante o roteiro, eu inspeciono os recursos e faço as chamadas. O [README do projeto](https://github.com/rafaelvzago/kcd-ai-networking-demo#readme) traz os pré-requisitos e os comandos para montar o ambiente. Os manifests, scripts e diagramas estão no [repositório da demo](https://github.com/rafaelvzago/kcd-ai-networking-demo).
